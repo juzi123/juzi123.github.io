@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="BU JUNJIE">
+  <meta name="keywords" content="">
+  <title>windows - JUZI</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Juzi's space</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2019-02-23 12:28">
+      2019年2月23日 中午
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      13
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h3 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h3><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;windows.h&gt;</span></span>
+<span class="hljs-comment">/*其中包含了</span>
+<span class="hljs-comment">	WINDEF.H	基本数据类型定义</span>
+<span class="hljs-comment">	WINNT.H		支持Unicode的类型定义</span>
+<span class="hljs-comment">	WINBASE.H	内核函数</span>
+<span class="hljs-comment">	WINUSER.H	用户界面函数</span>
+<span class="hljs-comment">	WINGDI.H	图像设备接口函数</span>
+<span class="hljs-comment">等*/</span></code></pre>
+
+<a id="more"></a>
+
+<h3 id="程序入口函数：-WinMain-函数"><a href="#程序入口函数：-WinMain-函数" class="headerlink" title="程序入口函数： WinMain()函数"></a>程序入口函数： WinMain()函数</h3><pre><code class="hljs c"><span class="hljs-keyword">int</span>
+WINAPI
+WinMain(
+    HINSTANCE hInstance,	<span class="hljs-comment">//实例句柄</span>
+    HINSTANCE hPrevInstance,
+    LPSTR lpCmdLine,
+    <span class="hljs-keyword">int</span> nShowCmd	<span class="hljs-comment">//指明程序(窗口)最初如何被显示</span>
+    )</code></pre>
+
+<p>句柄（handle）：在windows编程中，一个句柄是指使用一个唯一的整数值，即一个4字节（64位程序中位8字节）长的数值，来标识应用程序中的不同对象和同类中的不同的实例，如，桌面上的一个窗体由一个<code>HWND</code>类型的句柄来标识。 </p>
+<h3 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World!"></a>Hello World!</h3><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;windows.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> WINAPI <span class="hljs-title">WinMain</span><span class="hljs-params">(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR szCmdLine, <span class="hljs-keyword">int</span> iCmdShow)</span></span>
+<span class="hljs-function"></span>&#123;
+	MessageBox(<span class="hljs-literal">NULL</span>, TEXT(<span class="hljs-string">"Hello,world!"</span>), TEXT(<span class="hljs-string">"MessageBox"</span>), <span class="hljs-number">0</span>);
+
+	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;
+<span class="hljs-comment">//出现一个显示helloworld的消息框</span></code></pre>
+
+<pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">MessageBox</span><span class="hljs-params">(</span></span>
+<span class="hljs-function"><span class="hljs-params">  HWND hWnd,          <span class="hljs-comment">// handle of owner window, 窗口的一个句柄</span></span></span>
+<span class="hljs-function"><span class="hljs-params">  LPCTSTR lpText,     <span class="hljs-comment">// address of text in message box, 一个文本(字符串)的指针</span></span></span>
+<span class="hljs-function"><span class="hljs-params">  LPCTSTR lpCaption,  <span class="hljs-comment">// address of title of message box, 标题字符串的指针</span></span></span>
+<span class="hljs-function"><span class="hljs-params">  UINT uType          <span class="hljs-comment">// style of message box, 对话框的风格</span></span></span>
+<span class="hljs-function"><span class="hljs-params">)</span></span>;</code></pre>
+
+<pre><code class="hljs c"><span class="hljs-comment">//对话框风格，可以使用OR(|)运算进行组合</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MB_OK                       0x00000000L            <span class="hljs-comment">//仅有一个"确定"按钮</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MB_OKCANCEL                 0x00000001L            <span class="hljs-comment">//"确定" + "取消"</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MB_ABORTRETRYIGNORE         0x00000002L            <span class="hljs-comment">//"终止" + "重试" + "忽略"</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MB_YESNOCANCEL              0x00000003L            <span class="hljs-comment">//"是" + "否" + "取消"</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MB_YESNO                    0x00000004L            <span class="hljs-comment">//"是" + "否"</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MB_RETRYCANCEL              0x00000005L            <span class="hljs-comment">//"重试" + "取消"</span></span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MB_ICONHAND                 0x00000010L            <span class="hljs-comment">//一个红X的错误/停止图标</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MB_ICONQUESTION             0x00000020L            <span class="hljs-comment">//一个问号的询问图标</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MB_ICONEXCLAMATION          0x00000030L            <span class="hljs-comment">//一个黄色感叹号的警告图标</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MB_ICONASTERISK             0x00000040L            <span class="hljs-comment">//一个带有i的信息提示图标</span></span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MB_ICONWARNING              MB_ICONEXCLAMATION         <span class="hljs-comment">//警告</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MB_ICONERROR                MB_ICONHAND                <span class="hljs-comment">//错误</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MB_ICONINFORMATION          MB_ICONASTERISK            <span class="hljs-comment">//信息</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MB_ICONSTOP                 MB_ICONHAND                <span class="hljs-comment">//停止</span></span></code></pre>
+
+<h3 id="创建窗口"><a href="#创建窗口" class="headerlink" title="创建窗口"></a>创建窗口</h3><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;windows.h&gt;</span></span>
+
+<span class="hljs-function">LRESULT CALLBACK <span class="hljs-title">WndProc</span><span class="hljs-params">( HWND, UINT, WPARAM, LPARAM )</span> </span>;        <span class="hljs-comment">//声明用来处理消息的函数</span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> WINAPI <span class="hljs-title">WinMain</span><span class="hljs-params">( HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR szCmdLine, <span class="hljs-keyword">int</span> iCmdShow )</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">static</span> TCHAR szAppName[] = TEXT(<span class="hljs-string">"MyWindow"</span>) ;
+    HWND hwnd ;
+    MSG msg ;
+    WNDCLASS wndclass ;        <span class="hljs-comment">//声明一个窗口类对象</span>
+
+    <span class="hljs-comment">//以下为窗口类对象wndclass的属性</span>
+    wndclass.style = CS_HREDRAW | CS_VREDRAW ;                         <span class="hljs-comment">//窗口样式</span>
+    wndclass.lpszClassName = szAppName ;                               <span class="hljs-comment">//窗口类名</span>
+    wndclass.lpszMenuName = <span class="hljs-literal">NULL</span> ;                                     <span class="hljs-comment">//窗口菜单:无</span>
+    wndclass.hbrBackground = (HBRUSH) GetStockObject(WHITE_BRUSH) ;    <span class="hljs-comment">//窗口背景颜色</span>
+    wndclass.lpfnWndProc = WndProc ;                                   <span class="hljs-comment">//窗口处理函数</span>
+    wndclass.cbWndExtra = <span class="hljs-number">0</span> ;                                          <span class="hljs-comment">//窗口实例扩展:无</span>
+    wndclass.cbClsExtra = <span class="hljs-number">0</span> ;                                          <span class="hljs-comment">//窗口类扩展:无</span>
+    wndclass.hInstance = hInstance ;                                   <span class="hljs-comment">//窗口实例句柄</span>
+    wndclass.hIcon = LoadIcon( <span class="hljs-literal">NULL</span>, IDI_APPLICATION ) ;               <span class="hljs-comment">//窗口最小化图标:使用缺省图标</span>
+    wndclass.hCursor = LoadCursor( <span class="hljs-literal">NULL</span>, IDC_ARROW ) ;                 <span class="hljs-comment">//窗口采用箭头光标</span>
+
+    <span class="hljs-keyword">if</span>( !RegisterClass( &amp;wndclass ) )
+    &#123;    <span class="hljs-comment">//注册窗口类, 如果注册失败弹出错误提示</span>
+        MessageBox( <span class="hljs-literal">NULL</span>, TEXT(<span class="hljs-string">"窗口注册失败!"</span>), TEXT(<span class="hljs-string">"错误"</span>), MB_OK | MB_ICONERROR ) ;
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span> ;
+    &#125;
+
+    hwnd = CreateWindow(                   <span class="hljs-comment">//创建窗口</span>
+                szAppName,                 <span class="hljs-comment">//窗口类名</span>
+                TEXT(<span class="hljs-string">"我的窗口"</span>),           <span class="hljs-comment">//窗口标题</span>
+                WS_OVERLAPPEDWINDOW,       <span class="hljs-comment">//窗口的风格</span>
+                CW_USEDEFAULT,             <span class="hljs-comment">//窗口初始显示位置x:使用缺省值</span>
+                CW_USEDEFAULT,             <span class="hljs-comment">//窗口初始显示位置y:使用缺省值</span>
+                CW_USEDEFAULT,             <span class="hljs-comment">//窗口的宽度:使用缺省值</span>
+                CW_USEDEFAULT,             <span class="hljs-comment">//窗口的高度:使用缺省值</span>
+                <span class="hljs-literal">NULL</span>,                      <span class="hljs-comment">//父窗口:无</span>
+                <span class="hljs-literal">NULL</span>,                      <span class="hljs-comment">//子菜单:无</span>
+                hInstance,                 <span class="hljs-comment">//该窗口应用程序的实例句柄 </span>
+                <span class="hljs-literal">NULL</span>                       <span class="hljs-comment">//</span>
+            ) ;
+
+    ShowWindow( hwnd, iCmdShow ) ;        <span class="hljs-comment">//显示窗口</span>
+    UpdateWindow( hwnd ) ;                <span class="hljs-comment">//更新窗口</span>
+
+    <span class="hljs-keyword">while</span>( GetMessage( &amp;msg, <span class="hljs-literal">NULL</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span> ) )        <span class="hljs-comment">//从消息队列中获取消息</span>
+    &#123;
+        TranslateMessage( &amp;msg ) ;                 <span class="hljs-comment">//将虚拟键消息转换为字符消息</span>
+        DispatchMessage( &amp;msg ) ;                  <span class="hljs-comment">//分发到回调函数(过程函数)</span>
+    &#125;
+    <span class="hljs-keyword">return</span> msg.wParam ;
+&#125;
+
+<span class="hljs-function">LRESULT CALLBACK <span class="hljs-title">WndProc</span><span class="hljs-params">( HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam )</span></span>
+<span class="hljs-function"></span>&#123;
+    HDC hdc ;                <span class="hljs-comment">//设备环境句柄</span>
+    PAINTSTRUCT ps ;         <span class="hljs-comment">//绘制结构</span>
+    RECT <span class="hljs-built_in">rect</span>;               <span class="hljs-comment">//矩形结构</span>
+
+    <span class="hljs-keyword">switch</span>( message )        <span class="hljs-comment">//处理得到的消息</span>
+    &#123;
+    <span class="hljs-keyword">case</span> WM_CREATE:          <span class="hljs-comment">//窗口创建完成时发来的消息</span>
+        MessageBox( hwnd, TEXT(<span class="hljs-string">"窗口已创建完成!"</span>), TEXT(<span class="hljs-string">"我的窗口"</span>), MB_OK | MB_ICONINFORMATION ) ;
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+
+    <span class="hljs-keyword">case</span> WM_PAINT:           <span class="hljs-comment">//处理窗口区域无效时发来的消息</span>
+        hdc = BeginPaint( hwnd, &amp;ps ) ;
+        GetClientRect( hwnd, &amp;<span class="hljs-built_in">rect</span> ) ;
+        DrawText( hdc, TEXT( <span class="hljs-string">"Hello, 这是我自己的窗口!"</span> ), <span class="hljs-number">-1</span>, &amp;<span class="hljs-built_in">rect</span>, DT_SINGLELINE | DT_CENTER | DT_VCENTER ) ;
+        EndPaint( hwnd, &amp;ps ) ;
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span> ;
+
+    <span class="hljs-keyword">case</span> WM_LBUTTONDOWN:     <span class="hljs-comment">//处理鼠标左键被按下的消息</span>
+        MessageBox( hwnd, TEXT(<span class="hljs-string">"鼠标左键被按下。"</span>), TEXT(<span class="hljs-string">"单击"</span>), MB_OK | MB_ICONINFORMATION ) ;
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+
+    <span class="hljs-keyword">case</span> WM_DESTROY:         <span class="hljs-comment">//处理窗口关闭时的消息</span>
+        MessageBox( hwnd, TEXT(<span class="hljs-string">"关闭程序!"</span>), TEXT(<span class="hljs-string">"结束"</span>), MB_OK | MB_ICONINFORMATION ) ;
+        PostQuitMessage( <span class="hljs-number">0</span> ) ;
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    &#125;
+    <span class="hljs-keyword">return</span> DefWindowProc( hwnd, message, wParam, lParam ) ;        <span class="hljs-comment">//DefWindowProc处理我们自定义的消息处理函数没有处理到的消息</span>
+&#125;</code></pre>
+
+<p><a href="https://www.cnblogs.com/mr-wid/archive/2012/10/09/2717278.html" target="_blank" rel="noopener">https://www.cnblogs.com/mr-wid/archive/2012/10/09/2717278.html</a></p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/windows/">windows</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/03/01/C-2/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">C++基础2</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2019/02/22/C-%E5%9F%BA%E7%A1%80/">
+                        <span class="hidden-mobile">C++基础</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "windows&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

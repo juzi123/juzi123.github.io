@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="BU JUNJIE">
+  <meta name="keywords" content="">
+  <title>C++基础 - JUZI</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Juzi's space</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2019-02-22 18:31">
+      2019年2月22日 晚上
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      31
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h3 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h3><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-comment">//#include&lt;istream&gt;</span>
+<span class="hljs-comment">//#include&lt;ostream&gt;</span>
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">cin</span>&gt;&gt;a&gt;&gt;b;
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span>&lt;&lt;a&lt;&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+<span class="hljs-comment">//::作用域运算符</span></code></pre>
+
+<a id="more"></a>
+
+<pre><code class="hljs c++"><span class="hljs-comment">//读取数量不定的输入数据</span>
+<span class="hljs-keyword">while</span>(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">cin</span>&gt;&gt;value)
+    sum+=value;</code></pre>
+
+<h3 id="类-class"><a href="#类-class" class="headerlink" title="类  class"></a>类  class</h3><p>成员函数（member function） -  方法（method）</p>
+<h3 id="类型-type"><a href="#类型-type" class="headerlink" title="类型 type"></a>类型 type</h3><p>基本数据类型（base type） </p>
+<p>算术类型（arithmetic type）：包括整型（integral type）和浮点型</p>
+<p>空类型（void）</p>
+<p>signed 带符号的</p>
+<p>unsigned 无符号的</p>
+<pre><code class="hljs c++"><span class="hljs-number">20</span><span class="hljs-comment">//十进制</span>
+<span class="hljs-number">024</span><span class="hljs-comment">//八进制</span>
+<span class="hljs-number">0x14</span><span class="hljs-comment">//十六进制</span>
+    
+<span class="hljs-string">'a'</span>	<span class="hljs-comment">//字符字面值</span>
+<span class="hljs-string">"Hello World"</span> <span class="hljs-comment">//字符串总面值</span></code></pre>
+
+
+
+<p>转义序列（escape sequence）</p>
+<p>换行符        \n            横向制表符        \t            报警（响铃）符        \a</p>
+<p>纵向制表符    \v            退格符            \b            双引号                &quot;</p>
+<p>反斜线        \            问号                ?            单引号                &#39;</p>
+<p>回车符        \r            进纸符            \f</p>
+<p>变量（variable）</p>
+<p>类型说明符（type specifier)</p>
+<p>对象（object）</p>
+<p>初始化（initialized)</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">int</span> units_sold = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">int</span> units_sold = &#123;<span class="hljs-number">0</span>&#125;;
+<span class="hljs-keyword">int</span> units_sold&#123;<span class="hljs-number">0</span>&#125;;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">units_sold</span><span class="hljs-params">(<span class="hljs-number">0</span>)</span></span>;
+
+<span class="hljs-comment">//&#123;&#125;初始化变量，叫做列表初始化（list initialization)</span>
+<span class="hljs-comment">//但当初始值存在丢失信息的风险时，编译器将报错</span></code></pre>
+
+<p>默认初始化（default initialized)</p>
+<p>定义在函数体内部的内置类型变量将不被初始化（uninitialized）</p>
+<p>分离式编译（separate compilation）：允许将程序分割为若干个文件，每个文件单独编译</p>
+<p>声明（declaration）</p>
+<p>定义（definition）</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">extern</span> <span class="hljs-keyword">int</span> i;	<span class="hljs-comment">//声明i</span>
+<span class="hljs-keyword">int</span> i;			<span class="hljs-comment">//声明并定义i</span>
+<span class="hljs-keyword">extern</span> <span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>;	<span class="hljs-comment">//定义，抵消了extern的作用</span>
+
+<span class="hljs-comment">/*在多个文件中使用同一个变量时，必须将声明和定义分离，变量的定义只能出现在一个文件中，其他用到该变量的文件必须对其声明，但不能重复定义*/</span></code></pre>
+
+
+
+<p>标识符（identifier）： 字母，下划线，数字组成</p>
+<p>变量名：小写</p>
+<p>类名：大写字母开头</p>
+<p>单词间有明显区分：student_loan或studentLoan</p>
+<p>作用域（scope）：大多数作用域以{}分隔</p>
+<p>全局作用域（global scope）</p>
+<p>块作用域（block scope）</p>
+<p>内层作用域（inner scope）</p>
+<p>外层作用域（outer scope）</p>
+<h3 id="复合类型（compound-type）"><a href="#复合类型（compound-type）" class="headerlink" title="复合类型（compound type）"></a>复合类型（compound type）</h3><p>引用（reference）：定义引用时，程序将引用和初始值绑定（bind）在一起，即别名，引用必须初始化</p>
+<p>指针（pointer）：存放某个对象的地址，本身也是个对象</p>
+<p>const限定符</p>
+<p>const对象一旦创建后其值不能再改变，必须初始化。</p>
+<p>常量表达式（const expression）</p>
+<p>constexpr：声明为constexpr的变量一定是一个常量，且必须用常量表达式初始化</p>
+<p>字面值类型（literal type)</p>
+<p>类型别名（type alias）</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">double</span> wages;	<span class="hljs-comment">//wages是double的别名</span></code></pre>
+
+<p>别名声明（alias declaration）</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">using</span> SI = Sales_item;	<span class="hljs-comment">//SI是Sales_item的别名</span></code></pre>
+
+
+
+<p>auto类型说明符：让编译器分析表达式所属类型</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">auto</span> i = <span class="hljs-number">1</span> + <span class="hljs-number">2</span>;</code></pre>
+
+<p>decltype：选择并返回操作数的数据类型，不实际计算表达式的值</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> ci = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">decltype</span>(ci) x = <span class="hljs-number">0</span>;	<span class="hljs-comment">//xp类型为const int</span>
+<span class="hljs-keyword">decltype</span>(f()) sum = x; 	<span class="hljs-comment">//sum的类型是f的返回类型，并不实际调用函数f</span></code></pre>
+
+
+
+<p>自定义数据结构</p>
+<pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Sale_data</span> &#123;</span><span class="hljs-comment">/* ... */</span>&#125; accum, trans, *salesptr;
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Sale_data</span> &#123;</span><span class="hljs-comment">/* ... */</span>&#125;;</code></pre>
+
+
+
+<p>数据成员（data member）</p>
+<p>类内初始值（in-class initializer）</p>
+<p>预处理器（preprocessor）</p>
+<p>头文件</p>
+<pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> SALES_DATA_H	<span class="hljs-comment">//变量未定义时为真，为真时执行后续操作直到#endif（#ifdef变量已定义为真）</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> SALES_DATA_H	<span class="hljs-comment">//将该名字设定为预处理变量</span></span>
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment">	......</span>
+<span class="hljs-comment">*/</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span></code></pre>
+
+
+
+<p>using</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span>::name;
+
+<span class="hljs-keyword">using</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cin</span>;
+<span class="hljs-keyword">using</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span>;
+<span class="hljs-keyword">using</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;</code></pre>
+
+
+
+<h3 id="标准库类型-string"><a href="#标准库类型-string" class="headerlink" title="标准库类型 string"></a>标准库类型 string</h3><p>表示可变长的字符序列</p>
+<pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>;
+
+<span class="hljs-built_in">string</span> s1;	<span class="hljs-comment">//默认，空字符串</span>
+<span class="hljs-built_in">string</span> s2 = s1;	<span class="hljs-comment">//stirng s2(s1);</span>
+<span class="hljs-built_in">string</span> s3 = <span class="hljs-string">"hiya"</span>;	<span class="hljs-comment">//string s3("hiya");</span>
+<span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">s4</span><span class="hljs-params">(<span class="hljs-number">10</span>,<span class="hljs-string">'c'</span>)</span></span>;	<span class="hljs-comment">//cccccccccc</span></code></pre>
+
+<pre><code class="hljs c++">getline(is,s);	<span class="hljs-comment">//读取一整行</span>
+s.empty();
+s.<span class="hljs-built_in">size</span>();
+s[n];
+<span class="hljs-comment">//== != &lt;= &lt; &gt;= &gt;</span></code></pre>
+
+
+
+<h3 id="C标准库String"><a href="#C标准库String" class="headerlink" title="C标准库String"></a>C标准库String</h3><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;	//string.h的c++版本</span></span>
+<span class="hljs-built_in">strlen</span>(p);
+<span class="hljs-built_in">strcmp</span>(p1,p2);		<span class="hljs-comment">//p1==p2 return 0; p1&gt;p2 return 正值；p1&lt;p2 return 负值；</span>
+<span class="hljs-built_in">strcat</span>(p1,p2);		<span class="hljs-comment">//p2加到p1后</span>
+<span class="hljs-built_in">strcpy</span>(p1,p2);		<span class="hljs-comment">//p2拷贝给p1</span></code></pre>
+
+
+
+<h3 id="标准库类型vector"><a href="#标准库类型vector" class="headerlink" title="标准库类型vector"></a>标准库类型vector</h3><p>被称为容器（container）</p>
+<pre><code class="hljs c++"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; ivec;		<span class="hljs-comment">//保存int类型的对象</span>
+<span class="hljs-built_in">vector</span>&lt;Sales_item&gt; Sales_vec;	<span class="hljs-comment">//保存Sales_item的对象</span>
+<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt;&gt; file;	<span class="hljs-comment">//保存vector的对象</span>
+
+<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; articles = &#123;<span class="hljs-string">"a"</span>, <span class="hljs-string">"an"</span>, <span class="hljs-string">"the"</span>&#125;;
+<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; a1&#123;<span class="hljs-string">"a"</span>, <span class="hljs-string">"an"</span>, <span class="hljs-string">"the"</span>&#125;;
+<span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; <span class="hljs-title">a2</span><span class="hljs-params">(a1)</span></span>; <span class="hljs-comment">//a2 = a1;</span>
+<span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">v1</span><span class="hljs-params">(<span class="hljs-number">10</span>)</span></span>;	<span class="hljs-comment">//10个0</span>
+<span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">v2</span><span class="hljs-params">(<span class="hljs-number">10</span>,<span class="hljs-number">1</span>)</span></span>;	<span class="hljs-comment">//10个1</span>
+<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; v3&#123;<span class="hljs-number">10</span>,<span class="hljs-number">1</span>&#125;;	<span class="hljs-comment">//10和1</span>
+<span class="hljs-comment">/*使用了&#123;&#125;，但提供的值又不能执行列表初始化，所以考虑用所给值构造对象*/</span>
+<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; v4&#123;<span class="hljs-number">10</span>&#125;;	<span class="hljs-comment">//10个默认初始化元素</span>
+<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; v5&#123;<span class="hljs-number">10</span>,<span class="hljs-string">"hi"</span>&#125;;	<span class="hljs-comment">//10个"hi"</span>
+
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i!=<span class="hljs-number">100</span>;i++)
+    v1.push_back(i);	<span class="hljs-comment">//把整数值放到尾端</span>
+
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> i:v1)
+    <span class="hljs-built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="hljs-built_in">endl</span>;
+
+<span class="hljs-comment">//使用数组初始化容器</span>
+<span class="hljs-keyword">int</span> int_arr[] = &#123;<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>&#125;;
+<span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">ivec</span><span class="hljs-params">(<span class="hljs-built_in">begin</span>(int_arr), <span class="hljs-built_in">end</span>(int_arr))</span></span>;</code></pre>
+
+
+
+<h3 id="迭代器（iterator）"><a href="#迭代器（iterator）" class="headerlink" title="迭代器（iterator）"></a>迭代器（iterator）</h3><pre><code class="hljs c++"><span class="hljs-keyword">auto</span> b = v.<span class="hljs-built_in">begin</span>();	<span class="hljs-comment">//b表示的迭代器指向v的第一个元素</span>
+<span class="hljs-keyword">auto</span> e = v.<span class="hljs-built_in">end</span>();	<span class="hljs-comment">//e表示的迭代器指向v尾元素的下一个位置 </span>
+<span class="hljs-comment">//end成员返回的是尾后迭代器（off-the-end iterator）</span>
+
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> it=s.<span class="hljs-built_in">begin</span>(); it!=s.<span class="hljs-built_in">end</span>() &amp;&amp; !<span class="hljs-built_in">isspace</span>(*it); ++it)
+    *it = <span class="hljs-built_in">toupper</span>(*it);	<span class="hljs-comment">//改成大写</span>
+
+<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it;	<span class="hljs-comment">//it能读写vector&lt;int&gt;的元素</span>
+<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;::const_iterator it2;	<span class="hljs-comment">//只能读，不能写</span>
+
+<span class="hljs-comment">//解引用</span>
+*it</code></pre>
+
+
+
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>字符数组结尾需要有一个位置存放空字符</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">int</span> a[] = &#123;<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>&#125;;
+<span class="hljs-keyword">int</span> b[] = a;	<span class="hljs-comment">//错误，不允许使用一个数组初始化另一个数组</span>
+b = a;	<span class="hljs-comment">//错误，不允许把一个数组直接赋值给另一个数组</span>
+
+<span class="hljs-built_in">string</span> nums[] = &#123;<span class="hljs-string">"one"</span>,<span class="hljs-string">"two"</span>,<span class="hljs-string">"three"</span>&#125;;
+<span class="hljs-built_in">string</span> *p = &amp;nums[<span class="hljs-number">0</span>];	<span class="hljs-comment">//p指向nums的第一个元素 等价于 string *p = nums;</span>
+++p;	<span class="hljs-comment">//p指向nums[1]</span>
+
+<span class="hljs-keyword">int</span> ia[<span class="hljs-number">2</span>][<span class="hljs-number">3</span>] = &#123;
+    &#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>&#125;,	<span class="hljs-comment">//第一行</span>
+    &#123;<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;	<span class="hljs-comment">//第二行</span>
+&#125;</code></pre>
+
+
+
+<p>一元运算符（unary operator）</p>
+<p>二元运算符（binary operator）</p>
+<p>优先级（precedence)</p>
+<p>结合律（associativity）</p>
+<p>重载运算符（overloaded operator)</p>
+<p>右值（rvalue）</p>
+<p>左值（lvalue）</p>
+<p>位运算符</p>
+<pre><code class="hljs c++">~	位求反	<span class="hljs-number">1</span>变<span class="hljs-number">0</span>,<span class="hljs-number">0</span>变<span class="hljs-number">1</span>
+&lt;&lt;	左移	右侧插入<span class="hljs-number">0</span>，超出边界的位丢弃
+&gt;&gt;	右移	无符号数左侧插入<span class="hljs-number">0</span>，有符号数左侧插入符号位的副本或值为<span class="hljs-number">0</span>的二进制位
+&amp;	位与	全<span class="hljs-number">1</span>为<span class="hljs-number">1</span>
+^	位异或	有且只有一个<span class="hljs-number">1</span>，为<span class="hljs-number">1</span>
+|	位或	有<span class="hljs-number">1</span>为<span class="hljs-number">1</span></code></pre>
+
+
+
+<p>sizeof    返回一条表达式或一个类型名字所占的字节数</p>
+<p>类型转换</p>
+<p>隐式转换（implicit conversion）</p>
+<p>算术转换（arithmetic conversion）</p>
+<p>整数提升（integral promotion）</p>
+<p>强制类型转换（cast）</p>
+<p>形参（parameter）</p>
+<p>实参（argument）</p>
+<p>自动对象（automatic object）</p>
+<p>局部静态对象（local static object）</p>
+<p>函数原型（function prototype）</p>
+<p>引用传递（passed by reference）</p>
+<p>传引用调用（called by reference）</p>
+<p>值传递（passed by value）</p>
+<p>传值调用（called by value）</p>
+<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">reset</span><span class="hljs-params">(<span class="hljs-keyword">int</span> &amp;i)</span>	<span class="hljs-comment">//i是传给reset函数的对象的另一个名字</span></span>
+<span class="hljs-function"></span>&#123;
+    i=<span class="hljs-number">0</span>;	<span class="hljs-comment">//改变了i所引用的对象</span>
+&#125;
+<span class="hljs-comment">//使用引用避免拷贝</span>
+<span class="hljs-comment">//如果函数无须改变引用形参的值，最好将其声明为常量引用</span>
+<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isShorter</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> &amp;s1, <span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> &amp;s2)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">return</span> s1.<span class="hljs-built_in">size</span>() &lt; s2.<span class="hljs-built_in">size</span>();
+&#125;</code></pre>
+
+
+
+<p>重载（overloaded）函数</p>
+<p>默认实参（default argument）</p>
+<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">screen</span><span class="hljs-params">(sz ht=<span class="hljs-number">24</span>,sz wid=<span class="hljs-number">22</span>,<span class="hljs-keyword">char</span> back=<span class="hljs-string">' '</span>)</span></span>;</code></pre>
+
+
+
+<p>内联函数（inline）</p>
+<p>constexpr函数</p>
+<p>assert预处理宏（preprocessor marco）</p>
+<pre><code class="hljs c++"><span class="hljs-comment">//expr为真，什么也不做，expr为假，输出信息并终止程序</span>
+assert(expr);</code></pre>
+
+<p>NDEBUG预处理变量</p>
+<pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> NDEBUG</span>
+<span class="hljs-comment">//定义后将关闭调试状态，assert什么也不做</span></code></pre>
+
+
+
+<p>函数指针</p>
+<pre><code class="hljs c++"><span class="hljs-keyword">bool</span> (*pf)(<span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> &amp;, <span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> &amp;);
+<span class="hljs-comment">//pf是指向函数的指针，返回值是bool</span>
+<span class="hljs-keyword">bool</span> b1 = pf(<span class="hljs-string">"hello"</span>,<span class="hljs-string">"goodbye"</span>);
+<span class="hljs-keyword">bool</span> b2 = (*pf)(<span class="hljs-string">"hello"</span>,<span class="hljs-string">"goodbye"</span>);</code></pre>
+
+
+
+<p>数据抽象（data abstraction）</p>
+<p>封装（encapsulation）</p>
+<p>抽象数据类型（abstract data type）</p>
+<p>成员函数（member function）</p>
+<p>常量成员函数（const member function）</p>
+<p>构造函数（constructor）：初始化对象的数据成员</p>
+<p>默认构造函数（default constructor）：没有显式的定义构造函数时，编译器自动生成。如果存在类内初始值，用它来初始化成员，否则，默认初始化该成员</p>
+<pre><code class="hljs c++"><span class="hljs-comment">//既需要其他形式的构造函数，也需要默认的构造函数时，使用该语句</span>
+Sales_data() = <span class="hljs-keyword">default</span>;		<span class="hljs-comment">//默认构造函数</span>
+<span class="hljs-comment">//如果定义了其他构造函数，最好也提供一个默认构造函数</span></code></pre>
+
+<p>构造函数初始值列表（constructor initialize list）</p>
+<pre><code class="hljs c++"><span class="hljs-comment">//外部定义构造函数</span>
+Sales_data::Sales_data(<span class="hljs-built_in">std</span>::istream &amp;is)
+&#123;
+    <span class="hljs-built_in">read</span>(is, *<span class="hljs-keyword">this</span>);
+&#125;</code></pre>
+
+
+
+<p>编译器会替我们合成拷贝、赋值和销毁的操作，但对于某些类来说，合成的版本无法正常工作。</p>
+<p>访问说明符（access specifiers）：加强类的封装性</p>
+<p>public</p>
+<p>private</p>
+<p>使用class和struct定义类的唯一区别就是默认的访问权限，class成员的默认访问权限是private，struct成员的默认访问权限是public。</p>
+<p>友元（friend）：允许其他类或者函数访问它的非公有成员</p>
+<p>一般来说，最好在类定义开始或结束前的位置集中声明友元</p>
+<p>内联函数inline</p>
+<p>可变数据成员（mutable data member）</p>
+<pre><code class="hljs c++"><span class="hljs-comment">//前向声明（forward declaration），仅声明类而暂时不定义它</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Screen</span>;</span>	<span class="hljs-comment">//不完全类型（incomplete type）</span></code></pre>
+
+
+
+<p>名字查找（name lookup）：</p>
+<ul>
+<li>首先，在名字所在的块中寻找声明语句，只考虑在名字的使用之前出现的声明</li>
+<li>如果没找到，继续查找外层作用域</li>
+<li>未找到匹配的声明，报错</li>
+</ul>
+<p>委托构造函数（delegating constructor)：一个委托构造函数使用它所属类的其他构造函数执行它自己的初始化过程。</p>
+<p>转换构造函数（converting constructor）</p>
+<p>explicit：抑制构造函数定义的隐式转换</p>
+<p>聚合类（aggregate class）</p>
+<ul>
+<li>所有的成员都是public</li>
+<li>没有定义任何构造函数</li>
+<li>没有类内初始值</li>
+<li>没有基类，没有virtual函数</li>
+</ul>
+<p>static：声明静态成员</p>
+<pre><code class="hljs c++"><span class="hljs-comment">//使用作用域运算符访问静态成员</span>
+r = Account::rate();
+
+<span class="hljs-comment">//成员函数可以直接使用静态成员</span>
+<span class="hljs-comment">//静态数据成员不属于类的对象，一般必须在类的外部定义和初始化每个静态成员</span></code></pre>
+
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/C/">C++</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/02/23/windows/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">windows</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2018/12/31/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/">
+                        <span class="hidden-mobile">3D数学基础</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "C++基础&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

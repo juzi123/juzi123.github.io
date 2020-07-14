@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="BU JUNJIE">
+  <meta name="keywords" content="">
+  <title>排序 - JUZI</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Juzi's space</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2018-04-01 19:16">
+      2018年4月1日 晚上
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      27
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h3 id="排序（Sorting）"><a href="#排序（Sorting）" class="headerlink" title="排序（Sorting）"></a>排序（Sorting）</h3><ul>
+<li>n个记录的序列按照对应的关键字满足的关系，成为一个按关键字有序的序列</li>
+<li>稳定性：序列R<sub>i</sub>领先于R<sub>j</sub>，当关键字相等时，排序后的序列中R<sub>i</sub>仍领先于R<sub>j</sub>，则称排序方法是稳定的；反之，称排序算法是不稳定的</li>
+<li>快速排序、堆排序和希尔排序等时间性能较好的排序方法是不稳定的</li>
+</ul>
+<a id="more"></a>
+
+<ul>
+<li>排序方法可分为内部排序和外部排序</li>
+<li>内部排序：指待排序记录存放在计算机随机存储器中进行的排序过程</li>
+<li>外部排序：指待排序记录的数量很大，以至内存不能一次容纳全部记录，在排序过程中尚需对外存进行访问的排序过程</li>
+</ul>
+<h4 id="直接插入排序（Straight-Insertion-Sort）"><a href="#直接插入排序（Straight-Insertion-Sort）" class="headerlink" title="直接插入排序（Straight Insertion Sort）"></a>直接插入排序（Straight Insertion Sort）</h4><ul>
+<li><p>将一个记录插入到已排好序的有序表中，从而得到一个新的、记录数值1的有序表</p>
+</li>
+<li><p>时间复杂度为O(n<sup>2</sup>)</p>
+</li>
+<li><p>若带排记录序列为正序时，时间复杂度可提高至O(n)，适合于序列基本有序的情况</p>
+</li>
+<li><p>空间复杂度O(1)</p>
+<pre><code class="hljs c"><span class="hljs-comment">//从小到大</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">InsertSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> R[],<span class="hljs-keyword">int</span> n)</span>	<span class="hljs-comment">//待排序关键字存储在R[]</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> i,j;
+    <span class="hljs-keyword">int</span> temp;
+    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">1</span>;i&lt;n;++i)
+    &#123;
+        temp=R[i];	<span class="hljs-comment">//将待插入的关键字暂存于temp中</span>
+        j=i<span class="hljs-number">-1</span>;
+        <span class="hljs-keyword">while</span>(j&gt;=<span class="hljs-number">0</span>&amp;&amp;temp&lt;R[j])
+        &#123;
+            R[j+<span class="hljs-number">1</span>]=R[j];	<span class="hljs-comment">//大于待排关键字，后移一位</span>
+            --j;
+        &#125;
+        R[j+<span class="hljs-number">1</span>]=temp;	<span class="hljs-comment">//找到插入位置</span>
+    &#125;
+&#125;</code></pre>
+
+</li>
+</ul>
+<h4 id="折半插入排序"><a href="#折半插入排序" class="headerlink" title="折半插入排序"></a>折半插入排序</h4><ul>
+<li>基本思想与直接插入排序类似，区别是查找插入位置的方法不同，折半插入排序采用折半查找法来查找插入位置</li>
+<li>序列已经有序</li>
+<li>所需附加空间和直接插入排序相同，时间上比较，折半插入查找仅减少了关键字间的比较次数，记录的移动次数不变，时间复杂度为O(n<sup>2</sup>)</li>
+</ul>
+<h4 id="2-路插入排序"><a href="#2-路插入排序" class="headerlink" title="*2-路插入排序"></a>*2-路插入排序</h4><h4 id="希尔排序（Shell’s-Sort）"><a href="#希尔排序（Shell’s-Sort）" class="headerlink" title="希尔排序（Shell’s Sort）"></a>希尔排序（Shell’s Sort）</h4><ul>
+<li>又称‘’缩小增量排序‘’（Diminishing Increment Sort）</li>
+<li>基本思想：先将整个带排记录序列分割成若干子序列分别进行直接插入排序，待整个序列中的记录“基本有序”时，再对全体记录进行一次直接插入排序。</li>
+<li>子序列的构成不是简单地“逐段分割”，而是将相隔某个增量（步长）记录组成一个子序列</li>
+<li>算法最开始以一定的步长进行排序。然后会继续以一定步长进行排序，最终算法以步长为1进行排序。当步长为1时，算法变为插入排序，这就保证了数据一定会被排序。</li>
+<li>增量序列中的值应尽量没有除1以外的公因子</li>
+<li>时间复杂度<img src="%E6%8E%92%E5%BA%8F/shell.png" srcset="/img/loading.gif" alt=""> ？？？</li>
+</ul>
+<h4 id="起泡排序（Bubble-Sort）"><a href="#起泡排序（Bubble-Sort）" class="headerlink" title="起泡排序（Bubble Sort）"></a>起泡排序（Bubble Sort）</h4><ul>
+<li><p>首先将第一个记录的关键字和第二个记录的关键字进行比较，若为逆序，则将两个记录交换，然后比较第二个记录和第三个记录的关键字。依次类推，直至第n-1个记录和第n个记录的关键字进行过比较为止。这称作第一趟起泡排序</p>
+</li>
+<li><p>然后进行第二趟起泡排序，对前n-1个记录进行相同的操作，其结果是使关键字次大的记录被安置到第n-1个位置上，依次类推，直到结束</p>
+</li>
+<li><p>判别起泡排序结束的条件：在一趟起泡排序过程中没有进行交换记录的操作</p>
+</li>
+<li><p>时间复杂度：O(n<sup>2</sup>)</p>
+<pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">BubbleSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> R[],<span class="hljs-keyword">int</span> n)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> i,j,flag;
+    <span class="hljs-keyword">int</span> temp;
+    <span class="hljs-keyword">for</span>(i=n<span class="hljs-number">-1</span>;i&gt;=<span class="hljs-number">1</span>;--i)
+    &#123;
+        flag=<span class="hljs-number">0</span>;		<span class="hljs-comment">//标记本趟排序是否发生交换</span>
+        <span class="hljs-keyword">for</span>(j=<span class="hljs-number">1</span>;j&lt;=i;++j)
+        &#123;
+            <span class="hljs-keyword">if</span>(R[j<span class="hljs-number">-1</span>]&gt;R[j])
+            &#123;
+                temp=R[j];
+                R[j]=R[j<span class="hljs-number">-1</span>];
+                R[j<span class="hljs-number">-1</span>]=temp;
+                flag=<span class="hljs-number">1</span>;
+            &#125;
+        &#125;
+       	<span class="hljs-keyword">if</span>(flag==<span class="hljs-number">0</span>)		<span class="hljs-comment">//说明序列已经有序</span>
+        	<span class="hljs-keyword">return</span>;
+    &#125;
+&#125;</code></pre>
+
+</li>
+</ul>
+<h4 id="快速排序（Quick-Sort）"><a href="#快速排序（Quick-Sort）" class="headerlink" title="快速排序（Quick Sort）"></a>快速排序（Quick Sort）</h4><ul>
+<li><p>基本思想：通过一趟排序将待排记录分割成独立的两部分，其中一部分记录的关键字均比另一部分记录的关键字小，则可分别对这两部分记录继续进行排序，以达到整个序列有序</p>
+</li>
+<li><p>任取一个记录作为枢轴（支点），将所有关键字比它小的记录安置在它的位置之前，所有关键字比它大的记录安置到它的位置之后，将序列分割成两个子序列。这个过程称为一趟快速排序。</p>
+</li>
+<li><p>在对分割所得的两个子序列进行快速排序，直至待排序列中只有一个记录。</p>
+</li>
+<li><p>时间复杂度：O(nlogn)；同数量级的排序方法中，其平均性能最好</p>
+</li>
+<li><p>空间复杂度：O(logn)，递归需要栈的辅助</p>
+<pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">QuickSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> R[],<span class="hljs-keyword">int</span> low,<span class="hljs-keyword">int</span> high)</span><span class="hljs-comment">//对从R[low]到R[high]的关键字进行排序</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> temp;
+    <span class="hljs-keyword">int</span> i=low,j=high;
+    <span class="hljs-keyword">if</span>(low&lt;high)
+    &#123;
+        temp=R[low];
+        <span class="hljs-keyword">while</span>(i&lt;j)	<span class="hljs-comment">//一趟排序，即将数组中大于temp的关键字放在右边，小于temp的放在左边</span>
+        &#123;
+            <span class="hljs-keyword">while</span>(j&gt;i&amp;&amp;R[j]&gt;=temp)
+                --j;	<span class="hljs-comment">//从右往左扫描，找到一个小于temp的关键字</span>
+            <span class="hljs-keyword">if</span>(i&lt;j)
+            &#123;
+                R[i]=R[j];	<span class="hljs-comment">//放在temp左边</span>
+                ++i;	<span class="hljs-comment">//i右移一位</span>
+            &#125;
+            <span class="hljs-keyword">while</span>(i&lt;j&amp;&amp;R[i]&lt;temp)
+                ++i;	<span class="hljs-comment">//从左往右扫描，找到一个大于temp的关键字</span>
+            <span class="hljs-keyword">if</span>(i&lt;j)
+            &#123;
+                R[j]=R[i];	<span class="hljs-comment">//放在temp右边</span>
+                --j;	<span class="hljs-comment">//j左移一位</span>
+            &#125;
+        &#125;
+        R[i]=temp;	<span class="hljs-comment">//将temp放在最终位置</span>
+        QuickSort(R,low,i<span class="hljs-number">-1</span>);	<span class="hljs-comment">//递归，对temp左边的关键字进行排序</span>
+        QuickSort(R,i+<span class="hljs-number">1</span>,high);	<span class="hljs-comment">//递归，对temp右边的关键字进行排序</span>
+    &#125;
+&#125;</code></pre>
+
+</li>
+</ul>
+<h4 id="简单选择排序（Selection-Sort）"><a href="#简单选择排序（Selection-Sort）" class="headerlink" title="简单选择排序（Selection Sort）"></a>简单选择排序（Selection Sort）</h4><ul>
+<li><p>通过n-i次关键字间的比较，从n-i+1个记录中选出关键字最小的记录，并和第i（1&lt;=i&lt;=n）交换</p>
+</li>
+<li><p>时间复杂度：O(n<sup>2</sup>)</p>
+<pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SelectSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> R[],<span class="hljs-keyword">int</span> n)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> i,j,k;
+    <span class="hljs-keyword">int</span> temp;
+    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;n;++i)
+    &#123;
+        k=i;
+        <span class="hljs-keyword">for</span>(j=i+<span class="hljs-number">1</span>;j&lt;n;++j)	<span class="hljs-comment">//从无序序列中找到最小值</span>
+            <span class="hljs-keyword">if</span>(R[k]&gt;R[j])
+                k=j;
+        temp=R[i];
+        R[i]=R[k];
+        R[k]=temp;
+    &#125;
+&#125;</code></pre>
+
+</li>
+</ul>
+<h4 id="树形选择排序（Tree-Selection-Sort）-锦标赛排序"><a href="#树形选择排序（Tree-Selection-Sort）-锦标赛排序" class="headerlink" title="*树形选择排序（Tree Selection Sort）(锦标赛排序)"></a>*树形选择排序（Tree Selection Sort）(锦标赛排序)</h4><h4 id="堆排序（Heap-Sort）"><a href="#堆排序（Heap-Sort）" class="headerlink" title="堆排序（Heap Sort）"></a>堆排序（Heap Sort）</h4><ul>
+<li><p>将序列看成是一个完全二叉树，则堆的含义表明，完全二叉树中所有非终端结点的值均不大于（或不小于）其左、右孩子结点的值；由此，则堆顶元素（根）必为序列中n个元素的最小值（或最大值）。</p>
+</li>
+<li><p>输出堆顶的最小值之后，使得剩余n-1个元素的序列重建成一个堆；反复执行，得到一个有序序列，这个过程称为堆排序</p>
+</li>
+<li><p>最大堆</p>
+<p><img src="%E6%8E%92%E5%BA%8F/max-heap.png" srcset="/img/loading.gif" alt="max-heap"> </p>
+</li>
+<li><p>最小堆</p>
+<p><img src="%E6%8E%92%E5%BA%8F/min-heap.png" srcset="/img/loading.gif" alt="min-heap"></p>
+</li>
+<li><p>创建最大堆（Build-Max-Heap）：将堆所有数据重新排序，使其成为最大堆，由无序列表建成一个堆</p>
+</li>
+<li><p>最大堆调整（Max-Heapify）：将堆的节点作调整，使得子节点永远小于父节点</p>
+<p><img src="%E6%8E%92%E5%BA%8F/MAX%E2%80%90HEAPIFY-Procedure.png" srcset="/img/loading.gif" alt="Max-Heapify"> </p>
+</li>
+<li><p>堆排序在最坏的情况下，时间复杂度也为O(nlogn)</p>
+</li>
+<li><p>空间复杂度O(1)，仅需一个记录大小供交换用的辅助存储空间</p>
+<pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Sift</span><span class="hljs-params">(<span class="hljs-keyword">int</span> R[],<span class="hljs-keyword">int</span> low,<span class="hljs-keyword">int</span> high)</span>	<span class="hljs-comment">//关键字从数组下标1开始</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> i=low,j=<span class="hljs-number">2</span>*i;	<span class="hljs-comment">//R[j]是R[i]的左孩子结点</span>
+    <span class="hljs-keyword">int</span> temp=R[i];
+    <span class="hljs-keyword">while</span>(j&lt;=high)
+    &#123;
+        <span class="hljs-keyword">if</span>(j&lt;high&amp;&amp;R[j]&lt;R[j+<span class="hljs-number">1</span>])	<span class="hljs-comment">//若右孩子较大，则把j指向右孩子</span>
+            ++j;
+        <span class="hljs-keyword">if</span>(temp&lt;R[j])
+        &#123;
+            R[i]=R[j];	<span class="hljs-comment">//将R[j]调整到双亲节点的位置</span>
+            i=j;	
+            j=<span class="hljs-number">2</span>*i;
+        &#125;
+        <span class="hljs-keyword">else</span>
+            <span class="hljs-keyword">break</span>;	<span class="hljs-comment">//调整结束</span>
+    &#125;
+    R[i]=temp;		<span class="hljs-comment">//被调整的结点放入最终位置</span>
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">heapSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> R[],<span class="hljs-keyword">int</span> n)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> i;
+    <span class="hljs-keyword">int</span> temp;
+    <span class="hljs-keyword">for</span>(i=n/<span class="hljs-number">2</span>;i&gt;=<span class="hljs-number">1</span>;--i)	<span class="hljs-comment">//建立初始堆</span>
+        Sift(R,i,n);
+    <span class="hljs-keyword">for</span>(i=n;i&gt;=<span class="hljs-number">2</span>;--i)	<span class="hljs-comment">//进行n-1次循环，完成堆排序</span>
+    &#123;
+		temp=R[<span class="hljs-number">1</span>];
+         R[<span class="hljs-number">1</span>]=R[i];
+         R[i]=temp;
+         Sift(R,<span class="hljs-number">1</span>,i<span class="hljs-number">-1</span>);
+    &#125;
+&#125;</code></pre>
+
+
+
+</li>
+</ul>
+<h3 id="归并排序（Merging-Sort）"><a href="#归并排序（Merging-Sort）" class="headerlink" title="归并排序（Merging Sort）"></a>归并排序（Merging Sort）</h3><ul>
+<li>“归并”：将两个或两个以上的有序表组合成一个新的有序表</li>
+<li>假设初始序列有n个记录，看成是个有序的子序列，每个子序列长度为1，然后两两归并；得到的有序子序列再两两归并，……，直至得到一个长度为n的有序序列为止，这种排序算法称为2-路归并排序</li>
+<li>多路归并排序</li>
+<li>时间复杂度：O(nlogn)</li>
+<li>需要和待排记录等数量的辅助空间</li>
+</ul>
+<h3 id="基数排序（Radix-Sorting）"><a href="#基数排序（Radix-Sorting）" class="headerlink" title="基数排序（Radix Sorting）"></a>基数排序（Radix Sorting）</h3><ul>
+<li>基本思想：从最低位开始，依次进行一次稳定排序，位数不足的前面补0，直到最高一位也完成一次稳定排序。</li>
+<li>最高位优先法（MSD法）</li>
+<li>最低位优先法（LSD法）</li>
+<li>链式基数排序</li>
+<li>时间复杂度：O（d*n）</li>
+</ul>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/04/02/%E6%9F%A5%E6%89%BE/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">查找</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2018/03/31/%E5%93%88%E5%B8%8C%E8%A1%A8/">
+                        <span class="hidden-mobile">哈希表</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "排序&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
