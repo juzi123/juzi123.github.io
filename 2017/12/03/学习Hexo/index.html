@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="BU JUNJIE">
   <meta name="keywords" content="">
-  <title>学习使用Hexo写博客 - JUZI&#39;s blog</title>
+  <title>Hexo搭建博客 - JUZI&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      403 字
+      376 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      4
        分钟
     </span>
   
@@ -204,56 +204,58 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h2 id="一、创建博客"><a href="#一、创建博客" class="headerlink" title="一、创建博客"></a>一、创建博客</h2><ol>
-<li>进入一个安全的目录</li>
-<li>在GitHub上新建一个空repo，名称为「你的用户名.github.io」</li>
-<li><code>npm install -g hexo-cli</code>，安装 Hexo</li>
-<li><code>hexo init myBlog</code></li>
-<li><code>cd myBlog</code></li>
-<li><code>npm i</code></li>
-<li><code>hexo new 博客名</code>，得到一个md文件的路径</li>
-<li><code>start xxxxxxxx.md</code>，在这个文件中编辑博客内容</li>
-</ol>
-<a id="more"></a>
+              <h1 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h1><p>Hexo是一款基于Node.js的静态博客框架，可部署到 GitHub Pages, Heroku 或其他平台。</p>
+<p><a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">官网</a></p>
+<h2 id="搭建流程"><a href="#搭建流程" class="headerlink" title="搭建流程"></a>搭建流程</h2><h3 id="在Github上创建个人仓库"><a href="#在Github上创建个人仓库" class="headerlink" title="在Github上创建个人仓库"></a>在Github上创建个人仓库</h3><p>注册Github账号：略</p>
+<p>点击GitHub中的New repository创建新仓库，仓库名为：「Github用户名.github.io」</p>
+<h3 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h3><p>在<a href="https://git-scm.com/download" target="_blank" rel="noopener">官网</a>下载对应版本，具体参考<a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">Git教程</a></p>
+<p>打开Git Bash，设置配置信息：</p>
+<pre><code class="hljs bash">git config --global user.name <span class="hljs-string">"你的GitHub用户名"</span>
+git config --global user.email <span class="hljs-string">"你的GitHub注册邮箱"</span></code></pre>
 
-<ol start="9">
-<li><code>start _config.yml</code> ,编辑网站配置</li>
-</ol>
-<ul>
-<li>把第 6 行的 title 改成网站的主题</li>
-<li>把第 9 行的 author 改成你的姓名</li>
-<li>把最后一行的 type 改成 type: git</li>
-<li>在最后一行后面新增一行，左边与 type 平齐，加上一行 repo: 仓库地址 （将仓库地址改为「你的用户名.github.io」对应的仓库地址，仓库地址以 <a href="mailto:git@github.com">git@github.com</a>: 开头</li>
-</ul>
-<ol start="10">
-<li><code>npm install hexo-deployer-git --save</code> ，安装 git 部署插件</li>
-<li><code>hexo deploy</code> </li>
-<li>进入「你的用户名.github.io」对应的 repo，打开 GitHub Pages 功能，如果已经打开了，就直接点击预览链接   </li>
-</ol>
-<h2 id="二、第二篇博客"><a href="#二、第二篇博客" class="headerlink" title="二、第二篇博客"></a>二、第二篇博客</h2><ol>
-<li><code>hexo new 第二篇博客的标题</code> </li>
-<li>复制显示的路径，使用 start 路径来编辑它</li>
-<li><code>hexo generate</code> </li>
-<li><code>hexo deploy</code> </li>
-<li>去看你的博客，应该能看到第二篇博客了</li>
-</ol>
-<h2 id="三、更换主题"><a href="#三、更换主题" class="headerlink" title="三、更换主题"></a>三、更换主题</h2><ol>
-<li><a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="noopener">https://github.com/hexojs/hexo/wiki/Themes</a> 上面有主题合集</li>
-<li>随便找一个主题，进入主题的 GitHub 首页</li>
-<li>复制它的 SSH 地址或 HTTPS 地址，假设地址为 <a href="mailto:git@github.com">git@github.com</a>:iissnan/hexo-theme-next.git</li>
-<li><code>cd themes</code></li>
-<li><code>git clone git@github.com:iissnan/hexo-theme-next.git</code></li>
-<li><code>cd ..</code></li>
-<li>将 _config.yml 的第 75 行改为 <code>theme: hexo-theme-next</code>(对应主题的名称)，保存</li>
-<li><code>hexo generate</code></li>
-<li><code>hexo deploy</code></li>
-<li>等一分钟，然后刷新你的博客页面，你会看到一个新的外观。</li>
-</ol>
+<p>检查电脑上现有的SSH Key:</p>
+<pre><code class="hljs bash">$ <span class="hljs-built_in">cd</span> ~/.ssh 检查本机的ssh密钥</code></pre>
+
+<p>生成新的 SSH Key文件：</p>
+<pre><code class="hljs bash">ssh-keygen -t rsa -C <span class="hljs-string">"你的GitHub注册邮箱"</span>
+&lt;回车&gt;</code></pre>
+
+
+<p>然后找到生成的.ssh的文件夹中的id_rsa.pub密钥，将内容全部复制</p>
+<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>创建一个新的文件夹，可以命名为myBlog，进入该文件夹中，打开git bash</p>
+<p>安装 Hexo成功，输入:</p>
+<pre><code class="hljs bash">npm install -g hexo-cli</code></pre>
+
+<p>初始化博客:</p>
+<pre><code class="hljs bash">hexo init myBlog
+<span class="hljs-built_in">cd</span> myBlog
+npm i</code></pre>
+
+<p>创建博客：</p>
+<pre><code class="hljs bash">hexo new 博客名</code></pre>
+
+<p>该命令会生成一个md文件，在该文件中编辑博客的内容</p>
+<p>编辑完后，输入：</p>
+<pre><code class="hljs bash">hexo server <span class="hljs-comment"># 简写 hexo s</span></code></pre>
+
+<p>启动本地服务，在浏览器中访问显示的连接，即可查看到博客的内容</p>
+<p>提交更新，输入：</p>
+<pre><code class="hljs bash">hexo generate <span class="hljs-comment"># 简写 hexo g， 生成</span>
+hexo deploy <span class="hljs-comment"># 简写 hexo d， 部署</span></code></pre>
+
+<p>进入「你的用户名.github.io」对应的 repo，打开 GitHub Pages 功能，如果已经打开了，就直接点击预览链接即可看到博客了</p>
 
             </article>
             <hr>
             <div>
               <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Hexo/">Hexo</a>
+                    
+                  </div>
                 
                 
                   <div class="post-meta">
@@ -272,9 +274,9 @@
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2017/12/08/gitbash%E5%91%BD%E4%BB%A4%E8%A1%8C/">
+                      <a href="/2017/12/08/git%E5%91%BD%E4%BB%A4%E8%A1%8C/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">gitbash命令行</span>
+                        <span class="hidden-mobile">git命令</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -422,7 +424,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "学习使用Hexo写博客&nbsp;",
+        "Hexo搭建博客&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

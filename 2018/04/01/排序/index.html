@@ -139,7 +139,7 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/img/20180401.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -255,7 +255,7 @@
 <li>子序列的构成不是简单地“逐段分割”，而是将相隔某个增量（步长）记录组成一个子序列</li>
 <li>算法最开始以一定的步长进行排序。然后会继续以一定步长进行排序，最终算法以步长为1进行排序。当步长为1时，算法变为插入排序，这就保证了数据一定会被排序。</li>
 <li>增量序列中的值应尽量没有除1以外的公因子</li>
-<li>时间复杂度<img src="%E6%8E%92%E5%BA%8F/shell.png" srcset="/img/loading.gif" alt=""> ？？？</li>
+<li>时间复杂度<img src="/blogImg/shell.png" srcset="/img/loading.gif" alt=""> ？？？</li>
 </ul>
 <h4 id="起泡排序（Bubble-Sort）"><a href="#起泡排序（Bubble-Sort）" class="headerlink" title="起泡排序（Bubble Sort）"></a>起泡排序（Bubble Sort）</h4><ul>
 <li><p>首先将第一个记录的关键字和第二个记录的关键字进行比较，若为逆序，则将两个记录交换，然后比较第二个记录和第三个记录的关键字。依次类推，直至第n-1个记录和第n个记录的关键字进行过比较为止。这称作第一趟起泡排序</p>
@@ -359,15 +359,15 @@
 <li><p>输出堆顶的最小值之后，使得剩余n-1个元素的序列重建成一个堆；反复执行，得到一个有序序列，这个过程称为堆排序</p>
 </li>
 <li><p>最大堆</p>
-<p><img src="%E6%8E%92%E5%BA%8F/max-heap.png" srcset="/img/loading.gif" alt="max-heap"> </p>
+<p><img src="/blogImg/max-heap.png" srcset="/img/loading.gif" alt="max-heap"> </p>
 </li>
 <li><p>最小堆</p>
-<p><img src="%E6%8E%92%E5%BA%8F/min-heap.png" srcset="/img/loading.gif" alt="min-heap"></p>
+<p><img src="/blogImg/min-heap.png" srcset="/img/loading.gif" alt="min-heap"></p>
 </li>
 <li><p>创建最大堆（Build-Max-Heap）：将堆所有数据重新排序，使其成为最大堆，由无序列表建成一个堆</p>
 </li>
 <li><p>最大堆调整（Max-Heapify）：将堆的节点作调整，使得子节点永远小于父节点</p>
-<p><img src="%E6%8E%92%E5%BA%8F/MAX%E2%80%90HEAPIFY-Procedure.png" srcset="/img/loading.gif" alt="Max-Heapify"> </p>
+<p><img src="/blogImg/MAX%E2%80%90HEAPIFY-Procedure.png" srcset="/img/loading.gif" alt="Max-Heapify"> </p>
 </li>
 <li><p>堆排序在最坏的情况下，时间复杂度也为O(nlogn)</p>
 </li>
@@ -431,11 +431,16 @@
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                    
+                  </div>
+                
                 
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
                     
                       <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
                     

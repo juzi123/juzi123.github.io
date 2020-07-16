@@ -139,7 +139,7 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/img/20180312.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -204,17 +204,12 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h4 id="伪类"><a href="#伪类" class="headerlink" title="伪类"></a>伪类</h4><h5 id="伪类的定义"><a href="#伪类的定义" class="headerlink" title="伪类的定义"></a>伪类的定义</h5><ul>
-<li><p>伪类存在的意义是为了通过选择器找到那些不存在于DOM树中的信息以及不能被常规CSS选择器获取到的信息</p>
-</li>
-<li><p>伪类由一个冒号<code>：</code> 开头，冒号后跟伪类的名称和包含在圆括号中的可选参数</p>
-</li>
-<li><p>任何常规选择器可以再任何位置使用伪类。伪类语法不区别大小写。一些伪类的作用会互斥，另外一些伪类可以同时被同一个元素使用。并且，为了满足用户在操作DOM时产生的DOM结构改变，伪类也可以是动态的。</p>
+              <h1 id="伪类"><a href="#伪类" class="headerlink" title="伪类"></a>伪类</h1><h2 id="伪类的定义"><a href="#伪类的定义" class="headerlink" title="伪类的定义"></a>伪类的定义</h2><p>伪类存在的意义是为了通过选择器找到那些不存在于DOM树中的信息以及不能被常规CSS选择器获取到的信息</p>
+<p>伪类由一个冒号<code>：</code> 开头，冒号后跟伪类的名称和包含在圆括号中的可选参数</p>
+<p>任何常规选择器可以再任何位置使用伪类。伪类语法不区别大小写。一些伪类的作用会互斥，另外一些伪类可以同时被同一个元素使用。并且，为了满足用户在操作DOM时产生的DOM结构改变，伪类也可以是动态的。</p>
 <a id="more"></a>
 
-</li>
-</ul>
-<h5 id="伪类举例"><a href="#伪类举例" class="headerlink" title="伪类举例"></a>伪类举例</h5><ul>
+<h2 id="伪类举例"><a href="#伪类举例" class="headerlink" title="伪类举例"></a>伪类举例</h2><ul>
 <li><p><code>:hover</code></p>
 <p>鼠标放在链接上的状态</p>
 </li>
@@ -237,14 +232,12 @@
 <p>选择元素的第一个子元素</p>
 </li>
 </ul>
-<p><img src="%E4%BC%AA%E5%85%83%E7%B4%A0%E4%B8%8E%E4%BC%AA%E7%B1%BB/%E4%BC%AA%E7%B1%BB.png" srcset="/img/loading.gif" alt="伪类"> </p>
-<h4 id="伪元素"><a href="#伪元素" class="headerlink" title="伪元素"></a>伪元素</h4><h5 id="伪元素的定义"><a href="#伪元素的定义" class="headerlink" title="伪元素的定义"></a>伪元素的定义</h5><ul>
-<li>伪元素在DOM树中创建了一些抽象元素，这些抽象元素是不存在于文档语言里的（可以理解为html源码）。比如：document接口不提供访问元素内容的第一个字或者第一行的机制，而伪元素可以使开发者可以提取到这些信息。并且，一些伪元素可以使开发者获取到不存在于源文档中的内容（比如常见的<code>::before</code>,<code>::after</code>）。</li>
-<li>伪元素的由<strong>两个冒号</strong><code>::</code>开头，然后是伪元素的名称。</li>
-<li>使用两个冒号<code>::</code>是为了区别伪类和伪元素（CSS2中并没有区别）。当然，考虑到兼容性，CSS2中已存的伪元素仍然可以使用一个冒号<code>:</code>的语法，但是CSS3中新增的伪元素必须使用两个冒号<code>::</code>。</li>
-<li>目前一个选择器只能使用一个伪元素，并且伪元素必须处于选择器语句的最后。</li>
-</ul>
-<h5 id="伪元素举例"><a href="#伪元素举例" class="headerlink" title="伪元素举例"></a>伪元素举例</h5><ul>
+<p><img src="/blogImg/%E4%BC%AA%E7%B1%BB.png" srcset="/img/loading.gif" alt="伪类"> </p>
+<h1 id="伪元素"><a href="#伪元素" class="headerlink" title="伪元素"></a>伪元素</h1><h2 id="伪元素的定义"><a href="#伪元素的定义" class="headerlink" title="伪元素的定义"></a>伪元素的定义</h2><p>伪元素在DOM树中创建了一些抽象元素，这些抽象元素是不存在于文档语言里的（可以理解为html源码）。比如：document接口不提供访问元素内容的第一个字或者第一行的机制，而伪元素可以使开发者可以提取到这些信息。并且，一些伪元素可以使开发者获取到不存在于源文档中的内容（比如常见的<code>::before</code>,<code>::after</code>）。</p>
+<p>伪元素的由<strong>两个冒号</strong><code>::</code>开头，然后是伪元素的名称。</p>
+<p>使用两个冒号<code>::</code>是为了区别伪类和伪元素（CSS2中并没有区别）。当然，考虑到兼容性，CSS2中已存的伪元素仍然可以使用一个冒号<code>:</code>的语法，但是CSS3中新增的伪元素必须使用两个冒号<code>::</code>。</p>
+<p>目前一个选择器只能使用一个伪元素，并且伪元素必须处于选择器语句的最后。</p>
+<h2 id="伪元素举例"><a href="#伪元素举例" class="headerlink" title="伪元素举例"></a>伪元素举例</h2><ul>
 <li><p><code>::first-line</code></p>
 <p>用于向文本的首行设置特殊样式</p>
 </li>
@@ -258,15 +251,23 @@
 <p>可以在元素的内容后插入新内容</p>
 </li>
 </ul>
-<p><img src="%E4%BC%AA%E5%85%83%E7%B4%A0%E4%B8%8E%E4%BC%AA%E7%B1%BB/%E4%BC%AA%E5%85%83%E7%B4%A0.png" srcset="/img/loading.gif" alt="伪元素"> </p>
-<p>参考文献：</p>
-<p><a href="https://www.cnblogs.com/ihardcoder/p/5294927.html" target="_blank" rel="noopener">CSS3伪类和伪元素的特性和区别</a></p>
+<p><img src="/blogImg/%E4%BC%AA%E5%85%83%E7%B4%A0.png" srcset="/img/loading.gif" alt="伪元素"> </p>
+<h2 id="参考文献："><a href="#参考文献：" class="headerlink" title="参考文献："></a>参考文献：</h2><p><a href="https://www.cnblogs.com/ihardcoder/p/5294927.html" target="_blank" rel="noopener">CSS3伪类和伪元素的特性和区别</a></p>
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-classes" target="_blank" rel="noopener">mdn</a> </p>
 
             </article>
             <hr>
             <div>
               <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/css/">css</a>
+                    
+                  </div>
                 
                 
                   <div class="post-meta">
@@ -296,7 +297,7 @@
                     
                     
                       <a href="/2018/03/12/%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%E4%B8%8E%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0/">
-                        <span class="hidden-mobile">HTML元素与块级元素</span>
+                        <span class="hidden-mobile">行内元素与块级元素</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
