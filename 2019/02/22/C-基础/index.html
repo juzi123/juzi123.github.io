@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
   
 
   
@@ -204,18 +204,18 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h3 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h3><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+              <h3 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h3><div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span>
 <span class="hljs-comment">//#include&lt;istream&gt;</span>
 <span class="hljs-comment">//#include&lt;ostream&gt;</span>
 <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cin</span>&gt;&gt;a&gt;&gt;b;
 <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span>&lt;&lt;a&lt;&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
-<span class="hljs-comment">//::作用域运算符</span></code></pre>
+<span class="hljs-comment">//::作用域运算符</span></code></pre></div>
 
 <a id="more"></a>
 
-<pre><code class="hljs c++"><span class="hljs-comment">//读取数量不定的输入数据</span>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-comment">//读取数量不定的输入数据</span>
 <span class="hljs-keyword">while</span>(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">cin</span>&gt;&gt;value)
-    sum+=value;</code></pre>
+    sum+=value;</code></pre></div>
 
 <h3 id="类-class"><a href="#类-class" class="headerlink" title="类  class"></a>类  class</h3><p>成员函数（member function） -  方法（method）</p>
 <h3 id="类型-type"><a href="#类型-type" class="headerlink" title="类型 type"></a>类型 type</h3><p>基本数据类型（base type） </p>
@@ -223,12 +223,12 @@
 <p>空类型（void）</p>
 <p>signed 带符号的</p>
 <p>unsigned 无符号的</p>
-<pre><code class="hljs c++"><span class="hljs-number">20</span><span class="hljs-comment">//十进制</span>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-number">20</span><span class="hljs-comment">//十进制</span>
 <span class="hljs-number">024</span><span class="hljs-comment">//八进制</span>
 <span class="hljs-number">0x14</span><span class="hljs-comment">//十六进制</span>
     
 <span class="hljs-string">'a'</span>	<span class="hljs-comment">//字符字面值</span>
-<span class="hljs-string">"Hello World"</span> <span class="hljs-comment">//字符串总面值</span></code></pre>
+<span class="hljs-string">"Hello World"</span> <span class="hljs-comment">//字符串总面值</span></code></pre></div>
 
 
 
@@ -241,24 +241,24 @@
 <p>类型说明符（type specifier)</p>
 <p>对象（object）</p>
 <p>初始化（initialized)</p>
-<pre><code class="hljs c++"><span class="hljs-keyword">int</span> units_sold = <span class="hljs-number">0</span>;
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-keyword">int</span> units_sold = <span class="hljs-number">0</span>;
 <span class="hljs-keyword">int</span> units_sold = &#123;<span class="hljs-number">0</span>&#125;;
 <span class="hljs-keyword">int</span> units_sold&#123;<span class="hljs-number">0</span>&#125;;
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">units_sold</span><span class="hljs-params">(<span class="hljs-number">0</span>)</span></span>;
 
 <span class="hljs-comment">//&#123;&#125;初始化变量，叫做列表初始化（list initialization)</span>
-<span class="hljs-comment">//但当初始值存在丢失信息的风险时，编译器将报错</span></code></pre>
+<span class="hljs-comment">//但当初始值存在丢失信息的风险时，编译器将报错</span></code></pre></div>
 
 <p>默认初始化（default initialized)</p>
 <p>定义在函数体内部的内置类型变量将不被初始化（uninitialized）</p>
 <p>分离式编译（separate compilation）：允许将程序分割为若干个文件，每个文件单独编译</p>
 <p>声明（declaration）</p>
 <p>定义（definition）</p>
-<pre><code class="hljs c++"><span class="hljs-keyword">extern</span> <span class="hljs-keyword">int</span> i;	<span class="hljs-comment">//声明i</span>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-keyword">extern</span> <span class="hljs-keyword">int</span> i;	<span class="hljs-comment">//声明i</span>
 <span class="hljs-keyword">int</span> i;			<span class="hljs-comment">//声明并定义i</span>
 <span class="hljs-keyword">extern</span> <span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>;	<span class="hljs-comment">//定义，抵消了extern的作用</span>
 
-<span class="hljs-comment">/*在多个文件中使用同一个变量时，必须将声明和定义分离，变量的定义只能出现在一个文件中，其他用到该变量的文件必须对其声明，但不能重复定义*/</span></code></pre>
+<span class="hljs-comment">/*在多个文件中使用同一个变量时，必须将声明和定义分离，变量的定义只能出现在一个文件中，其他用到该变量的文件必须对其声明，但不能重复定义*/</span></code></pre></div>
 
 
 
@@ -279,26 +279,26 @@
 <p>constexpr：声明为constexpr的变量一定是一个常量，且必须用常量表达式初始化</p>
 <p>字面值类型（literal type)</p>
 <p>类型别名（type alias）</p>
-<pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">double</span> wages;	<span class="hljs-comment">//wages是double的别名</span></code></pre>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">double</span> wages;	<span class="hljs-comment">//wages是double的别名</span></code></pre></div>
 
 <p>别名声明（alias declaration）</p>
-<pre><code class="hljs c++"><span class="hljs-keyword">using</span> SI = Sales_item;	<span class="hljs-comment">//SI是Sales_item的别名</span></code></pre>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-keyword">using</span> SI = Sales_item;	<span class="hljs-comment">//SI是Sales_item的别名</span></code></pre></div>
 
 
 
 <p>auto类型说明符：让编译器分析表达式所属类型</p>
-<pre><code class="hljs c++"><span class="hljs-keyword">auto</span> i = <span class="hljs-number">1</span> + <span class="hljs-number">2</span>;</code></pre>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-keyword">auto</span> i = <span class="hljs-number">1</span> + <span class="hljs-number">2</span>;</code></pre></div>
 
 <p>decltype：选择并返回操作数的数据类型，不实际计算表达式的值</p>
-<pre><code class="hljs c++"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> ci = <span class="hljs-number">0</span>;
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> ci = <span class="hljs-number">0</span>;
 <span class="hljs-keyword">decltype</span>(ci) x = <span class="hljs-number">0</span>;	<span class="hljs-comment">//xp类型为const int</span>
-<span class="hljs-keyword">decltype</span>(f()) sum = x; 	<span class="hljs-comment">//sum的类型是f的返回类型，并不实际调用函数f</span></code></pre>
+<span class="hljs-keyword">decltype</span>(f()) sum = x; 	<span class="hljs-comment">//sum的类型是f的返回类型，并不实际调用函数f</span></code></pre></div>
 
 
 
 <p>自定义数据结构</p>
-<pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Sale_data</span> &#123;</span><span class="hljs-comment">/* ... */</span>&#125; accum, trans, *salesptr;
-<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Sale_data</span> &#123;</span><span class="hljs-comment">/* ... */</span>&#125;;</code></pre>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Sale_data</span> &#123;</span><span class="hljs-comment">/* ... */</span>&#125; accum, trans, *salesptr;
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Sale_data</span> &#123;</span><span class="hljs-comment">/* ... */</span>&#125;;</code></pre></div>
 
 
 
@@ -306,51 +306,51 @@
 <p>类内初始值（in-class initializer）</p>
 <p>预处理器（preprocessor）</p>
 <p>头文件</p>
-<pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> SALES_DATA_H	<span class="hljs-comment">//变量未定义时为真，为真时执行后续操作直到#endif（#ifdef变量已定义为真）</span></span>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> SALES_DATA_H	<span class="hljs-comment">//变量未定义时为真，为真时执行后续操作直到#endif（#ifdef变量已定义为真）</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> SALES_DATA_H	<span class="hljs-comment">//将该名字设定为预处理变量</span></span>
 <span class="hljs-comment">/*</span>
 <span class="hljs-comment">	......</span>
 <span class="hljs-comment">*/</span>
-<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span></code></pre>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span></code></pre></div>
 
 
 
 <p>using</p>
-<pre><code class="hljs c++"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span>::name;
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span>::name;
 
 <span class="hljs-keyword">using</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cin</span>;
 <span class="hljs-keyword">using</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span>;
-<span class="hljs-keyword">using</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;</code></pre>
+<span class="hljs-keyword">using</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;</code></pre></div>
 
 
 
 <h3 id="标准库类型-string"><a href="#标准库类型-string" class="headerlink" title="标准库类型 string"></a>标准库类型 string</h3><p>表示可变长的字符序列</p>
-<pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>;
 
 <span class="hljs-built_in">string</span> s1;	<span class="hljs-comment">//默认，空字符串</span>
 <span class="hljs-built_in">string</span> s2 = s1;	<span class="hljs-comment">//stirng s2(s1);</span>
 <span class="hljs-built_in">string</span> s3 = <span class="hljs-string">"hiya"</span>;	<span class="hljs-comment">//string s3("hiya");</span>
-<span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">s4</span><span class="hljs-params">(<span class="hljs-number">10</span>,<span class="hljs-string">'c'</span>)</span></span>;	<span class="hljs-comment">//cccccccccc</span></code></pre>
+<span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">s4</span><span class="hljs-params">(<span class="hljs-number">10</span>,<span class="hljs-string">'c'</span>)</span></span>;	<span class="hljs-comment">//cccccccccc</span></code></pre></div>
 
-<pre><code class="hljs c++">getline(is,s);	<span class="hljs-comment">//读取一整行</span>
+<div class="hljs"><pre><code class="hljs c++">getline(is,s);	<span class="hljs-comment">//读取一整行</span>
 s.empty();
 s.<span class="hljs-built_in">size</span>();
 s[n];
-<span class="hljs-comment">//== != &lt;= &lt; &gt;= &gt;</span></code></pre>
+<span class="hljs-comment">//== != &lt;= &lt; &gt;= &gt;</span></code></pre></div>
 
 
 
-<h3 id="C标准库String"><a href="#C标准库String" class="headerlink" title="C标准库String"></a>C标准库String</h3><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;	//string.h的c++版本</span></span>
+<h3 id="C标准库String"><a href="#C标准库String" class="headerlink" title="C标准库String"></a>C标准库String</h3><div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;	//string.h的c++版本</span></span>
 <span class="hljs-built_in">strlen</span>(p);
 <span class="hljs-built_in">strcmp</span>(p1,p2);		<span class="hljs-comment">//p1==p2 return 0; p1&gt;p2 return 正值；p1&lt;p2 return 负值；</span>
 <span class="hljs-built_in">strcat</span>(p1,p2);		<span class="hljs-comment">//p2加到p1后</span>
-<span class="hljs-built_in">strcpy</span>(p1,p2);		<span class="hljs-comment">//p2拷贝给p1</span></code></pre>
+<span class="hljs-built_in">strcpy</span>(p1,p2);		<span class="hljs-comment">//p2拷贝给p1</span></code></pre></div>
 
 
 
 <h3 id="标准库类型vector"><a href="#标准库类型vector" class="headerlink" title="标准库类型vector"></a>标准库类型vector</h3><p>被称为容器（container）</p>
-<pre><code class="hljs c++"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; ivec;		<span class="hljs-comment">//保存int类型的对象</span>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; ivec;		<span class="hljs-comment">//保存int类型的对象</span>
 <span class="hljs-built_in">vector</span>&lt;Sales_item&gt; Sales_vec;	<span class="hljs-comment">//保存Sales_item的对象</span>
 <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt;&gt; file;	<span class="hljs-comment">//保存vector的对象</span>
 
@@ -372,11 +372,11 @@ s[n];
 
 <span class="hljs-comment">//使用数组初始化容器</span>
 <span class="hljs-keyword">int</span> int_arr[] = &#123;<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>&#125;;
-<span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">ivec</span><span class="hljs-params">(<span class="hljs-built_in">begin</span>(int_arr), <span class="hljs-built_in">end</span>(int_arr))</span></span>;</code></pre>
+<span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">ivec</span><span class="hljs-params">(<span class="hljs-built_in">begin</span>(int_arr), <span class="hljs-built_in">end</span>(int_arr))</span></span>;</code></pre></div>
 
 
 
-<h3 id="迭代器（iterator）"><a href="#迭代器（iterator）" class="headerlink" title="迭代器（iterator）"></a>迭代器（iterator）</h3><pre><code class="hljs c++"><span class="hljs-keyword">auto</span> b = v.<span class="hljs-built_in">begin</span>();	<span class="hljs-comment">//b表示的迭代器指向v的第一个元素</span>
+<h3 id="迭代器（iterator）"><a href="#迭代器（iterator）" class="headerlink" title="迭代器（iterator）"></a>迭代器（iterator）</h3><div class="hljs"><pre><code class="hljs c++"><span class="hljs-keyword">auto</span> b = v.<span class="hljs-built_in">begin</span>();	<span class="hljs-comment">//b表示的迭代器指向v的第一个元素</span>
 <span class="hljs-keyword">auto</span> e = v.<span class="hljs-built_in">end</span>();	<span class="hljs-comment">//e表示的迭代器指向v尾元素的下一个位置 </span>
 <span class="hljs-comment">//end成员返回的是尾后迭代器（off-the-end iterator）</span>
 
@@ -387,12 +387,12 @@ s[n];
 <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;::const_iterator it2;	<span class="hljs-comment">//只能读，不能写</span>
 
 <span class="hljs-comment">//解引用</span>
-*it</code></pre>
+*it</code></pre></div>
 
 
 
 <h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>字符数组结尾需要有一个位置存放空字符</p>
-<pre><code class="hljs c++"><span class="hljs-keyword">int</span> a[] = &#123;<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>&#125;;
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-keyword">int</span> a[] = &#123;<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>&#125;;
 <span class="hljs-keyword">int</span> b[] = a;	<span class="hljs-comment">//错误，不允许使用一个数组初始化另一个数组</span>
 b = a;	<span class="hljs-comment">//错误，不允许把一个数组直接赋值给另一个数组</span>
 
@@ -403,7 +403,7 @@ b = a;	<span class="hljs-comment">//错误，不允许把一个数组直接赋�
 <span class="hljs-keyword">int</span> ia[<span class="hljs-number">2</span>][<span class="hljs-number">3</span>] = &#123;
     &#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>&#125;,	<span class="hljs-comment">//第一行</span>
     &#123;<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;	<span class="hljs-comment">//第二行</span>
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 
 
@@ -415,12 +415,12 @@ b = a;	<span class="hljs-comment">//错误，不允许把一个数组直接赋�
 <p>右值（rvalue）</p>
 <p>左值（lvalue）</p>
 <p>位运算符</p>
-<pre><code class="hljs c++">~	位求反	<span class="hljs-number">1</span>变<span class="hljs-number">0</span>,<span class="hljs-number">0</span>变<span class="hljs-number">1</span>
+<div class="hljs"><pre><code class="hljs c++">~	位求反	<span class="hljs-number">1</span>变<span class="hljs-number">0</span>,<span class="hljs-number">0</span>变<span class="hljs-number">1</span>
 &lt;&lt;	左移	右侧插入<span class="hljs-number">0</span>，超出边界的位丢弃
 &gt;&gt;	右移	无符号数左侧插入<span class="hljs-number">0</span>，有符号数左侧插入符号位的副本或值为<span class="hljs-number">0</span>的二进制位
 &amp;	位与	全<span class="hljs-number">1</span>为<span class="hljs-number">1</span>
 ^	位异或	有且只有一个<span class="hljs-number">1</span>，为<span class="hljs-number">1</span>
-|	位或	有<span class="hljs-number">1</span>为<span class="hljs-number">1</span></code></pre>
+|	位或	有<span class="hljs-number">1</span>为<span class="hljs-number">1</span></code></pre></div>
 
 
 
@@ -439,7 +439,7 @@ b = a;	<span class="hljs-comment">//错误，不允许把一个数组直接赋�
 <p>传引用调用（called by reference）</p>
 <p>值传递（passed by value）</p>
 <p>传值调用（called by value）</p>
-<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">reset</span><span class="hljs-params">(<span class="hljs-keyword">int</span> &amp;i)</span>	<span class="hljs-comment">//i是传给reset函数的对象的另一个名字</span></span>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">reset</span><span class="hljs-params">(<span class="hljs-keyword">int</span> &amp;i)</span>	<span class="hljs-comment">//i是传给reset函数的对象的另一个名字</span></span>
 <span class="hljs-function"></span>&#123;
     i=<span class="hljs-number">0</span>;	<span class="hljs-comment">//改变了i所引用的对象</span>
 &#125;
@@ -448,33 +448,33 @@ b = a;	<span class="hljs-comment">//错误，不允许把一个数组直接赋�
 <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isShorter</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> &amp;s1, <span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> &amp;s2)</span></span>
 <span class="hljs-function"></span>&#123;
     <span class="hljs-keyword">return</span> s1.<span class="hljs-built_in">size</span>() &lt; s2.<span class="hljs-built_in">size</span>();
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 
 
 <p>重载（overloaded）函数</p>
 <p>默认实参（default argument）</p>
-<pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">screen</span><span class="hljs-params">(sz ht=<span class="hljs-number">24</span>,sz wid=<span class="hljs-number">22</span>,<span class="hljs-keyword">char</span> back=<span class="hljs-string">' '</span>)</span></span>;</code></pre>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">screen</span><span class="hljs-params">(sz ht=<span class="hljs-number">24</span>,sz wid=<span class="hljs-number">22</span>,<span class="hljs-keyword">char</span> back=<span class="hljs-string">' '</span>)</span></span>;</code></pre></div>
 
 
 
 <p>内联函数（inline）</p>
 <p>constexpr函数</p>
 <p>assert预处理宏（preprocessor marco）</p>
-<pre><code class="hljs c++"><span class="hljs-comment">//expr为真，什么也不做，expr为假，输出信息并终止程序</span>
-assert(expr);</code></pre>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-comment">//expr为真，什么也不做，expr为假，输出信息并终止程序</span>
+assert(expr);</code></pre></div>
 
 <p>NDEBUG预处理变量</p>
-<pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> NDEBUG</span>
-<span class="hljs-comment">//定义后将关闭调试状态，assert什么也不做</span></code></pre>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> NDEBUG</span>
+<span class="hljs-comment">//定义后将关闭调试状态，assert什么也不做</span></code></pre></div>
 
 
 
 <p>函数指针</p>
-<pre><code class="hljs c++"><span class="hljs-keyword">bool</span> (*pf)(<span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> &amp;, <span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> &amp;);
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-keyword">bool</span> (*pf)(<span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> &amp;, <span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> &amp;);
 <span class="hljs-comment">//pf是指向函数的指针，返回值是bool</span>
 <span class="hljs-keyword">bool</span> b1 = pf(<span class="hljs-string">"hello"</span>,<span class="hljs-string">"goodbye"</span>);
-<span class="hljs-keyword">bool</span> b2 = (*pf)(<span class="hljs-string">"hello"</span>,<span class="hljs-string">"goodbye"</span>);</code></pre>
+<span class="hljs-keyword">bool</span> b2 = (*pf)(<span class="hljs-string">"hello"</span>,<span class="hljs-string">"goodbye"</span>);</code></pre></div>
 
 
 
@@ -485,16 +485,16 @@ assert(expr);</code></pre>
 <p>常量成员函数（const member function）</p>
 <p>构造函数（constructor）：初始化对象的数据成员</p>
 <p>默认构造函数（default constructor）：没有显式的定义构造函数时，编译器自动生成。如果存在类内初始值，用它来初始化成员，否则，默认初始化该成员</p>
-<pre><code class="hljs c++"><span class="hljs-comment">//既需要其他形式的构造函数，也需要默认的构造函数时，使用该语句</span>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-comment">//既需要其他形式的构造函数，也需要默认的构造函数时，使用该语句</span>
 Sales_data() = <span class="hljs-keyword">default</span>;		<span class="hljs-comment">//默认构造函数</span>
-<span class="hljs-comment">//如果定义了其他构造函数，最好也提供一个默认构造函数</span></code></pre>
+<span class="hljs-comment">//如果定义了其他构造函数，最好也提供一个默认构造函数</span></code></pre></div>
 
 <p>构造函数初始值列表（constructor initialize list）</p>
-<pre><code class="hljs c++"><span class="hljs-comment">//外部定义构造函数</span>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-comment">//外部定义构造函数</span>
 Sales_data::Sales_data(<span class="hljs-built_in">std</span>::istream &amp;is)
 &#123;
     <span class="hljs-built_in">read</span>(is, *<span class="hljs-keyword">this</span>);
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 
 
@@ -507,8 +507,8 @@ Sales_data::Sales_data(<span class="hljs-built_in">std</span>::istream &amp;is)
 <p>一般来说，最好在类定义开始或结束前的位置集中声明友元</p>
 <p>内联函数inline</p>
 <p>可变数据成员（mutable data member）</p>
-<pre><code class="hljs c++"><span class="hljs-comment">//前向声明（forward declaration），仅声明类而暂时不定义它</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Screen</span>;</span>	<span class="hljs-comment">//不完全类型（incomplete type）</span></code></pre>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-comment">//前向声明（forward declaration），仅声明类而暂时不定义它</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Screen</span>;</span>	<span class="hljs-comment">//不完全类型（incomplete type）</span></code></pre></div>
 
 
 
@@ -529,11 +529,11 @@ Sales_data::Sales_data(<span class="hljs-built_in">std</span>::istream &amp;is)
 <li>没有基类，没有virtual函数</li>
 </ul>
 <p>static：声明静态成员</p>
-<pre><code class="hljs c++"><span class="hljs-comment">//使用作用域运算符访问静态成员</span>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-comment">//使用作用域运算符访问静态成员</span>
 r = Account::rate();
 
 <span class="hljs-comment">//成员函数可以直接使用静态成员</span>
-<span class="hljs-comment">//静态数据成员不属于类的对象，一般必须在类的外部定义和初始化每个静态成员</span></code></pre>
+<span class="hljs-comment">//静态数据成员不属于类的对象，一般必须在类的外部定义和初始化每个静态成员</span></code></pre></div>
 
 
             </article>

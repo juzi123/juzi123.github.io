@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
   
 
   
@@ -213,55 +213,55 @@
 <a id="more"></a>
 
 <h1 id="SQL语句"><a href="#SQL语句" class="headerlink" title="SQL语句"></a>SQL语句</h1><h3 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h3><p>从数据库中选取数据</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> my_table;			// 从该表中选择所有列
-<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">id</span>,<span class="hljs-keyword">name</span> <span class="hljs-keyword">FROM</span> my_table; 	// 从该表中选择id和name列</code></pre>
+<div class="hljs"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> my_table;			// 从该表中选择所有列
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">id</span>,<span class="hljs-keyword">name</span> <span class="hljs-keyword">FROM</span> my_table; 	// 从该表中选择id和name列</code></pre></div>
 
 <h3 id="SELECT-DISTINCT"><a href="#SELECT-DISTINCT" class="headerlink" title="SELECT DISTINCT"></a>SELECT DISTINCT</h3><p>返回唯一不同的值</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> <span class="hljs-keyword">name</span> <span class="hljs-keyword">FROM</span> my_table; // 选择该表中的name列，并去掉重复值</code></pre>
+<div class="hljs"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> <span class="hljs-keyword">name</span> <span class="hljs-keyword">FROM</span> my_table; // 选择该表中的name列，并去掉重复值</code></pre></div>
 
 <h3 id="WHERE"><a href="#WHERE" class="headerlink" title="WHERE"></a>WHERE</h3><p>用于过滤记录</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> my_table <span class="hljs-keyword">where</span> <span class="hljs-keyword">name</span>=<span class="hljs-string">'juzi'</span>;	// 选取name为juzi的记录
-<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> my_table <span class="hljs-keyword">where</span> <span class="hljs-keyword">sum</span>&lt;=<span class="hljs-number">10</span>;		// 数值不使用单引号</code></pre>
+<div class="hljs"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> my_table <span class="hljs-keyword">where</span> <span class="hljs-keyword">name</span>=<span class="hljs-string">'juzi'</span>;	// 选取name为juzi的记录
+<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> my_table <span class="hljs-keyword">where</span> <span class="hljs-keyword">sum</span>&lt;=<span class="hljs-number">10</span>;		// 数值不使用单引号</code></pre></div>
 
 <p>where子句中可以使用各种比较运算符，逻辑运算符，以及BETWEEN，LIKE，IN，IS NULL等特殊条件。</p>
-<h3 id="AND-amp-OR"><a href="#AND-amp-OR" class="headerlink" title="AND &amp; OR"></a>AND &amp; OR</h3><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> my_table <span class="hljs-keyword">where</span> <span class="hljs-keyword">name</span>=<span class="hljs-string">'juzi'</span> <span class="hljs-keyword">AND</span> age &lt; <span class="hljs-number">18</span>;
+<h3 id="AND-amp-OR"><a href="#AND-amp-OR" class="headerlink" title="AND &amp; OR"></a>AND &amp; OR</h3><div class="hljs"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> my_table <span class="hljs-keyword">where</span> <span class="hljs-keyword">name</span>=<span class="hljs-string">'juzi'</span> <span class="hljs-keyword">AND</span> age &lt; <span class="hljs-number">18</span>;
 <span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> my_table <span class="hljs-keyword">where</span> <span class="hljs-keyword">type</span>=<span class="hljs-string">'apple'</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">type</span>=<span class="hljs-string">'banana'</span>;
-<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> my_table <span class="hljs-keyword">where</span> country=<span class="hljs-string">'CHINA'</span> <span class="hljs-keyword">AND</span> (<span class="hljs-keyword">type</span>=<span class="hljs-string">'apple'</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">type</span>=<span class="hljs-string">'banana'</span>);</code></pre>
+<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> my_table <span class="hljs-keyword">where</span> country=<span class="hljs-string">'CHINA'</span> <span class="hljs-keyword">AND</span> (<span class="hljs-keyword">type</span>=<span class="hljs-string">'apple'</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">type</span>=<span class="hljs-string">'banana'</span>);</code></pre></div>
 
 <h3 id="ORDER-BY"><a href="#ORDER-BY" class="headerlink" title="ORDER BY"></a>ORDER BY</h3><p>用于对结果进行排序</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> student <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> height;		 // 根据height排列，默认升序ASC
-<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> student <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> height <span class="hljs-keyword">DESC</span>;	 // 根据height降序排列</code></pre>
+<div class="hljs"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> student <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> height;		 // 根据height排列，默认升序ASC
+<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> student <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> height <span class="hljs-keyword">DESC</span>;	 // 根据height降序排列</code></pre></div>
 
 <p>根据多列进行排序</p>
-<pre><code class="hljs sql">// 先根据age降序排列，再根据height局部升序排列
-<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> student <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> age <span class="hljs-keyword">DESC</span>,height;</code></pre>
+<div class="hljs"><pre><code class="hljs sql">// 先根据age降序排列，再根据height局部升序排列
+<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> student <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> age <span class="hljs-keyword">DESC</span>,height;</code></pre></div>
 
 <h3 id="INSERT-INTO"><a href="#INSERT-INTO" class="headerlink" title="INSERT INTO"></a>INSERT INTO</h3><p>用于向表中插入新纪录</p>
 <ul>
 <li><p>没有指定列名，需要列出每一列的数据，自动更新的列，如id，不需要指定</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> my_table
-<span class="hljs-keyword">VALUES</span> (value1,value2,...)</code></pre>
+<div class="hljs"><pre><code class="hljs sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> my_table
+<span class="hljs-keyword">VALUES</span> (value1,value2,...)</code></pre></div>
 </li>
 <li><p>指定列插入数据</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> my_table (<span class="hljs-keyword">name</span>, age, height)
-<span class="hljs-keyword">VALUES</span> (<span class="hljs-string">'apple'</span>, <span class="hljs-string">'16'</span>, <span class="hljs-string">'168'</span>);</code></pre>
+<div class="hljs"><pre><code class="hljs sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> my_table (<span class="hljs-keyword">name</span>, age, height)
+<span class="hljs-keyword">VALUES</span> (<span class="hljs-string">'apple'</span>, <span class="hljs-string">'16'</span>, <span class="hljs-string">'168'</span>);</code></pre></div>
 
 </li>
 </ul>
 <h3 id="UPDATE"><a href="#UPDATE" class="headerlink" title="UPDATE"></a>UPDATE</h3><p>用于更新表中的记录</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">UPDATE</span> student
+<div class="hljs"><pre><code class="hljs sql"><span class="hljs-keyword">UPDATE</span> student
 <span class="hljs-keyword">SET</span> height=<span class="hljs-string">'190'</span>, age=<span class="hljs-string">'19'</span>
-<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">name</span>=<span class="hljs-string">'apple'</span>;</code></pre>
+<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">name</span>=<span class="hljs-string">'apple'</span>;</code></pre></div>
 
 <p>如果没有Where语句，将会更新表中的所有数据，应当小心使用！</p>
 <h3 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h3><p>用于删除表中的记录</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> student
-<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">name</span>=<span class="hljs-string">'apple'</span> <span class="hljs-keyword">AND</span> country=<span class="hljs-string">'CHINA'</span>;</code></pre>
+<div class="hljs"><pre><code class="hljs sql"><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> student
+<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">name</span>=<span class="hljs-string">'apple'</span> <span class="hljs-keyword">AND</span> country=<span class="hljs-string">'CHINA'</span>;</code></pre></div>
 
 <p>删除表中所有行</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> my_table;
+<div class="hljs"><pre><code class="hljs sql"><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> my_table;
 // 或者
-<span class="hljs-keyword">DELETE</span> * <span class="hljs-keyword">FROM</span> my_table;</code></pre>
+<span class="hljs-keyword">DELETE</span> * <span class="hljs-keyword">FROM</span> my_table;</code></pre></div>
 
 
 

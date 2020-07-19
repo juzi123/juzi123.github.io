@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
   
 
   
@@ -224,25 +224,25 @@
 </ul>
 <h5 id="浮动元素的定位"><a href="#浮动元素的定位" class="headerlink" title="浮动元素的定位"></a>浮动元素的定位</h5><p>当一个元素浮动之后，它会被移出正常的文档流，然后向左或者向右平移，一直平移直到碰到了所处的容器的边框，或者碰到另外一个浮动的元素。</p>
 <h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><p>在每个元素标签中添加</p>
-<pre><code class="hljs html">style="float: left(right);"</code></pre>
+<div class="hljs"><pre><code class="hljs html">style="float: left(right);"</code></pre></div>
 
 <p>或</p>
-<pre><code class="hljs css"><span class="hljs-selector-tag">p</span> &#123;
+<div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-tag">p</span> &#123;
   <span class="hljs-attribute">float</span>: left;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 <h5 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h5><p>在这些元素的父元素中添加</p>
-<pre><code class="hljs cs"><span class="hljs-keyword">class</span>=<span class="hljs-string">"clearfix"</span></code></pre>
+<div class="hljs"><pre><code class="hljs cs"><span class="hljs-keyword">class</span>=<span class="hljs-string">"clearfix"</span></code></pre></div>
 
 <p>clearfix的代码</p>
-<pre><code class="hljs css"><span class="hljs-selector-class">.clearfix</span><span class="hljs-selector-pseudo">::after</span>&#123;
+<div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-class">.clearfix</span><span class="hljs-selector-pseudo">::after</span>&#123;
 	<span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;
 	<span class="hljs-attribute">display</span>: block;
 	<span class="hljs-attribute">clear</span>: both;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 <h5 id="clear属性"><a href="#clear属性" class="headerlink" title="clear属性"></a>clear属性</h5><p>使得一些元素的左右两侧不会有浮动元素</p>
-<pre><code class="hljs css"><span class="hljs-selector-class">.p1</span> &#123;
+<div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-class">.p1</span> &#123;
 	<span class="hljs-attribute">clear</span>: left;
 &#125;
 <span class="hljs-selector-class">.p2</span> &#123;
@@ -250,7 +250,7 @@
 &#125;
 <span class="hljs-selector-class">.p3</span> &#123;
   <span class="hljs-attribute">clear</span>: both;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 <p>clear属性只对元素本身的布局起作用</p>
 
@@ -287,7 +287,7 @@
                     
                       <a href="/2018/03/11/css%E7%9A%84%E5%B1%85%E4%B8%AD/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">css的居中方法</span>
+                        <span class="hidden-mobile">css常用布局方法</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

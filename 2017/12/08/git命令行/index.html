@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
   
 
   
@@ -204,11 +204,11 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h1 id="常用git命令"><a href="#常用git命令" class="headerlink" title="常用git命令"></a>常用git命令</h1><h3 id="git"><a href="#git" class="headerlink" title="git"></a>git</h3><pre><code class="hljs routeros">git<span class="hljs-built_in"> config </span>--global user.name 你的英文名
+              <h1 id="常用git命令"><a href="#常用git命令" class="headerlink" title="常用git命令"></a>常用git命令</h1><h3 id="git"><a href="#git" class="headerlink" title="git"></a>git</h3><div class="hljs"><pre><code class="hljs routeros">git<span class="hljs-built_in"> config </span>--global user.name 你的英文名
 git<span class="hljs-built_in"> config </span>--global user.email 你的邮箱
 git<span class="hljs-built_in"> config </span>--global push.default matching
 git<span class="hljs-built_in"> config </span>--global core.quotepath <span class="hljs-literal">false</span>
-git<span class="hljs-built_in"> config </span>--global core.editor <span class="hljs-string">"vim"</span></code></pre>
+git<span class="hljs-built_in"> config </span>--global core.editor <span class="hljs-string">"vim"</span></code></pre></div>
 
 <ul>
 <li><p><code>git init</code> 初始化本地仓库</p>
@@ -216,23 +216,23 @@ git<span class="hljs-built_in"> config </span>--global core.editor <span class="
 <li><p><code>git status</code> 查看git状态</p>
 </li>
 <li><p>命名全局用户名和邮箱地址</p>
-<pre><code class="hljs routeros">git<span class="hljs-built_in"> config </span>--global user.name <span class="hljs-string">"yonghuming"</span>
-git<span class="hljs-built_in"> config </span>--global user.email youxiang@xxx.com</code></pre>
+<div class="hljs"><pre><code class="hljs routeros">git<span class="hljs-built_in"> config </span>--global user.name <span class="hljs-string">"yonghuming"</span>
+git<span class="hljs-built_in"> config </span>--global user.email youxiang@xxx.com</code></pre></div>
 </li>
 <li><p><code>git config --list</code> 查看所有设置</p>
 </li>
 <li><p><code>git add 文件名</code> 将文件添加到暂存区</p>
-<pre><code class="hljs dockerfile">git <span class="hljs-keyword">add</span><span class="bash"> index.html</span>
-git <span class="hljs-keyword">add</span><span class="bash"> . //把当前目录下所有变动加到暂存区</span></code></pre>
+<div class="hljs"><pre><code class="hljs dockerfile">git <span class="hljs-keyword">add</span><span class="bash"> index.html</span>
+git <span class="hljs-keyword">add</span><span class="bash"> . //把当前目录下所有变动加到暂存区</span></code></pre></div>
 </li>
 <li><p><code>git commit -m &quot;信息&quot;</code> 将你add过的内容正式提交到本地仓库</p>
-<pre><code class="hljs pgsql">git <span class="hljs-keyword">commit</span> <span class="hljs-keyword">index</span>.html -m "添加index.html"
-git <span class="hljs-keyword">commit</span> . -m "添加了几个文件"</code></pre>
+<div class="hljs"><pre><code class="hljs pgsql">git <span class="hljs-keyword">commit</span> <span class="hljs-keyword">index</span>.html -m "添加index.html"
+git <span class="hljs-keyword">commit</span> . -m "添加了几个文件"</code></pre></div>
 </li>
 <li><p><code>git log</code> 查看变更历史</p>
 </li>
 <li><p><code>git clone</code> 下载仓库</p>
-<pre><code class="hljs crmsh">git <span class="hljs-keyword">clone</span> <span class="hljs-title">git</span>@github.com:xxxx</code></pre>
+<div class="hljs"><pre><code class="hljs crmsh">git <span class="hljs-keyword">clone</span> <span class="hljs-title">git</span>@github.com:xxxx</code></pre></div>
 </li>
 <li><p><code>git pull</code> 拉取最新版本到本地</p>
 </li>

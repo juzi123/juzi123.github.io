@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
   
 
   
@@ -206,9 +206,9 @@
             <article class="markdown-body">
               <h3 id="引用（reference"><a href="#引用（reference" class="headerlink" title="引用（reference)"></a>引用（reference)</h3><ul>
 <li><p>引用为对象起了另一个名字</p>
-<pre><code class="hljs c++"><span class="hljs-keyword">int</span> ival = <span class="hljs-number">1024</span>;
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-keyword">int</span> ival = <span class="hljs-number">1024</span>;
 <span class="hljs-keyword">int</span> &amp;refVal = ival;  <span class="hljs-comment">//refVal指向ival，是ival的另一个名字</span>
-<span class="hljs-keyword">int</span>&amp; refVal2 = ival；</code></pre>
+<span class="hljs-keyword">int</span>&amp; refVal2 = ival；</code></pre></div>
 
 </li>
 </ul>
@@ -216,26 +216,26 @@
 
 <ul>
 <li><p>引用必须被初始化，不存在空引用，无法令引用重新绑定到另外一个对象</p>
-<pre><code class="hljs c++"><span class="hljs-keyword">int</span> &amp;refVal; <span class="hljs-comment">//报错，引用没有初始化</span></code></pre>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-keyword">int</span> &amp;refVal; <span class="hljs-comment">//报错，引用没有初始化</span></code></pre></div>
 </li>
 <li><p>定义了一个引用后，对其进行的所有操作都是在与之绑定的对象上进行的</p>
-<pre><code class="hljs c++">refVal = <span class="hljs-number">2</span>; <span class="hljs-comment">//将2赋给了refVal指向的对象</span>
-<span class="hljs-keyword">int</span> &amp;refVal3 = refVal; <span class="hljs-comment">//将refVal3绑定到refVal绑定的对象上</span></code></pre>
+<div class="hljs"><pre><code class="hljs c++">refVal = <span class="hljs-number">2</span>; <span class="hljs-comment">//将2赋给了refVal指向的对象</span>
+<span class="hljs-keyword">int</span> &amp;refVal3 = refVal; <span class="hljs-comment">//将refVal3绑定到refVal绑定的对象上</span></code></pre></div>
 </li>
 <li><p>引用本身不是一个对象，所以不能定义引用的引用</p>
 </li>
 <li><p>引用的类型要和与之绑定的对象严格匹配，引用类型的初始值必须是一个对象</p>
-<pre><code class="hljs C++"><span class="hljs-keyword">int</span> &amp;refVal4 = <span class="hljs-number">10</span>; <span class="hljs-comment">//错误：引用类型的初始值必须是一个对象</span>
+<div class="hljs"><pre><code class="hljs C++"><span class="hljs-keyword">int</span> &amp;refVal4 = <span class="hljs-number">10</span>; <span class="hljs-comment">//错误：引用类型的初始值必须是一个对象</span>
 <span class="hljs-keyword">double</span> a = <span class="hljs-number">3.14</span>；
-<span class="hljs-keyword">int</span> &amp;refVal5 = a; <span class="hljs-comment">//错误：类型不匹配</span></code></pre>
+<span class="hljs-keyword">int</span> &amp;refVal5 = a; <span class="hljs-comment">//错误：类型不匹配</span></code></pre></div>
 
 <p>两个例外</p>
-<pre><code class="hljs c++"><span class="hljs-comment">//1.在初始化常量引用时允许用任意表达式作为初始值，只要该表达式的结果能转换成引用的类型</span>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-comment">//1.在初始化常量引用时允许用任意表达式作为初始值，只要该表达式的结果能转换成引用的类型</span>
 <span class="hljs-keyword">int</span> i = <span class="hljs-number">42</span>;
 <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> &amp;r1 = i;
 <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> &amp;r2 = <span class="hljs-number">42</span>;  <span class="hljs-comment">//正确：r2为一个常量引用</span>
 <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> &amp;r3 = r1 * <span class="hljs-number">2</span>;  <span class="hljs-comment">//正确：r3为一个常量引用</span>
-<span class="hljs-comment">//2.存在继承关系的类,可以将基类的指针或引用绑定到派生类对象上。</span></code></pre>
+<span class="hljs-comment">//2.存在继承关系的类,可以将基类的指针或引用绑定到派生类对象上。</span></code></pre></div>
 
 </li>
 </ul>
@@ -243,37 +243,37 @@
 <li><p>指针本身就是一个对象，允许对指针赋值和拷贝，而且在指针的生命周期内它可以先后指向几个不同的对象。</p>
 </li>
 <li><p>指针无需在定义时赋值，在块作用域内定义的指针如果没有初始化，也将拥有一个不确定的值。</p>
-<pre><code class="hljs c++"><span class="hljs-keyword">int</span> *ip1; <span class="hljs-comment">//ip1是指向int型对象的指针</span>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-keyword">int</span> *ip1; <span class="hljs-comment">//ip1是指向int型对象的指针</span>
 <span class="hljs-keyword">int</span>* ip2; <span class="hljs-comment">//合法但容易产生误解</span>
-<span class="hljs-keyword">int</span>* a,b; <span class="hljs-comment">//a为指向int的指针，b为int型变量</span></code></pre>
+<span class="hljs-keyword">int</span>* a,b; <span class="hljs-comment">//a为指向int的指针，b为int型变量</span></code></pre></div>
 </li>
 <li><p>指针存放某个对象的地址，要想获取该地址，需要使用取地址符（&amp;）</p>
-<pre><code class="hljs c++"><span class="hljs-keyword">int</span> ival = <span class="hljs-number">42</span>;
-<span class="hljs-keyword">int</span> *p = &amp;ival; <span class="hljs-comment">//p存放变量ival的地址，或者说p是指向变量ival的指针</span></code></pre>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-keyword">int</span> ival = <span class="hljs-number">42</span>;
+<span class="hljs-keyword">int</span> *p = &amp;ival; <span class="hljs-comment">//p存放变量ival的地址，或者说p是指向变量ival的指针</span></code></pre></div>
 </li>
 <li><p>除两种例外情况，其他所有指针的类型都要和它所指向的对象严格匹配</p>
 </li>
 <li><p>如果指针指向一个对象，则允许使用解引用符（*）来访问该对象</p>
-<pre><code class="hljs c++"><span class="hljs-built_in">cout</span> &lt;&lt; *p;  <span class="hljs-comment">//输出42</span>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-built_in">cout</span> &lt;&lt; *p;  <span class="hljs-comment">//输出42</span>
 *p = <span class="hljs-number">0</span>;  <span class="hljs-comment">//为*p赋值实际上是为p所指的对象赋值</span>
-<span class="hljs-built_in">cout</span> &lt;&lt; *p; <span class="hljs-comment">//输出0</span></code></pre>
+<span class="hljs-built_in">cout</span> &lt;&lt; *p; <span class="hljs-comment">//输出0</span></code></pre></div>
 </li>
 <li><p>空指针（null pointer）</p>
 <p>不指向任何对象</p>
-<pre><code class="hljs c++"><span class="hljs-keyword">int</span> *p1 = <span class="hljs-literal">nullptr</span>; <span class="hljs-comment">//等价于int *p1 = 0;</span></code></pre>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-keyword">int</span> *p1 = <span class="hljs-literal">nullptr</span>; <span class="hljs-comment">//等价于int *p1 = 0;</span></code></pre></div>
 </li>
 <li><p>void*指针</p>
-<pre><code class="hljs c++"><span class="hljs-keyword">void</span> *pv = &amp;obj; <span class="hljs-comment">//obj可以是任意类型的对象</span></code></pre>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-keyword">void</span> *pv = &amp;obj; <span class="hljs-comment">//obj可以是任意类型的对象</span></code></pre></div>
 </li>
 <li><p>指向指针的指针</p>
-<pre><code class="hljs c++"><span class="hljs-keyword">int</span> ival = <span class="hljs-number">1024</span>;
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-keyword">int</span> ival = <span class="hljs-number">1024</span>;
 <span class="hljs-keyword">int</span> *pi = &amp;ival;   <span class="hljs-comment">//pi指向一个int型的数</span>
-<span class="hljs-keyword">int</span> **ppi = &amp;pi;  <span class="hljs-comment">//ppi指向一个int型的指针</span></code></pre>
+<span class="hljs-keyword">int</span> **ppi = &amp;pi;  <span class="hljs-comment">//ppi指向一个int型的指针</span></code></pre></div>
 </li>
 <li><p>指向指针的引用</p>
-<pre><code class="hljs c++"><span class="hljs-keyword">int</span> i = <span class="hljs-number">42</span>;
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-keyword">int</span> i = <span class="hljs-number">42</span>;
 <span class="hljs-keyword">int</span> *p;
-<span class="hljs-keyword">int</span> *&amp;r = p; <span class="hljs-comment">//r是一个对指针p的引用</span></code></pre>
+<span class="hljs-keyword">int</span> *&amp;r = p; <span class="hljs-comment">//r是一个对指针p的引用</span></code></pre></div>
 
 </li>
 </ul>

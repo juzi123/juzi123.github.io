@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
   
 
   
@@ -210,38 +210,38 @@
 <p>点击GitHub中的New repository创建新仓库，仓库名为：「Github用户名.github.io」</p>
 <h3 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h3><p>在<a href="https://git-scm.com/download" target="_blank" rel="noopener">官网</a>下载对应版本，具体参考<a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">Git教程</a></p>
 <p>打开Git Bash，设置配置信息：</p>
-<pre><code class="hljs bash">git config --global user.name <span class="hljs-string">"你的GitHub用户名"</span>
-git config --global user.email <span class="hljs-string">"你的GitHub注册邮箱"</span></code></pre>
+<div class="hljs"><pre><code class="hljs bash">git config --global user.name <span class="hljs-string">"你的GitHub用户名"</span>
+git config --global user.email <span class="hljs-string">"你的GitHub注册邮箱"</span></code></pre></div>
 
 <p>检查电脑上现有的SSH Key:</p>
-<pre><code class="hljs bash">$ <span class="hljs-built_in">cd</span> ~/.ssh 检查本机的ssh密钥</code></pre>
+<div class="hljs"><pre><code class="hljs bash">$ <span class="hljs-built_in">cd</span> ~/.ssh 检查本机的ssh密钥</code></pre></div>
 
 <p>生成新的 SSH Key文件：</p>
-<pre><code class="hljs bash">ssh-keygen -t rsa -C <span class="hljs-string">"你的GitHub注册邮箱"</span>
-&lt;回车&gt;</code></pre>
+<div class="hljs"><pre><code class="hljs bash">ssh-keygen -t rsa -C <span class="hljs-string">"你的GitHub注册邮箱"</span>
+&lt;回车&gt;</code></pre></div>
 
 
 <p>然后找到生成的.ssh的文件夹中的id_rsa.pub密钥，将内容全部复制</p>
 <h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>创建一个新的文件夹，可以命名为myBlog，进入该文件夹中，打开git bash</p>
 <p>安装 Hexo成功，输入:</p>
-<pre><code class="hljs bash">npm install -g hexo-cli</code></pre>
+<div class="hljs"><pre><code class="hljs bash">npm install -g hexo-cli</code></pre></div>
 
 <p>初始化博客:</p>
-<pre><code class="hljs bash">hexo init myBlog
+<div class="hljs"><pre><code class="hljs bash">hexo init myBlog
 <span class="hljs-built_in">cd</span> myBlog
-npm i</code></pre>
+npm i</code></pre></div>
 
 <p>创建博客：</p>
-<pre><code class="hljs bash">hexo new 博客名</code></pre>
+<div class="hljs"><pre><code class="hljs bash">hexo new 博客名</code></pre></div>
 
 <p>该命令会生成一个md文件，在该文件中编辑博客的内容</p>
 <p>编辑完后，输入：</p>
-<pre><code class="hljs bash">hexo server <span class="hljs-comment"># 简写 hexo s</span></code></pre>
+<div class="hljs"><pre><code class="hljs bash">hexo server <span class="hljs-comment"># 简写 hexo s</span></code></pre></div>
 
 <p>启动本地服务，在浏览器中访问显示的连接，即可查看到博客的内容</p>
 <p>提交更新，输入：</p>
-<pre><code class="hljs bash">hexo generate <span class="hljs-comment"># 简写 hexo g， 生成</span>
-hexo deploy <span class="hljs-comment"># 简写 hexo d， 部署</span></code></pre>
+<div class="hljs"><pre><code class="hljs bash">hexo generate <span class="hljs-comment"># 简写 hexo g， 生成</span>
+hexo deploy <span class="hljs-comment"># 简写 hexo d， 部署</span></code></pre></div>
 
 <p>进入「你的用户名.github.io」对应的 repo，打开 GitHub Pages 功能，如果已经打开了，就直接点击预览链接即可看到博客了</p>
 

@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
   
 
   
@@ -204,28 +204,28 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h3 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h3><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;windows.h&gt;</span></span>
+              <h3 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h3><div class="hljs"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;windows.h&gt;</span></span>
 <span class="hljs-comment">/*其中包含了</span>
 <span class="hljs-comment">	WINDEF.H	基本数据类型定义</span>
 <span class="hljs-comment">	WINNT.H		支持Unicode的类型定义</span>
 <span class="hljs-comment">	WINBASE.H	内核函数</span>
 <span class="hljs-comment">	WINUSER.H	用户界面函数</span>
 <span class="hljs-comment">	WINGDI.H	图像设备接口函数</span>
-<span class="hljs-comment">等*/</span></code></pre>
+<span class="hljs-comment">等*/</span></code></pre></div>
 
 <a id="more"></a>
 
-<h3 id="程序入口函数：-WinMain-函数"><a href="#程序入口函数：-WinMain-函数" class="headerlink" title="程序入口函数： WinMain()函数"></a>程序入口函数： WinMain()函数</h3><pre><code class="hljs c"><span class="hljs-keyword">int</span>
+<h3 id="程序入口函数：-WinMain-函数"><a href="#程序入口函数：-WinMain-函数" class="headerlink" title="程序入口函数： WinMain()函数"></a>程序入口函数： WinMain()函数</h3><div class="hljs"><pre><code class="hljs c"><span class="hljs-keyword">int</span>
 WINAPI
 WinMain(
     HINSTANCE hInstance,	<span class="hljs-comment">//实例句柄</span>
     HINSTANCE hPrevInstance,
     LPSTR lpCmdLine,
     <span class="hljs-keyword">int</span> nShowCmd	<span class="hljs-comment">//指明程序(窗口)最初如何被显示</span>
-    )</code></pre>
+    )</code></pre></div>
 
 <p>句柄（handle）：在windows编程中，一个句柄是指使用一个唯一的整数值，即一个4字节（64位程序中位8字节）长的数值，来标识应用程序中的不同对象和同类中的不同的实例，如，桌面上的一个窗体由一个<code>HWND</code>类型的句柄来标识。 </p>
-<h3 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World!"></a>Hello World!</h3><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;windows.h&gt;</span></span>
+<h3 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World!"></a>Hello World!</h3><div class="hljs"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;windows.h&gt;</span></span>
 
 <span class="hljs-function"><span class="hljs-keyword">int</span> WINAPI <span class="hljs-title">WinMain</span><span class="hljs-params">(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR szCmdLine, <span class="hljs-keyword">int</span> iCmdShow)</span></span>
 <span class="hljs-function"></span>&#123;
@@ -233,16 +233,16 @@ WinMain(
 
 	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;
-<span class="hljs-comment">//出现一个显示helloworld的消息框</span></code></pre>
+<span class="hljs-comment">//出现一个显示helloworld的消息框</span></code></pre></div>
 
-<pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">MessageBox</span><span class="hljs-params">(</span></span>
+<div class="hljs"><pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">MessageBox</span><span class="hljs-params">(</span></span>
 <span class="hljs-function"><span class="hljs-params">  HWND hWnd,          <span class="hljs-comment">// handle of owner window, 窗口的一个句柄</span></span></span>
 <span class="hljs-function"><span class="hljs-params">  LPCTSTR lpText,     <span class="hljs-comment">// address of text in message box, 一个文本(字符串)的指针</span></span></span>
 <span class="hljs-function"><span class="hljs-params">  LPCTSTR lpCaption,  <span class="hljs-comment">// address of title of message box, 标题字符串的指针</span></span></span>
 <span class="hljs-function"><span class="hljs-params">  UINT uType          <span class="hljs-comment">// style of message box, 对话框的风格</span></span></span>
-<span class="hljs-function"><span class="hljs-params">)</span></span>;</code></pre>
+<span class="hljs-function"><span class="hljs-params">)</span></span>;</code></pre></div>
 
-<pre><code class="hljs c"><span class="hljs-comment">//对话框风格，可以使用OR(|)运算进行组合</span>
+<div class="hljs"><pre><code class="hljs c"><span class="hljs-comment">//对话框风格，可以使用OR(|)运算进行组合</span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MB_OK                       0x00000000L            <span class="hljs-comment">//仅有一个"确定"按钮</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MB_OKCANCEL                 0x00000001L            <span class="hljs-comment">//"确定" + "取消"</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MB_ABORTRETRYIGNORE         0x00000002L            <span class="hljs-comment">//"终止" + "重试" + "忽略"</span></span>
@@ -258,9 +258,9 @@ WinMain(
 <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MB_ICONWARNING              MB_ICONEXCLAMATION         <span class="hljs-comment">//警告</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MB_ICONERROR                MB_ICONHAND                <span class="hljs-comment">//错误</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MB_ICONINFORMATION          MB_ICONASTERISK            <span class="hljs-comment">//信息</span></span>
-<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MB_ICONSTOP                 MB_ICONHAND                <span class="hljs-comment">//停止</span></span></code></pre>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MB_ICONSTOP                 MB_ICONHAND                <span class="hljs-comment">//停止</span></span></code></pre></div>
 
-<h3 id="创建窗口"><a href="#创建窗口" class="headerlink" title="创建窗口"></a>创建窗口</h3><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;windows.h&gt;</span></span>
+<h3 id="创建窗口"><a href="#创建窗口" class="headerlink" title="创建窗口"></a>创建窗口</h3><div class="hljs"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;windows.h&gt;</span></span>
 
 <span class="hljs-function">LRESULT CALLBACK <span class="hljs-title">WndProc</span><span class="hljs-params">( HWND, UINT, WPARAM, LPARAM )</span> </span>;        <span class="hljs-comment">//声明用来处理消息的函数</span>
 
@@ -343,7 +343,7 @@ WinMain(
         <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
     &#125;
     <span class="hljs-keyword">return</span> DefWindowProc( hwnd, message, wParam, lParam ) ;        <span class="hljs-comment">//DefWindowProc处理我们自定义的消息处理函数没有处理到的消息</span>
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 <p><a href="https://www.cnblogs.com/mr-wid/archive/2012/10/09/2717278.html" target="_blank" rel="noopener">https://www.cnblogs.com/mr-wid/archive/2012/10/09/2717278.html</a></p>
 

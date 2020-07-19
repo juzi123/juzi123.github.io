@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
   
 
   
@@ -208,10 +208,10 @@
 <a id="more"></a>
 
 <p>不使用Autowired注解，改为如下方式</p>
-<pre><code class="hljs java"><span class="hljs-keyword">private</span> IDeviceService deviceService = (IDeviceService) SpringContextUtils.getBean(IDeviceService<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;</code></pre>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">private</span> IDeviceService deviceService = (IDeviceService) SpringContextUtils.getBean(IDeviceService<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;</code></pre></div>
 
 <p>将需要调用Spring的Service层的类通过@Component注解为组件加载；通过@Autowired获取Service层的Bean对象；为类声明一个静态变量，方便下一步存储bean对象；通过注解@PostConstruct ，在初始化的时候初始化静态对象和它的静态成员变量，拿到bean对象，静态存储下来，防止被释放。</p>
-<pre><code class="hljs java"><span class="hljs-meta">@Component</span>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-meta">@Component</span>
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ThresholdAlarm</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">SampleParamJob</span> </span>&#123;
 
     <span class="hljs-meta">@Autowired</span>
@@ -234,7 +234,7 @@
         List&lt;Device&gt; deviceList = thresholdAlarm.deviceService.list(query);
         <span class="hljs-keyword">return</span> deviceList;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 <p><a href="https://blog.csdn.net/georgeshaw1/article/details/74943089" target="_blank" rel="noopener">原文链接</a></p>
 

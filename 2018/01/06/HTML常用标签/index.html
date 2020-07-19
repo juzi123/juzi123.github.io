@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
   
 
   
@@ -220,32 +220,32 @@
 
 <h2 id="基本元素"><a href="#基本元素" class="headerlink" title="基本元素"></a>基本元素</h2><ul>
 <li><p>标题</p>
-<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>主标题<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>主标题<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>二级标题<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>三级标题<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
 ......
-<span class="hljs-tag">&lt;<span class="hljs-name">h6</span>&gt;</span>六级标题<span class="hljs-tag">&lt;/<span class="hljs-name">h6</span>&gt;</span></code></pre>
+<span class="hljs-tag">&lt;<span class="hljs-name">h6</span>&gt;</span>六级标题<span class="hljs-tag">&lt;/<span class="hljs-name">h6</span>&gt;</span></code></pre></div>
 </li>
 <li><p>段落</p>
-<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>这是一个段落<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>这是一个段落<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre></div>
 </li>
 <li><p>列表</p>
 <p>–无序列表(unordered lists)</p>
-<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>列表项1<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>列表项2<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>列表项3<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></code></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></code></pre></div>
 
 <p>–有序列表(ordered lists)</p>
-<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">ol</span>&gt;</span>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">ol</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>列表项1<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>列表项2<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>列表项3<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span></code></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span></code></pre></div>
 </li>
 <li><p>跳转页面（HTTP GET请求）(anchor-锚)</p>
-<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">herf</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span> <span class="hljs-attr">download</span>&gt;</span>这是一个链接<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></code></pre>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">herf</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span> <span class="hljs-attr">download</span>&gt;</span>这是一个链接<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></code></pre></div>
 
 <p>herf(<strong>h</strong>ypertext <strong>ref</strong>erence)：输入链接地址，相对路径，锚点（#xxx），发起请求（?name=juzi），伪协议（javascript:;）</p>
 <p>target：打开链接的地方</p>
@@ -257,11 +257,11 @@
 <p>download：指示浏览器下载URL而不是导航到URL</p>
 </li>
 <li><p>跳转页面（HTTP POST请求 ）–form</p>
-<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span>&gt;</span>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"username"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"password"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"提交"</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></code></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></code></pre></div>
 
 <p>没有提交按钮就无法提交form，如果没有，没有指定type的button会自动升级为submit按钮</p>
 </li>
@@ -272,24 +272,24 @@
 <p>单选框：<code>&lt;input type=&quot;radio&quot; name=&quot;&quot; value=&quot;&quot;&gt;</code> name属性相同的为一组</p>
 <p>更多：<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input</a></p>
 <p>用<code>&lt;label&gt;</code> 标签关联文本和输入框，点击文本选中输入框，for对应id</p>
-<pre><code class="hljs html">1.<span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>用户名<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"xxx"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></code></pre>
+<div class="hljs"><pre><code class="hljs html">1.<span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>用户名<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"xxx"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></code></pre></div>
 
-<pre><code class="hljs html">2.<span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"xxx"</span>&gt;</span>用户名<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"xxx"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"xxx"</span>&gt;</span></code></pre>
+<div class="hljs"><pre><code class="hljs html">2.<span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"xxx"</span>&gt;</span>用户名<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"xxx"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"xxx"</span>&gt;</span></code></pre></div>
 
 <p>提交时不会提交没有name属性的值</p>
 </li>
 <li><p>描述列表(description list)</p>
-<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">dl</span>&gt;</span>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">dl</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span>description term<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">dd</span>&gt;</span>description description<span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span>描述术语<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">dd</span>&gt;</span>描述列表的描述部分<span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span>姓名：<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">dd</span>&gt;</span>橘子<span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dl</span>&gt;</span></code></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dl</span>&gt;</span></code></pre></div>
 </li>
 <li><p><code>&lt;img&gt;</code> –图像</p>
-<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"描述内容"</span>&gt;</span></code></pre>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"描述内容"</span>&gt;</span></code></pre></div>
 </li>
 <li><p><code>&lt;vidio&gt;&lt;/vidio&gt;</code> –视频</p>
 </li>
@@ -298,7 +298,7 @@
 <li><p><code>&lt;strong&gt;&lt;/strong&gt;</code> –粗体，强调语气 </p>
 </li>
 <li><p><code>&lt;abbr&gt;</code> –缩写</p>
-<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">abbr</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"Laugh Out Loud"</span>&gt;</span>LOL<span class="hljs-tag">&lt;/<span class="hljs-name">abbr</span>&gt;</span></code></pre>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">abbr</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"Laugh Out Loud"</span>&gt;</span>LOL<span class="hljs-tag">&lt;/<span class="hljs-name">abbr</span>&gt;</span></code></pre></div>
 </li>
 <li><p><code>&lt;i&gt;&lt;/i&gt;</code> –用于表现因某些原因需要区分普通文本的一系列文本,通常显示斜体</p>
 </li>
@@ -313,18 +313,18 @@
 <li><p><code>&lt;kdb&gt;&lt;/kdb&gt;</code> –用于表示键盘输入</p>
 </li>
 <li><p><code>&lt;code&gt;</code> –代码</p>
-<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Regular text. <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>This is code.<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span> Regular text.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Regular text. <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>This is code.<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span> Regular text.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre></div>
 </li>
 <li><p><code>&lt;nav&gt;</code> –导航栏</p>
 </li>
 </ul>
-  <pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
+  <div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>About<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>Contact<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span></code></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span></code></pre></div>
 
 <ul>
 <li><p><code>&lt;time&gt;</code> –用来表示时间和日期</p>
@@ -334,32 +334,32 @@
 <li><p><code>&lt;span&gt;</code> –通用行内容器</p>
 </li>
 <li><p><code>&lt;button&gt;</code> –按钮</p>
-<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"button"</span>&gt;</span>Click me<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></code></pre>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"button"</span>&gt;</span>Click me<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></code></pre></div>
 </li>
 <li><p><code>iframe</code> 在一个页面中嵌入一个页面</p>
-<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">iframe</span> <span class="hljs-attr">name</span>=<span class="hljs-string">xxx</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">frameborder</span>=<span class="hljs-string">"0"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">iframe</span>&gt;</span>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">iframe</span> <span class="hljs-attr">name</span>=<span class="hljs-string">xxx</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">frameborder</span>=<span class="hljs-string">"0"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">iframe</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">target</span>=<span class="hljs-string">xxx</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://qq.com"</span>&gt;</span>QQ<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">target</span>=<span class="hljs-string">xxx</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://baidu.com"</span>&gt;</span>百度<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></code></pre>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">target</span>=<span class="hljs-string">xxx</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://baidu.com"</span>&gt;</span>百度<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></code></pre></div>
 
 <p>src中输入默认网址</p>
 <p>target表示点击链接显示窗口的位置，此处在iframe中显示</p>
 <p>frameborder边框 0为无边框</p>
 </li>
 <li><p><code>&lt;select&gt;</code>  –下拉框</p>
-<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"group"</span> <span class="hljs-attr">multiple</span>&gt;</span> <span class="hljs-comment">&lt;!-- multiple 支持多选 --&gt;</span>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"group"</span> <span class="hljs-attr">multiple</span>&gt;</span> <span class="hljs-comment">&lt;!-- multiple 支持多选 --&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">""</span>&gt;</span>-<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span> 
   <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1"</span>&gt;</span>第一组<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"2"</span> <span class="hljs-attr">disabled</span>&gt;</span>第二组<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span> <span class="hljs-comment">&lt;!-- 不可选 --&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"3"</span> <span class="hljs-attr">selected</span>&gt;</span>第三组<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span> <span class="hljs-comment">&lt;!-- 默认选择 --&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span></code></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span></code></pre></div>
 </li>
 <li><p><code>&lt;textarea&gt;</code>  – 多行纯文本编辑控件</p>
-<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">textarea</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"textarea"</span> <span class="hljs-attr">rows</span>=<span class="hljs-string">"10"</span> <span class="hljs-attr">cols</span>=<span class="hljs-string">"50"</span>&gt;</span>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">textarea</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"textarea"</span> <span class="hljs-attr">rows</span>=<span class="hljs-string">"10"</span> <span class="hljs-attr">cols</span>=<span class="hljs-string">"50"</span>&gt;</span>
   Write something here
-<span class="hljs-tag">&lt;/<span class="hljs-name">textarea</span>&gt;</span></code></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-name">textarea</span>&gt;</span></code></pre></div>
 </li>
 <li><p><code>&lt;table&gt;</code>  – 表格</p>
-<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">border</span>=<span class="hljs-string">1</span>&gt;</span>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">border</span>=<span class="hljs-string">1</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">colgroup</span>&gt;</span>
   	<span class="hljs-tag">&lt;<span class="hljs-name">col</span> <span class="hljs-attr">width</span>=<span class="hljs-string">100</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">col</span> <span class="hljs-attr">bgcolor</span>=<span class="hljs-string">red</span> <span class="hljs-attr">width</span>=<span class="hljs-string">100</span>&gt;</span>
@@ -379,7 +379,7 @@
       <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>表头<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>数据<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>数据<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">tfoot</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span></code></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span></code></pre></div>
 </li>
 <li><p><code>&lt;main&gt;&lt;/main&gt;</code> 呈现了文档<code>&lt;body&gt;</code> 或应用的主体部分。主体部分由与文档直接相关，或者扩展于文档的中心主题、应用的主要功能部分的内容组成。</p>
 </li>
@@ -398,7 +398,7 @@
 </ul>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
 <li><p>特殊符号需要转义</p>
-<pre><code class="hljs html"><span class="hljs-symbol">&amp;amp;</span></code></pre>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-symbol">&amp;amp;</span></code></pre></div>
 </li>
 <li><p>http-server 超轻量级web服务器</p>
 <p><a href="http://blog.csdn.net/qq_26562641/article/details/51396760" target="_blank" rel="noopener">http://blog.csdn.net/qq_26562641/article/details/51396760</a></p>

@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
   
 
   
@@ -224,7 +224,7 @@
 <li><p>若带排记录序列为正序时，时间复杂度可提高至O(n)，适合于序列基本有序的情况</p>
 </li>
 <li><p>空间复杂度O(1)</p>
-<pre><code class="hljs c"><span class="hljs-comment">//从小到大</span>
+<div class="hljs"><pre><code class="hljs c"><span class="hljs-comment">//从小到大</span>
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">InsertSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> R[],<span class="hljs-keyword">int</span> n)</span>	<span class="hljs-comment">//待排序关键字存储在R[]</span></span>
 <span class="hljs-function"></span>&#123;
     <span class="hljs-keyword">int</span> i,j;
@@ -240,7 +240,7 @@
         &#125;
         R[j+<span class="hljs-number">1</span>]=temp;	<span class="hljs-comment">//找到插入位置</span>
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 </li>
 </ul>
@@ -265,7 +265,7 @@
 <li><p>判别起泡排序结束的条件：在一趟起泡排序过程中没有进行交换记录的操作</p>
 </li>
 <li><p>时间复杂度：O(n<sup>2</sup>)</p>
-<pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">BubbleSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> R[],<span class="hljs-keyword">int</span> n)</span></span>
+<div class="hljs"><pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">BubbleSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> R[],<span class="hljs-keyword">int</span> n)</span></span>
 <span class="hljs-function"></span>&#123;
     <span class="hljs-keyword">int</span> i,j,flag;
     <span class="hljs-keyword">int</span> temp;
@@ -285,7 +285,7 @@
        	<span class="hljs-keyword">if</span>(flag==<span class="hljs-number">0</span>)		<span class="hljs-comment">//说明序列已经有序</span>
         	<span class="hljs-keyword">return</span>;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 </li>
 </ul>
@@ -299,7 +299,7 @@
 <li><p>时间复杂度：O(nlogn)；同数量级的排序方法中，其平均性能最好</p>
 </li>
 <li><p>空间复杂度：O(logn)，递归需要栈的辅助</p>
-<pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">QuickSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> R[],<span class="hljs-keyword">int</span> low,<span class="hljs-keyword">int</span> high)</span><span class="hljs-comment">//对从R[low]到R[high]的关键字进行排序</span></span>
+<div class="hljs"><pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">QuickSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> R[],<span class="hljs-keyword">int</span> low,<span class="hljs-keyword">int</span> high)</span><span class="hljs-comment">//对从R[low]到R[high]的关键字进行排序</span></span>
 <span class="hljs-function"></span>&#123;
     <span class="hljs-keyword">int</span> temp;
     <span class="hljs-keyword">int</span> i=low,j=high;
@@ -327,7 +327,7 @@
         QuickSort(R,low,i<span class="hljs-number">-1</span>);	<span class="hljs-comment">//递归，对temp左边的关键字进行排序</span>
         QuickSort(R,i+<span class="hljs-number">1</span>,high);	<span class="hljs-comment">//递归，对temp右边的关键字进行排序</span>
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 </li>
 </ul>
@@ -335,7 +335,7 @@
 <li><p>通过n-i次关键字间的比较，从n-i+1个记录中选出关键字最小的记录，并和第i（1&lt;=i&lt;=n）交换</p>
 </li>
 <li><p>时间复杂度：O(n<sup>2</sup>)</p>
-<pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SelectSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> R[],<span class="hljs-keyword">int</span> n)</span></span>
+<div class="hljs"><pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SelectSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> R[],<span class="hljs-keyword">int</span> n)</span></span>
 <span class="hljs-function"></span>&#123;
     <span class="hljs-keyword">int</span> i,j,k;
     <span class="hljs-keyword">int</span> temp;
@@ -349,7 +349,7 @@
         R[i]=R[k];
         R[k]=temp;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 </li>
 </ul>
@@ -372,7 +372,7 @@
 <li><p>堆排序在最坏的情况下，时间复杂度也为O(nlogn)</p>
 </li>
 <li><p>空间复杂度O(1)，仅需一个记录大小供交换用的辅助存储空间</p>
-<pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Sift</span><span class="hljs-params">(<span class="hljs-keyword">int</span> R[],<span class="hljs-keyword">int</span> low,<span class="hljs-keyword">int</span> high)</span>	<span class="hljs-comment">//关键字从数组下标1开始</span></span>
+<div class="hljs"><pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Sift</span><span class="hljs-params">(<span class="hljs-keyword">int</span> R[],<span class="hljs-keyword">int</span> low,<span class="hljs-keyword">int</span> high)</span>	<span class="hljs-comment">//关键字从数组下标1开始</span></span>
 <span class="hljs-function"></span>&#123;
     <span class="hljs-keyword">int</span> i=low,j=<span class="hljs-number">2</span>*i;	<span class="hljs-comment">//R[j]是R[i]的左孩子结点</span>
     <span class="hljs-keyword">int</span> temp=R[i];
@@ -405,7 +405,7 @@
          R[i]=temp;
          Sift(R,<span class="hljs-number">1</span>,i<span class="hljs-number">-1</span>);
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 
 

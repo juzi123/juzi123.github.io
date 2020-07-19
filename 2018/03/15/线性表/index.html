@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
   
 
   
@@ -227,18 +227,18 @@
 <li>随机访问特性：通过序号可以找到任意位置的数据</li>
 <li>占用连续的存储空间</li>
 </ul>
-<pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> maxSize 100</span>
+<div class="hljs"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> maxSize 100</span>
 <span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span></span>
 <span class="hljs-class">&#123;</span>
     <span class="hljs-keyword">int</span> data[maxSize];  <span class="hljs-comment">//存放顺序表元素的数组</span>
     <span class="hljs-keyword">int</span> length;  <span class="hljs-comment">//顺序表的长度</span>
-&#125;Sqlist;   <span class="hljs-comment">//顺序表类型的定义</span></code></pre>
+&#125;Sqlist;   <span class="hljs-comment">//顺序表类型的定义</span></code></pre></div>
 
 <p>####顺序表的增删改查</p>
 <ul>
 <li>顺序表在做插入删除操作时需要移动多个元素</li>
 </ul>
-<pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">findElem</span><span class="hljs-params">(Sqlist L, <span class="hljs-keyword">int</span> x)</span><span class="hljs-comment">//查找x</span></span>
+<div class="hljs"><pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">findElem</span><span class="hljs-params">(Sqlist L, <span class="hljs-keyword">int</span> x)</span><span class="hljs-comment">//查找x</span></span>
 <span class="hljs-function"></span>&#123;
     <span class="hljs-keyword">int</span> i;
     <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;L.length;i++)&#123;
@@ -273,7 +273,7 @@
     &#125;
     --(L.length);
     <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 <h4 id="线性表的链式表示"><a href="#线性表的链式表示" class="headerlink" title="线性表的链式表示"></a>线性表的链式表示</h4><ul>
 <li>任意的存储单元</li>
@@ -286,21 +286,21 @@
 <li>带头结点的单链表中，头指针head指向头结点，head-&gt;next为NULL时，链表为空；不带头结点的单链表中的头指针head直接指向开始结点，当head等于NULL时，链表为空。</li>
 <li>不支持随机访问，结点的存储空间利用率较顺序表稍低，支持存储空间的动态分配</li>
 </ul>
-<h4 id="单链表的定义"><a href="#单链表的定义" class="headerlink" title="单链表的定义"></a>单链表的定义</h4><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">LNode</span></span>
+<h4 id="单链表的定义"><a href="#单链表的定义" class="headerlink" title="单链表的定义"></a>单链表的定义</h4><div class="hljs"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">LNode</span></span>
 <span class="hljs-class">&#123;</span>
     <span class="hljs-keyword">int</span> data;  <span class="hljs-comment">//data中存放结点数据域</span>
     <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">LNode</span> *<span class="hljs-title">next</span>;</span>  <span class="hljs-comment">//指向后继结点的指针</span>
-&#125;LNode; <span class="hljs-comment">//定义单链表结构类型</span></code></pre>
+&#125;LNode; <span class="hljs-comment">//定义单链表结构类型</span></code></pre></div>
 
 <h4 id="单链表的增删改查"><a href="#单链表的增删改查" class="headerlink" title="单链表的增删改查"></a>单链表的增删改查</h4><ul>
 <li>链表的增删操作不需要移动元素，只需要修改指针</li>
 </ul>
-<pre><code class="hljs c"><span class="hljs-comment">//完整的删除操作</span>
+<div class="hljs"><pre><code class="hljs c"><span class="hljs-comment">//完整的删除操作</span>
 q = p-&gt;next;	<span class="hljs-comment">//要删除的结点</span>
 p-&gt;next = p-&gt;next-&gt;next;
-<span class="hljs-built_in">free</span>(q);	<span class="hljs-comment">//调用free函数释放q所指结点的空间</span></code></pre>
+<span class="hljs-built_in">free</span>(q);	<span class="hljs-comment">//调用free函数释放q所指结点的空间</span></code></pre></div>
 
-<h4 id="尾插法"><a href="#尾插法" class="headerlink" title="尾插法"></a>尾插法</h4><pre><code class="hljs c"><span class="hljs-comment">//有n个元素已经存储在数组a中，用尾插法建立链表C</span>
+<h4 id="尾插法"><a href="#尾插法" class="headerlink" title="尾插法"></a>尾插法</h4><div class="hljs"><pre><code class="hljs c"><span class="hljs-comment">//有n个元素已经存储在数组a中，用尾插法建立链表C</span>
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">createlistR</span><span class="hljs-params">(LNode *&amp;C, <span class="hljs-keyword">int</span> a[], <span class="hljs-keyword">int</span> n)</span></span>
 <span class="hljs-function"></span>&#123;
     LNode *s, *r;	<span class="hljs-comment">//s用来指向新申请的结点，r始终指向C的终端结点</span>
@@ -316,9 +316,9 @@ p-&gt;next = p-&gt;next-&gt;next;
        	r = r-&gt;next;		<span class="hljs-comment">//r指向终端结点，以便接纳下一个到来的结点</span>
     &#125;
     r-&gt;next = <span class="hljs-literal">NULL</span>;			<span class="hljs-comment">//将C的终端结点指针域置为NULL，C建立完成</span>
-&#125;</code></pre>
+&#125;</code></pre></div>
 
-<h4 id="头插法"><a href="#头插法" class="headerlink" title="头插法"></a>头插法</h4><pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">createlistF</span><span class="hljs-params">(LNode *&amp;C, <span class="hljs-keyword">int</span> a[], <span class="hljs-keyword">int</span> n)</span></span>
+<h4 id="头插法"><a href="#头插法" class="headerlink" title="头插法"></a>头插法</h4><div class="hljs"><pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">createlistF</span><span class="hljs-params">(LNode *&amp;C, <span class="hljs-keyword">int</span> a[], <span class="hljs-keyword">int</span> n)</span></span>
 <span class="hljs-function"></span>&#123;
     LNode *s;
     <span class="hljs-keyword">int</span> i;
@@ -331,9 +331,9 @@ p-&gt;next = p-&gt;next-&gt;next;
         s-&gt;next = C-&gt;next;	<span class="hljs-comment">//s所指新结点的指针域next指向C中的开始结点</span>
         C-&gt;next = s;		<span class="hljs-comment">//头结点的指针域next指向s结点，使得s成为新的开始结点</span>
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
-<h4 id="单链表的合并"><a href="#单链表的合并" class="headerlink" title="单链表的合并"></a>单链表的合并</h4><pre><code class="hljs c"><span class="hljs-comment">//将A，B两个元素递增有序的单链表(含头结点)合并成一个按元素值非递减有序的链表C</span>
+<h4 id="单链表的合并"><a href="#单链表的合并" class="headerlink" title="单链表的合并"></a>单链表的合并</h4><div class="hljs"><pre><code class="hljs c"><span class="hljs-comment">//将A，B两个元素递增有序的单链表(含头结点)合并成一个按元素值非递减有序的链表C</span>
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">merge</span><span class="hljs-params">(LNode *A, LNode *B, LNode *&amp;C)</span></span>
 <span class="hljs-function"></span>&#123;
     LNode *p = A-&gt;next;		<span class="hljs-comment">//p跟踪A的最小值结点</span>
@@ -361,7 +361,7 @@ p-&gt;next = p-&gt;next-&gt;next;
     <span class="hljs-comment">//r-&gt;next = NULL;</span>
     <span class="hljs-keyword">if</span>(p != <span class="hljs-literal">NULL</span>) r-&gt;next = p;
     <span class="hljs-keyword">if</span>(q != <span class="hljs-literal">NULL</span>) r-&gt;next = q;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 <h4 id="静态链表"><a href="#静态链表" class="headerlink" title="静态链表"></a>静态链表</h4><ul>
 <li>借助一维数组实现</li>
@@ -374,18 +374,18 @@ p-&gt;next = p-&gt;next-&gt;next;
 <h4 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h4><ul>
 <li>结点有两个指针域，一个指向直接后继，一个指向直接前驱</li>
 </ul>
-<pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">DLNode</span></span>
+<div class="hljs"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">DLNode</span></span>
 <span class="hljs-class">&#123;</span>
     <span class="hljs-keyword">int</span> data;
     <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">DLNode</span> *<span class="hljs-title">prior</span>;</span> <span class="hljs-comment">//指向前驱结点的指针</span>
     <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">DLNode</span> *<span class="hljs-title">next</span>;</span>  <span class="hljs-comment">//指向后继结点的指针</span>
-&#125;DLNode;  <span class="hljs-comment">//定义双链表结点类型</span></code></pre>
+&#125;DLNode;  <span class="hljs-comment">//定义双链表结点类型</span></code></pre></div>
 
-<h4 id="循环双向链表"><a href="#循环双向链表" class="headerlink" title="循环双向链表"></a>循环双向链表</h4><pre><code class="hljs c"><span class="hljs-comment">//以下4句任意一句为真，即可判断循环双链表为空</span>
+<h4 id="循环双向链表"><a href="#循环双向链表" class="headerlink" title="循环双向链表"></a>循环双向链表</h4><div class="hljs"><pre><code class="hljs c"><span class="hljs-comment">//以下4句任意一句为真，即可判断循环双链表为空</span>
 head-&gt;next == head;
 head-&gt;prior == head;
 head-&gt;next == head &amp;&amp; head-&gt;prior == head;
-head-&gt;next == head || head-&gt;prior == head;</code></pre>
+head-&gt;next == head || head-&gt;prior == head;</code></pre></div>
 
 
 

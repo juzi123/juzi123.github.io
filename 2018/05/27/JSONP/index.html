@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
   
 
   
@@ -208,7 +208,7 @@
 <h3 id="发送请求"><a href="#发送请求" class="headerlink" title="发送请求"></a>发送请求</h3><ul>
 <li>用图片创造get请求</li>
 </ul>
-<pre><code class="hljs javascript">button.addEventListener(<span class="hljs-string">'click'</span>, (e)=&gt;&#123;
+<div class="hljs"><pre><code class="hljs javascript">button.addEventListener(<span class="hljs-string">'click'</span>, (e)=&gt;&#123;
     <span class="hljs-keyword">let</span> image = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'img'</span>)
     image.src = <span class="hljs-string">'/pay'</span>
     image.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123; <span class="hljs-comment">// 状态码是 200~299 则表示成功</span>
@@ -217,14 +217,14 @@
     image.onerror = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123; <span class="hljs-comment">// 状态码大于等于 400 则表示失败</span>
         alert(<span class="hljs-string">'失败'</span>)
     &#125;
-&#125;)</code></pre>
+&#125;)</code></pre></div>
 
 <a id="more"></a>
 
 <ul>
 <li>用script创造get请求</li>
 </ul>
-<pre><code class="hljs javascript">button.addEventListener(<span class="hljs-string">'click'</span>, (e)=&gt;&#123;
+<div class="hljs"><pre><code class="hljs javascript">button.addEventListener(<span class="hljs-string">'click'</span>, (e)=&gt;&#123;
     <span class="hljs-keyword">let</span> script = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'script'</span>)
     script.src = <span class="hljs-string">'/pay'</span>
     <span class="hljs-built_in">document</span>.body.appendChild(script)
@@ -246,12 +246,12 @@
     response.end()
 &#125;
 ...
-<span class="hljs-comment">//SRJ - Server Rendered JavaScript</span></code></pre>
+<span class="hljs-comment">//SRJ - Server Rendered JavaScript</span></code></pre></div>
 
 <ul>
 <li>JSONP</li>
 </ul>
-<pre><code class="hljs javascript">button.addEventListener(<span class="hljs-string">'click'</span>, (e)=&gt;&#123;
+<div class="hljs"><pre><code class="hljs javascript">button.addEventListener(<span class="hljs-string">'click'</span>, (e)=&gt;&#123;
     <span class="hljs-keyword">let</span> script = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'script'</span>)
     <span class="hljs-keyword">let</span> functionName = <span class="hljs-string">'frank'</span>+ <span class="hljs-built_in">parseInt</span>(<span class="hljs-built_in">Math</span>.random()*<span class="hljs-number">10000000</span> ,<span class="hljs-number">10</span>)
     <span class="hljs-built_in">window</span>[functionName] = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;  <span class="hljs-comment">// 每次请求之前搞出一个随机的函数</span>
@@ -281,7 +281,7 @@
 <span class="hljs-string">    `</span>)
     response.end()
 &#125;
-...</code></pre>
+...</code></pre></div>
 
 <h3 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h3><ul>
 <li><p>请求方：frank.com 的前端程序员（浏览器）<br>响应方：jack.com 的后端程序员（服务器）</p>
@@ -302,7 +302,7 @@
 <li>callbackName -&gt; callback</li>
 <li>yyy -&gt; 随机数 frank12312312312321325()</li>
 </ol>
-<pre><code class="hljs javascript">$.ajax(&#123;
+<div class="hljs"><pre><code class="hljs javascript">$.ajax(&#123;
  url: <span class="hljs-string">"http://jack.com:8002/pay"</span>,
  dataType: <span class="hljs-string">"jsonp"</span>,
  success: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> response </span>) </span>&#123;
@@ -311,7 +311,7 @@
      &#125;
  &#125;
  &#125;)
-<span class="hljs-comment">//ajax和jsonp这两种技术在调用方式上“看起来”很像，目的也一样，都是请求一个url，然后把服务器返回的数据进行处理，因此jquery和ext等框架都把jsonp作为ajax的一种形式进行了封装；</span></code></pre>
+<span class="hljs-comment">//ajax和jsonp这两种技术在调用方式上“看起来”很像，目的也一样，都是请求一个url，然后把服务器返回的数据进行处理，因此jquery和ext等框架都把jsonp作为ajax的一种形式进行了封装；</span></code></pre></div>
 </li>
 <li><p>JSONP和JSON、AJAX没有关系</p>
 </li>

@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
   
 
   
@@ -215,7 +215,7 @@
 <li><p>文件编码</p>
 <p>使用不带 BOM 的 UTF-8 编码。</p>
 <p>在 HTML中指定编码</p>
-<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span>&gt;</span></code></pre>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span>&gt;</span></code></pre></div>
 
 <p>无需使用 @charset 指定样式表的编码，它默认为 UTF-8 （参考 @charset）；</p>
 </li>
@@ -223,7 +223,7 @@
 </li>
 <li><p>省略外链资源URL协议部分</p>
 <p>省略外链资源（图片及其它媒体资源）URL 中的 http / https 协议，使 URL 成为相对地址，避免Mixed Content 问题，减小文件字节数。 </p>
-<pre><code class="hljs html"><span class="hljs-comment">&lt;!--推荐--&gt;</span>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-comment">&lt;!--推荐--&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"//www.google.com"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 .example &#123;
@@ -234,7 +234,7 @@
 
 .example &#123;
 	background:url("https://www.google.com");
-&#125;</code></pre>
+&#125;</code></pre></div>
 </li>
 <li><p>统一注释，单行注释双斜线与文字之间保留一个空格</p>
 <p>若至少三行注释时，第一行为/<code>*</code>，最后行为<code>*</code>/，其他行以<code>*</code>开始，并且注释文字与<code>*</code>保留一个空格。 </p>
@@ -262,10 +262,10 @@
 <p>没有 CSS 的 HTML 是一个语义系统而不是 UI 系统。通常情况下，每个标签都是有语义的.语义化的 HTML 结构，有助于机器（搜索引擎）理解，另一方面多人协作时，能迅速了解开发者意图。</p>
 </li>
 <li><p>为每个HTML页面的第一行添加标准模式的声明</p>
-<pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span></code></pre>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span></code></pre></div>
 </li>
 <li><p>lang属性的取值应该遵循 <a href="https://tools.ietf.org/html/bcp47" target="_blank" rel="noopener">BCP 47 - Tags for Identifying Languages</a>。 </p>
-<pre><code class="hljs html"><span class="hljs-comment">&lt;!--中文--&gt;</span>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-comment">&lt;!--中文--&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"zh-Hans"</span>&gt;</span>  
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
 <span class="hljs-comment">&lt;!--简体中文--&gt;</span>
@@ -273,14 +273,14 @@
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
 <span class="hljs-comment">&lt;!--英文--&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>  
-<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre></div>
 </li>
 <li><p>IE兼容模式</p>
 <p>优先使用最新版本的IE 和 Chrome 内核。</p>
 </li>
 <li><p>viewport</p>
 <p>为移动端设备优化，设置可见区域的宽度和初始缩放比例</p>
-<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"</span>&gt;</span></code></pre>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"</span>&gt;</span></code></pre></div>
 
 <p>viewport: 一般指的是浏览器窗口内容区的大小，不包含工具条、选项卡等内容；</p>
 <p>width: 浏览器宽度，输出设备中的页面可见区域宽度；</p>
@@ -295,7 +295,7 @@
 <li><p>SEO优化</p>
 </li>
 <li><p>head模板</p>
-<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"</span>&gt;</span><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"</span>&gt;</span><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"x-ua-compatible"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"IE=edge,chrome=1"</span>&gt;</span>
@@ -308,7 +308,7 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"</span>&gt;</span>
     <span class="hljs-comment">&lt;!--favicon--&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"shortcut icon"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"favicon"</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre></div>
 
 </li>
 </ul>
@@ -376,18 +376,18 @@
 <p>避免使用标签限制class选择器</p>
 <p>避免使用多层标签选择器，使用class选择器替换，减少css查找</p>
 <p>避免使用子选择器</p>
-<pre><code class="hljs css"><span class="hljs-comment">/*不推荐*/</span>
+<div class="hljs"><pre><code class="hljs css"><span class="hljs-comment">/*不推荐*/</span>
 <span class="hljs-selector-class">.tree</span> <span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span>&#123;&#125;
 <span class="hljs-comment">/*推荐*/</span>
 <span class="hljs-selector-class">.tree</span> &gt; <span class="hljs-selector-tag">ul</span> &gt; <span class="hljs-selector-tag">li</span>&#123;&#125;
 <span class="hljs-comment">/*非常推荐*/</span>
-<span class="hljs-selector-class">.tree-li</span>&#123;&#125;</code></pre>
+<span class="hljs-selector-class">.tree-li</span>&#123;&#125;</code></pre></div>
 
 <p>使用继承</p>
-<pre><code class="hljs css"><span class="hljs-comment">/*不推荐*/</span>
+<div class="hljs"><pre><code class="hljs css"><span class="hljs-comment">/*不推荐*/</span>
 <span class="hljs-selector-tag">p</span> &gt; <span class="hljs-selector-tag">span</span>&#123;<span class="hljs-attribute">font-size</span>:<span class="hljs-number">12px</span>;&#125;
 <span class="hljs-comment">/*推荐*/</span>
-<span class="hljs-selector-tag">p</span>&#123;<span class="hljs-attribute">font-size</span>:<span class="hljs-number">12px</span>;&#125;</code></pre>
+<span class="hljs-selector-tag">p</span>&#123;<span class="hljs-attribute">font-size</span>:<span class="hljs-number">12px</span>;&#125;</code></pre></div>
 
 </li>
 </ul>

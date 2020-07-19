@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
   
 
   
@@ -215,7 +215,7 @@
 </ul>
 <a id="more"></a>
 
-<pre><code class="hljs javascript"><span class="hljs-comment">//typeof返回一个值的数据类型</span>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">//typeof返回一个值的数据类型</span>
 <span class="hljs-keyword">typeof</span> <span class="hljs-number">123</span> <span class="hljs-comment">//"number"</span>
 <span class="hljs-keyword">typeof</span> <span class="hljs-string">'123'</span> <span class="hljs-comment">// "string"</span>
 <span class="hljs-keyword">typeof</span> <span class="hljs-literal">false</span> <span class="hljs-comment">// "boolean"</span>
@@ -224,11 +224,11 @@
 <span class="hljs-comment">// "function"</span>
 <span class="hljs-keyword">typeof</span> <span class="hljs-built_in">window</span> <span class="hljs-comment">// "object"</span>
 <span class="hljs-keyword">typeof</span> &#123;&#125; <span class="hljs-comment">// "object"</span>
-<span class="hljs-keyword">typeof</span> [] <span class="hljs-comment">// "object"</span></code></pre>
+<span class="hljs-keyword">typeof</span> [] <span class="hljs-comment">// "object"</span></code></pre></div>
 
 <hr>
-<pre><code class="hljs javascript"><span class="hljs-built_in">Number</span>(<span class="hljs-literal">null</span>)	<span class="hljs-comment">//0</span>
-<span class="hljs-built_in">Number</span>(<span class="hljs-literal">undefined</span>)	<span class="hljs-comment">//NaN</span></code></pre>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-built_in">Number</span>(<span class="hljs-literal">null</span>)	<span class="hljs-comment">//0</span>
+<span class="hljs-built_in">Number</span>(<span class="hljs-literal">undefined</span>)	<span class="hljs-comment">//NaN</span></code></pre></div>
 
 <p>布尔值为false的几种值</p>
 <ul>
@@ -239,13 +239,13 @@
 <li>NaN</li>
 <li>“”或’’(空字符串)</li>
 </ul>
-<pre><code class="hljs javascript"><span class="hljs-comment">//Infinity 无穷</span>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">//Infinity 无穷</span>
 <span class="hljs-number">-1</span>/<span class="hljs-number">-0</span> <span class="hljs-comment">//Infinity</span>
 <span class="hljs-number">1</span>/<span class="hljs-number">-0</span> <span class="hljs-comment">//-Infinity</span>
 <span class="hljs-comment">//数值正向溢出（overflow）、负向溢出（underflow）和被0除，JavaScript 都不报错</span>
-<span class="hljs-comment">//Infinity与NaN比较，总是返回false。</span></code></pre>
+<span class="hljs-comment">//Infinity与NaN比较，总是返回false。</span></code></pre></div>
 
-<pre><code class="hljs javascript"><span class="hljs-built_in">parseInt</span>(<span class="hljs-string">'1000'</span>) <span class="hljs-comment">// 1000</span>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-built_in">parseInt</span>(<span class="hljs-string">'1000'</span>) <span class="hljs-comment">// 1000</span>
 <span class="hljs-built_in">parseInt</span>(<span class="hljs-string">'1000'</span>, <span class="hljs-number">10</span>) <span class="hljs-comment">// 1000</span>
 <span class="hljs-built_in">parseInt</span>(<span class="hljs-string">'1000'</span>, <span class="hljs-number">2</span>) <span class="hljs-comment">// 8 二进制</span>
 <span class="hljs-built_in">parseInt</span>(<span class="hljs-string">'1000'</span>, <span class="hljs-number">8</span>) <span class="hljs-comment">// 512 八进制</span>
@@ -254,9 +254,9 @@
 
 <span class="hljs-built_in">parseFloat</span>	<span class="hljs-comment">//浮点数</span>
 <span class="hljs-built_in">isNaN</span>(<span class="hljs-number">123</span>) <span class="hljs-comment">//false 判断是否是NaN</span>
-<span class="hljs-built_in">isFinite</span>(<span class="hljs-literal">undefined</span>) <span class="hljs-comment">//true 判断是否是正常数值</span></code></pre>
+<span class="hljs-built_in">isFinite</span>(<span class="hljs-literal">undefined</span>) <span class="hljs-comment">//true 判断是否是正常数值</span></code></pre></div>
 
-<pre><code class="hljs javascript"><span class="hljs-comment">//对象 </span>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">//对象 </span>
 
 <span class="hljs-keyword">var</span> obj = &#123;
     <span class="hljs-comment">//键值对：key：value</span>
@@ -352,9 +352,9 @@ obj.p2 = <span class="hljs-number">5</span>;
 <span class="hljs-comment">// 等同于</span>
 <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">document</span>.links[<span class="hljs-number">0</span>].href);
 <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">document</span>.links[<span class="hljs-number">0</span>].title);
-<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">document</span>.links[<span class="hljs-number">0</span>].style);</code></pre>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">document</span>.links[<span class="hljs-number">0</span>].style);</code></pre></div>
 
-<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><pre><code class="hljs javascript"><span class="hljs-comment">// 函数声明，3种</span>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 函数声明，3种</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">print</span>(<span class="hljs-params">s</span>) </span>&#123;
   <span class="hljs-built_in">console</span>.log(s);
 &#125;
@@ -405,10 +405,10 @@ inc() <span class="hljs-comment">// 7</span>
 
 <span class="hljs-comment">//eval命令接受一个字符串作为参数，并将这个字符串当作语句执行</span>
 <span class="hljs-built_in">eval</span>(<span class="hljs-string">'var a = 1;'</span>);
-a <span class="hljs-comment">// 1</span></code></pre>
+a <span class="hljs-comment">// 1</span></code></pre></div>
 
 <h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>数组是一种特殊的对象</p>
-<pre><code class="hljs javascript"><span class="hljs-comment">//length</span>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">//length</span>
 <span class="hljs-comment">//in 键名是否存在</span>
 <span class="hljs-keyword">var</span> arr = [ <span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span> ];
 <span class="hljs-number">2</span> <span class="hljs-keyword">in</span> arr  <span class="hljs-comment">// true</span>
@@ -449,7 +449,7 @@ colors.forEach(<span class="hljs-function"><span class="hljs-keyword">function</
 &#125;);
 <span class="hljs-comment">// red</span>
 <span class="hljs-comment">// green</span>
-<span class="hljs-comment">// blue</span></code></pre>
+<span class="hljs-comment">// blue</span></code></pre></div>
 
 
 

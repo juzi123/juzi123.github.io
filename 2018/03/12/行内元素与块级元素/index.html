@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
   
 
   
@@ -205,26 +205,26 @@
             
             <article class="markdown-body">
               <h3 id="内联元素-行内元素"><a href="#内联元素-行内元素" class="headerlink" title="内联元素(行内元素)"></a>内联元素(行内元素)</h3><p>一个内联元素只占据它对应标签的边框所包含的空间</p>
-<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
   这是一个<span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>行内元素<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></code></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></code></pre></div>
 
-<pre><code class="hljs css"><span class="hljs-selector-tag">span</span>&#123;
+<div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-tag">span</span>&#123;
   <span class="hljs-attribute">border</span>:<span class="hljs-number">1px</span> red solid;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 <p><img src="/blogImg/css2-1.png" srcset="/img/loading.gif" alt="行内元素">   </p>
 <a id="more"></a>
 
 <p>内联元素只能容纳文本和其他内联元素，内联元素的高度，行高以及顶和底边距不能改变，宽度即为容纳文本和图片的宽度，不可改变。</p>
 <h3 id="块级元素"><a href="#块级元素" class="headerlink" title="块级元素"></a>块级元素</h3><p>块级元素占据其父元素（容器）的整个空间，通常浏览器会在块级元素前后另起一个新行。</p>
-<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>这是一个块级元素<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></code></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></code></pre></div>
 
-<pre><code class="hljs css"><span class="hljs-selector-tag">p</span>&#123;
+<div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-tag">p</span>&#123;
   <span class="hljs-attribute">border</span>:<span class="hljs-number">1px</span> blue solid;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 <p><img src="/blogImg/css2-2.png" srcset="/img/loading.gif" alt="块级元素">  </p>
 <p>块级元素可以容纳其他块级元素和内联元素，宽度默认是它容器的100%，除非设定一个宽度。</p>
@@ -339,7 +339,7 @@
                     
                     
                       <a href="/2018/03/11/css%E7%9A%84%E5%B1%85%E4%B8%AD/">
-                        <span class="hidden-mobile">css的居中方法</span>
+                        <span class="hidden-mobile">css常用布局方法</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
   
 
   
@@ -212,52 +212,52 @@
 <li><code>[^charlist]</code> 或 <code>[!charlist]</code> ：不在字符列中的任何单一字符</li>
 </ul>
 <p>搜索不以A或B或N开头的人：</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> student
-<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">name</span> <span class="hljs-keyword">LIKE</span> <span class="hljs-string">'[!ABN]%'</span>;</code></pre>
+<div class="hljs"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> student
+<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">name</span> <span class="hljs-keyword">LIKE</span> <span class="hljs-string">'[!ABN]%'</span>;</code></pre></div>
 
 <h3 id="LIKE"><a href="#LIKE" class="headerlink" title="LIKE"></a>LIKE</h3><p>用于在where语句中搜索列的指定模式。</p>
 <ul>
 <li><p>搜索name为A开头的所有学生</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> student
-<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">name</span> <span class="hljs-keyword">LIKE</span> <span class="hljs-string">'A%'</span>;</code></pre>
+<div class="hljs"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> student
+<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">name</span> <span class="hljs-keyword">LIKE</span> <span class="hljs-string">'A%'</span>;</code></pre></div>
 </li>
 <li><p>选取 name 不包含模式 “pp” 的所有学生：</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> student
-<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">name</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">LIKE</span> <span class="hljs-string">'%pp%'</span>;</code></pre>
+<div class="hljs"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> student
+<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">name</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">LIKE</span> <span class="hljs-string">'%pp%'</span>;</code></pre></div>
 
 </li>
 </ul>
 <h3 id="IN"><a href="#IN" class="headerlink" title="IN"></a>IN</h3><p>用于在where字句中规定多个值。</p>
 <p>选取name为apple或banana的值：</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> student
-<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">name</span> <span class="hljs-keyword">IN</span> (<span class="hljs-string">'apple'</span>, <span class="hljs-string">'banana'</span>);</code></pre>
+<div class="hljs"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> student
+<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">name</span> <span class="hljs-keyword">IN</span> (<span class="hljs-string">'apple'</span>, <span class="hljs-string">'banana'</span>);</code></pre></div>
 
 <h3 id="BETWEEN"><a href="#BETWEEN" class="headerlink" title="BETWEEN"></a>BETWEEN</h3><p>用于选取介于两个值之间的数据范围内的值。</p>
 <ul>
 <li><p>选取age在6到18的值：</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> student
-<span class="hljs-keyword">WHERE</span> age <span class="hljs-keyword">BETWEEN</span> <span class="hljs-number">6</span> <span class="hljs-keyword">AND</span> <span class="hljs-number">18</span>;</code></pre>
+<div class="hljs"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> student
+<span class="hljs-keyword">WHERE</span> age <span class="hljs-keyword">BETWEEN</span> <span class="hljs-number">6</span> <span class="hljs-keyword">AND</span> <span class="hljs-number">18</span>;</code></pre></div>
 </li>
 <li><p>选取日期不在1997-01-20和1997-10-05范围的值</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> student
-<span class="hljs-keyword">WHERE</span> birthday <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">BETWEEN</span> <span class="hljs-string">'1997-01-20'</span> <span class="hljs-keyword">AND</span> <span class="hljs-string">'1997-10-05'</span>;</code></pre>
+<div class="hljs"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> student
+<span class="hljs-keyword">WHERE</span> birthday <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">BETWEEN</span> <span class="hljs-string">'1997-01-20'</span> <span class="hljs-keyword">AND</span> <span class="hljs-string">'1997-10-05'</span>;</code></pre></div>
 
 </li>
 </ul>
 <p>注意：不同数据库中的边界处理可能不相同。</p>
 <h3 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h3><p>用于为表名称或列名称指定别名。</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">name</span> <span class="hljs-keyword">AS</span> n, age <span class="hljs-keyword">AS</span> a
-<span class="hljs-keyword">FROM</span> student;</code></pre>
+<div class="hljs"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">name</span> <span class="hljs-keyword">AS</span> n, age <span class="hljs-keyword">AS</span> a
+<span class="hljs-keyword">FROM</span> student;</code></pre></div>
 
 <ul>
 <li><p>将多个列组合在一起输出</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">name</span>, <span class="hljs-keyword">CONCAT</span>(age, <span class="hljs-string">','</span>, sex, <span class="hljs-string">','</span>, country) <span class="hljs-keyword">AS</span> stu_info
-<span class="hljs-keyword">FROM</span> student;</code></pre>
+<div class="hljs"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">name</span>, <span class="hljs-keyword">CONCAT</span>(age, <span class="hljs-string">','</span>, sex, <span class="hljs-string">','</span>, country) <span class="hljs-keyword">AS</span> stu_info
+<span class="hljs-keyword">FROM</span> student;</code></pre></div>
 </li>
 <li><p>超过一个表的查询</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> s.name, s.age, t.name, t.assess
+<div class="hljs"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> s.name, s.age, t.name, t.assess
 <span class="hljs-keyword">FROM</span> student <span class="hljs-keyword">AS</span> s, teacher <span class="hljs-keyword">AS</span> t
-<span class="hljs-keyword">WHERE</span> s.teacher = t.name <span class="hljs-keyword">and</span> s.country = <span class="hljs-string">'CHINA'</span>;</code></pre>
+<span class="hljs-keyword">WHERE</span> s.teacher = t.name <span class="hljs-keyword">and</span> s.country = <span class="hljs-string">'CHINA'</span>;</code></pre></div>
 
 </li>
 </ul>
@@ -269,33 +269,33 @@
 <li>FULL JOIN: 只要其中一个表存在匹配，则返回行</li>
 </ul>
 <h3 id="UNION"><a href="#UNION" class="headerlink" title="UNION"></a>UNION</h3><p>用于合并两个或多个SELECT语句的结果集，列的数量，数据类型，顺序必须相同。</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> age <span class="hljs-keyword">FROM</span> student
+<div class="hljs"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> age <span class="hljs-keyword">FROM</span> student
 <span class="hljs-keyword">UNION</span>
 <span class="hljs-keyword">SELECT</span> age <span class="hljs-keyword">FROM</span> teacher
-<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> age;</code></pre>
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> age;</code></pre></div>
 
 <p>允许重复值使用UNION ALL。</p>
 <h3 id="SELECT-INTO"><a href="#SELECT-INTO" class="headerlink" title="SELECT INTO"></a>SELECT INTO</h3><p>从一个表中复制数据插入到一个新表中。</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> *
+<div class="hljs"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> *
 <span class="hljs-keyword">INTO</span> studentBackUp
-<span class="hljs-keyword">FROM</span> student;</code></pre>
+<span class="hljs-keyword">FROM</span> student;</code></pre></div>
 
 <p>MySQL不支持</p>
 <h3 id="INSERT-INTO-SELECT"><a href="#INSERT-INTO-SELECT" class="headerlink" title="INSERT INTO SELECT"></a>INSERT INTO SELECT</h3><p>从一个表中复制数据插入到一个已存在的表中。</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> studentBackUp
-<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> student;</code></pre>
+<div class="hljs"><pre><code class="hljs sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> studentBackUp
+<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> student;</code></pre></div>
 
 <h3 id="CREATE-DATABASE"><a href="#CREATE-DATABASE" class="headerlink" title="CREATE DATABASE"></a>CREATE DATABASE</h3><p>用于创建数据库。</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">DATABASE</span> mydatabase;</code></pre>
+<div class="hljs"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">DATABASE</span> mydatabase;</code></pre></div>
 
 <h3 id="CREATE-TABLE"><a href="#CREATE-TABLE" class="headerlink" title="CREATE TABLE"></a>CREATE TABLE</h3><p>用于创建表。</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> student
+<div class="hljs"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> student
 (
 	<span class="hljs-keyword">Id</span> <span class="hljs-built_in">int</span>,
 	<span class="hljs-keyword">Name</span> <span class="hljs-built_in">varchar</span>(<span class="hljs-number">255</span>),
     Age <span class="hljs-built_in">int</span>,
     Address <span class="hljs-built_in">varchar</span>(<span class="hljs-number">255</span>)
-)</code></pre>
+)</code></pre></div>
 
 
 

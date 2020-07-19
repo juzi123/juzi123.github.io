@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
   
 
   
@@ -218,7 +218,7 @@
 <li>栈按存储结构可分为顺序栈和链式栈</li>
 <li>非法状态：上溢（栈满时继续入栈）、下溢（栈空时继续出栈）</li>
 </ul>
-<h4 id="顺序栈"><a href="#顺序栈" class="headerlink" title="顺序栈"></a>顺序栈</h4><pre><code class="hljs c"><span class="hljs-comment">//定义</span>
+<h4 id="顺序栈"><a href="#顺序栈" class="headerlink" title="顺序栈"></a>顺序栈</h4><div class="hljs"><pre><code class="hljs c"><span class="hljs-comment">//定义</span>
 <span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span></span>
 <span class="hljs-class">&#123;</span>
     <span class="hljs-keyword">int</span> data[maxSize];	<span class="hljs-comment">//存放栈中元素</span>
@@ -254,9 +254,9 @@
     x = st.data[st.top];	<span class="hljs-comment">//取出栈顶元素</span>
     --(st.top);
     <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
-<h4 id="链栈"><a href="#链栈" class="headerlink" title="链栈"></a>链栈</h4><pre><code class="hljs c"><span class="hljs-comment">//链栈结点定义</span>
+<h4 id="链栈"><a href="#链栈" class="headerlink" title="链栈"></a>链栈</h4><div class="hljs"><pre><code class="hljs c"><span class="hljs-comment">//链栈结点定义</span>
 <span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">LNode</span></span>
 <span class="hljs-class">&#123;</span>
     <span class="hljs-keyword">int</span> data;	<span class="hljs-comment">//数据域</span>
@@ -291,7 +291,7 @@
     lst-&gt;next = p-&gt;next;
     <span class="hljs-built_in">free</span>(p);
     <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 <h4 id="共享栈"><a href="#共享栈" class="headerlink" title="共享栈"></a>共享栈</h4><ul>
 <li>两个栈共享一片连续的存储空间，两个栈的栈底位于存储空间的两端，当两个栈的栈顶在栈空间的某处相遇时，产生上溢。</li>
@@ -302,15 +302,15 @@
 <li>队头（front）：允许删除元素的一端，队头元素</li>
 <li>队列按存储结构可分为顺序队列和链队列</li>
 </ul>
-<h4 id="顺序队列"><a href="#顺序队列" class="headerlink" title="顺序队列"></a>顺序队列</h4><pre><code class="hljs c"><span class="hljs-comment">//定义</span>
+<h4 id="顺序队列"><a href="#顺序队列" class="headerlink" title="顺序队列"></a>顺序队列</h4><div class="hljs"><pre><code class="hljs c"><span class="hljs-comment">//定义</span>
 <span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span></span>
 <span class="hljs-class">&#123;</span>
     <span class="hljs-keyword">int</span> data[maxSize];
     <span class="hljs-keyword">int</span> front;		<span class="hljs-comment">//队首指针	</span>
     <span class="hljs-keyword">int</span> rear;		<span class="hljs-comment">//队尾指针</span>
-&#125;SqQueue;</code></pre>
+&#125;SqQueue;</code></pre></div>
 
-<h4 id="链队列"><a href="#链队列" class="headerlink" title="链队列"></a>链队列</h4><pre><code class="hljs c"><span class="hljs-comment">//队列结点定义</span>
+<h4 id="链队列"><a href="#链队列" class="headerlink" title="链队列"></a>链队列</h4><div class="hljs"><pre><code class="hljs c"><span class="hljs-comment">//队列结点定义</span>
 <span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">QNode</span></span>
 <span class="hljs-class">&#123;</span>
     <span class="hljs-keyword">int</span> data;	<span class="hljs-comment">//数据域</span>
@@ -365,7 +365,7 @@
     x=p-&gt;data;
     <span class="hljs-built_in">free</span>(p);
     <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 <h4 id="循环队列"><a href="#循环队列" class="headerlink" title="循环队列"></a>循环队列</h4><ul>
 <li>队列为空：qu.front == qu.rear</li>
@@ -373,7 +373,7 @@
 <li>非空队列中，头指针始终指向队列头元素，而尾指针始终指向队列尾元素的下一个位置</li>
 <li>假溢出：普通顺序队列在一系列进队出队操作后，两个指针最终都会到达数组末端maxSize-1处，虽然队列中没有元素或元素未满，都不能让新元素入队。因此使用循环队列</li>
 </ul>
-<pre><code class="hljs c"><span class="hljs-comment">//初始化</span>
+<div class="hljs"><pre><code class="hljs c"><span class="hljs-comment">//初始化</span>
 <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">initQueue</span><span class="hljs-params">(SqQueue &amp;qu)</span></span>
 <span class="hljs-function"></span>&#123;
     qu.front=qu.rear=<span class="hljs-number">0</span>;	<span class="hljs-comment">//队首队尾指针重合，并指向0</span>
@@ -395,7 +395,7 @@
    	qu.front=(qu.front+<span class="hljs-number">1</span>)%maxSize;	<span class="hljs-comment">//队非空，移动指针</span>
     x=qu.data[qu.front];	<span class="hljs-comment">//取出元素</span>
     <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 <h4 id="双端队列"><a href="#双端队列" class="headerlink" title="双端队列"></a>双端队列</h4><ul>
 <li>一种插入和删除操作在两端均可进行的线性表</li>

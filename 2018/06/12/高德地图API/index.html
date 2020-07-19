@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
   
 
   
@@ -204,7 +204,7 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <pre><code class="hljs armasm">地图容器 Container
+              <div class="hljs"><pre><code class="hljs armasm">地图容器 Container
 图层 Layers
 矢量图形 Vector Overlays
 点标记 <span class="hljs-keyword">Markers </span> 圆点标记 (CircleMarker) 、文本标记 (Text)、灵活点标记 (ElasticMarker) 海量点（MassMarks）、点聚合（<span class="hljs-keyword">MarkerCluster）</span>
@@ -218,12 +218,12 @@
 标注 Labels
 地图平面像素坐标 Plane Coordinates
 投影 Projection
-三维空间坐标 <span class="hljs-number">3</span>D Coordinates</code></pre>
+三维空间坐标 <span class="hljs-number">3</span>D Coordinates</code></pre></div>
 
 <a id="more"></a>
 
 <p>基础类</p>
-<pre><code class="hljs javascript"><span class="hljs-comment">//经纬度AMap.LngLat,lng经度，lat纬度</span>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">//经纬度AMap.LngLat,lng经度，lat纬度</span>
 <span class="hljs-keyword">var</span> position = <span class="hljs-keyword">new</span> AMap.LngLat(<span class="hljs-number">116</span>, <span class="hljs-number">39</span>);<span class="hljs-comment">//标准写法</span>
 <span class="hljs-keyword">var</span> position = [<span class="hljs-number">116</span>, <span class="hljs-number">39</span>]; <span class="hljs-comment">//简写</span>
 <span class="hljs-keyword">var</span> map = <span class="hljs-keyword">new</span> AMap.Center(<span class="hljs-string">'conatiner'</span>,&#123;
@@ -237,24 +237,24 @@
 
 <span class="hljs-comment">//经纬度计算</span>
 <span class="hljs-keyword">var</span> distance = lnglat1.distance(lnglat2);<span class="hljs-comment">//计算lnglat1到lnglat2之间的实际距离(m)</span>
-<span class="hljs-keyword">var</span> lnglat3 = lnglat1.offset(<span class="hljs-number">100</span>,<span class="hljs-number">50</span>)<span class="hljs-comment">//lnglat1向东100m，向北50m的位置的经纬度</span></code></pre>
+<span class="hljs-keyword">var</span> lnglat3 = lnglat1.offset(<span class="hljs-number">100</span>,<span class="hljs-number">50</span>)<span class="hljs-comment">//lnglat1向东100m，向北50m的位置的经纬度</span></code></pre></div>
 
-<pre><code class="hljs javascript"><span class="hljs-comment">//像素点 AMap.Pixel</span></code></pre>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">//像素点 AMap.Pixel</span></code></pre></div>
 
-<pre><code class="hljs javascript"><span class="hljs-comment">//像素尺寸 AMap.Size</span></code></pre>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">//像素尺寸 AMap.Size</span></code></pre></div>
 
-<pre><code class="hljs javascript"><span class="hljs-comment">//经纬度矩形边界 AMap.Bounds</span>
-<span class="hljs-comment">//经纬度路径边界 AMap.ArrayBounds</span></code></pre>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">//经纬度矩形边界 AMap.Bounds</span>
+<span class="hljs-comment">//经纬度路径边界 AMap.ArrayBounds</span></code></pre></div>
 
 <h3 id="地图生命周期：创建、存在、销毁"><a href="#地图生命周期：创建、存在、销毁" class="headerlink" title="地图生命周期：创建、存在、销毁"></a>地图生命周期：创建、存在、销毁</h3><ul>
 <li>创建一个地图</li>
 </ul>
-<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> map = <span class="hljs-keyword">new</span> AMap.Map(<span class="hljs-string">'container'</span>); <span class="hljs-comment">//container为地图容器的id</span></code></pre>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> map = <span class="hljs-keyword">new</span> AMap.Map(<span class="hljs-string">'container'</span>); <span class="hljs-comment">//container为地图容器的id</span></code></pre></div>
 
 <ul>
 <li>创建时添加其他样式</li>
 </ul>
-<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> map = <span class="hljs-keyword">new</span> AMap.Map(<span class="hljs-string">'container'</span>, &#123;
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> map = <span class="hljs-keyword">new</span> AMap.Map(<span class="hljs-string">'container'</span>, &#123;
         zoom:<span class="hljs-number">11</span>,<span class="hljs-comment">//级别</span>
         zooms: [<span class="hljs-number">4</span>,<span class="hljs-number">18</span>],<span class="hljs-comment">//设置地图级别范围</span>
         center: [<span class="hljs-number">116.397428</span>, <span class="hljs-number">39.90923</span>],<span class="hljs-comment">//中心点坐标</span>
@@ -265,20 +265,20 @@
             <span class="hljs-keyword">new</span> AMap.TileLayer.RoadNet()
         ],
     	lang:<span class="hljs-string">'zh_cn'</span> <span class="hljs-comment">//设置地图语言类型</span>
-&#125;);</code></pre>
+&#125;);</code></pre></div>
 
 <ul>
 <li><p>地图加载完成后触发complete</p>
-<pre><code class="hljs javascript">map.on(<span class="hljs-string">'complete'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+<div class="hljs"><pre><code class="hljs javascript">map.on(<span class="hljs-string">'complete'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
     <span class="hljs-comment">// 地图图块加载完成后触发</span>
-&#125;);</code></pre>
+&#125;);</code></pre></div>
 </li>
 <li><p>销毁地图对象</p>
-<pre><code class="hljs javascript"><span class="hljs-comment">// 销毁地图，并清空地图容器</span>
-map.destroy( );</code></pre>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 销毁地图，并清空地图容器</span>
+map.destroy( );</code></pre></div>
 </li>
 <li><p>获取设置地图状态</p>
-<pre><code class="hljs javascript"><span class="hljs-comment">//中心点</span>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">//中心点</span>
 <span class="hljs-keyword">var</span> position = <span class="hljs-keyword">new</span> AMap.LngLat(<span class="hljs-number">116</span>, <span class="hljs-number">39</span>);
 map.setCenter(position); <span class="hljs-comment">//设置中心点</span>
 <span class="hljs-keyword">var</span> currentCenter = map.getCenter(); <span class="hljs-comment">//获取当前中心点</span>
@@ -294,7 +294,7 @@ map.setZoomAndCenter(<span class="hljs-number">14</span>, [<span class="hljs-num
 <span class="hljs-comment">// 无参数，默认包括所有覆盖物的情况</span>
 map.setFitView();
 <span class="hljs-comment">// 传入覆盖物数组，仅包括polyline和marker1的情况</span>
-map.setFitView([polyline,marker1])</code></pre>
+map.setFitView([polyline,marker1])</code></pre></div>
 
 <p>更多参数：<a href="http://lbs.amap.com/api/javascript-api/reference/map" target="_blank" rel="noopener">http://lbs.amap.com/api/javascript-api/reference/map</a></p>
 </li>
@@ -302,7 +302,7 @@ map.setFitView([polyline,marker1])</code></pre>
 <h3 id="覆盖物"><a href="#覆盖物" class="headerlink" title="覆盖物"></a>覆盖物</h3><ul>
 <li>点标记Marker（灵活点标记ElasticMarker、文本标记Text、原点标记CircleMarker）</li>
 </ul>
-<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> marker = <span class="hljs-keyword">new</span> AMap.Marker(&#123;
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> marker = <span class="hljs-keyword">new</span> AMap.Marker(&#123;
       icon: <span class="hljs-string">"http://webapi.amap.com/theme/v1.3/markers/n/mark_b.png"</span>,  <span class="hljs-comment">//添加 Icon 图标 URL</span>
       <span class="hljs-comment">//position: new AMap.LngLat(116.39, 39.9),   // 经纬度对象</span>
       position:[<span class="hljs-number">116.39</span>, <span class="hljs-number">39.9</span>]  <span class="hljs-comment">//经纬度数组</span>
@@ -312,31 +312,31 @@ map.remove(marker);<span class="hljs-comment">//移除点标记</span>
 
 <span class="hljs-comment">//一次添加多个</span>
 <span class="hljs-keyword">var</span> markerList = [marker1, marker2, marker3];
-map.add(markerList);</code></pre>
+map.add(markerList);</code></pre></div>
 
 <ul>
 <li><p>点标记、矢量图形、信息窗体等，均可以使用<code>add</code>方法添加 </p>
 </li>
 <li><p>获取覆盖物</p>
-<pre><code class="hljs javascript"><span class="hljs-comment">//getAllOverlays(type)方法获取已经添加的覆盖物。其中type参数类型包括marker、circle、polyline、polygon，缺省是返回以上所有类型所有覆盖物</span>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">//getAllOverlays(type)方法获取已经添加的覆盖物。其中type参数类型包括marker、circle、polyline、polygon，缺省是返回以上所有类型所有覆盖物</span>
 <span class="hljs-comment">// 获取已经添加的覆盖物</span>
 map.getAllOverlays();
 <span class="hljs-comment">// 获取已经添加的marker</span>
-map.getAllOverlays(<span class="hljs-string">'marker'</span>);</code></pre>
+map.getAllOverlays(<span class="hljs-string">'marker'</span>);</code></pre></div>
 </li>
 <li><p>移出覆盖物</p>
-<pre><code class="hljs javascript"><span class="hljs-comment">// 使用remove方法移除覆盖物，参数可以为单个覆盖物对象，也可以是一个包括多个覆盖物的数组</span>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 使用remove方法移除覆盖物，参数可以为单个覆盖物对象，也可以是一个包括多个覆盖物的数组</span>
 <span class="hljs-comment">// 单独移除点标记</span>
 map.remove(marker);
 <span class="hljs-comment">// 同时移除点标记和矢量圆形</span>
 map.remove([marker,circle]);
 <span class="hljs-comment">// 使用clearMap方法删除所有覆盖物</span>
-map.clearMap();</code></pre>
+map.clearMap();</code></pre></div>
 </li>
 <li><p>JS API 提供的Map、点标记、矢量图形的实例均支持事件，鼠标或者触摸操作均会触发相应的事件。通过给点标记绑定<code>click</code>事件来简单了解<a href="http://lbs.amap.com/api/javascript-api/guide/events/map_overlay" target="_blank" rel="noopener">事件系统</a>和<a href="http://lbs.amap.com/api/javascript-api/guide/overlays/infowindow" target="_blank" rel="noopener">信息窗体</a>的基本使用： </p>
 </li>
 </ul>
-<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> infoWindow = <span class="hljs-keyword">new</span> AMap.InfoWindow(&#123; <span class="hljs-comment">//创建信息窗体</span>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> infoWindow = <span class="hljs-keyword">new</span> AMap.InfoWindow(&#123; <span class="hljs-comment">//创建信息窗体</span>
     isCustom: <span class="hljs-literal">true</span>,  <span class="hljs-comment">//使用自定义窗体</span>
     content:<span class="hljs-string">'&lt;div&gt;信息窗体&lt;/div&gt;'</span>, <span class="hljs-comment">//信息窗体的内容可以是任意html片段</span>
     offset: <span class="hljs-keyword">new</span> AMap.Pixel(<span class="hljs-number">16</span>, <span class="hljs-number">-45</span>)
@@ -349,11 +349,11 @@ map.clearMap();</code></pre>
     position: [<span class="hljs-number">116.481181</span>, <span class="hljs-number">39.989792</span>]
 &#125;)
 map.add(marker);
-marker.on(<span class="hljs-string">'click'</span>,onMarkerClick);<span class="hljs-comment">//绑定click事件</span></code></pre>
+marker.on(<span class="hljs-string">'click'</span>,onMarkerClick);<span class="hljs-comment">//绑定click事件</span></code></pre></div>
 
 <ul>
 <li><p>自定义Icon</p>
-<pre><code class="hljs javascript"><span class="hljs-comment">// 创建 AMap.Icon 实例：</span>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 创建 AMap.Icon 实例：</span>
 <span class="hljs-keyword">var</span> icon = <span class="hljs-keyword">new</span> AMap.Icon(&#123;
     size: <span class="hljs-keyword">new</span> AMap.Size(<span class="hljs-number">40</span>, <span class="hljs-number">50</span>),,    <span class="hljs-comment">// 图标尺寸</span>
     image: <span class="hljs-string">'//webapi.amap.com/theme/v1.3/images/newpc/way_btn2.png'</span>,  <span class="hljs-comment">// Icon的图像</span>
@@ -373,14 +373,14 @@ marker.on(<span class="hljs-string">'click'</span>,onMarkerClick);<span class="h
 map.add(marker);
 
 <span class="hljs-comment">//向已创建好的 Marker 添加 Icon</span>
-<span class="hljs-comment">//marker.setIcon(icon);</span></code></pre>
+<span class="hljs-comment">//marker.setIcon(icon);</span></code></pre></div>
 
 </li>
 </ul>
 <h3 id="信息窗体InfoWindow"><a href="#信息窗体InfoWindow" class="headerlink" title="信息窗体InfoWindow"></a>信息窗体InfoWindow</h3><ul>
 <li>默认信息窗体</li>
 </ul>
-<pre><code class="hljs javascript"><span class="hljs-comment">// 信息窗体的内容</span>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 信息窗体的内容</span>
 <span class="hljs-keyword">var</span> content = [
     <span class="hljs-string">"&lt;div&gt;&lt;img src="</span>\<span class="hljs-string">""</span> http:=<span class="hljs-string">""</span> webapi.amap.com=<span class="hljs-string">""</span> images=<span class="hljs-string">""</span> autonavi.png=<span class="hljs-string">""</span> \<span class="hljs-string">"="</span><span class="hljs-string">"&gt; "</span>,
     <span class="hljs-string">"&lt;div style="</span>\<span class="hljs-string">"padding:0px"</span> <span class="hljs-number">0</span>px=<span class="hljs-string">""</span> <span class="hljs-number">4</span>px;\<span class="hljs-string">"="</span><span class="hljs-string">"&gt;&lt;b&gt;高德软件有限公司&lt;/b&gt;"</span>,
@@ -394,11 +394,11 @@ map.add(marker);
 &#125;);
 	
 <span class="hljs-comment">// 打开信息窗体</span>
-infoWindow.open(map);</code></pre>
+infoWindow.open(map);</code></pre></div>
 
 <ul>
 <li><p>自定义信息窗体</p>
-<pre><code class="hljs javascript"><span class="hljs-comment">// 折线的节点坐标数组，每个元素为 AMap.LngLat 对象</span>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 折线的节点坐标数组，每个元素为 AMap.LngLat 对象</span>
 <span class="hljs-keyword">var</span> content = [
     <span class="hljs-string">"&lt;div&gt;&lt;img src="</span>\<span class="hljs-string">""</span> http:=<span class="hljs-string">""</span> webapi.amap.com=<span class="hljs-string">""</span> images=<span class="hljs-string">""</span> autonavi.png=<span class="hljs-string">""</span> \<span class="hljs-string">"="</span><span class="hljs-string">"&gt; "</span>,
     <span class="hljs-string">"&lt;div style="</span>\<span class="hljs-string">"padding:0px"</span> <span class="hljs-number">0</span>px=<span class="hljs-string">""</span> <span class="hljs-number">4</span>px;\<span class="hljs-string">"="</span><span class="hljs-string">"&gt;&lt;b&gt;高德软件有限公司&lt;/b&gt;"</span>,
@@ -417,14 +417,14 @@ infoWindow.open(map);</code></pre>
    isCustom: <span class="hljs-literal">true</span>,  <span class="hljs-comment">//使用自定义窗体</span>
    content: createInfoWindow(title,content.join(<span class="hljs-string">"&lt;br&gt;"</span>)),  <span class="hljs-comment">//传入 dom 对象，或者 html 字符串</span>
    offset: <span class="hljs-keyword">new</span> AMap.Pixel(<span class="hljs-number">16</span>, <span class="hljs-number">-50</span>)<span class="hljs-comment">//偏移量 偏移量为（0,0）时自定义内容底部中心为基准点与经纬度坐标对齐</span>
-&#125;);</code></pre>
+&#125;);</code></pre></div>
 </li>
 <li><p>信息窗体的打开与关闭</p>
-<pre><code class="hljs javascript"><span class="hljs-comment">// 在指定位置打开已创建的信息窗体</span>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 在指定位置打开已创建的信息窗体</span>
 <span class="hljs-keyword">var</span> position = <span class="hljs-keyword">new</span> AMap.LngLat(<span class="hljs-number">116.39</span>, <span class="hljs-number">39.9</span>);
 infoWindow.open(map, position);
 <span class="hljs-comment">// 关闭信息窗体</span>
-infoWindow.close();</code></pre>
+infoWindow.close();</code></pre></div>
 </li>
 <li><p>信息窗体的事件</p>
 </li>
@@ -436,7 +436,7 @@ infoWindow.close();</code></pre>
 </li>
 </ul>
 <h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><p>异步加载指的是在 JS API 加载完成之后，在需要使用到某个插件的时候，通过<code>AMap.plugin</code>方法按需引入插件，在<code>plugin</code>回调之后使用插件功能 </p>
-<pre><code class="hljs javascript">&lt;script type=<span class="hljs-string">"text/javascript"</span> src=<span class="hljs-string">"http://webapi.amap.com/maps?v=1.4.7&amp;key=您申请的key值"</span>&gt;&lt;<span class="hljs-regexp">/script&gt; </span>
+<div class="hljs"><pre><code class="hljs javascript">&lt;script type=<span class="hljs-string">"text/javascript"</span> src=<span class="hljs-string">"http://webapi.amap.com/maps?v=1.4.7&amp;key=您申请的key值"</span>&gt;&lt;<span class="hljs-regexp">/script&gt; </span>
 <span class="hljs-regexp">&lt;script type="text/</span>javascript<span class="hljs-string">" &gt;</span>
 <span class="hljs-string">    var map = new AMap.Map('container',&#123;</span>
 <span class="hljs-string">        zoom:12,</span>
@@ -454,11 +454,11 @@ infoWindow.close();</code></pre>
 <span class="hljs-string">      map.addControl(toolbar);</span>
 <span class="hljs-string">      var driving = new AMap.Driving();//驾车路线规划</span>
 <span class="hljs-string">      driving.search(/*参数*/)</span>
-<span class="hljs-string">&#125;);</span></code></pre>
+<span class="hljs-string">&#125;);</span></code></pre></div>
 
 <h3 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h3><ul>
 <li><p>Map或覆盖物对象的on、off方法</p>
-<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> map = <span class="hljs-keyword">new</span> AMap.Map(<span class="hljs-string">"container"</span>);
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> map = <span class="hljs-keyword">new</span> AMap.Map(<span class="hljs-string">"container"</span>);
 <span class="hljs-keyword">var</span> clickHandler = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>&#123;
   alert(<span class="hljs-string">'您在[ '</span>+e.lnglat.getLng()+<span class="hljs-string">','</span>+e.lnglat.getLat()+<span class="hljs-string">' ]的位置点击了地图！'</span>);
 &#125;;
@@ -466,11 +466,11 @@ infoWindow.close();</code></pre>
 <span class="hljs-comment">// 绑定事件</span>
 map.on(<span class="hljs-string">'click'</span>, clickHandler);
 <span class="hljs-comment">// 解绑事件</span>
-map.off(<span class="hljs-string">'click'</span>, clickHandler);</code></pre>
+map.off(<span class="hljs-string">'click'</span>, clickHandler);</code></pre></div>
 </li>
 <li><p>MapsEvent 对象</p>
 <p>对于 Map、覆盖物、叠加层对象的鼠标、触屏绑定事件回调时，会返回 <code>MapsEvent</code> 对象。该对象包含触发的对象目标、触发所在经纬度等信息： </p>
-<pre><code class="hljs javascript">map.on(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">ev</span>) </span>&#123;
+<div class="hljs"><pre><code class="hljs javascript">map.on(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">ev</span>) </span>&#123;
   <span class="hljs-comment">// 触发事件的对象</span>
   <span class="hljs-keyword">var</span> target = ev.target;
   
@@ -482,10 +482,10 @@ map.off(<span class="hljs-string">'click'</span>, clickHandler);</code></pre>
   
   <span class="hljs-comment">// 触发事件类型</span>
   <span class="hljs-keyword">var</span> type = ev.type;
-&#125;);</code></pre>
+&#125;);</code></pre></div>
 </li>
 <li><p>地图事件</p>
-<pre><code class="hljs javascript">地图加载完成  complete
+<div class="hljs"><pre><code class="hljs javascript">地图加载完成  complete
 地图缩放等级改变  zoomstart、zoomend
 地图中心点移动  mapmove、movestart、moveend
 地图容器尺寸改变  	resize
@@ -499,10 +499,10 @@ map.off(<span class="hljs-string">'click'</span>, clickHandler);</code></pre>
                     mousewheel、
                     rightclick
                     
-触屏点击		touchstart、touchmove、touchend</code></pre>
+触屏点击		touchstart、touchmove、touchend</code></pre></div>
 </li>
 <li><p>覆盖物事件</p>
-<pre><code class="hljs autoit">Marker、Text 类对象发生移动   moving、moveend、movealong
+<div class="hljs"><pre><code class="hljs autoit">Marker、Text 类对象发生移动   moving、moveend、movealong
 矢量图形显示、隐藏	hide、show
 ContextMenu 类对象打开关闭		open、close
 鼠标按下及移动等	 click、
@@ -515,7 +515,7 @@ ContextMenu 类对象打开关闭		open、close
                     <span class="hljs-built_in">mousewheel</span>、
                     rightclick
 
-触屏点击	touchstart、 touchmove、 touchend</code></pre>
+触屏点击	touchstart、 touchmove、 touchend</code></pre></div>
 
 </li>
 </ul>

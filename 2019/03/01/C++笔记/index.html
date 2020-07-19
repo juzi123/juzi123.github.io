@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
   
 
   
@@ -226,7 +226,7 @@
 </ul>
 <p>IO对象无拷贝或赋值</p>
 <p>条件状态（condition state）</p>
-<pre><code class="hljs css"><span class="hljs-selector-tag">strm</span><span class="hljs-selector-pseudo">::iostate</span>		提供了表达条件状态的完整功能
+<div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-tag">strm</span><span class="hljs-selector-pseudo">::iostate</span>		提供了表达条件状态的完整功能
 <span class="hljs-selector-tag">strm</span><span class="hljs-selector-pseudo">::badbit</span>		流已崩溃
 <span class="hljs-selector-tag">strm</span><span class="hljs-selector-pseudo">::failbit</span>		<span class="hljs-selector-tag">IO</span>操作失败
 <span class="hljs-selector-tag">strm</span><span class="hljs-selector-pseudo">::eofbit</span>		流到达了文件末尾
@@ -238,7 +238,7 @@
 <span class="hljs-selector-tag">s</span><span class="hljs-selector-class">.clear</span>()			将所有条件状态位复位，返回<span class="hljs-selector-tag">void</span>
 <span class="hljs-selector-tag">s</span><span class="hljs-selector-class">.clear</span>(<span class="hljs-selector-tag">flags</span>)		
 <span class="hljs-selector-tag">s</span><span class="hljs-selector-class">.setstate</span>(<span class="hljs-selector-tag">flags</span>)
-<span class="hljs-selector-tag">s</span><span class="hljs-selector-class">.rdstate</span>()			返回当前条件状态</code></pre>
+<span class="hljs-selector-tag">s</span><span class="hljs-selector-class">.rdstate</span>()			返回当前条件状态</code></pre></div>
 
 
 
@@ -246,12 +246,12 @@
 <p>unitbuf    每次输出后都刷新缓冲区</p>
 <p>nounitbuf    重置流，使用正常的刷新机制</p>
 <p>文件模式（file mode）</p>
-<h2 id="顺序容器（sequential-container）"><a href="#顺序容器（sequential-container）" class="headerlink" title="顺序容器（sequential container）"></a>顺序容器（sequential container）</h2><pre><code class="hljs smali">vector			可变大小数组，通常使用vector
+<h2 id="顺序容器（sequential-container）"><a href="#顺序容器（sequential-container）" class="headerlink" title="顺序容器（sequential container）"></a>顺序容器（sequential container）</h2><div class="hljs"><pre><code class="hljs smali">vector			可变大小数组，通常使用vector
 deque			双端队列
 list			双向列表
 forward_list	 单项列表
 array			固定大小数组
-string			字符容器，与vector类似</code></pre>
+string			字符容器，与vector类似</code></pre></div>
 
 
 

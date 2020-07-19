@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
   
 
   
@@ -204,7 +204,7 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h3 id="强制转换"><a href="#强制转换" class="headerlink" title="强制转换"></a>强制转换</h3><pre><code class="hljs javascript"><span class="hljs-comment">// 数值：转换后还是原来的值</span>
+              <h3 id="强制转换"><a href="#强制转换" class="headerlink" title="强制转换"></a>强制转换</h3><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 数值：转换后还是原来的值</span>
 <span class="hljs-built_in">Number</span>(<span class="hljs-number">324</span>) <span class="hljs-comment">// 324</span>
 <span class="hljs-comment">// 字符串：如果可以被解析为数值，则转换为相应的数值</span>
 <span class="hljs-built_in">Number</span>(<span class="hljs-string">'324'</span>) <span class="hljs-comment">// 324</span>
@@ -245,9 +245,9 @@
 <span class="hljs-built_in">Boolean</span>(<span class="hljs-string">''</span>) <span class="hljs-comment">// false</span>
 <span class="hljs-built_in">Boolean</span>(&#123;&#125;) <span class="hljs-comment">// true</span>
 <span class="hljs-built_in">Boolean</span>([]) <span class="hljs-comment">// true</span>
-<span class="hljs-built_in">Boolean</span>(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Boolean</span>(<span class="hljs-literal">false</span>)) <span class="hljs-comment">// true</span></code></pre>
+<span class="hljs-built_in">Boolean</span>(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Boolean</span>(<span class="hljs-literal">false</span>)) <span class="hljs-comment">// true</span></code></pre></div>
 
-<h3 id="自动转换"><a href="#自动转换" class="headerlink" title="自动转换"></a>自动转换</h3><pre><code class="hljs javascript"><span class="hljs-number">123</span> + <span class="hljs-string">'abc'</span> <span class="hljs-comment">// "123abc"</span>
+<h3 id="自动转换"><a href="#自动转换" class="headerlink" title="自动转换"></a>自动转换</h3><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-number">123</span> + <span class="hljs-string">'abc'</span> <span class="hljs-comment">// "123abc"</span>
 
 <span class="hljs-keyword">if</span> (<span class="hljs-string">'abc'</span>) &#123;
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'hello'</span>)
@@ -286,9 +286,9 @@ obj.width + <span class="hljs-number">20</span> <span class="hljs-comment">// "1
 +<span class="hljs-string">'abc'</span> <span class="hljs-comment">// NaN</span>
 -<span class="hljs-string">'abc'</span> <span class="hljs-comment">// NaN</span>
 +<span class="hljs-literal">true</span> <span class="hljs-comment">// 1</span>
--<span class="hljs-literal">false</span> <span class="hljs-comment">// 0</span></code></pre>
+-<span class="hljs-literal">false</span> <span class="hljs-comment">// 0</span></code></pre></div>
 
-<h3 id="错误处理机制"><a href="#错误处理机制" class="headerlink" title="错误处理机制"></a>错误处理机制</h3><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> err = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'出错了'</span>);
+<h3 id="错误处理机制"><a href="#错误处理机制" class="headerlink" title="错误处理机制"></a>错误处理机制</h3><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> err = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'出错了'</span>);
 err.message <span class="hljs-comment">// "出错了"</span>
 
 <span class="hljs-comment">//SyntaxError 解析代码时发生的语法错误</span>
@@ -331,9 +331,9 @@ openFile();
   handleError(e);
 &#125; <span class="hljs-keyword">finally</span> &#123;
   closeFile();
-&#125;</code></pre>
+&#125;</code></pre></div>
 
-<pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doAction</span>(<span class="hljs-params">action</span>) </span>&#123;
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doAction</span>(<span class="hljs-params">action</span>) </span>&#123;
   <span class="hljs-keyword">var</span> actions = &#123;
     <span class="hljs-string">'hack'</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
       <span class="hljs-keyword">return</span> <span class="hljs-string">'hack'</span>;
@@ -352,7 +352,7 @@ openFile();
 
   <span class="hljs-keyword">return</span> actions[action]();
 &#125;
-<span class="hljs-comment">//switch..case结构建议用对象结构代替</span></code></pre>
+<span class="hljs-comment">//switch..case结构建议用对象结构代替</span></code></pre></div>
 
 
 

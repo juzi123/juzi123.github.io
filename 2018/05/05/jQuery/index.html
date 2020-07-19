@@ -26,7 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
   
 
   
@@ -204,13 +204,13 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h4 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h4><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> dom = &#123;&#125;
+              <h4 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h4><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> dom = &#123;&#125;
 dom.getSiblings(node)
-dom.addClass(node, &#123;<span class="hljs-attr">a</span>:<span class="hljs-literal">true</span>,<span class="hljs-attr">b</span>:<span class="hljs-literal">false</span>&#125;)</code></pre>
+dom.addClass(node, &#123;<span class="hljs-attr">a</span>:<span class="hljs-literal">true</span>,<span class="hljs-attr">b</span>:<span class="hljs-literal">false</span>&#125;)</code></pre></div>
 
 <a id="more"></a>
 
-<h4 id="获取兄弟结点的方法"><a href="#获取兄弟结点的方法" class="headerlink" title="获取兄弟结点的方法"></a>获取兄弟结点的方法</h4><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSiblings</span>(<span class="hljs-params">node</span>)</span>&#123;
+<h4 id="获取兄弟结点的方法"><a href="#获取兄弟结点的方法" class="headerlink" title="获取兄弟结点的方法"></a>获取兄弟结点的方法</h4><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSiblings</span>(<span class="hljs-params">node</span>)</span>&#123;
     <span class="hljs-keyword">var</span> allChildren = node.parentNode.children
     
     <span class="hljs-keyword">var</span> array = &#123;
@@ -223,9 +223,9 @@ dom.addClass(node, &#123;<span class="hljs-attr">a</span>:<span class="hljs-lite
         &#125;
     &#125;
     <span class="hljs-keyword">return</span> array
-&#125;</code></pre>
+&#125;</code></pre></div>
 
-<h4 id="添加类的方法"><a href="#添加类的方法" class="headerlink" title="添加类的方法"></a>添加类的方法</h4><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addClass</span>(<span class="hljs-params">node, classes</span>)</span>&#123;
+<h4 id="添加类的方法"><a href="#添加类的方法" class="headerlink" title="添加类的方法"></a>添加类的方法</h4><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addClass</span>(<span class="hljs-params">node, classes</span>)</span>&#123;
     <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> key <span class="hljs-keyword">in</span> classes)&#123;
         <span class="hljs-keyword">var</span> value = classes[key]
         <span class="hljs-keyword">if</span>(value) &#123;
@@ -239,14 +239,14 @@ dom.addClass(node, &#123;<span class="hljs-attr">a</span>:<span class="hljs-lite
 <span class="hljs-comment">        */</span>
     &#125;
 &#125;
-addClass(item3, &#123;<span class="hljs-attr">a</span>:<span class="hljs-literal">true</span>,<span class="hljs-attr">b</span>:<span class="hljs-literal">false</span>,<span class="hljs-attr">c</span>:<span class="hljs-literal">true</span>&#125;) <span class="hljs-comment">//添加为true的类，删除为false的类</span></code></pre>
+addClass(item3, &#123;<span class="hljs-attr">a</span>:<span class="hljs-literal">true</span>,<span class="hljs-attr">b</span>:<span class="hljs-literal">false</span>,<span class="hljs-attr">c</span>:<span class="hljs-literal">true</span>&#125;) <span class="hljs-comment">//添加为true的类，删除为false的类</span></code></pre></div>
 
 <h4 id="将node放在前面的方法"><a href="#将node放在前面的方法" class="headerlink" title="将node放在前面的方法"></a>将node放在前面的方法</h4><ul>
 <li><p>拓展Node接口</p>
 <p>直接在Node.prototype上添加函数</p>
 </li>
 <li><p>新的接口BetterNode</p>
-<pre><code class="hljs javascript"><span class="hljs-comment">//无侵入</span>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">//无侵入</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Node2</span>(<span class="hljs-params">node</span>)</span>&#123;
     <span class="hljs-keyword">return</span> &#123;
         element: node,
@@ -261,11 +261,11 @@ addClass(item3, &#123;<span class="hljs-attr">a</span>:<span class="hljs-literal
 <span class="hljs-keyword">let</span> node = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'x'</span>)
 <span class="hljs-keyword">let</span> node2 = Node2(node)
 node2.getSiblings()
-node2.addClass()</code></pre>
+node2.addClass()</code></pre></div>
 
 </li>
 </ul>
-<h4 id="给-Node2-改个名字"><a href="#给-Node2-改个名字" class="headerlink" title="给 Node2 改个名字"></a>给 Node2 改个名字</h4><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">jQuery</span>(<span class="hljs-params">nodeOrSelector</span>)</span>&#123;
+<h4 id="给-Node2-改个名字"><a href="#给-Node2-改个名字" class="headerlink" title="给 Node2 改个名字"></a>给 Node2 改个名字</h4><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">jQuery</span>(<span class="hljs-params">nodeOrSelector</span>)</span>&#123;
     <span class="hljs-keyword">let</span> node
     <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> nodeOrSelector === <span class="hljs-string">'string'</span>)&#123;
         node = <span class="hljs-built_in">document</span>.querySelector(nodeOrSelector)
@@ -292,10 +292,10 @@ node2.addClass()</code></pre>
             classes.forEach( <span class="hljs-function">(<span class="hljs-params">value</span>) =&gt;</span> node.classList.add(value) )
         &#125;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
-<h4 id="再给个缩写"><a href="#再给个缩写" class="headerlink" title="再给个缩写"></a>再给个缩写</h4><pre><code class="hljs javascript"><span class="hljs-built_in">window</span>.$ = jQuery</code></pre>
-<h4 id="多个节点"><a href="#多个节点" class="headerlink" title="多个节点"></a>多个节点</h4><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">jQuery</span>(<span class="hljs-params">nodeOrSelector</span>)</span>&#123;
+<h4 id="再给个缩写"><a href="#再给个缩写" class="headerlink" title="再给个缩写"></a>再给个缩写</h4><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-built_in">window</span>.$ = jQuery</code></pre></div>
+<h4 id="多个节点"><a href="#多个节点" class="headerlink" title="多个节点"></a>多个节点</h4><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">jQuery</span>(<span class="hljs-params">nodeOrSelector</span>)</span>&#123;
     <span class="hljs-keyword">let</span> nodes = &#123;&#125;
     <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> nodeOrSelector === <span class="hljs-string">'string'</span>)&#123;
     	<span class="hljs-keyword">let</span> temp = <span class="hljs-built_in">document</span>.querySelectorAll(nodeOrSelector) <span class="hljs-comment">//伪数组</span>
@@ -351,7 +351,7 @@ node2.addClass()</code></pre>
 &#125;
 
 <span class="hljs-keyword">var</span> node2 = jQuery(<span class="hljs-string">'ul &gt; li'</span>)
-node2.addClass([<span class="hljs-string">'blue'</span>])</code></pre>
+node2.addClass([<span class="hljs-string">'blue'</span>])</code></pre></div>
 
 
             </article>

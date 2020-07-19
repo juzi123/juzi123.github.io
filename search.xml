@@ -65,6 +65,7 @@ z  = az * <span class="hljs-built_in">sin</span>(theta/<span class="hljs-number"
 <p>操作集</p>
 ]]></content>
       <categories>
+        <category>笔记</category>
         <category>数据结构</category>
       </categories>
       <tags>
@@ -780,74 +781,166 @@ ctx.fillStyle = <span class="hljs-string">"rgba(255,165,0,1)"</span>;</code></pr
       </tags>
   </entry>
   <entry>
-    <title>css的居中方法</title>
+    <title>css常用布局方法</title>
     <url>/2018/03/11/css%E7%9A%84%E5%B1%85%E4%B8%AD/</url>
-    <content><![CDATA[<h3 id="一、水平居中"><a href="#一、水平居中" class="headerlink" title="一、水平居中"></a>一、水平居中</h3><ol>
-<li><p>行内元素居中</p>
-<p>针对行内元素和display属性为inline的块状元素</p>
+    <content><![CDATA[<h1 id="常用布局的实现方法"><a href="#常用布局的实现方法" class="headerlink" title="常用布局的实现方法"></a>常用布局的实现方法</h1><h2 id="一、水平居中"><a href="#一、水平居中" class="headerlink" title="一、水平居中"></a>一、水平居中</h2><h3 id="文本-行内元素-行内块级元素"><a href="#文本-行内元素-行内块级元素" class="headerlink" title="文本/行内元素/行内块级元素"></a>文本/行内元素/行内块级元素</h3><p>针对行内元素和display属性为inline的块状元素</p>
 <p>通过给父元素设置<code>text-align:center</code>实现。</p>
-<pre><code class="hljs css"><span class="hljs-selector-tag">p</span>&#123;
+<div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-tag">p</span>&#123;
     <span class="hljs-attribute">text-align</span>: center;
 &#125;
 <span class="hljs-selector-class">.div1</span>&#123;
     <span class="hljs-attribute">display</span>: inline;
     <span class="hljs-attribute">text-align</span>: center;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
-<a id="more"></a>
-
-<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"div1"</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"div2"</span>&gt;</span>11111<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>22222<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></code></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></code></pre></div>
 
-<p>前提：子元素不能受到float影响</p>
-</li>
-<li><p>块状元素居中</p>
-<ul>
-<li><p>定宽块状元素（width为固定值）</p>
-<p>设置元素的左右margin为auto。</p>
-<pre><code class="hljs css"><span class="hljs-selector-class">.div2</span>&#123;
-    <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
-    <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span> auto;
-&#125;</code></pre>
-</li>
-<li><p>不定宽块状元素</p>
-<ul>
-<li><p>将块级元素的display设置成inline，然后使用<code>text-align:center</code>实现</p>
-</li>
-<li><p>给父元素设置float，然后给父元素设置<code>position:relative</code>和<code>left:50%</code> 来实现</p>
-<pre><code class="hljs css"><span class="hljs-selector-class">.div1</span>&#123;
-    <span class="hljs-attribute">float</span>: left;
-    <span class="hljs-attribute">position</span>: relative;
-    <span class="hljs-attribute">left</span>: <span class="hljs-number">50%</span>;
+<p>子元素不能受到float影响；属性会继承影响到后代行内内容； 如果子元素宽度大于父元素宽度则无效，只有后代行内内容中宽度小于设置text-align属性的元素宽度的时候，才会水平居中  </p>
+<h3 id="单个块级元素"><a href="#单个块级元素" class="headerlink" title="单个块级元素"></a>单个块级元素</h3><p> 在margin有节余的同时如果左右margin设置了auto，将会均分剩余空间。另外，如果上下的margin设置了auto，其计算值为0 </p>
+<div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-id">#son</span>&#123;
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>; <span class="hljs-comment">/*必须定宽*/</span>
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
+&#125;</code></pre></div>
+
+<h3 id="多个块级元素"><a href="#多个块级元素" class="headerlink" title="多个块级元素"></a>多个块级元素</h3><div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-id">#parent</span>&#123;
+    <span class="hljs-attribute">text-align</span>: center;
 &#125;
-<span class="hljs-selector-class">.div2</span>&#123;
-    <span class="hljs-attribute">position</span>: relative;
-    <span class="hljs-attribute">left</span>: -<span class="hljs-number">50%</span>;
-&#125;</code></pre>
-</li>
-<li><p>将要显示的元素加入到table标签中，然后设置table标签的左右margin值为auto；或使用display：table。</p>
-<pre><code class="hljs css"><span class="hljs-selector-class">.div1</span>&#123;
-    <span class="hljs-attribute">display</span>: table;
-    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0px</span> auto;
-&#125;</code></pre>
+<span class="hljs-selector-class">.son</span>&#123;
+    <span class="hljs-attribute">display</span>: inline-block; <span class="hljs-comment">/*改为行内或者行内块级形式，以达到text-align对其生效*/</span>
+&#125;</code></pre></div>
 
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="二、垂直居中"><a href="#二、垂直居中" class="headerlink" title="二、垂直居中"></a>二、垂直居中</h3><ol>
-<li>要用的时候在说</li>
-</ol>
+<h3 id="绝对定位"><a href="#绝对定位" class="headerlink" title="绝对定位"></a>绝对定位</h3><p>原理：子绝父相，top、right、bottom、left的值是相对于父元素尺寸的，然后margin或者transform是相对于自身尺寸的，组合使用达到水平居中的目的 </p>
+<div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-id">#parent</span>&#123;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;  <span class="hljs-comment">/*定宽*/</span>
+    <span class="hljs-attribute">position</span>: relative;  <span class="hljs-comment">/*父相*/</span>
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f00</span>;
+&#125;
+<span class="hljs-selector-id">#son</span>&#123;
+    <span class="hljs-attribute">position</span>: absolute;  <span class="hljs-comment">/*子绝*/</span>
+    <span class="hljs-attribute">left</span>: <span class="hljs-number">50%</span>;  <span class="hljs-comment">/*父元素宽度一半,这里等同于left:100px*/</span>
+    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateX</span>(-<span class="hljs-number">50%</span>);  <span class="hljs-comment">/*自身宽度一半,等同于margin-left: -50px;*/</span>
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;  <span class="hljs-comment">/*定宽*/</span>
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#00ff00</span>;
+&#125;</code></pre></div>
+
+<h3 id="任意个元素-flex"><a href="#任意个元素-flex" class="headerlink" title="任意个元素  flex"></a>任意个元素  flex</h3><div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-id">#parent</span>&#123;
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">justify-content</span>: center;
+&#125;</code></pre></div>
+
+<h2 id="二、垂直居中"><a href="#二、垂直居中" class="headerlink" title="二、垂直居中"></a>二、垂直居中</h2><h3 id="单行文本-行内元素-行内块级元素"><a href="#单行文本-行内元素-行内块级元素" class="headerlink" title="单行文本/行内元素/行内块级元素"></a>单行文本/行内元素/行内块级元素</h3><p> line-height的最终表现是通过inline box实现的，而无论inline box所占据的高度是多少（无论比文字大还是比文字小），其占据的空间都是与文字内容公用水平中垂线的。 </p>
+<div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-id">#parent</span>&#123;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">150px</span>;
+    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">150px</span>;  <span class="hljs-comment">/*与height等值*/</span>
+&#125;</code></pre></div>
+
+<h3 id="多行文本-行内元素-行内块级元素"><a href="#多行文本-行内元素-行内块级元素" class="headerlink" title="多行文本/行内元素/行内块级元素"></a>多行文本/行内元素/行内块级元素</h3><div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-id">#parent</span>&#123;  <span class="hljs-comment">/*或者用span把所有文字包裹起来，设置display：inline-block转换成图片的方式解决*/</span>
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">150px</span>;
+    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">30px</span>;  <span class="hljs-comment">/*元素在页面呈现为5行,则line-height的值为height/5*/</span>
+&#125;</code></pre></div>
+
+<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-id">#parent</span>&#123;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">150px</span>;
+    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">150px</span>;
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0</span>;
+&#125;
+<span class="hljs-selector-tag">img</span><span class="hljs-selector-id">#son</span>&#123;<span class="hljs-attribute">vertical-align</span>: middle;&#125; <span class="hljs-comment">/*默认是基线对齐，改为middle*/</span></code></pre></div>
+
+<h3 id="单个块级元素-1"><a href="#单个块级元素-1" class="headerlink" title="单个块级元素"></a>单个块级元素</h3><div class="hljs"><pre><code class="hljs css">&lt;div id="parent"&gt;
+    &lt;div id="son"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+
+<h4 id="table-cell"><a href="#table-cell" class="headerlink" title="table-cell"></a>table-cell</h4><div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-id">#parent</span>&#123;
+    <span class="hljs-attribute">display</span>: table-cell;
+    <span class="hljs-attribute">vertical-align</span>: middle;
+&#125;</code></pre></div>
+
+<p>设置tabl-cell的元素，宽度和高度的值设置百分比无效，需要给它的父元素设置display: table; 才生效；table-cell不感知margin，在父元素上设置table-row等属性，也会使其不感知height；设置float或position会对默认布局造成破坏，可以考虑为之增加一个父div定义float等属性；内容溢出时会自动撑开父元素</p>
+<h4 id="绝对定位-1"><a href="#绝对定位-1" class="headerlink" title="绝对定位"></a>绝对定位</h4><div class="hljs"><pre><code class="hljs css"><span class="hljs-comment">/*原理：子绝父相，top、right、bottom、left的值是相对于父元素尺寸的，然后margin或者transform是相对于自身尺寸的，组合使用达到水平居中的目的*/</span>
+<span class="hljs-selector-id">#parent</span>&#123;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">150px</span>;
+    <span class="hljs-attribute">position</span>: relative;  <span class="hljs-comment">/*父相*/</span>
+&#125;
+<span class="hljs-selector-id">#son</span>&#123;
+    <span class="hljs-attribute">position</span>: absolute;  <span class="hljs-comment">/*子绝*/</span>
+    <span class="hljs-attribute">top</span>: <span class="hljs-number">50%</span>;  <span class="hljs-comment">/*父元素高度一半,这里等同于top:75px;*/</span>
+    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateY</span>(-<span class="hljs-number">50%</span>);  <span class="hljs-comment">/*自身高度一半,这里等同于margin-top:-25px;*/</span>
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">50px</span>;
+&#125;
+
+<span class="hljs-comment">/*优缺点</span>
+<span class="hljs-comment">- 优点：使用margin-top兼容性好；不管是块级还是行内元素都可以实现</span>
+<span class="hljs-comment">- 缺点：代码较多；脱离文档流；使用margin-top需要知道高度值；使用transform兼容性不好（ie9+）*/</span>
+
+或
+
+<span class="hljs-comment">/*原理：当top、bottom为0时,margin-top&amp;bottom会无限延伸占满空间并且平分*/</span>
+<span class="hljs-selector-id">#parent</span>&#123;<span class="hljs-attribute">position</span>: relative;&#125;
+<span class="hljs-selector-id">#son</span>&#123;
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">margin</span>: auto <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">50px</span>;
+&#125;
+
+<span class="hljs-comment">/*优缺点</span>
+<span class="hljs-comment">- 优点：简单;兼容性较好(ie8+)</span>
+<span class="hljs-comment">- 缺点：脱离文档流*/</span></code></pre></div>
+
+<h4 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h4><div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-id">#parent</span>&#123;
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">align-items</span>: center;
+&#125;
+
+或
+
+<span class="hljs-selector-id">#parent</span>&#123;<span class="hljs-attribute">display</span>: flex;&#125;
+<span class="hljs-selector-id">#son</span>&#123;<span class="hljs-attribute">align-self</span>: center;&#125;
+
+或
+<span class="hljs-comment">/*原理：这个尚未搞清楚，应该是flex使margin上下边界无限延伸至剩余空间并平分了*/</span>
+<span class="hljs-selector-id">#parent</span>&#123;<span class="hljs-attribute">display</span>: flex;&#125;
+<span class="hljs-selector-id">#son</span>&#123;<span class="hljs-attribute">margin</span>: auto <span class="hljs-number">0</span>;&#125;</code></pre></div>
+
+<h3 id="任意个元素-flex-1"><a href="#任意个元素-flex-1" class="headerlink" title="任意个元素(flex)"></a>任意个元素(flex)</h3><div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-id">#parent</span>&#123;
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">align-items</span>: center;
+&#125;
+
+或
+
+<span class="hljs-selector-id">#parent</span>&#123;
+    <span class="hljs-attribute">display</span>: flex;
+&#125;
+<span class="hljs-selector-class">.son</span>&#123;
+    <span class="hljs-attribute">align-self</span>: center;
+&#125;
+
+或 
+
+<span class="hljs-selector-id">#parent</span>&#123;
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">flex-direction</span>: column;
+    <span class="hljs-attribute">justify-content</span>: center;
+&#125;</code></pre></div>
+
+
+
+
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p> <a href="https://github.com/Sweet-KK/css-layout" target="_blank" rel="noopener">https://github.com/Sweet-KK/css-layout</a></p>
 ]]></content>
       <categories>
-        <category>笔记</category>
         <category>前端</category>
+        <category>css</category>
       </categories>
       <tags>
         <tag>css</tag>
@@ -4272,11 +4365,11 @@ ContextMenu 类对象打开关闭		open、close
   <entry>
     <title>Axios取消上次请求</title>
     <url>/2020/07/15/Axios%E5%8F%96%E6%B6%88%E4%B8%8A%E6%AC%A1%E8%AF%B7%E6%B1%82/</url>
-    <content><![CDATA[<h1 id="Axios取消上次请求"><a href="#Axios取消上次请求" class="headerlink" title="Axios取消上次请求"></a>Axios取消上次请求</h1><p>用户重复点击发送请求，由于请求速度较慢，导致多次请求的数据在同一个弹窗中显示，数据不匹配。</p>
+    <content><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>用户重复点击发送请求，由于请求速度较慢，导致多次请求的数据在同一个弹窗中显示，数据不匹配。</p>
 <h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><blockquote>
 <p> <a href="https://github.com/axios/axios#axios-api" target="_blank" rel="noopener">Axios文档</a>中提供了取消请求的方法，cancel token API</p>
 </blockquote>
-<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> CancelToken = axios.CancelToken;
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> CancelToken = axios.CancelToken;
 <span class="hljs-keyword">const</span> source = CancelToken.source();
 
 axios.get(<span class="hljs-string">'/user/12345'</span>, &#123;
@@ -4296,10 +4389,10 @@ axios.post(<span class="hljs-string">'/user/12345'</span>, &#123;
 &#125;)
 
 <span class="hljs-comment">// cancel the request (the message parameter is optional)</span>
-source.cancel(<span class="hljs-string">'Operation canceled by the user.'</span>);</code></pre>
+source.cancel(<span class="hljs-string">'Operation canceled by the user.'</span>);</code></pre></div>
 
 <p>You can also create a cancel token by passing an executor function to the <code>CancelToken</code> constructor:</p>
-<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> CancelToken = axios.CancelToken;
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> CancelToken = axios.CancelToken;
 <span class="hljs-keyword">let</span> cancel;
 
 axios.get(<span class="hljs-string">'/user/12345'</span>, &#123;
@@ -4310,12 +4403,12 @@ axios.get(<span class="hljs-string">'/user/12345'</span>, &#123;
 &#125;);
 
 <span class="hljs-comment">// cancel the request</span>
-cancel();</code></pre>
+cancel();</code></pre></div>
 
 <blockquote>
 <p>Note: you can cancel several requests with the same cancel token.</p>
 </blockquote>
-<h2 id="项目实例"><a href="#项目实例" class="headerlink" title="项目实例"></a>项目实例</h2><pre><code class="hljs typescript"><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">"axios"</span>;
+<h2 id="项目实例"><a href="#项目实例" class="headerlink" title="项目实例"></a>项目实例</h2><div class="hljs"><pre><code class="hljs typescript"><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">"axios"</span>;
 <span class="hljs-keyword">import</span> &#123; Vue, Component, Watch &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"vue-property-decorator"</span>;
 <span class="hljs-keyword">const</span> CancelToken = axios.CancelToken;
 
@@ -4342,7 +4435,7 @@ cancel();</code></pre>
            &#125;
         &#125;
     &#125;
-&#125;</code></pre>]]></content>
+&#125;</code></pre></div>]]></content>
       <categories>
         <category>前端</category>
         <category>Axios</category>
@@ -4734,6 +4827,278 @@ string			字符容器，与vector类似</code></pre>
       </categories>
       <tags>
         <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Canvas教程学习</title>
+    <url>/2020/07/19/Canvas%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h2 id="Canvas介绍"><a href="#Canvas介绍" class="headerlink" title="Canvas介绍"></a>Canvas介绍</h2><p><code>&lt;canvas&gt;</code>是一个可以使用脚本(通常为JavaScript)来绘制图形的HTML元素。,它可以用于绘制图表、制作图片构图或者制作简单的(以及<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/A_basic_ray-caster" target="_blank" rel="noopener">不那么简单的</a>)动画. </p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial" target="_blank" rel="noopener">教程链接</a></p>
+<h2 id="基础用法"><a href="#基础用法" class="headerlink" title="基础用法"></a>基础用法</h2><h3 id="Canvas元素"><a href="#Canvas元素" class="headerlink" title="Canvas元素"></a>Canvas元素</h3><div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"tutorial"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"150"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"150"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span></code></pre></div>
+
+<p>Canvas 的默认大小为300像素×150像素，可以使用HTML的高度和宽度属性来自定义Canvas 的尺寸。</p>
+<h3 id="替换内容"><a href="#替换内容" class="headerlink" title="替换内容"></a>替换内容</h3><p>在<code>&lt;canvas&gt;</code>标签中提供了替换内容。不支持<code>&lt;canvas&gt;</code>的浏览器将会忽略容器并在其中渲染后备内容。而支持<code>&lt;canvas&gt;</code>的浏览器将会忽略在容器中包含的内容，并且只是正常渲染canvas。</p>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"stockGraph"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"150"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"150"</span>&gt;</span>
+  current stock price: $3.15 +0.15
+<span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"clock"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"150"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"150"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"images/clock.png"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"150"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"150"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">""</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span></code></pre></div>
+
+<h3 id="渲染上下文"><a href="#渲染上下文" class="headerlink" title="渲染上下文"></a>渲染上下文</h3><p><code>&lt;canvas&gt;</code>元素创造了一个固定大小的画布，它公开了一个或多个<strong>渲染上下文</strong>，其可以用来绘制和处理要展示的内容。</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> canvas = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'tutorial'</span>);
+<span class="hljs-keyword">var</span> ctx = canvas.getContext(<span class="hljs-string">'2d'</span>);</code></pre></div>
+
+<p>第一行通过使用 <code>document.getElementById()</code>方法来为<code>&lt;canvas&gt;</code>元素得到DOM对象。一旦有了元素对象，就可以通过使用它的<code>getContext()</code>方法来访问绘画上下文。</p>
+<h2 id="绘制图形"><a href="#绘制图形" class="headerlink" title="绘制图形"></a>绘制图形</h2><h3 id="栅格"><a href="#栅格" class="headerlink" title="栅格"></a>栅格</h3><p>画布栅格(canvas grid)，起点为左上角（0，0）</p>
+<p><img src="/blogImg/Canvas_default_grid.png" srcset="/img/loading.gif" alt="img"></p>
+<h3 id="绘制矩形"><a href="#绘制矩形" class="headerlink" title="绘制矩形"></a>绘制矩形</h3><p><code>&lt;canvas&gt;</code>只支持两种形式的图形绘制：矩形和路径（由一系列点连成的线段）。</p>
+<p>绘制一个填充的矩形:</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/fillRect" target="_blank" rel="noopener"><code>fillRect(x, y, width, height)</code></a></p>
+<p>绘制一个矩形的边框:</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/strokeRect" target="_blank" rel="noopener"><code>strokeRect(x, y, width, height)</code></a></p>
+<p>清除指定矩形区域，让清除部分完全透明:</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/clearRect" target="_blank" rel="noopener"><code>clearRect(x, y, width, height)</code></a></p>
+<h3 id="绘制路径"><a href="#绘制路径" class="headerlink" title="绘制路径"></a>绘制路径</h3><div class="hljs"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">beginPath</span><span class="hljs-params">()</span></span></code></pre></div>
+
+<p>新建一条路径，生成之后，图形绘制命令被指向到路径上生成路径。</p>
+<div class="hljs"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">closePath</span><span class="hljs-params">()</span></span></code></pre></div>
+
+<p>闭合路径之后图形绘制命令又重新指向到上下文中。</p>
+<div class="hljs"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">stroke</span><span class="hljs-params">()</span></span></code></pre></div>
+
+<p>通过线条来绘制图形轮廓。</p>
+<div class="hljs"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">fill</span><span class="hljs-params">()</span></span></code></pre></div>
+
+<p>通过填充路径的内容区域生成实心的图形。</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 绘制三角形</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">draw</span>(<span class="hljs-params"></span>) </span>&#123;
+  <span class="hljs-keyword">var</span> canvas = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'canvas'</span>);
+  <span class="hljs-keyword">if</span> (canvas.getContext) &#123;
+    <span class="hljs-keyword">var</span> ctx = canvas.getContext(<span class="hljs-string">'2d'</span>);
+
+    ctx.beginPath();
+    ctx.moveTo(<span class="hljs-number">75</span>, <span class="hljs-number">50</span>);
+    ctx.lineTo(<span class="hljs-number">100</span>, <span class="hljs-number">75</span>);
+    ctx.lineTo(<span class="hljs-number">100</span>, <span class="hljs-number">25</span>);
+    ctx.fill();
+  &#125;
+&#125;</code></pre></div>
+
+<div class="hljs"><pre><code class="hljs reasonml">move<span class="hljs-constructor">To(<span class="hljs-params">x</span>, <span class="hljs-params">y</span>)</span></code></pre></div>
+
+<p>将笔触移动到指定的坐标x以及y上。</p>
+<p>当canvas初始化或者<code>beginPath()</code>调用后，你通常会使用<code>moveTo()</code>函数设置起点。我们也能够使用<code>moveTo()</code>绘制一些不连续的路径。看一下下面的笑脸例子。我将用到<code>moveTo()</code>方法（红线处）的地方标记了。</p>
+<h3 id="线"><a href="#线" class="headerlink" title="线"></a>线</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineTo" target="_blank" rel="noopener"><code>lineTo(x, y)</code></a></p>
+<p>绘制一条从当前位置到指定x以及y位置的直线。</p>
+<h3 id="圆弧"><a href="#圆弧" class="headerlink" title="圆弧"></a>圆弧</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/arc" target="_blank" rel="noopener"><code>arc(x, y, radius, startAngle, endAngle, anticlockwise)</code></a></p>
+<p>画一个以（x,y）为圆心的以radius为半径的圆弧（圆），从startAngle开始到endAngle结束，按照anticlockwise给定的方向（默认为顺时针）来生成。</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/arcTo" target="_blank" rel="noopener"><code>arcTo(x1, y1, x2, y2, radius)</code></a></p>
+<p>根据给定的控制点和半径画一段圆弧，再以直线连接两个控制点。</p>
+<h3 id="矩形"><a href="#矩形" class="headerlink" title="矩形"></a>矩形</h3><div class="hljs"><pre><code class="hljs arduino"><span class="hljs-built_in">rect</span>(x, y, <span class="hljs-built_in">width</span>, <span class="hljs-built_in">height</span>)</code></pre></div>
+
+<p>绘制一个左上角坐标为（x,y），宽高为width以及height的矩形。</p>
+<h3 id="组合使用"><a href="#组合使用" class="headerlink" title="组合使用"></a>组合使用</h3><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 封装的一个用于绘制圆角矩形的函数.</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">roundedRect</span>(<span class="hljs-params">ctx, x, y, width, height, radius</span>)</span>&#123;
+  ctx.beginPath();
+  ctx.moveTo(x, y + radius);
+  ctx.lineTo(x, y + height - radius);
+  ctx.quadraticCurveTo(x, y + height, x + radius, y + height);
+  ctx.lineTo(x + width - radius, y + height);
+  ctx.quadraticCurveTo(x + width, y + height, x + width, y + height - radius);
+  ctx.lineTo(x + width, y + radius);
+  ctx.quadraticCurveTo(x + width, y, x + width - radius, y);
+  ctx.lineTo(x + radius, y);
+  ctx.quadraticCurveTo(x, y, x, y + radius);
+  ctx.stroke();
+&#125;</code></pre></div>
+
+<h2 id="Path2D对象"><a href="#Path2D对象" class="headerlink" title="Path2D对象"></a>Path2D对象</h2><p>用来缓存或记录绘画命令，这样你将能快速地回顾路径。</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">draw</span>(<span class="hljs-params"></span>) </span>&#123;
+  <span class="hljs-keyword">var</span> canvas = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'canvas'</span>);
+  <span class="hljs-keyword">if</span> (canvas.getContext)&#123;
+    <span class="hljs-keyword">var</span> ctx = canvas.getContext(<span class="hljs-string">'2d'</span>);
+
+    <span class="hljs-keyword">var</span> rectangle = <span class="hljs-keyword">new</span> Path2D();
+    rectangle.rect(<span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">50</span>, <span class="hljs-number">50</span>);
+
+    <span class="hljs-keyword">var</span> circle = <span class="hljs-keyword">new</span> Path2D();
+    circle.moveTo(<span class="hljs-number">125</span>, <span class="hljs-number">35</span>);
+    circle.arc(<span class="hljs-number">100</span>, <span class="hljs-number">35</span>, <span class="hljs-number">25</span>, <span class="hljs-number">0</span>, <span class="hljs-number">2</span> * <span class="hljs-built_in">Math</span>.PI);
+
+    ctx.stroke(rectangle);
+    ctx.fill(circle);
+  &#125;
+&#125;</code></pre></div>
+
+]]></content>
+      <categories>
+        <category>笔记</category>
+        <category>Canvas</category>
+      </categories>
+      <tags>
+        <tag>Canvas</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在element-ui下拉选项前添加checkbox</title>
+    <url>/2020/07/17/%E5%9C%A8element-ui%E4%B8%8B%E6%8B%89%E9%80%89%E9%A1%B9%E5%89%8D%E6%B7%BB%E5%8A%A0checkbox/</url>
+    <content><![CDATA[<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>在select下拉菜单的选项前添加多选框checkbox，并且有一个全选选项</p>
+<p>效果如下：</p>
+<p><img src="/blogImg/20200717.jpg" srcset="/img/loading.gif" alt=""></p>
+<h2 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h2><p>在el-option选项中嵌入el-checkbox组件</p>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">el-select</span></span>
+<span class="hljs-tag">          <span class="hljs-attr">v-model</span>=<span class="hljs-string">"selectValueArray"</span></span>
+<span class="hljs-tag">          <span class="hljs-attr">multiple</span></span>
+<span class="hljs-tag">          <span class="hljs-attr">collapse-tags</span></span>
+<span class="hljs-tag">          <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"请选择分析专题"</span></span>
+<span class="hljs-tag">          <span class="hljs-attr">class</span>=<span class="hljs-string">"select-with-checkbox"</span></span>
+<span class="hljs-tag">        &gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">el-option</span></span>
+<span class="hljs-tag">            <span class="hljs-attr">v-for</span>=<span class="hljs-string">"item in analysisSubject"</span></span>
+<span class="hljs-tag">            <span class="hljs-attr">class</span>=<span class="hljs-string">"my-select"</span></span>
+<span class="hljs-tag">            <span class="hljs-attr">:key</span>=<span class="hljs-string">"item.value"</span></span>
+<span class="hljs-tag">            <span class="hljs-attr">:value</span>=<span class="hljs-string">"item.value"</span></span>
+<span class="hljs-tag">            <span class="hljs-attr">:disabled</span>=<span class="hljs-string">"item.disabled"</span></span>
+<span class="hljs-tag">          &gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">el-checkbox</span></span>
+<span class="hljs-tag">              <span class="hljs-attr">class</span>=<span class="hljs-string">"inner-checkbox"</span></span>
+<span class="hljs-tag">              <span class="hljs-attr">:disabled</span>=<span class="hljs-string">"item.disabled"</span></span>
+<span class="hljs-tag">              <span class="hljs-attr">v-model</span>=<span class="hljs-string">"item.checked"</span></span>
+<span class="hljs-tag">              @<span class="hljs-attr">change</span>=<span class="hljs-string">"onSelectChange"</span></span>
+<span class="hljs-tag">              &gt;</span>&#123;&#123; item.label &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">el-checkbox</span></span>
+<span class="hljs-tag">            &gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">el-option</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">el-select</span>&gt;</span></code></pre></div>
+
+<p>样式修改</p>
+<div class="hljs"><pre><code class="hljs scss"><span class="hljs-comment">// 屏蔽原有的选中图标</span>
+<span class="hljs-selector-class">.my-select</span><span class="hljs-selector-pseudo">::after</span> &#123;
+  <span class="hljs-attribute">display</span>: none;
+&#125;
+<span class="hljs-comment">// 将checkbox的大小覆盖整个选项</span>
+<span class="hljs-selector-class">.inner-checkbox</span> &#123;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">20px</span>;
+&#125;
+<span class="hljs-comment">// 原有选项padding置0</span>
+<span class="hljs-selector-class">.el-select-dropdown__item</span> &#123;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+&#125;
+<span class="hljs-comment">// 偷懒屏蔽了input中选项的关闭按钮</span>
+<span class="hljs-selector-class">.select-with-checkbox</span> &#123;
+  ::v-deep .el-tag.el-tag--info .el-tag__close &#123;
+    display: none;
+  &#125;
+&#125;</code></pre></div>
+
+<p>TypeScript代码如下：</p>
+<div class="hljs"><pre><code class="hljs typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">class</span> ComplianceAudit <span class="hljs-keyword">extends</span> Vue &#123;  
+  
+  	<span class="hljs-keyword">private</span> selectValueArray: <span class="hljs-built_in">any</span>[] = []; <span class="hljs-comment">// 已选信息数组</span>
+  	<span class="hljs-keyword">private</span> oldSelectValueArray: <span class="hljs-built_in">any</span>[] = []; <span class="hljs-comment">// 记录上次选择的信息数组</span>
+    <span class="hljs-comment">//analysisSubject数组的格式如下：</span>
+    <span class="hljs-keyword">private</span> analysisSubject: <span class="hljs-built_in">any</span>[] = [
+        <span class="hljs-comment">// 选项信息数组</span>
+        &#123;
+          value: <span class="hljs-string">"城镇开发边界"</span>,
+          label: <span class="hljs-string">"城镇开发边界"</span>,
+          checked: <span class="hljs-literal">false</span>
+        &#125;,
+        &#123;
+          value: <span class="hljs-string">"1111"</span>,
+          label: <span class="hljs-string">"2222"</span>,
+          checked: <span class="hljs-literal">false</span>
+        &#125;,
+        &#123; value: <span class="hljs-string">"ALL_SELECT"</span>, label: <span class="hljs-string">"全选"</span>, checked: <span class="hljs-literal">false</span> &#125;
+    ]
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * checkbox修改事件onSelectChange：</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-keyword">private</span> onSelectChange(val: <span class="hljs-built_in">any</span>[]) &#123;
+        <span class="hljs-keyword">this</span>.selectValueArray = [];	<span class="hljs-comment">// 已选信息数组置空</span>
+        <span class="hljs-comment">// allValues为所有选项值的数组</span>
+        <span class="hljs-keyword">const</span> allValues = <span class="hljs-keyword">this</span>.analysisSubject.map(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> &#123;
+          <span class="hljs-keyword">if</span> (item.checked) &#123;
+            <span class="hljs-comment">// 将checked为true的值放入已选信息数组</span>
+            <span class="hljs-keyword">this</span>.selectValueArray.push(item.value);
+          &#125;
+          <span class="hljs-keyword">return</span> item.value;
+        &#125;);
+        <span class="hljs-comment">// 上一次选择的值，进行对比</span>
+        <span class="hljs-keyword">const</span> oldVal =
+          <span class="hljs-keyword">this</span>.oldSelectValueArray.length &gt; <span class="hljs-number">0</span> ? <span class="hljs-keyword">this</span>.oldSelectValueArray : [];
+        <span class="hljs-comment">// 选择全部，这次含有全选项且上次没有</span>
+        <span class="hljs-keyword">if</span> (
+          <span class="hljs-keyword">this</span>.selectValueArray.includes(<span class="hljs-string">"ALL_SELECT"</span>) &amp;&amp;
+          !oldVal.includes(<span class="hljs-string">"ALL_SELECT"</span>)
+        ) &#123;
+          <span class="hljs-keyword">this</span>.selectValueArray = allValues;
+          <span class="hljs-keyword">this</span>.changeCheckboxStatus(<span class="hljs-keyword">this</span>.analysisSubject, <span class="hljs-string">"ALL"</span>, <span class="hljs-literal">true</span>);
+        &#125;
+        <span class="hljs-comment">// 取消全部选中，上次存在全选项，当前没有，则取消全选</span>
+        <span class="hljs-keyword">if</span> (
+          oldVal.includes(<span class="hljs-string">"ALL_SELECT"</span>) &amp;&amp;
+          !<span class="hljs-keyword">this</span>.selectValueArray.includes(<span class="hljs-string">"ALL_SELECT"</span>)
+        ) &#123;
+          <span class="hljs-keyword">this</span>.selectValueArray = [];
+          <span class="hljs-keyword">this</span>.changeCheckboxStatus(<span class="hljs-keyword">this</span>.analysisSubject, <span class="hljs-string">"ALL"</span>, <span class="hljs-literal">false</span>);
+        &#125;
+        <span class="hljs-comment">// 点击非全部选中，需要排除全部选中 以及 当前点击的选项</span>
+        <span class="hljs-comment">// 新老数据都有全部选中</span>
+        <span class="hljs-keyword">if</span> (
+          oldVal.includes(<span class="hljs-string">"ALL_SELECT"</span>) &amp;&amp;
+          <span class="hljs-keyword">this</span>.selectValueArray.includes(<span class="hljs-string">"ALL_SELECT"</span>)
+        ) &#123;
+          <span class="hljs-keyword">const</span> index = <span class="hljs-keyword">this</span>.selectValueArray.indexOf(<span class="hljs-string">"ALL_SELECT"</span>);
+          <span class="hljs-keyword">this</span>.selectValueArray.splice(index, <span class="hljs-number">1</span>); <span class="hljs-comment">// 排除全选选项</span>
+          <span class="hljs-keyword">this</span>.changeCheckboxStatus(<span class="hljs-keyword">this</span>.analysisSubject, <span class="hljs-string">"ALL_SELECT"</span>, <span class="hljs-literal">false</span>);
+        &#125;
+        <span class="hljs-comment">// 全选未选，但是其他选项都全部选上了，则全选选上</span>
+        <span class="hljs-keyword">if</span> (
+          !oldVal.includes(<span class="hljs-string">"ALL_SELECT"</span>) &amp;&amp;
+          !<span class="hljs-keyword">this</span>.selectValueArray.includes(<span class="hljs-string">"ALL_SELECT"</span>)
+        ) &#123;
+          <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.selectValueArray.length === allValues.length - <span class="hljs-number">1</span>) &#123;
+            <span class="hljs-keyword">this</span>.selectValueArray.push(<span class="hljs-string">"ALL_SELECT"</span>);
+            <span class="hljs-keyword">this</span>.changeCheckboxStatus(<span class="hljs-keyword">this</span>.analysisSubject, <span class="hljs-string">"ALL_SELECT"</span>, <span class="hljs-literal">true</span>);
+          &#125;
+        &#125;
+        <span class="hljs-comment">// 储存当前选择的最后结果 作为下次的老数据</span>
+        <span class="hljs-keyword">this</span>.oldSelectValueArray = <span class="hljs-keyword">this</span>.selectValueArray;
+      &#125;
+    
+      <span class="hljs-comment">/**</span>
+<span class="hljs-comment">       * 修改复选框选中状态</span>
+<span class="hljs-comment">       */</span>
+      <span class="hljs-keyword">private</span> changeCheckboxStatus(list: <span class="hljs-built_in">any</span>, value: <span class="hljs-built_in">string</span>, status: <span class="hljs-built_in">boolean</span>) &#123;
+        <span class="hljs-comment">// 全部修改</span>
+        <span class="hljs-keyword">if</span> (value == <span class="hljs-string">"ALL"</span>) &#123;
+          list.forEach(<span class="hljs-function">(<span class="hljs-params">item: <span class="hljs-built_in">any</span></span>) =&gt;</span> &#123;
+            item.checked = status;
+          &#125;);
+        &#125; <span class="hljs-keyword">else</span> &#123;
+          <span class="hljs-comment">// 指定某个值修改</span>
+          list.forEach(<span class="hljs-function">(<span class="hljs-params">item: <span class="hljs-built_in">any</span></span>) =&gt;</span> &#123;
+            <span class="hljs-keyword">if</span> (item.value == value) &#123;
+              item.checked = status;
+            &#125;
+          &#125;);
+        &#125;
+    
+&#125;</code></pre></div>
+
+
+
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>前端，Vue</tag>
       </tags>
   </entry>
 </search>
