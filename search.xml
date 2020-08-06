@@ -4910,6 +4910,8 @@ string			字符容器，与vector类似</code></pre>
 <span class="hljs-comment">// NaN</span></code></pre></div>
 
 <p> <a href="https://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html" target="_blank" rel="noopener">详见</a></p>
+<h3 id="与-的区别"><a href="#与-的区别" class="headerlink" title="== 与 === 的区别"></a>== 与 === 的区别</h3><p><code>==</code> 两边值类型不同的时候，要先进行类型转换，再比较</p>
+<p><code>===</code> 不做类型转换，类型不同的一定不等</p>
 <h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><h2 id="数据结构与算法"><a href="#数据结构与算法" class="headerlink" title="数据结构与算法"></a>数据结构与算法</h2><h3 id="常用数据结构与使用场景"><a href="#常用数据结构与使用场景" class="headerlink" title="常用数据结构与使用场景"></a>常用数据结构与使用场景</h3><h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2>]]></content>
       <categories>
         <category>前端</category>
