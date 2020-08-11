@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      324 字
+      979 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3
+      10
        分钟
     </span>
   
@@ -205,13 +205,30 @@
             
             <article class="markdown-body">
               <p>在这里记录下面试碰到的以及可能碰到的题目，用于复习巩固，查漏补缺。</p>
-<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><h3 id="严格模式的作用"><a href="#严格模式的作用" class="headerlink" title="严格模式的作用"></a>严格模式的作用</h3><p><code>&quot;use strict&quot;;</code> 使代码脱离稀松模式（sloppy），对JavaScript语义做了一些更改：</p>
+<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><h3 id="HTML语义化"><a href="#HTML语义化" class="headerlink" title="HTML语义化"></a>HTML语义化</h3><p>根据内容的结构，选择合适的标签</p>
+<ol>
+<li>方便代码的阅读和维护，在没有CSS的情况下也能呈现较好的内容结构</li>
+<li>有利于SEO，让浏览器或是网络爬虫可以很好的解析，从而更好的分析其中的内容</li>
+<li>使用语义化标签会具有更好的搜索引擎优化</li>
+</ol>
+<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h3 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h3><p><a href="https://juejin.im/post/6844903495108132877" target="_blank" rel="noopener">https://juejin.im/post/6844903495108132877</a></p>
+<h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><h3 id="严格模式的作用"><a href="#严格模式的作用" class="headerlink" title="严格模式的作用"></a>严格模式的作用</h3><p><code>&quot;use strict&quot;;</code> 使代码脱离稀松模式（sloppy），对JavaScript语义做了一些更改：</p>
 <ol>
 <li>通过<strong>抛出错误</strong>来消除了一些原有<strong>静默错误</strong>，变量必须先声明在使用，禁用with等</li>
 <li>修复了一些导致JavaScript引擎难以执行优化的缺陷：有时候，相同的代码，严格模式可以比非严格模式下执行的更快</li>
 <li>禁用了在ECMAScript的未来版本中可能会定义的一些语法</li>
 </ol>
 <p><a href="https://www.ruanyifeng.com/blog/2013/01/javascript_strict_mode.html" target="_blank" rel="noopener">详见</a></p>
+<h3 id="JS的基本数据类型"><a href="#JS的基本数据类型" class="headerlink" title="JS的基本数据类型"></a>JS的基本数据类型</h3><ul>
+<li>基本类型：String、Number、Boolean、Symbol、Undefined、Null、（BigInt）</li>
+<li>引用类型：Object</li>
+</ul>
+<h3 id="JS有哪些内置对象"><a href="#JS有哪些内置对象" class="headerlink" title="JS有哪些内置对象"></a>JS有哪些内置对象</h3><ul>
+<li>Math对象：Math.abs(x);    //用来返回数的绝对值</li>
+<li>Date对象：var date = new Date();// 通过new的方式创建一个日期对象</li>
+<li>Array对象：var arr=new Array()</li>
+<li>字符串对象：var str=new String()</li>
+</ul>
 <h3 id="JS的类型转换"><a href="#JS的类型转换" class="headerlink" title="JS的类型转换"></a>JS的类型转换</h3><p>变量的类型转换分为两种，主动进行的是显示类型转换，另一种为隐式类型转换</p>
 <p><a href="https://juejin.im/post/6844903632974905358#heading-7" target="_blank" rel="noopener">详见</a></p>
 <h3 id="underfined和null的区别"><a href="#underfined和null的区别" class="headerlink" title="underfined和null的区别"></a>underfined和null的区别</h3><p>null表示”没有对象”，即该处不应该有值</p>
@@ -230,7 +247,35 @@
 <p> <a href="https://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html" target="_blank" rel="noopener">详见</a></p>
 <h3 id="与-的区别"><a href="#与-的区别" class="headerlink" title="== 与 === 的区别"></a>== 与 === 的区别</h3><p><code>==</code> 两边值类型不同的时候，要先进行类型转换，再比较</p>
 <p><code>===</code> 不做类型转换，类型不同的一定不等</p>
-<h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><h2 id="数据结构与算法"><a href="#数据结构与算法" class="headerlink" title="数据结构与算法"></a>数据结构与算法</h2><h3 id="常用数据结构与使用场景"><a href="#常用数据结构与使用场景" class="headerlink" title="常用数据结构与使用场景"></a>常用数据结构与使用场景</h3><h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2>
+<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p>函数和对其周围状态（<strong>lexical environment，词法环境</strong>）的引用捆绑在一起构成<strong>闭包</strong>（<strong>closure</strong>）。闭包可以让你从内部函数访问外部函数作用域。在 JavaScript 中，每当函数被创建，就会在函数生成时生成闭包。可以简单理解为“定义在一个函数内部的函数“ <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures" target="_blank" rel="noopener">MDN</a></p>
+<p>优点：</p>
+<ol>
+<li>逻辑连续，当闭包作为另一个函数调用的参数时，避免你脱离当前逻辑而单独编写额外逻辑</li>
+<li>方便调用上下文的局部变量</li>
+<li>加强封装性，第2点的延伸，可以达到对变量的保护作用</li>
+</ol>
+<p>缺点：</p>
+<p>闭包有一个非常严重的问题，那就是内存浪费问题，这个内存浪费不仅仅因为它常驻内存，更重要的是，对闭包的使用不当会造成无效内存的产生</p>
+<h3 id="JavaScript中apply、call和bind的区别"><a href="#JavaScript中apply、call和bind的区别" class="headerlink" title="JavaScript中apply、call和bind的区别"></a><a href="https://www.cnblogs.com/cosiray/p/4512969.html" target="_blank" rel="noopener">JavaScript中apply、call和bind的区别</a></h3><h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><h2 id="数据结构与算法"><a href="#数据结构与算法" class="headerlink" title="数据结构与算法"></a>数据结构与算法</h2><h3 id="常用数据结构与使用场景"><a href="#常用数据结构与使用场景" class="headerlink" title="常用数据结构与使用场景"></a>常用数据结构与使用场景</h3><h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><h3 id="网页从输入网址到渲染完成经历了哪些过程"><a href="#网页从输入网址到渲染完成经历了哪些过程" class="headerlink" title="网页从输入网址到渲染完成经历了哪些过程"></a>网页从输入网址到渲染完成经历了哪些过程</h3><ol>
+<li>输入网址；</li>
+<li>发送到DNS服务器，并获取域名对应的web服务器对应的ip地址；</li>
+<li>与web服务器建立TCP连接；</li>
+<li>浏览器向web服务器发送http请求；</li>
+<li>web服务器响应请求，并返回指定url的数据（或错误信息，或重定向的新的url地址）；</li>
+<li>浏览器下载web服务器返回的数据及解析html源文件；</li>
+<li>生成DOM树，解析css和js，渲染页面，直至显示完成；</li>
+</ol>
+<h3 id="ajax请求的过程"><a href="#ajax请求的过程" class="headerlink" title="ajax请求的过程"></a>ajax请求的过程</h3><ol>
+<li>创建XMLHttpRequest对象</li>
+<li>创建一个新的HTTP请求,并指定该HTTP请求的方法、URL及验证信息</li>
+<li>设置响应HTTP请求状态变化的函数，发送HTTP请求</li>
+<li>获取异步调用返回的数据</li>
+<li>使用JavaScript和DOM实现局部刷新</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://zhuanlan.zhihu.com/p/60832562" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/60832562</a></p>
+<p><a href="https://developer.mozilla.org/" target="_blank" rel="noopener">https://developer.mozilla.org/</a></p>
+<p><a href="https://juejin.im/post/6844903950500495373" target="_blank" rel="noopener">https://juejin.im/post/6844903950500495373</a></p>
+
             </article>
             <hr>
             <div>
@@ -261,6 +306,12 @@
                 <div class="post-prevnext row">
                   <div class="post-prev col-6">
                     
+                    
+                      <a href="/2020/08/10/JavaScript%E4%B8%ADMap%E7%9A%84%E4%BD%BF%E7%94%A8/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JavaScript中Map的使用</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </div>
                   <div class="post-next col-6">
