@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="BU JUNJIE">
   <meta name="keywords" content="">
-  <title>JavaScript中Map的使用 - JUZI&#39;s blog</title>
+  <title>ES6中Map的使用 - JUZI&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.5k 字
+      1.6k 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      20
+      21
        分钟
     </span>
   
@@ -297,6 +297,8 @@ myMap.set(<span class="hljs-number">1</span>, <span class="hljs-string">"one"</s
 <span class="hljs-comment">// 0 = zero</span>
 <span class="hljs-comment">// 1 = one</span></code></pre></div>
 
+<p>只有对同一个对象的引用，Map 结构才将其视为同一个键。这一点要非常小心。</p>
+<p><img src="../blogImg/image-20200813114349457.png" srcset="/img/loading.gif" alt="image-20200813114349457"></p>
 <h2 id="复制、合并、与数组的关系"><a href="#复制、合并、与数组的关系" class="headerlink" title="复制、合并、与数组的关系"></a>复制、合并、与数组的关系</h2><h3 id="复制Map"><a href="#复制Map" class="headerlink" title="复制Map"></a>复制Map</h3><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> original = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>([
   [<span class="hljs-number">1</span>, <span class="hljs-string">'one'</span>]
 ]);
@@ -395,10 +397,7 @@ myMap.get(<span class="hljs-string">"key1"</span>); <span class="hljs-comment">/
 <span class="hljs-keyword">let</span> arr = [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">3</span>]
 <span class="hljs-built_in">console</span>.log(findSingle(arr))	<span class="hljs-comment">// 5</span></code></pre></div>
 
-
-
-
-
+<h2 id="WeakMap"><a href="#WeakMap" class="headerlink" title="WeakMap"></a>WeakMap</h2><p><a href="https://juejin.im/post/6844903646623186958" target="_blank" rel="noopener">https://juejin.im/post/6844903646623186958</a></p>
 <h2 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map</a></p>
 
             </article>
@@ -411,7 +410,7 @@ myMap.get(<span class="hljs-string">"key1"</span>); <span class="hljs-comment">/
                     
                       <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/JavaScript/">JavaScript</a>
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/ES6/">ES6</a>
                     
                   </div>
                 
@@ -432,12 +431,18 @@ myMap.get(<span class="hljs-string">"key1"</span>); <span class="hljs-comment">/
                   <div class="post-prev col-6">
                     
                     
+                      <a href="/2020/08/12/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">深度优先搜索与广度优先搜索</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </div>
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/08/05/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/">
-                        <span class="hidden-mobile">前端面试题整理</span>
+                      <a href="/2020/08/06/vue%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/">
+                        <span class="hidden-mobile">Vue项目搭建</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -576,7 +581,7 @@ myMap.get(<span class="hljs-string">"key1"</span>); <span class="hljs-comment">/
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "JavaScript中Map的使用&nbsp;",
+        "ES6中Map的使用&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
