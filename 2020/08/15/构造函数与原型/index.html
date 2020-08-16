@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/juzi.png">
+  <link rel="icon" type="image/png" href="/img/juzi.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="BU JUNJIE">
+  <meta name="keywords" content="">
+  <title>构造函数与原型 - JUZI&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Ptolemaios Ⅱ</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-08-15 20:37">
+      2020年8月15日 晚上
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      13
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p>ES6前没有引入类的概念，使用构造函数与原型模拟类的实现。</p>
+<h2 id="创建对象的三种方式"><a href="#创建对象的三种方式" class="headerlink" title="创建对象的三种方式"></a>创建对象的三种方式</h2><ol>
+<li><p>使用<code>new Object()</code>创建对象</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> obj = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>();</code></pre></div>
+</li>
+<li><p>利用对象字面量创建对象</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> obj = &#123;&#125;;</code></pre></div>
+</li>
+<li><p>利用构造函数创建对象</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">People</span>(<span class="hljs-params">name, age</span>) </span>&#123;
+    <span class="hljs-keyword">this</span>.name = name;
+    <span class="hljs-keyword">this</span>.age = age;
+    <span class="hljs-keyword">this</span>.say = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'永远滴神'</span>);
+    &#125;
+&#125;
+
+<span class="hljs-keyword">let</span> uzi = <span class="hljs-keyword">new</span> People(<span class="hljs-string">'乌兹'</span>, <span class="hljs-number">18</span>);
+uzi.say();</code></pre></div>
+
+</li>
+</ol>
+<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>构造函数用来初始化对象，即为对象成员变量赋初始值，总是与new一起使用</p>
+<h3 id="new在执行时做的四件事"><a href="#new在执行时做的四件事" class="headerlink" title="new在执行时做的四件事"></a>new在执行时做的四件事</h3><ol>
+<li>在内存中创建一个新的空对象</li>
+<li>让this指向这个新的对象</li>
+<li>执行构造函数中的代码，给这个新的对象添加属性和方法</li>
+<li>返回这个新对象（所有构造函数中不需要return）</li>
+</ol>
+<h3 id="静态成员和实例成员"><a href="#静态成员和实例成员" class="headerlink" title="静态成员和实例成员"></a>静态成员和实例成员</h3><ul>
+<li>静态成员：在构造函数本身上添加的成员</li>
+<li>实例成员：构造函数内部通过this添加的成员，只能通过实例化的对象来访问</li>
+</ul>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">People</span>(<span class="hljs-params">name, age</span>) </span>&#123;
+    <span class="hljs-keyword">this</span>.name = name;
+    <span class="hljs-keyword">this</span>.age = age;
+    <span class="hljs-keyword">this</span>.say = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'永远滴神'</span>);
+    &#125;
+&#125;
+<span class="hljs-comment">// name,age,say为实例成员</span>
+<span class="hljs-keyword">let</span> uzi = <span class="hljs-keyword">new</span> People(<span class="hljs-string">'乌兹'</span>, <span class="hljs-number">18</span>);
+uzi.say();
+<span class="hljs-comment">// 静态成员,只能通过构造函数访问</span>
+People.sex = <span class="hljs-string">"男"</span> 
+<span class="hljs-built_in">console</span>.log(People.sex);	<span class="hljs-comment">// 男</span>
+<span class="hljs-built_in">console</span>.log(uzi.sex);	<span class="hljs-comment">// undefined</span></code></pre></div>
+
+<h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><h3 id="构造函数原型对象prototype"><a href="#构造函数原型对象prototype" class="headerlink" title="构造函数原型对象prototype"></a>构造函数原型对象prototype</h3><p>构造函数存在浪费内存的问题，每new一个对象就会开辟新的内存空间存放参数和方法</p>
+<p>使用原型来解决这个问题</p>
+<p>JavaScript规定，每个构造函数都有一个prototype属性，指向另一个对象，这个prototype就是一个对象，这个对象的所有属性和方法都会被构造函数所拥有，构造函数通过原型分配的函数是所有对象所共享的</p>
+<p>可以把那些不变的方法，直接定义在prototype对象上，这样所有对象的实例就可以共享这些方法</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 一般情况下，公共属性定义到构造函数里，公共方法放到原型对象上</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">People</span>(<span class="hljs-params">name, age</span>) </span>&#123;
+    <span class="hljs-keyword">this</span>.name = name;
+    <span class="hljs-keyword">this</span>.age = age;
+&#125;
+People.prototype.say = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'永远滴神'</span>)
+    <span class="hljs-comment">// 这里的this也指向实例对象</span>
+&#125;
+<span class="hljs-keyword">let</span> uzi = <span class="hljs-keyword">new</span> People(<span class="hljs-string">"wuzi"</span>, <span class="hljs-number">18</span>);
+<span class="hljs-keyword">let</span> theShy = <span class="hljs-keyword">new</span> People(<span class="hljs-string">"shy"</span>, <span class="hljs-number">12</span>);
+uzi.say === theShy.say;	<span class="hljs-comment">// true, 内存位置相同</span></code></pre></div>
+
+<h3 id="对象原型-proto"><a href="#对象原型-proto" class="headerlink" title="对象原型__proto__"></a>对象原型<code>__proto__</code></h3><p>对象都会有一个属性<code>__proto__</code>指向构造函数的prototype原型对象，之所以对象可以使用构造函数prototype原型对象的属性和方法，就是因为对象有<code>__proto__</code>原型的存在</p>
+<div class="hljs"><pre><code class="hljs javascript">uzi.__proto__ = People.prototype</code></pre></div>
+
+<h3 id="原型constructor"><a href="#原型constructor" class="headerlink" title="原型constructor"></a>原型constructor</h3><p>对象原型和原型对象中都有一个constructor属性，用于记录对象引用哪个构造函数</p>
+<p>很多情况下，手动的利用constructor属性指回原来的构造函数</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">People</span>(<span class="hljs-params">name, age</span>) </span>&#123;
+    <span class="hljs-keyword">this</span>.name = name;
+    <span class="hljs-keyword">this</span>.age = age;
+&#125;
+People.prototype = &#123;
+    <span class="hljs-comment">// 如果我们修改了原来的原型对象，给原型对象赋值的是一个对象，则必须手动的利用constructor指回原来的构造函数</span>
+    <span class="hljs-keyword">constructor</span>: People,
+    say: function() &#123;
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'111'</span>);
+    &#125;
+    run: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'222'</span>);
+    &#125;
+&#125;</code></pre></div>
+
+<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p><img src="/blogImg/proto.drawio.png" srcset="/img/loading.gif" alt="proto.drawio"></p>
+<p>只要是对象就有<code>__proto__</code>原型，Object原型对象中的<code>__proto__</code>指向null，为最上层</p>
+<p>方法查找规则：首先看对象本身是否有say方法，如果有就执行该方法，如果没有，因为存在<code>__proto__</code>，就去构造函数原型对象prototype中查找该方法，通过原型链一层层向上查找。</p>
+<h3 id="拓展内置对象方法"><a href="#拓展内置对象方法" class="headerlink" title="拓展内置对象方法"></a>拓展内置对象方法</h3><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-built_in">Array</span>.prototype.sum = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">this</span>.length; i++) &#123;
+        sum+=<span class="hljs-keyword">this</span>[i];
+    &#125;
+    <span class="hljs-keyword">return</span> sum;
+&#125;
+<span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];
+<span class="hljs-built_in">console</span>.log(arr.sum());	<span class="hljs-comment">// 6</span></code></pre></div>
+
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>ES6前没有提供extends属性提供继承功能，通过构造函数+原型对象模拟继承</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 借用父构造函数继承属性</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Father</span>(<span class="hljs-params">name, age</span>) </span>&#123;
+    <span class="hljs-comment">// this 指向父构造函数的对象实例</span>
+    <span class="hljs-keyword">this</span>.name = name;
+    <span class="hljs-keyword">this</span>.age = age;
+&#125;
+Father.prototype.money = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">10000</span>);
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Son</span>(<span class="hljs-params">name, age, sex</span>) </span>&#123;
+    <span class="hljs-comment">// this 指向子构造函数的对象实例</span>
+    Father.call(<span class="hljs-keyword">this</span>, name, age);
+    <span class="hljs-keyword">this</span>.sex = sex;
+&#125;
+<span class="hljs-comment">// Son.prototype = Father.prototype; 这样指向同一个地址，修改子原型对象后，父原型对象也会被修改</span>
+Son.prototype = <span class="hljs-keyword">new</span> Father();
+<span class="hljs-comment">// 利用对象覆盖原有的原型对象后，要将constructor指回原来的构造函数</span>
+Son.prototype.constructor = Son;
+Son.prototype.exam = <span class="hljs-keyword">new</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"exam"</span>);
+&#125;
+<span class="hljs-keyword">let</span> son = <span class="hljs-keyword">new</span> Son(<span class="hljs-string">'wuzi'</span>, <span class="hljs-number">18</span>, <span class="hljs-string">'男'</span>);</code></pre></div>
+
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/JavaScript/">JavaScript</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/JavaScript/">JavaScript</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/08/14/JS%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">
+                        <span class="hidden-mobile">JS面向对象编程</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "构造函数与原型&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
