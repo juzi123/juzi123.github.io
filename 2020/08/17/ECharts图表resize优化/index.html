@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="BU JUNJIE">
   <meta name="keywords" content="">
-  <title>前端面试题整理 - JUZI&#39;s blog</title>
+  <title>ECharts图表resize - JUZI&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -152,8 +152,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-08-05 19:14">
-      2020年8月5日 晚上
+    <time datetime="2020-08-17 12:45">
+      2020年8月17日 下午
     </time>
   </div>
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.1k 字
+      659 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      11
+      9
        分钟
     </span>
   
@@ -204,81 +204,126 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <p>在这里记录下面试碰到的以及可能碰到的题目，用于复习巩固，查漏补缺。</p>
-<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><h3 id="HTML语义化"><a href="#HTML语义化" class="headerlink" title="HTML语义化"></a>HTML语义化</h3><p>根据内容的结构，选择合适的标签</p>
+              <p>在用户改变浏览器窗口大小或者侧边栏展开时，需要重新调整ECharts图表的大小，以适应窗口。</p>
+<h2 id="监听方法"><a href="#监听方法" class="headerlink" title="监听方法"></a>监听方法</h2><p>ECharts有resize()方法，监听到变化时，调用该函数。</p>
 <ol>
-<li>方便代码的阅读和维护，在没有CSS的情况下也能呈现较好的内容结构</li>
-<li>有利于SEO，让浏览器或是网络爬虫可以很好的解析，从而更好的分析其中的内容</li>
-<li>使用语义化标签会具有更好的搜索引擎优化</li>
-</ol>
-<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h3 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h3><p><a href="https://juejin.im/post/6844903495108132877" target="_blank" rel="noopener">https://juejin.im/post/6844903495108132877</a></p>
-<h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><h3 id="严格模式的作用"><a href="#严格模式的作用" class="headerlink" title="严格模式的作用"></a>严格模式的作用</h3><p><code>&quot;use strict&quot;;</code> 使代码脱离稀松模式（sloppy），对JavaScript语义做了一些更改：</p>
-<ol>
-<li>通过<strong>抛出错误</strong>来消除了一些原有<strong>静默错误</strong>，变量必须先声明在使用，禁用with等</li>
-<li>消除了代码运行的一些不安全之处，保证代码运行的安全，禁用delete删除变量</li>
-<li>提高编译器效率，增加运行速度</li>
-<li>禁用了在ECMAScript的未来版本中可能会定义的一些语法</li>
-</ol>
-<p>全局作用域函数中this指向undefined，而不是window</p>
-<p><a href="https://www.ruanyifeng.com/blog/2013/01/javascript_strict_mode.html" target="_blank" rel="noopener">详见</a></p>
-<h3 id="JS的基本数据类型"><a href="#JS的基本数据类型" class="headerlink" title="JS的基本数据类型"></a>JS的基本数据类型</h3><ul>
-<li>基本类型：String、Number、Boolean、Symbol、Undefined、Null、（BigInt）</li>
-<li>引用类型：Object</li>
-</ul>
-<h3 id="JS有哪些内置对象"><a href="#JS有哪些内置对象" class="headerlink" title="JS有哪些内置对象"></a>JS有哪些内置对象</h3><ul>
-<li>Math对象：Math.abs(x);    //用来返回数的绝对值</li>
-<li>Date对象：var date = new Date();// 通过new的方式创建一个日期对象</li>
-<li>Array对象：var arr=new Array()</li>
-<li>字符串对象：var str=new String()</li>
-</ul>
-<h3 id="JS的类型转换"><a href="#JS的类型转换" class="headerlink" title="JS的类型转换"></a>JS的类型转换</h3><p>变量的类型转换分为两种，主动进行的是显示类型转换，另一种为隐式类型转换</p>
-<p><a href="https://juejin.im/post/6844903632974905358#heading-7" target="_blank" rel="noopener">详见</a></p>
-<h3 id="underfined和null的区别"><a href="#underfined和null的区别" class="headerlink" title="underfined和null的区别"></a>underfined和null的区别</h3><p>null表示”没有对象”，即该处不应该有值</p>
-<p>undefined表示”缺少值”，就是此处应该有一个值，但是还没有定义</p>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-literal">undefined</span> == <span class="hljs-literal">null</span>
-<span class="hljs-comment">// true</span>
-<span class="hljs-built_in">Number</span>(<span class="hljs-literal">null</span>)
-<span class="hljs-comment">// 0</span>
-<span class="hljs-number">5</span> + <span class="hljs-literal">null</span>
-<span class="hljs-comment">// 5</span>
-<span class="hljs-built_in">Number</span>(<span class="hljs-literal">undefined</span>)
-<span class="hljs-comment">// NaN</span>
-<span class="hljs-number">5</span> + <span class="hljs-literal">undefined</span>
-<span class="hljs-comment">// NaN</span></code></pre></div>
+<li><p>对window的Resize事件进行监听</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">'resize'</span>, <span class="hljs-keyword">this</span>.chartResize);</code></pre></div>
 
-<p> <a href="https://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html" target="_blank" rel="noopener">详见</a></p>
-<h3 id="与-的区别"><a href="#与-的区别" class="headerlink" title="== 与 === 的区别"></a>== 与 === 的区别</h3><p><code>==</code> 两边值类型不同的时候，要先进行类型转换，再比较</p>
-<p><code>===</code> 不做类型转换，类型不同的一定不等</p>
-<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p>函数和对其周围状态（<strong>lexical environment，词法环境</strong>）的引用捆绑在一起构成<strong>闭包</strong>（<strong>closure</strong>）。闭包可以让你从内部函数访问外部函数作用域。在 JavaScript 中，每当函数被创建，就会在函数生成时生成闭包。可以简单理解为“定义在一个函数内部的函数“ <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures" target="_blank" rel="noopener">MDN</a></p>
-<p>闭包指有权访问另一个函数作用域变量的函数。 —JavaScript高级程序设计</p>
-<p>优点：</p>
-<ol>
-<li>逻辑连续，当闭包作为另一个函数调用的参数时，避免你脱离当前逻辑而单独编写额外逻辑</li>
-<li>方便调用上下文的局部变量</li>
-<li>加强封装性，第2点的延伸，可以达到对变量的保护作用</li>
-</ol>
-<p>缺点：</p>
-<p>闭包有一个非常严重的问题，那就是内存浪费问题，这个内存浪费不仅仅因为它常驻内存，更重要的是，对闭包的使用不当会造成无效内存的产生</p>
-<h3 id="this指向"><a href="#this指向" class="headerlink" title="this指向"></a>this指向</h3><h3 id="JavaScript中apply、call和bind的区别"><a href="#JavaScript中apply、call和bind的区别" class="headerlink" title="JavaScript中apply、call和bind的区别"></a><a href="https://www.cnblogs.com/cosiray/p/4512969.html" target="_blank" rel="noopener">JavaScript中apply、call和bind的区别</a></h3><h3 id="防抖与节流，写一个防抖函数"><a href="#防抖与节流，写一个防抖函数" class="headerlink" title="防抖与节流，写一个防抖函数"></a>防抖与节流，写一个防抖函数</h3><h3 id="promise，实现一个promiseAll"><a href="#promise，实现一个promiseAll" class="headerlink" title="promise，实现一个promiseAll"></a>promise，实现一个promiseAll</h3><h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><h2 id="数据结构与算法"><a href="#数据结构与算法" class="headerlink" title="数据结构与算法"></a>数据结构与算法</h2><h3 id="常用数据结构与使用场景"><a href="#常用数据结构与使用场景" class="headerlink" title="常用数据结构与使用场景"></a>常用数据结构与使用场景</h3><h3 id="排序算法有哪些，实现一个"><a href="#排序算法有哪些，实现一个" class="headerlink" title="排序算法有哪些，实现一个"></a>排序算法有哪些，实现一个</h3><h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><h3 id="网页从输入网址到渲染完成经历了哪些过程"><a href="#网页从输入网址到渲染完成经历了哪些过程" class="headerlink" title="网页从输入网址到渲染完成经历了哪些过程"></a>网页从输入网址到渲染完成经历了哪些过程</h3><ol>
-<li>输入网址；</li>
-<li>发送到DNS服务器，并获取域名对应的web服务器对应的ip地址；</li>
-<li>与web服务器建立TCP连接；</li>
-<li>浏览器向web服务器发送http请求；</li>
-<li>web服务器响应请求，并返回指定url的数据（或错误信息，或重定向的新的url地址）；</li>
-<li>浏览器下载web服务器返回的数据及解析html源文件；</li>
-<li>生成DOM树，解析css和js，渲染页面，直至显示完成；</li>
-</ol>
-<h3 id="ajax请求的过程"><a href="#ajax请求的过程" class="headerlink" title="ajax请求的过程"></a>ajax请求的过程</h3><ol>
-<li>创建XMLHttpRequest对象</li>
-<li>创建一个新的HTTP请求,并指定该HTTP请求的方法、URL及验证信息</li>
-<li>设置响应HTTP请求状态变化的函数，发送HTTP请求</li>
-<li>获取异步调用返回的数据</li>
-<li>使用JavaScript和DOM实现局部刷新</li>
-</ol>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://zhuanlan.zhihu.com/p/60832562" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/60832562</a></p>
-<p><a href="https://developer.mozilla.org/" target="_blank" rel="noopener">https://developer.mozilla.org/</a></p>
-<p><a href="https://juejin.im/post/6844903950500495373" target="_blank" rel="noopener">https://juejin.im/post/6844903950500495373</a></p>
+<p>这样只能对浏览器窗口大小变化时进行监听，侧边栏展开时，窗口大小无变化，所以还需要对侧边栏状态等设置监听</p>
+<div class="hljs"><pre><code class="hljs javascript">computed: &#123;
+   <span class="hljs-comment">// 侧边栏是否打开</span>
+   sideBarFlag: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
+     <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.$store.state.app.sidebar.opened
+   &#125;
+&#125;,
+watch: &#123;
+   <span class="hljs-comment">// 侧边栏展开收起状态变化时改变大小</span>
+   sideBarFlag: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+     <span class="hljs-keyword">this</span>.chartResize()
+   &#125;
+&#125;</code></pre></div>
+</li>
+<li><p>单独对存放ECharts的DOM进行监听</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> resizeObserver = <span class="hljs-keyword">new</span> ResizeObserver(<span class="hljs-function"><span class="hljs-params">entries</span> =&gt;</span> &#123;
+   <span class="hljs-keyword">this</span>.myChart.resize()
+&#125;)
+resizeObserver.observe(<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-keyword">this</span>.id))</code></pre></div>
 
+<p>ResizeObserver的具体用法参考<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/ResizeObserver" target="_blank" rel="noopener">MDN</a></p>
+<p>由于直接对DOM大小进行监听，所以不用再对侧边栏变化等设置监听，但是IE浏览器不支持这个API</p>
+</li>
+</ol>
+<h2 id="图表大小调整时的优化"><a href="#图表大小调整时的优化" class="headerlink" title="图表大小调整时的优化"></a>图表大小调整时的优化</h2><p>重绘会消耗较多的资源，如果监听到后立即进行重绘，可能会造成频繁重绘，造成页面卡顿。所以通过设置定时器，在一段时间内没有监听到变化后，再进行重绘</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 图表重绘方法</span>
+chartResize() &#123;
+   <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.chartResizeTimer) &#123;
+     <span class="hljs-comment">// 先清除上个定时器</span>
+     clearTimeout(<span class="hljs-keyword">this</span>.chartResizeTimer)
+   &#125;
+   <span class="hljs-comment">// 设置定时器</span>
+   <span class="hljs-keyword">this</span>.chartResizeTimer = setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
+     <span class="hljs-keyword">this</span>.myChart.resize()	<span class="hljs-comment">// 进行重绘</span>
+   &#125;, <span class="hljs-number">300</span>)
+&#125;,</code></pre></div>
+
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><div class="hljs"><pre><code class="hljs vue">&lt;template&gt;
+  &lt;div
+    :id&#x3D;&quot;id&quot;
+    :style&#x3D;&quot;&#123;width: &#39;100%&#39;, height: &#39;100%&#39;&#125;&quot;
+  &gt;&lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+import echarts from &#39;echarts&#39;
+export default &#123;
+  name: &#39;EChartsContainer&#39;,
+  props: &#123;
+    id: &#123;
+      type: String,
+      default: &#39;&#39;,
+    &#125;,
+    option: &#123;
+      type: Object,
+      default: () &#x3D;&gt; null,
+    &#125;,
+  &#125;,
+  data() &#123;
+    return &#123;
+      myChart: null,
+      chartResizeTimer: null,
+    &#125;
+  &#125;,
+  mounted() &#123;
+    this.myChart &#x3D; echarts.init(document.getElementById(this.id), &#39;light&#39;)
+    this.setOption()
+    &#x2F;&#x2F; 监听window的Resize
+    window.addEventListener(&#39;resize&#39;, this.chartResize)
+    &#x2F;&#x2F; 监听指定Dom的Resize,IE不支持
+    &#x2F;&#x2F; const resizeObserver &#x3D; new ResizeObserver(entries &#x3D;&gt; &#123;
+    &#x2F;&#x2F;   this.myChart.resize()
+    &#x2F;&#x2F; &#125;)
+    &#x2F;&#x2F; resizeObserver.observe(document.getElementById(this.id))
+  &#125;,
+  activated() &#123;
+    &#x2F;&#x2F; 切换标签页后resize
+    this.myChart.resize()
+  &#125;,
+  beforeDestoryed() &#123;
+    window.removeEventListener(&#39;resize&#39;, this.chartResize)
+  &#125;,
+  methods: &#123;
+    setOption() &#123;
+      this.myChart.setOption(this.option)
+    &#125;,
+    &#x2F;&#x2F; 图表大小调整，设置定时器避免频繁重绘
+    chartResize() &#123;
+      if (this.chartResizeTimer) &#123;
+        clearTimeout(this.chartResizeTimer)
+      &#125;
+      this.chartResizeTimer &#x3D; setTimeout(() &#x3D;&gt; &#123;
+        this.myChart.resize()
+      &#125;, 300)
+    &#125;,
+  &#125;,
+  computed: &#123;
+    &#x2F;&#x2F; 侧边栏是否打开
+    sideBarFlag: () &#x3D;&gt; &#123;
+      return this.$store.state.app.sidebar.opened
+    &#125;,
+  &#125;,
+  watch: &#123;
+    &#x2F;&#x2F; 监听option参数变化
+    option: function () &#123;
+      this.setOption()
+    &#125;,
+    &#x2F;&#x2F; 侧边栏展开收起状态变化时改变大小
+    sideBarFlag: function () &#123;
+      this.chartResize()
+    &#125;,
+  &#125;,
+&#125;
+&lt;&#x2F;script&gt;</code></pre></div>
             </article>
             <hr>
             <div>
@@ -289,7 +334,7 @@
                     
                       <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/%E5%85%B6%E5%AE%83/">其它</a>
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/ECharts/">ECharts</a>
                     
                   </div>
                 
@@ -297,7 +342,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a>
+                      <a class="hover-with-bg" href="/tags/ECharts/">ECharts</a>
                     
                   </div>
                 
@@ -310,9 +355,9 @@
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/08/06/vue%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/">
+                      <a href="/2020/08/18/%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Vue项目搭建</span>
+                        <span class="hidden-mobile">防抖与节流</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -320,8 +365,8 @@
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/08/03/ECharts%E5%8A%A8%E6%80%81%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE%E4%B8%8EdataZoom%E7%9A%84%E9%97%AE%E9%A2%98/">
-                        <span class="hidden-mobile">ECharts动态更新数据与dataZoom的问题</span>
+                      <a href="/2020/08/16/%E5%87%BD%E6%95%B0%E4%B8%8E%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/">
+                        <span class="hidden-mobile">函数与call,apply与bind的使用</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -460,7 +505,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "前端面试题整理&nbsp;",
+        "ECharts图表resize&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
