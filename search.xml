@@ -4932,7 +4932,7 @@ string			字符容器，与vector类似</code></pre>
 </ol>
 <p>缺点：</p>
 <p>闭包有一个非常严重的问题，那就是内存浪费问题，这个内存浪费不仅仅因为它常驻内存，更重要的是，对闭包的使用不当会造成无效内存的产生</p>
-<h3 id="this指向"><a href="#this指向" class="headerlink" title="this指向"></a>this指向</h3><h3 id="JavaScript中apply、call和bind的区别"><a href="#JavaScript中apply、call和bind的区别" class="headerlink" title="JavaScript中apply、call和bind的区别"></a><a href="https://www.cnblogs.com/cosiray/p/4512969.html" target="_blank" rel="noopener">JavaScript中apply、call和bind的区别</a></h3><h3 id="防抖与节流，写一个防抖函数"><a href="#防抖与节流，写一个防抖函数" class="headerlink" title="防抖与节流，写一个防抖函数"></a>防抖与节流，写一个防抖函数</h3><h3 id="promise，实现一个promiseAll"><a href="#promise，实现一个promiseAll" class="headerlink" title="promise，实现一个promiseAll"></a>promise，实现一个promiseAll</h3><h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><h2 id="数据结构与算法"><a href="#数据结构与算法" class="headerlink" title="数据结构与算法"></a>数据结构与算法</h2><h3 id="常用数据结构与使用场景"><a href="#常用数据结构与使用场景" class="headerlink" title="常用数据结构与使用场景"></a>常用数据结构与使用场景</h3><h3 id="排序算法有哪些，实现一个"><a href="#排序算法有哪些，实现一个" class="headerlink" title="排序算法有哪些，实现一个"></a>排序算法有哪些，实现一个</h3><h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><h3 id="网页从输入网址到渲染完成经历了哪些过程"><a href="#网页从输入网址到渲染完成经历了哪些过程" class="headerlink" title="网页从输入网址到渲染完成经历了哪些过程"></a>网页从输入网址到渲染完成经历了哪些过程</h3><ol>
+<h3 id="this指向"><a href="#this指向" class="headerlink" title="this指向"></a>this指向</h3><h3 id="JavaScript中apply、call和bind的区别"><a href="#JavaScript中apply、call和bind的区别" class="headerlink" title="JavaScript中apply、call和bind的区别"></a><a href="https://www.cnblogs.com/cosiray/p/4512969.html" target="_blank" rel="noopener">JavaScript中apply、call和bind的区别</a></h3><h3 id="防抖与节流，写一个防抖函数"><a href="#防抖与节流，写一个防抖函数" class="headerlink" title="防抖与节流，写一个防抖函数"></a>防抖与节流，写一个防抖函数</h3><h3 id="promise，实现一个promiseAll"><a href="#promise，实现一个promiseAll" class="headerlink" title="promise，实现一个promiseAll"></a>promise，实现一个promiseAll</h3><h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><h2 id="数据结构与算法"><a href="#数据结构与算法" class="headerlink" title="数据结构与算法"></a>数据结构与算法</h2><h3 id="常用数据结构与使用场景"><a href="#常用数据结构与使用场景" class="headerlink" title="常用数据结构与使用场景"></a>常用数据结构与使用场景</h3><h3 id="排序算法有哪些，实现一个"><a href="#排序算法有哪些，实现一个" class="headerlink" title="排序算法有哪些，实现一个"></a>排序算法有哪些，实现一个</h3><h2 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h2><h3 id="content类型"><a href="#content类型" class="headerlink" title="content类型"></a>content类型</h3><h3 id="https"><a href="#https" class="headerlink" title="https"></a>https</h3><h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><h3 id="网页从输入网址到渲染完成经历了哪些过程"><a href="#网页从输入网址到渲染完成经历了哪些过程" class="headerlink" title="网页从输入网址到渲染完成经历了哪些过程"></a>网页从输入网址到渲染完成经历了哪些过程</h3><ol>
 <li>输入网址；</li>
 <li>发送到DNS服务器，并获取域名对应的web服务器对应的ip地址；</li>
 <li>与web服务器建立TCP连接；</li>
@@ -5593,7 +5593,7 @@ myMap.set(<span class="hljs-number">1</span>, <span class="hljs-string">"one"</s
 <span class="hljs-comment">// 1 = one</span></code></pre></div>
 
 <p>只有对同一个对象的引用，Map 结构才将其视为同一个键。这一点要非常小心。</p>
-<p><img src="../blogImg/image-20200813114349457.png" srcset="/img/loading.gif" alt="image-20200813114349457"></p>
+<p><img src="/blogImg/image-20200813114349457.png" srcset="/img/loading.gif" alt="image-20200813114349457"></p>
 <h2 id="复制、合并、与数组的关系"><a href="#复制、合并、与数组的关系" class="headerlink" title="复制、合并、与数组的关系"></a>复制、合并、与数组的关系</h2><h3 id="复制Map"><a href="#复制Map" class="headerlink" title="复制Map"></a>复制Map</h3><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> original = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>([
   [<span class="hljs-number">1</span>, <span class="hljs-string">'one'</span>]
 ]);
@@ -6569,6 +6569,458 @@ btn.onclick = <span class="hljs-function"><span class="hljs-keyword">function</s
       </categories>
       <tags>
         <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>浅拷贝与深拷贝</title>
+    <url>/2020/08/19/%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/</url>
+    <content><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>浅拷贝只拷贝一层，更深层次对象级别的只拷贝引用</p>
+<p>深拷贝拷贝多层，每一层级的数据都会拷贝</p>
+<h2 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h2><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> obj = &#123;
+    id: <span class="hljs-number">1</span>,
+    name: <span class="hljs-string">'uzi'</span>,
+    msg: &#123;
+        age: <span class="hljs-number">5</span>	
+    &#125;
+&#125;
+<span class="hljs-keyword">let</span> a = &#123;&#125;;
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> b <span class="hljs-keyword">in</span> obj) &#123;	<span class="hljs-comment">// 浅拷贝, msg只拷贝了引用</span>
+    a[b] = obj[b];
+&#125;
+a.msg.age = <span class="hljs-number">18</span>;	<span class="hljs-comment">// obj.msg.age 也变为 18;</span>
+<span class="hljs-comment">// ----------------------------------------------</span>
+<span class="hljs-built_in">Object</span>.assign(a, obj);	<span class="hljs-comment">// 复制对象,也是浅拷贝</span></code></pre></div>
+
+<h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 利用递归的方式</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">deepCopy</span>(<span class="hljs-params">newObj, oldObj</span>) </span>&#123;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> k <span class="hljs-keyword">in</span> oldObj) &#123;
+        <span class="hljs-comment">// 判断属性值为什么类型</span>
+        <span class="hljs-keyword">let</span> item = oldObj[k];
+        <span class="hljs-keyword">if</span>(item <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Array</span>) &#123; <span class="hljs-comment">// 类型为数组时, 数组也是Object,所以写前面</span>
+            newObj[k] = [];
+            deepCopy(newObj[k], item);
+        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(item <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Object</span>) &#123;	<span class="hljs-comment">// 类型为对象</span>
+            newObj[k] = &#123;&#125;;
+            deepCopy(newObj[k], item);
+        &#125; <span class="hljs-keyword">else</span> &#123;	<span class="hljs-comment">// 简单数据类型</span>
+            newObj[k] = item;
+        &#125;
+    &#125;
+&#125;</code></pre></div>
+
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>严格模式</title>
+    <url>/2020/08/18/%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<h2 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h2><h3 id="什么是严格模式"><a href="#什么是严格模式" class="headerlink" title="什么是严格模式"></a>什么是严格模式</h3><p>严格模式（strict mode)，采用具有限制性的JavaScript用法，在严格的条件下运行JS代码。</p>
+<h3 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a>主要功能</h3><ol>
+<li>消除了JavaScript语法中的一些不合理，不严谨之处，减少了一些怪异行为</li>
+<li>消除了代码运行的一些不安全之处，保证代码运行的安全</li>
+<li>提高编译器效率，增加运行速度</li>
+<li>禁用了在ECMAScript的未来版本中可能会使用的一些语法</li>
+</ol>
+<h3 id="开启严格模式"><a href="#开启严格模式" class="headerlink" title="开启严格模式"></a>开启严格模式</h3><ul>
+<li><p>为脚本开启严格模式</p>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="javascript"><span class="hljs-meta">    'use strict'</span>;</span>
+<span class="actionscript">    <span class="hljs-comment">// 下方的代码将按照严格模式执行代码</span></span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+// or
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">    (<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span>
+<span class="javascript"><span class="hljs-meta">	  	'use strict'</span>;</span>
+<span class="actionscript">        <span class="hljs-comment">// ....</span></span>
+    &#125;)();
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></div>
+</li>
+<li><p>为函数开启严格模式</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>) </span>&#123;
+<span class="hljs-meta">	'use strict'</span>;
+   	<span class="hljs-comment">// 只给该函数开启严格模式</span>
+&#125;</code></pre></div>
+
+</li>
+</ul>
+<h3 id="严格模式下的变化"><a href="#严格模式下的变化" class="headerlink" title="严格模式下的变化"></a>严格模式下的变化</h3><ol>
+<li><p>变量必须先声明再使用</p>
+</li>
+<li><p>禁止删除已声明的变量</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> a = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">delete</span> a;	<span class="hljs-comment">// ERROR</span></code></pre></div>
+</li>
+<li><p>this指向</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 严格模式下全局作用域中函数中的this指向undefined，而不是window</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>) </span>&#123;
+	<span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>); 	<span class="hljs-comment">// undefined</span>
+&#125;
+<span class="hljs-comment">// 构造函数不加new 调用，this会报错</span>
+<span class="hljs-comment">// 定时器中this仍指向window</span>
+<span class="hljs-comment">// 事件、对象还是指向调用者</span></code></pre></div>
+</li>
+<li><p>函数中不能有重名参数</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params">a, a</span>) </span>&#123;	<span class="hljs-comment">// 严格模式下报错</span>
+    <span class="hljs-built_in">console</span>.log(a + a);	<span class="hljs-comment">// 正常模式会输出4</span>
+&#125;
+fu(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);</code></pre></div>
+</li>
+<li><p>不允许在非函数代码块中声明函数</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">if</span>(<span class="hljs-literal">true</span>) &#123;
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>) </span>&#123;	<span class="hljs-comment">// ERROR</span>
+        
+    &#125;
+&#125;</code></pre></div>
+</li>
+<li><p>……</p>
+</li>
+</ol>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Strict_mode" target="_blank" rel="noopener">MDN</a></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>正则表达式</title>
+    <url>/2020/08/21/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
+    <content><![CDATA[<h2 id="正则表达式简介"><a href="#正则表达式简介" class="headerlink" title="正则表达式简介"></a>正则表达式简介</h2><p>正则表达式（Regular Expression）是用于匹配字符串中字符组合的模式，在JS中，正则表达式也是对象。</p>
+<p>正则表达式的作用：</p>
+<ul>
+<li>被用来检索、替换那些符合某个模式（规则）的文本，例如验证表单：用户名表单只能输入英文字母、数字或者下划线，昵称输入框中可以输入中文。</li>
+<li>用于过滤掉页面内容中的一些敏感词（替换），或者从字符串中获取我们想要的特定部分（提取）等。</li>
+</ul>
+<p>特点：</p>
+<ul>
+<li>灵活性、逻辑性和功能性非常强</li>
+<li>可以迅速地用极简单的方式达到字符串的复杂控制</li>
+</ul>
+<h2 id="在JavaScript中的使用"><a href="#在JavaScript中的使用" class="headerlink" title="在JavaScript中的使用"></a>在JavaScript中的使用</h2><h3 id="创建正则表达式"><a href="#创建正则表达式" class="headerlink" title="创建正则表达式"></a>创建正则表达式</h3><ol>
+<li><p>使用RegExp对象创建</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> regexp = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-regexp">/123/</span>);</code></pre></div>
+</li>
+<li><p>直接使用字面量创建</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> regExp = <span class="hljs-regexp">/123/</span>;</code></pre></div>
+
+</li>
+</ol>
+<h3 id="测试正则表达式"><a href="#测试正则表达式" class="headerlink" title="测试正则表达式"></a>测试正则表达式</h3><p>使用test()正则对象方法，如果符合返回true，不符合返回false</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> rg = <span class="hljs-regexp">/123/</span>;
+<span class="hljs-comment">// 只要包含123就返回true</span>
+rg.test(<span class="hljs-number">123</span>);	<span class="hljs-comment">// true</span>
+rg.test(<span class="hljs-string">'abc'</span>);	<span class="hljs-comment">// false</span></code></pre></div>
+
+<h3 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions" target="_blank" rel="noopener">详情查看MDN</a></p>
+<h4 id="边界符"><a href="#边界符" class="headerlink" title="边界符 ^ $"></a>边界符 ^ $</h4><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> reg = <span class="hljs-regexp">/^abc/</span>;	<span class="hljs-comment">// 以abc开头</span>
+<span class="hljs-keyword">let</span> reg1 = <span class="hljs-regexp">/abc$/</span>;	<span class="hljs-comment">// 以abc结尾</span>
+<span class="hljs-keyword">let</span> reg2 = <span class="hljs-regexp">/^abc$/</span>;	<span class="hljs-comment">// 精确匹配，必须是abc</span></code></pre></div>
+
+<h4 id="字符类"><a href="#字符类" class="headerlink" title="字符类  [ ]"></a>字符类  [ ]</h4><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> reg = <span class="hljs-regexp">/[abc]/</span>;	<span class="hljs-comment">// 只要包含a或b或c就返回true</span>
+<span class="hljs-keyword">let</span> reg1 = <span class="hljs-regexp">/^[a-z]$/</span>;	<span class="hljs-comment">// 只有是a到z中的单个字母才返回true</span></code></pre></div>
+
+<h4 id="字符组合"><a href="#字符组合" class="headerlink" title="字符组合"></a>字符组合</h4><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> reg = <span class="hljs-regexp">/^[a-zA-Z0-9_-]$/</span>;	<span class="hljs-comment">// 大小写、数字、下划线和短横线中任何一个</span>
+<span class="hljs-keyword">let</span> reg1 = <span class="hljs-regexp">/^[^a-zA-Z0-9_-]$/</span>;	<span class="hljs-comment">//字符类[]中的^表示取反操作，不能包含……</span></code></pre></div>
+
+<h4 id="量词符"><a href="#量词符" class="headerlink" title="量词符"></a>量词符</h4><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// * 可以出现0次或多次	</span>
+<span class="hljs-keyword">let</span> reg = <span class="hljs-regexp">/^a*$/</span>;	<span class="hljs-comment">// "", "a", "aaa"	...</span>
+<span class="hljs-comment">// + 出现1次或多次	</span>
+<span class="hljs-keyword">let</span> reg1 = <span class="hljs-regexp">/^a+$/</span>;	<span class="hljs-comment">// "a", "aaa"	...</span>
+<span class="hljs-comment">// ? 0次或1次</span>
+<span class="hljs-keyword">let</span> reg2 = <span class="hljs-regexp">/^a?$/</span>;	<span class="hljs-comment">// "", "a"</span>
+<span class="hljs-comment">// &#123;3&#125; 重复3次</span>
+<span class="hljs-keyword">let</span> reg3 = <span class="hljs-regexp">/^a&#123;3&#125;$/</span>;	<span class="hljs-comment">// "aaa"</span>
+<span class="hljs-comment">// &#123;3,&#125; 大于等于3次</span>
+<span class="hljs-keyword">let</span> reg4 = <span class="hljs-regexp">/^a&#123;3,&#125;$/</span>;	<span class="hljs-comment">// "aaa", "aaaaaaa"	...</span>
+<span class="hljs-comment">// &#123;3, 5&#125; 大于等于3,且小于等于5</span>
+<span class="hljs-keyword">let</span> reg5 = <span class="hljs-regexp">/^a&#123;3,5&#125;$/</span>;	<span class="hljs-comment">// "aaa", "aaaa", "aaaaa"</span>
+<span class="hljs-comment">// 小括号 表示优先级</span>
+<span class="hljs-keyword">let</span> reg6 = <span class="hljs-regexp">/^(abc)&#123;3&#125;$/</span>;	<span class="hljs-comment">// "abcabcabc"</span></code></pre></div>
+
+<blockquote>
+<p>注意：{}中间不能加空格</p>
+</blockquote>
+<h4 id="预定义类"><a href="#预定义类" class="headerlink" title="预定义类"></a>预定义类</h4><p>常见模式的简单写法</p>
+<div class="hljs"><pre><code class="hljs txt">\d   等价于 [0-9]
+\D	 等价于 [^0-9]
+\w   等价于 [A-Za-z0-9_]
+具体查看MDN</code></pre></div>
+
+<h2 id="正则替换"><a href="#正则替换" class="headerlink" title="正则替换"></a>正则替换</h2><h3 id="replace替换"><a href="#replace替换" class="headerlink" title="replace替换"></a>replace替换</h3><p>replace方法第一个参数可以为正则表达式</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> str = <span class="hljs-string">"hello world"</span>;
+<span class="hljs-keyword">let</span> newStr = str.replace(<span class="hljs-string">'hello'</span>, <span class="hljs-string">'good'</span>);
+<span class="hljs-comment">// or</span>
+<span class="hljs-keyword">let</span> newStr = str.replace(<span class="hljs-regexp">/hello/</span>, <span class="hljs-string">'good'</span>);</code></pre></div>
+
+<h3 id="正则表达式参数"><a href="#正则表达式参数" class="headerlink" title="正则表达式参数"></a>正则表达式参数</h3><p><code>表达式/[switch]</code><br>switch修饰符声明按照什么模式来匹配，有三种值</p>
+<ul>
+<li>g：全局匹配</li>
+<li>i：忽略大小写</li>
+<li>gi：全局匹配+忽略大小写</li>
+</ul>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> str = <span class="hljs-string">"big big world"</span>;
+<span class="hljs-keyword">let</span> newStr = str.replace(<span class="hljs-regexp">/big/</span>, <span class="hljs-string">'small'</span>);	<span class="hljs-comment">// "small big world"</span>
+<span class="hljs-comment">// 不加全局匹配只会替换第一个匹配的</span>
+<span class="hljs-keyword">let</span> newStr1 = str.replace(<span class="hljs-regexp">/big/g</span>, <span class="hljs-string">'small'</span>); <span class="hljs-comment">// "small small world"</span></code></pre></div>
+
+<h2 id="简单应用案例"><a href="#简单应用案例" class="headerlink" title="简单应用案例"></a>简单应用案例</h2><div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"name"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>请输入用户名<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="javascript">			<span class="hljs-keyword">let</span> reg = <span class="hljs-regexp">/^[a-zA-Z0-9_-]&#123;6,16&#125;$/</span>;</span>
+<span class="javascript">			<span class="hljs-keyword">let</span> name = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.name'</span>);</span>
+<span class="actionscript">            name.onblur = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span>
+<span class="actionscript">                <span class="hljs-keyword">if</span>(reg.test(<span class="hljs-keyword">this</span>.value)) &#123;</span>
+<span class="javascript">                    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'true'</span>)</span>
+<span class="actionscript">                    <span class="hljs-comment">// 修改样式等操作。。。</span></span>
+<span class="actionscript">                &#125; <span class="hljs-keyword">else</span> &#123;</span>
+<span class="javascript">                    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'false'</span>)</span>
+<span class="actionscript">                    <span class="hljs-comment">// 修改样式等操作。。。</span></span>
+                &#125;
+            &#125;
+        <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre></div>
+
+<p><a href="https://c.runoob.com/front-end/854" target="_blank" rel="noopener">工具</a></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>其它</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>排序-JS版</title>
+    <url>/2020/08/19/%E6%8E%92%E5%BA%8F-JS%E7%89%88/</url>
+    <content><![CDATA[<h3 id="冒泡排序（Bubble-Sort）"><a href="#冒泡排序（Bubble-Sort）" class="headerlink" title="冒泡排序（Bubble Sort）"></a>冒泡排序（Bubble Sort）</h3><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bubbleSort</span>(<span class="hljs-params">arr</span>) </span>&#123;
+    <span class="hljs-keyword">if</span> (arr.length &lt;= <span class="hljs-number">1</span>) &#123;
+        <span class="hljs-keyword">return</span> arr;
+    &#125;
+    <span class="hljs-keyword">let</span> flag;	
+    <span class="hljs-keyword">let</span> temp;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;
+        flag = <span class="hljs-literal">true</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; arr.length - <span class="hljs-number">1</span> - i; j++) &#123;	<span class="hljs-comment">// 内层循环</span>
+            <span class="hljs-keyword">if</span> (arr[j] &gt; arr[j + <span class="hljs-number">1</span>]) &#123;	<span class="hljs-comment">// 比较相邻两个值</span>
+                flag = <span class="hljs-literal">false</span>;
+                temp = arr[j + <span class="hljs-number">1</span>];
+                arr[j + <span class="hljs-number">1</span>] = arr[j];
+                arr[j] = temp;
+            &#125;
+        &#125;
+        <span class="hljs-keyword">if</span> (flag) &#123;	<span class="hljs-comment">// 如果flag为true,表示上轮循环已经有序</span>
+            <span class="hljs-keyword">return</span> arr;
+        &#125;
+    &#125;
+&#125;</code></pre></div>
+
+<h3 id="快速排序（Quicksort）"><a href="#快速排序（Quicksort）" class="headerlink" title="快速排序（Quicksort）"></a>快速排序（Quicksort）</h3>]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>高阶函数与闭包</title>
+    <url>/2020/08/18/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%E4%B8%8E%E9%97%AD%E5%8C%85/</url>
+    <content><![CDATA[<h2 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>高阶函数是对其他函数进行操作的函数，分为两种，接受函数作为参数或者将函数作为返回值进行输出</p>
+<h3 id="接受函数作为参数"><a href="#接受函数作为参数" class="headerlink" title="接受函数作为参数"></a>接受函数作为参数</h3><p>典型的使用：回调函数</p>
+<p><em>回调函数是作为参数传给另一个函数的函数，然后通过在外部函数内部调用该回调函数以完成某种操作</em></p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 函数作为参数</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params">a, b, callback</span>) </span>&#123;
+    <span class="hljs-built_in">console</span>.log(a+b);
+    callback &amp;&amp; callback();
+&#125;
+
+fn(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;	<span class="hljs-comment">// 回调函数</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'1111'</span>);
+&#125;)</code></pre></div>
+
+<h3 id="将函数作为返回值进行输出"><a href="#将函数作为返回值进行输出" class="headerlink" title="将函数作为返回值进行输出"></a>将函数作为返回值进行输出</h3><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-keyword">return</span> functon() &#123;&#125;
+&#125;</code></pre></div>
+
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><p>闭包（closure）：有权访问另一个函数作用域中变量的函数</p>
+<p>主要作用：延伸变量的作用范围</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-keyword">let</span> num = <span class="hljs-number">11</span>;
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fun</span>(<span class="hljs-params"></span>) </span>&#123;
+         <span class="hljs-comment">// fun这个函数作用域访问了另一个函数fn中的局部变量num，即产生了闭包</span>
+        <span class="hljs-built_in">console</span>.log(num); <span class="hljs-comment">// 11</span>
+    &#125;
+    fun();
+&#125;
+fn();</code></pre></div>
+
+<p><img src="/blogImg/image-20200818222038219.png" srcset="/img/loading.gif" alt="image-20200818222038219"></p>
+<h3 id="在外部作用域访问内部的局部变量"><a href="#在外部作用域访问内部的局部变量" class="headerlink" title="在外部作用域访问内部的局部变量"></a>在外部作用域访问内部的局部变量</h3><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-keyword">let</span> num = <span class="hljs-number">10</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+        <span class="hljs-built_in">console</span>.log(num);
+    &#125;
+&#125;
+<span class="hljs-keyword">let</span> f = fn();
+f();	<span class="hljs-comment">// 10</span></code></pre></div>
+
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> car = (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-comment">// 局部变量</span>
+   <span class="hljs-keyword">let</span> start = <span class="hljs-number">13</span>; 	
+    <span class="hljs-comment">// 局部变量</span>
+   <span class="hljs-keyword">let</span> total = <span class="hljs-number">0</span>;
+   <span class="hljs-keyword">return</span> &#123;
+       price: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">n</span>) </span>&#123;
+           <span class="hljs-keyword">if</span>(n &lt;= <span class="hljs-number">3</span>) &#123;
+               total = start;
+           &#125; <span class="hljs-keyword">else</span> &#123;
+               total = (n - <span class="hljs-number">3</span>) * <span class="hljs-number">5</span> + start
+           &#125;
+           <span class="hljs-keyword">return</span> total;
+       &#125;,
+       yd: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">flag</span>) </span>&#123;
+           <span class="hljs-keyword">return</span> flag ? total + <span class="hljs-number">10</span> : total;
+       &#125;
+   &#125;
+&#125;)();
+
+car.price(<span class="hljs-number">5</span>);	 <span class="hljs-comment">// 23</span>
+car.yd(<span class="hljs-literal">true</span>); 	 <span class="hljs-comment">// 33</span></code></pre></div>
+
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>webpack4</title>
+    <url>/2020/08/23/webpack/</url>
+    <content><![CDATA[<h2 id="webpack的概念"><a href="#webpack的概念" class="headerlink" title="webpack的概念"></a>webpack的概念</h2><p>webpack是一个用于现代JavaScript应用程序的静态模块打包工具。当 webpack 处理应用程序时，它会在内部构建一个 <a href="https://webpack.docschina.org/concepts/dependency-graph/" target="_blank" rel="noopener">依赖图(dependency graph)</a>，此依赖图对应映射到项目所需的每个模块，并生成一个或多个 <em>bundle</em>。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="一、搭建项目目录"><a href="#一、搭建项目目录" class="headerlink" title="一、搭建项目目录"></a>一、搭建项目目录</h3><div class="hljs"><pre><code class="hljs diff"> webpack-learn
+ |- /src
+|- index.js
+|- index.html</code></pre></div>
+
+<p>初始化<code>package.json</code>:</p>
+<div class="hljs"><pre><code class="hljs bash">npm init -y</code></pre></div>
+
+<p><a href="https://docs.npmjs.com/cli/init" target="_blank" rel="noopener">npm init</a>将所在目录设为npm package。</p>
+<p><img src="/blogImg/image-20200823150153329.png" srcset="/img/loading.gif" alt="image-20200823150153329"></p>
+<h3 id="二、安装webpack"><a href="#二、安装webpack" class="headerlink" title="二、安装webpack"></a>二、安装webpack</h3><p>推荐局部安装，全局安装会造成版本指定，如果多个项目依赖的版本不同，会造成构建失败</p>
+<div class="hljs"><pre><code class="hljs bash">npm i webpack webpack-cli -D</code></pre></div>
+
+<p>webpack4需要引入webpack-cli，执行上述命令后，会生成一个node_modules文件夹和一个package-lock.json文件</p>
+<h2 id="使用webpack"><a href="#使用webpack" class="headerlink" title="使用webpack"></a>使用webpack</h2><p>修改package.json文件夹，添加一个build（构建）脚本</p>
+<div class="hljs"><pre><code class="hljs json">"scripts": &#123;
+  "build": "webpack"
+&#125;</code></pre></div>
+
+<p>然后执行命令</p>
+<div class="hljs"><pre><code class="hljs bash">npm run build</code></pre></div>
+
+<p>输出如下图所示：</p>
+<p><img src="/blogImg/image-20200823153339819.png" srcset="/img/loading.gif" alt="image-20200823153339819"></p>
+<p>webpack4之前需要在webpack.config.js文件中指定入口点和输出文件。这里没有报错，因为从webpack4开始，默认将<code>./src/index.js</code>这个文件定义为入口点（entry point），默认在<code>./dist/main.js</code>输出（output）。</p>
+<h3 id="production（生产）和development（开发）模式"><a href="#production（生产）和development（开发）模式" class="headerlink" title="production（生产）和development（开发）模式"></a>production（生产）和development（开发）模式</h3><p>webpack4引入了生产模式和开发模式</p>
+<p>修改package.json文件夹中的script</p>
+<div class="hljs"><pre><code class="hljs bash"><span class="hljs-string">"scripts"</span>: &#123;
+  <span class="hljs-string">"dev"</span>: <span class="hljs-string">"webpack --mode development"</span>,
+  <span class="hljs-string">"build"</span>: <span class="hljs-string">"webpack --mode production"</span>
+&#125;</code></pre></div>
+
+<p>此时执行npm run dev，查看<code>./dist/main.js</code></p>
+<p><img src="./blogImg/image-20200823154631661.png" srcset="/img/loading.gif" alt="image-20200823154631661"></p>
+<p>是一个没有压缩过的bundle（包）文件。</p>
+<p>而执行npm run build时，生成的是一个压缩后的bundle</p>
+<p><strong>production mode(生产模式)</strong> 可以开箱即用地进行各种优化。 包括压缩，作用域提升，tree-shaking 等。<strong>development mode(开发模式)</strong>针对速度进行了优化，仅仅提供了一种不压缩的 bundle 。</p>
+<h2 id="webpack配置"><a href="#webpack配置" class="headerlink" title="webpack配置"></a>webpack配置</h2><p>新建一个bro.js</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> bro = <span class="hljs-function">(<span class="hljs-params">greetings</span>) =&gt;</span> &#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">$&#123;greetings&#125;</span>, bro`</span>
+&#125;
+
+<span class="hljs-keyword">export</span> &#123;
+    bro
+&#125;;</code></pre></div>
+
+<p>在index.js中引入</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123;
+    bro
+&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'./bro'</span>;
+
+<span class="hljs-built_in">console</span>.log(bro(<span class="hljs-string">'Dude'</span>));</code></pre></div>
+
+<p>index.html</p>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./index.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre></div>
+
+<p>控制台输入<code>http-server -o</code> 运行，得不到想要的结果。因为webpack默认只能理解JavaScript和JSON文件，需要通过loader或插件（plugin）使得webpack能够处理其他的文件。</p>
+<p>在主目录下新建一个webpack.config.js文件夹，在这个文件中自定义配置。</p>
+<p><img src="/blogImg/image-20200823204034939.png" srcset="/img/loading.gif" alt="image-20200823204034939"></p>
+<h3 id="HTML-webpack插件"><a href="#HTML-webpack插件" class="headerlink" title="HTML webpack插件"></a>HTML webpack插件</h3><p>命令行输入安装相对应的loader</p>
+<div class="hljs"><pre><code class="hljs bash">npm i -D html-webpack-plugin html-loader</code></pre></div>
+
+<p>修改webpack.config.js文件</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> HtmlWebPackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">"html-webpack-plugin"</span>);
+
+<span class="hljs-built_in">module</span>.exports = &#123;
+    <span class="hljs-built_in">module</span>: &#123;
+        rules: [&#123;
+            <span class="hljs-comment">// loader的两个属性</span>
+            test: <span class="hljs-regexp">/\.html$/</span>,	<span class="hljs-comment">// test: 识别哪些文件会被转换</span>
+            use: [&#123;			<span class="hljs-comment">// use: 定义出在进行转化时，应该使用哪个loader</span>
+                loader: <span class="hljs-string">"html-loader"</span>,
+                options: &#123;
+                    minimize: <span class="hljs-literal">true</span>
+                &#125;
+            &#125;]
+        &#125;]
+    &#125;,
+    <span class="hljs-comment">// 插件</span>
+    plugins: [
+        <span class="hljs-keyword">new</span> HtmlWebPackPlugin(&#123;
+            template: <span class="hljs-string">"./src/index.html"</span>,
+            filename: <span class="hljs-string">"./index.html"</span>
+        &#125;)
+    ]
+&#125;</code></pre></div>
+
+<p>修改完成后，再次执行<code>npm run build</code>，会看到dist目录下生成了一个index.html文件</p>
+<p>再次运行，可以看到控制台成功输出</p>
+<p><img src="/blogImg/image-20200823210359851.png" srcset="/img/loading.gif" alt="image-20200823210359851"></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>webpack</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
       </tags>
   </entry>
 </search>

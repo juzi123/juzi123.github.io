@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/juzi.png">
+  <link rel="icon" type="image/png" href="/img/juzi.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="BU JUNJIE">
+  <meta name="keywords" content="">
+  <title>正则表达式 - JUZI&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Ptolemaios Ⅱ</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-08-21 19:27">
+      2020年8月21日 晚上
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      774 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      10
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h2 id="正则表达式简介"><a href="#正则表达式简介" class="headerlink" title="正则表达式简介"></a>正则表达式简介</h2><p>正则表达式（Regular Expression）是用于匹配字符串中字符组合的模式，在JS中，正则表达式也是对象。</p>
+<p>正则表达式的作用：</p>
+<ul>
+<li>被用来检索、替换那些符合某个模式（规则）的文本，例如验证表单：用户名表单只能输入英文字母、数字或者下划线，昵称输入框中可以输入中文。</li>
+<li>用于过滤掉页面内容中的一些敏感词（替换），或者从字符串中获取我们想要的特定部分（提取）等。</li>
+</ul>
+<p>特点：</p>
+<ul>
+<li>灵活性、逻辑性和功能性非常强</li>
+<li>可以迅速地用极简单的方式达到字符串的复杂控制</li>
+</ul>
+<h2 id="在JavaScript中的使用"><a href="#在JavaScript中的使用" class="headerlink" title="在JavaScript中的使用"></a>在JavaScript中的使用</h2><h3 id="创建正则表达式"><a href="#创建正则表达式" class="headerlink" title="创建正则表达式"></a>创建正则表达式</h3><ol>
+<li><p>使用RegExp对象创建</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> regexp = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-regexp">/123/</span>);</code></pre></div>
+</li>
+<li><p>直接使用字面量创建</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> regExp = <span class="hljs-regexp">/123/</span>;</code></pre></div>
+
+</li>
+</ol>
+<h3 id="测试正则表达式"><a href="#测试正则表达式" class="headerlink" title="测试正则表达式"></a>测试正则表达式</h3><p>使用test()正则对象方法，如果符合返回true，不符合返回false</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> rg = <span class="hljs-regexp">/123/</span>;
+<span class="hljs-comment">// 只要包含123就返回true</span>
+rg.test(<span class="hljs-number">123</span>);	<span class="hljs-comment">// true</span>
+rg.test(<span class="hljs-string">'abc'</span>);	<span class="hljs-comment">// false</span></code></pre></div>
+
+<h3 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions" target="_blank" rel="noopener">详情查看MDN</a></p>
+<h4 id="边界符"><a href="#边界符" class="headerlink" title="边界符 ^ $"></a>边界符 ^ $</h4><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> reg = <span class="hljs-regexp">/^abc/</span>;	<span class="hljs-comment">// 以abc开头</span>
+<span class="hljs-keyword">let</span> reg1 = <span class="hljs-regexp">/abc$/</span>;	<span class="hljs-comment">// 以abc结尾</span>
+<span class="hljs-keyword">let</span> reg2 = <span class="hljs-regexp">/^abc$/</span>;	<span class="hljs-comment">// 精确匹配，必须是abc</span></code></pre></div>
+
+<h4 id="字符类"><a href="#字符类" class="headerlink" title="字符类  [ ]"></a>字符类  [ ]</h4><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> reg = <span class="hljs-regexp">/[abc]/</span>;	<span class="hljs-comment">// 只要包含a或b或c就返回true</span>
+<span class="hljs-keyword">let</span> reg1 = <span class="hljs-regexp">/^[a-z]$/</span>;	<span class="hljs-comment">// 只有是a到z中的单个字母才返回true</span></code></pre></div>
+
+<h4 id="字符组合"><a href="#字符组合" class="headerlink" title="字符组合"></a>字符组合</h4><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> reg = <span class="hljs-regexp">/^[a-zA-Z0-9_-]$/</span>;	<span class="hljs-comment">// 大小写、数字、下划线和短横线中任何一个</span>
+<span class="hljs-keyword">let</span> reg1 = <span class="hljs-regexp">/^[^a-zA-Z0-9_-]$/</span>;	<span class="hljs-comment">//字符类[]中的^表示取反操作，不能包含……</span></code></pre></div>
+
+<h4 id="量词符"><a href="#量词符" class="headerlink" title="量词符"></a>量词符</h4><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// * 可以出现0次或多次	</span>
+<span class="hljs-keyword">let</span> reg = <span class="hljs-regexp">/^a*$/</span>;	<span class="hljs-comment">// "", "a", "aaa"	...</span>
+<span class="hljs-comment">// + 出现1次或多次	</span>
+<span class="hljs-keyword">let</span> reg1 = <span class="hljs-regexp">/^a+$/</span>;	<span class="hljs-comment">// "a", "aaa"	...</span>
+<span class="hljs-comment">// ? 0次或1次</span>
+<span class="hljs-keyword">let</span> reg2 = <span class="hljs-regexp">/^a?$/</span>;	<span class="hljs-comment">// "", "a"</span>
+<span class="hljs-comment">// &#123;3&#125; 重复3次</span>
+<span class="hljs-keyword">let</span> reg3 = <span class="hljs-regexp">/^a&#123;3&#125;$/</span>;	<span class="hljs-comment">// "aaa"</span>
+<span class="hljs-comment">// &#123;3,&#125; 大于等于3次</span>
+<span class="hljs-keyword">let</span> reg4 = <span class="hljs-regexp">/^a&#123;3,&#125;$/</span>;	<span class="hljs-comment">// "aaa", "aaaaaaa"	...</span>
+<span class="hljs-comment">// &#123;3, 5&#125; 大于等于3,且小于等于5</span>
+<span class="hljs-keyword">let</span> reg5 = <span class="hljs-regexp">/^a&#123;3,5&#125;$/</span>;	<span class="hljs-comment">// "aaa", "aaaa", "aaaaa"</span>
+<span class="hljs-comment">// 小括号 表示优先级</span>
+<span class="hljs-keyword">let</span> reg6 = <span class="hljs-regexp">/^(abc)&#123;3&#125;$/</span>;	<span class="hljs-comment">// "abcabcabc"</span></code></pre></div>
+
+<blockquote>
+<p>注意：{}中间不能加空格</p>
+</blockquote>
+<h4 id="预定义类"><a href="#预定义类" class="headerlink" title="预定义类"></a>预定义类</h4><p>常见模式的简单写法</p>
+<div class="hljs"><pre><code class="hljs txt">\d   等价于 [0-9]
+\D	 等价于 [^0-9]
+\w   等价于 [A-Za-z0-9_]
+具体查看MDN</code></pre></div>
+
+<h2 id="正则替换"><a href="#正则替换" class="headerlink" title="正则替换"></a>正则替换</h2><h3 id="replace替换"><a href="#replace替换" class="headerlink" title="replace替换"></a>replace替换</h3><p>replace方法第一个参数可以为正则表达式</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> str = <span class="hljs-string">"hello world"</span>;
+<span class="hljs-keyword">let</span> newStr = str.replace(<span class="hljs-string">'hello'</span>, <span class="hljs-string">'good'</span>);
+<span class="hljs-comment">// or</span>
+<span class="hljs-keyword">let</span> newStr = str.replace(<span class="hljs-regexp">/hello/</span>, <span class="hljs-string">'good'</span>);</code></pre></div>
+
+<h3 id="正则表达式参数"><a href="#正则表达式参数" class="headerlink" title="正则表达式参数"></a>正则表达式参数</h3><p><code>表达式/[switch]</code><br>switch修饰符声明按照什么模式来匹配，有三种值</p>
+<ul>
+<li>g：全局匹配</li>
+<li>i：忽略大小写</li>
+<li>gi：全局匹配+忽略大小写</li>
+</ul>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> str = <span class="hljs-string">"big big world"</span>;
+<span class="hljs-keyword">let</span> newStr = str.replace(<span class="hljs-regexp">/big/</span>, <span class="hljs-string">'small'</span>);	<span class="hljs-comment">// "small big world"</span>
+<span class="hljs-comment">// 不加全局匹配只会替换第一个匹配的</span>
+<span class="hljs-keyword">let</span> newStr1 = str.replace(<span class="hljs-regexp">/big/g</span>, <span class="hljs-string">'small'</span>); <span class="hljs-comment">// "small small world"</span></code></pre></div>
+
+<h2 id="简单应用案例"><a href="#简单应用案例" class="headerlink" title="简单应用案例"></a>简单应用案例</h2><div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"name"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>请输入用户名<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="javascript">			<span class="hljs-keyword">let</span> reg = <span class="hljs-regexp">/^[a-zA-Z0-9_-]&#123;6,16&#125;$/</span>;</span>
+<span class="javascript">			<span class="hljs-keyword">let</span> name = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.name'</span>);</span>
+<span class="actionscript">            name.onblur = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span>
+<span class="actionscript">                <span class="hljs-keyword">if</span>(reg.test(<span class="hljs-keyword">this</span>.value)) &#123;</span>
+<span class="javascript">                    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'true'</span>)</span>
+<span class="actionscript">                    <span class="hljs-comment">// 修改样式等操作。。。</span></span>
+<span class="actionscript">                &#125; <span class="hljs-keyword">else</span> &#123;</span>
+<span class="javascript">                    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'false'</span>)</span>
+<span class="actionscript">                    <span class="hljs-comment">// 修改样式等操作。。。</span></span>
+                &#125;
+            &#125;
+        <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre></div>
+
+<p><a href="https://c.runoob.com/front-end/854" target="_blank" rel="noopener">工具</a></p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/%E5%85%B6%E5%AE%83/">其它</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/08/23/webpack/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">webpack4</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/08/19/%E6%8E%92%E5%BA%8F-JS%E7%89%88/">
+                        <span class="hidden-mobile">排序-JS版</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "正则表达式&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
