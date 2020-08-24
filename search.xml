@@ -6911,7 +6911,7 @@ car.yd(<span class="hljs-literal">true</span>); 	 <span class="hljs-comment">// 
       </tags>
   </entry>
   <entry>
-    <title>webpack4</title>
+    <title>webpack</title>
     <url>/2020/08/23/webpack/</url>
     <content><![CDATA[<h2 id="webpack的概念"><a href="#webpack的概念" class="headerlink" title="webpack的概念"></a>webpack的概念</h2><p>webpack是一个用于现代JavaScript应用程序的静态模块打包工具。当 webpack 处理应用程序时，它会在内部构建一个 <a href="https://webpack.docschina.org/concepts/dependency-graph/" target="_blank" rel="noopener">依赖图(dependency graph)</a>，此依赖图对应映射到项目所需的每个模块，并生成一个或多个 <em>bundle</em>。</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="一、搭建项目目录"><a href="#一、搭建项目目录" class="headerlink" title="一、搭建项目目录"></a>一、搭建项目目录</h3><div class="hljs"><pre><code class="hljs diff"> webpack-learn
@@ -6987,7 +6987,8 @@ car.yd(<span class="hljs-literal">true</span>); 	 <span class="hljs-comment">// 
 <div class="hljs"><pre><code class="hljs bash">npm i -D html-webpack-plugin html-loader</code></pre></div>
 
 <p>修改webpack.config.js文件</p>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> HtmlWebPackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">"html-webpack-plugin"</span>);
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 引入插件</span>
+<span class="hljs-keyword">const</span> HtmlWebPackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">"html-webpack-plugin"</span>);
 
 <span class="hljs-built_in">module</span>.exports = &#123;
     <span class="hljs-built_in">module</span>: &#123;
@@ -7014,6 +7015,112 @@ car.yd(<span class="hljs-literal">true</span>); 	 <span class="hljs-comment">// 
 <p>修改完成后，再次执行<code>npm run build</code>，会看到dist目录下生成了一个index.html文件</p>
 <p>再次运行，可以看到控制台成功输出</p>
 <p><img src="/blogImg/image-20200823210359851.png" srcset="/img/loading.gif" alt="image-20200823210359851"></p>
+<h3 id="webpack-dev-server"><a href="#webpack-dev-server" class="headerlink" title="webpack dev server"></a>webpack dev server</h3><p>使用webpack dev server，每次更改文件后，都会自动刷新浏览器窗口</p>
+<div class="hljs"><pre><code class="hljs bash">npm i -D webpack dev server</code></pre></div>
+
+<p>安装完成后修改<code>package.json</code>文件，在script标签中添加</p>
+<div class="hljs"><pre><code class="hljs json">"scripts": &#123;
+    "start:dev": "webpack-dev-server"
+  &#125;,</code></pre></div>
+
+<p>然后在控制台中执行<code>npm run start:dev</code>就可以启动了</p>
+<p><img src="/blogImg/image-20200824103432678.png" srcset="/img/loading.gif" alt="image-20200824103432678"></p>
+<h3 id="babel"><a href="#babel" class="headerlink" title="babel"></a>babel</h3><p><a href="https://babeljs.io/" target="_blank" rel="noopener">babel</a>是一个JavaScript编译器，主要用于将 ECMAScript 2015+ 版本的代码转换为向后兼容的 JavaScript 语法，以便能够运行在当前和旧版本的浏览器或其他环境中。</p>
+<div class="hljs"><pre><code class="hljs bash">npm install -D babel-loader @babel/core @babel/preset-env webpack</code></pre></div>
+
+<p>修改<code>webpack.config.js</code>文件，rules中添加以下配置即可</p>
+<div class="hljs"><pre><code class="hljs javascript">&#123;
+     test: <span class="hljs-regexp">/\.js$/</span>,
+     exclude: <span class="hljs-regexp">/node_modules/</span>,
+     use: &#123;
+     	loader: <span class="hljs-string">"babel-loader"</span>
+	&#125;
+&#125;</code></pre></div>
+
+<h3 id="加载图片"><a href="#加载图片" class="headerlink" title="加载图片"></a>加载图片</h3><p>在<code>index.html</code>文件中添加一张图片</p>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"images/dindang.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">""</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></code></pre></div>
+
+<p>安装file-loader</p>
+<div class="hljs"><pre><code class="hljs bash">npm i -D file-loader</code></pre></div>
+
+<p>修改<code>webpack.config.js</code>文件，rules中添加以下配置</p>
+<div class="hljs"><pre><code class="hljs javascript">&#123;
+     test: <span class="hljs-regexp">/\.(png|svg|jpg|gif)$/</span>,
+     use: [<span class="hljs-string">'file-loader'</span>]
+&#125;</code></pre></div>
+
+<p>编译后可以看到dist中生成了一个图片文件，并且页面中也能显示图片了</p>
+<h3 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h3><p>添加一个scss文件</p>
+<div class="hljs"><pre><code class="hljs scss"><span class="hljs-variable">$bg</span>: blue;
+<span class="hljs-selector-tag">body</span> &#123;
+    <span class="hljs-attribute">background</span>: <span class="hljs-variable">$bg</span>;
+&#125;</code></pre></div>
+
+<p>在<code>index.js</code>文件中引入</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> <span class="hljs-string">'./styles/main.scss'</span>;</code></pre></div>
+
+<p>安装</p>
+<div class="hljs"><pre><code class="hljs bash">npm i -D node-sass style-loader css-loader sass-loader mini-css-extract-plugin</code></pre></div>
+
+<p>修改<code>webpack.config.js</code>文件</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> HtmlWebPackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">"html-webpack-plugin"</span>);
+<span class="hljs-comment">// 引入</span>
+<span class="hljs-keyword">const</span> MiniCssExtractPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">"mini-css-extract-plugin"</span>);
+
+<span class="hljs-built_in">module</span>.exports = &#123;
+    <span class="hljs-built_in">module</span>: &#123;
+        rules: [&#123;
+                test: <span class="hljs-regexp">/\.js$/</span>,
+                exclude: <span class="hljs-regexp">/node_modules/</span>,
+                use: &#123;
+                    loader: <span class="hljs-string">"babel-loader"</span>
+                &#125;
+            &#125;,
+            &#123;
+                test: <span class="hljs-regexp">/\.html$/</span>,
+                use: [&#123;
+                    loader: <span class="hljs-string">"html-loader"</span>,
+                    options: &#123;
+                        minimize: <span class="hljs-literal">true</span>
+                    &#125;
+                &#125;]
+            &#125;,
+            &#123;
+                test: <span class="hljs-regexp">/\.(png|svg|jpg|gif)$/</span>,
+                use: [<span class="hljs-string">'file-loader'</span>]
+            &#125;,
+            <span class="hljs-comment">// 添加loader</span>
+            &#123;
+                test: <span class="hljs-regexp">/\.scss$/</span>,	<span class="hljs-comment">// 查找scss后缀的文件</span>
+                use: [
+                    <span class="hljs-string">"style-loader"</span>,
+                    <span class="hljs-string">"css-loader"</span>,
+                    <span class="hljs-string">"sass-loader"</span>
+                ]
+            &#125;
+        ]
+    &#125;,
+    plugins: [
+        <span class="hljs-keyword">new</span> HtmlWebPackPlugin(&#123;
+            template: <span class="hljs-string">"./src/index.html"</span>,
+            filename: <span class="hljs-string">"./index.html"</span>
+        &#125;),
+        <span class="hljs-comment">// 添加插件</span>
+        <span class="hljs-keyword">new</span> MiniCssExtractPlugin(&#123;
+            filename: <span class="hljs-string">"[name].css"</span>,
+            chunkFilename: <span class="hljs-string">"[id].css"</span>
+        &#125;)
+    ]
+&#125;</code></pre></div>
+
+<p>运行可以看到样式已经生效</p>
+<p><img src="/blogImg/image-20200824112456190.png" srcset="/img/loading.gif" alt="image-20200824112456190"></p>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><p><a href="https://github.com/juzi123/webpack-learn" target="_blank" rel="noopener">https://github.com/juzi123/webpack-learn</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://webpack.docschina.org/" target="_blank" rel="noopener">https://webpack.docschina.org/</a></p>
+<p><a href="https://www.youtube.com/watch?reload=9&amp;v=TzdEpgONurw" target="_blank" rel="noopener">https://www.youtube.com/watch?reload=9&amp;v=TzdEpgONurw</a></p>
+<p><a href="https://www.html.cn/archives/9436" target="_blank" rel="noopener">https://www.html.cn/archives/9436</a></p>
 ]]></content>
       <categories>
         <category>前端</category>
