@@ -313,7 +313,16 @@ let <span class="hljs-keyword">set</span> = new Set([1, 2, 3]);
 <span class="hljs-keyword">set</span> = new Set(Array.from(<span class="hljs-keyword">set</span>, val =&gt; val * 2));
 // <span class="hljs-keyword">set</span>的值是2, 4, 6</code></pre></div>
 
-<h2 id="WeakSet"><a href="#WeakSet" class="headerlink" title="WeakSet"></a>WeakSet</h2><p>WeakSet的成员只能是对象，不能是其他类型的值。</p>
+<h2 id="WeakSet"><a href="#WeakSet" class="headerlink" title="WeakSet"></a>WeakSet</h2><p>set中对象的引用无法被释放</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> set1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>(), obj = &#123;&#125;;
+set1.add(obj);
+<span class="hljs-comment">// 释放当前资源</span>
+obj = <span class="hljs-literal">null</span>;</code></pre></div>
+
+<p>obj被释放，但Set中对象并没有发生变化</p>
+<p><img src="/blogImg/image-20200912200623552.png" srcset="/img/loading.gif" alt="image-20200912200623552"></p>
+<p>此时可以使用WeakSet</p>
+<p>WeakSet的成员只能是对象，不能是其他类型的值。</p>
 <p>WeakSet 中的对象都是弱引用，即垃圾回收机制不考虑 WeakSet 对该对象的引用，也就是说，如果其他对象都不再引用该对象，那么垃圾回收机制会自动回收该对象所占用的内存，不考虑该对象还存在于 WeakSet 之中。</p>
 <p>这是因为垃圾回收机制依赖引用计数，如果一个值的引用次数不为<code>0</code>，垃圾回收机制就不会释放这块内存。结束使用该值之后，有时会忘记取消引用，导致内存无法释放，进而可能会引发内存泄漏。WeakSet 里面的引用，都不计入垃圾回收机制，所以就不存在这个问题。因此，WeakSet 适合临时存放一组对象，以及存放跟对象绑定的信息。只要这些对象在外部消失，它在 WeakSet 里面的引用就会自动消失。</p>
 <p>由于上面这个特点，WeakSet 的成员是不适合引用的，因为它会随时消失。另外，由于 WeakSet 内部有多少个成员，取决于垃圾回收机制有没有运行，运行前后很可能成员个数是不一样的，而垃圾回收机制何时运行是不可预测的，因此 ES6 规定 WeakSet 不可遍历。</p>

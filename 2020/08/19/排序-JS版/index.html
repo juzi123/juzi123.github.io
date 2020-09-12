@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      109 字
+      424 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      7
        分钟
     </span>
   
@@ -226,7 +226,92 @@
     &#125;
 &#125;</code></pre></div>
 
-<h3 id="快速排序（Quicksort）"><a href="#快速排序（Quicksort）" class="headerlink" title="快速排序（Quicksort）"></a>快速排序（Quicksort）</h3>
+<h3 id="快速排序（Quicksort）"><a href="#快速排序（Quicksort）" class="headerlink" title="快速排序（Quicksort）"></a>快速排序（Quicksort）</h3><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">QuickSort</span>(<span class="hljs-params">arr, low, high</span>) </span>&#123;
+    <span class="hljs-keyword">let</span> temp;
+    <span class="hljs-keyword">let</span> i = low,
+        j = high;
+    <span class="hljs-keyword">if</span> (low &lt; high) &#123;
+        temp = arr[low];
+        <span class="hljs-keyword">while</span> (i &lt; j) &#123;
+            <span class="hljs-keyword">while</span> (j &gt; i &amp;&amp; arr[j] &gt;= temp) &#123;
+                j--;
+            &#125;
+            <span class="hljs-keyword">while</span> (i &lt; j &amp;&amp; arr[i] &lt;= temp) &#123;
+                i++;
+            &#125;
+            <span class="hljs-keyword">if</span> (i &lt; j) &#123;
+                <span class="hljs-keyword">let</span> t = arr[i];
+                arr[i] = arr[j]; <span class="hljs-comment">//放在temp右边</span>
+                arr[j] = t;
+            &#125;
+        &#125;
+        <span class="hljs-comment">//最终将基准数归位</span>
+        arr[low] = arr[i];
+        arr[i] = temp;
+        QuickSort(arr, low, i - <span class="hljs-number">1</span>);
+        QuickSort(arr, i + <span class="hljs-number">1</span>, high);
+    &#125;
+&#125;</code></pre></div>
+
+<p>另一种写法</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">QuickSort</span>(<span class="hljs-params">arr, low, high</span>) </span>&#123;
+    <span class="hljs-keyword">let</span> temp;
+    <span class="hljs-keyword">let</span> i = low, j = high;
+    <span class="hljs-keyword">if</span>(low &lt; high) &#123;
+        temp = arr[low];
+        <span class="hljs-keyword">while</span>(i &lt; j) &#123;
+            <span class="hljs-keyword">while</span>(j &gt; i &amp;&amp; arr[j] &gt;= temp) &#123;
+                j--;
+            &#125;
+            <span class="hljs-keyword">if</span>(i&lt;j) &#123;
+                arr[i] = arr[j];
+                i++;
+            &#125;
+            <span class="hljs-keyword">while</span>(i &lt; j &amp;&amp; arr[i] &lt; temp) &#123;
+                i++;
+            &#125;
+            <span class="hljs-keyword">if</span>(i&lt;j)
+            &#123;
+                arr[j]=arr[i];	<span class="hljs-comment">//放在temp右边</span>
+                --j;	<span class="hljs-comment">//j左移一位</span>
+            &#125;
+        &#125;
+        arr[i] = temp;
+        QuickSort(arr, low, i<span class="hljs-number">-1</span>);
+        QuickSort(arr, i+<span class="hljs-number">1</span>, high);
+    &#125;
+&#125;</code></pre></div>
+
+<h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">selectSort</span>(<span class="hljs-params">arr</span>) </span>&#123;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;
+        <span class="hljs-keyword">let</span> min = arr[i];
+        <span class="hljs-keyword">let</span> index = i;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = i + <span class="hljs-number">1</span>; j &lt; arr.length; j++) &#123;
+            <span class="hljs-keyword">if</span> (min &gt; arr[j]) &#123;
+                min = arr[j];
+                index = j;
+            &#125;
+        &#125;
+        arr[index] = arr[i];
+        arr[i] = min;
+    &#125;
+&#125;</code></pre></div>
+
+<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">insertionSort</span>(<span class="hljs-params">arr</span>) </span>&#123;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; arr.length; i++) &#123;
+        <span class="hljs-keyword">let</span> temp = arr[i];
+        <span class="hljs-keyword">let</span> j = i - <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">while</span> (temp &lt; arr[j] &amp;&amp; j &gt;= <span class="hljs-number">0</span>) &#123;
+            a[j + <span class="hljs-number">1</span>] = a[j];
+            j--;
+        &#125;
+        a[j + <span class="hljs-number">1</span>] = temp;
+    &#125;
+&#125;</code></pre></div>
+
+
+
+
             </article>
             <hr>
             <div>

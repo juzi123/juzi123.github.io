@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/juzi.png">
+  <link rel="icon" type="image/png" href="/img/juzi.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="BU JUNJIE">
+  <meta name="keywords" content="">
+  <title>Vue-Router - JUZI&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Ptolemaios Ⅱ</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-09-06 10:37">
+      2020年9月6日 上午
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      17
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h2 id="Vue-Router介绍"><a href="#Vue-Router介绍" class="headerlink" title="Vue Router介绍"></a>Vue Router介绍</h2><p>Vue Router是Vue.js官方的路由管理器。它和 Vue.js 的核心深度集成，让构建单页面应用变得易如反掌。包含的功能有：</p>
+<ul>
+<li>嵌套的路由/视图表</li>
+<li>模块化的、基于组件的路由配置</li>
+<li>路由参数、查询、通配符</li>
+<li>基于 Vue.js 过渡系统的视图过渡效果</li>
+<li>细粒度的导航控制</li>
+<li>带有自动激活的 CSS class 的链接</li>
+<li>HTML5 历史模式或 hash 模式，在 IE9 中自动降级</li>
+<li>自定义的滚动条行为</li>
+</ul>
+<p><a href="https://router.vuejs.org/zh/" target="_blank" rel="noopener">官网</a> </p>
+<h2 id="使用Vue-Router"><a href="#使用Vue-Router" class="headerlink" title="使用Vue Router"></a>使用Vue Router</h2><h3 id="创建带有Vue-Router的项目"><a href="#创建带有Vue-Router的项目" class="headerlink" title="创建带有Vue Router的项目"></a>创建带有Vue Router的项目</h3><p>使用vue cli 创建项目</p>
+<div class="hljs"><pre><code class="hljs bash">vue create [项目名]</code></pre></div>
+
+<p>在配置项中选中Router</p>
+<p><img src="/blogImg/image-20200906104827194.png" srcset="/img/loading.gif" alt="image-20200906104827194"></p>
+<p>在项目中可以看到一个router文件夹，index.js文件中记录了初始的路由信息</p>
+<p><img src="/blogImg/image-20200906105639810.png" srcset="/img/loading.gif" alt="image-20200906105639810"></p>
+<h3 id="router-link-与-router-view标签"><a href="#router-link-与-router-view标签" class="headerlink" title="router-link 与 router-view标签"></a>router-link 与 router-view标签</h3><div class="hljs"><pre><code class="hljs vue">&lt;template&gt;
+  &lt;div id&#x3D;&quot;app&quot;&gt;
+    &lt;div id&#x3D;&quot;nav&quot;&gt;
+      &lt;router-link to&#x3D;&quot;&#x2F;&quot;&gt;Home&lt;&#x2F;router-link&gt; |
+        &lt;a href&#x3D;&quot;&#x2F;&quot;&gt;a tag&lt;&#x2F;a&gt; |
+      &lt;router-link to&#x3D;&quot;&#x2F;about&quot;&gt;About&lt;&#x2F;router-link&gt;
+    &lt;&#x2F;div&gt;
+    &lt;router-view &#x2F;&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;</code></pre></div>
+
+<p>使用<code>&lt;router-link&gt;</code> 创建<code>a</code>标签来定义导航链接，通过传入 <code>to</code> 属性指定链接</p>
+<p>如果直接使用<code>a</code>标签替代<code>&lt;router-link&gt;</code>，那将会刷新整个页面，而不是单页面应用需要的局部刷新</p>
+<p><code>&lt;router-view&gt;</code> 标签，即路由出口，会将路由匹配到的组件渲染标签所在位置</p>
+<h3 id="添加一个新的路由和页面"><a href="#添加一个新的路由和页面" class="headerlink" title="添加一个新的路由和页面"></a>添加一个新的路由和页面</h3><p>先在views中新建一个页面，然后修改路由配置文件</p>
+<p>引入</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> Brazil <span class="hljs-keyword">from</span> <span class="hljs-string">"../views/Brazil.vue"</span></code></pre></div>
+
+<p>修改routers，添加</p>
+<div class="hljs"><pre><code class="hljs javascript">&#123;
+  path: <span class="hljs-string">"/Brazil"</span>,
+  name: <span class="hljs-string">"Brazil"</span>,
+  component: Brazil
+&#125;</code></pre></div>
+
+<p>然后在App.vue中添加一个<code>router-link</code></p>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">"/Brazil"</span>&gt;</span>Brazil<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></code></pre></div>
+
+<h3 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h3><p><a href="https://webpack.js.org/guides/code-splitting/" target="_blank" rel="noopener">Code Splitting</a></p>
+<p>只加载需要的组件，而不是一次全部加载，可以在路由配置文件中使用另一种写法</p>
+<div class="hljs"><pre><code class="hljs javascript">&#123;
+  path: <span class="hljs-string">"/Brazil"</span>,
+  name: <span class="hljs-string">"Brazil"</span>,
+  component: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">import</span>( <span class="hljs-comment">/* webpackChunkName: "Brazil"*/</span> <span class="hljs-string">"../views/Brazil"</span>)
+&#125;</code></pre></div>
+
+<p>使用箭头函数，这时当点击到Brazil页面时，才会加载Brazil组件</p>
+<p><code>/* webpackChunkName: &quot;Brazil&quot;*/</code> 改变bundle的名称</p>
+<p><img src="/blogImg/image-20200906150900835.png" srcset="/img/loading.gif" alt="image-20200906150900835"></p>
+<h3 id="修改路由选中的颜色"><a href="#修改路由选中的颜色" class="headerlink" title="修改路由选中的颜色"></a>修改路由选中的颜色</h3><p>选中的路由会添加一个<strong>router-link-exact-active</strong>类，可以对其进行修改</p>
+<div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-id">#nav</span> <span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.router-link-exact-active</span> &#123;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ab26ab</span>;
+&#125;</code></pre></div>
+
+<p>还可以在修改Router配置，自己命名路由被选中时添加的类名</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> router = <span class="hljs-keyword">new</span> VueRouter(&#123;
+  linkExactActiveClass: <span class="hljs-string">"vue-router-is-selected"</span>,
+  mode: <span class="hljs-string">"history"</span>,
+  base: process.env.BASE_URL,
+  routes
+&#125;);</code></pre></div>
+
+<div class="hljs"><pre><code class="hljs css"><span class="hljs-selector-id">#nav</span> <span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.vue-router-is-selected</span> &#123;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ab26ab</span>;
+&#125;</code></pre></div>
+
+<h3 id="动态路由匹配"><a href="#动态路由匹配" class="headerlink" title="动态路由匹配"></a>动态路由匹配</h3><p>如果许多页面结构类似，每个页面使用一个组件会很麻烦，可以将匹配到的路由全部映射到同一个组件中</p>
+<div class="hljs"><pre><code class="hljs javascript">&#123;
+  path: <span class="hljs-string">"/details/:slug"</span>,
+  name: <span class="hljs-string">"DestinationDetails"</span>,
+  component: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">import</span>( <span class="hljs-comment">/* webpackChunkName: "DestinationDetails"*/</span> <span class="hljs-string">"../views/DestinationDetails"</span>)
+&#125;</code></pre></div>
+
+<p>路由参数使用<code>:</code> 标记，<code>/details/1</code> 、<code>/details/aaa</code> 等都将匹配到该路由。当匹配到一个路由时，参数值会被设置到 <code>this.$route.params</code>，可以在每个组件内使用。</p>
+<div class="hljs"><pre><code class="hljs vue">&lt;template&gt;
+  &lt;section class&#x3D;&quot;destination&quot;&gt;
+    &lt;h1&gt;&#123;&#123;destination.name&#125;&#125;&lt;&#x2F;h1&gt;
+    &lt;div class&#x3D;&quot;destination-details&quot;&gt;
+      &lt;img
+        :src&#x3D;&quot;require(&#96;@&#x2F;assets&#x2F;$&#123;destination.image&#125;&#96;)&quot;
+        :alt&#x3D;&quot;destination.name&quot;
+      &gt;
+      &lt;p&gt;&#123;&#123;destination.description&#125;&#125;&lt;&#x2F;p&gt;
+    &lt;&#x2F;div&gt;
+  &lt;&#x2F;section&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+import store from &quot;@&#x2F;store.js&quot;;
+export default &#123;
+  data() &#123;
+    return &#123;
+      slug: this.$route.params.slug	&#x2F;&#x2F; 获取参数
+    &#125;;
+  &#125;,
+  computed: &#123;
+    &#x2F;&#x2F; 获取路由参数对应的数据
+    destination() &#123;	
+      return store.destinations.find(
+        destination &#x3D;&gt; destination.slug &#x3D;&#x3D;&#x3D; this.slug
+      );
+    &#125;
+  &#125;
+&#125;;
+&lt;&#x2F;script&gt;</code></pre></div>
+
+<p>当路由参数变化时，如果使用的是同一个组件，尽管路径已经显示改变，但内容可能不会刷新，这是可以在<code>&lt;router-view&gt;</code>中添加key</p>
+<p><code>&lt;router-view :key=&quot;$route.path&quot; /&gt;</code></p>
+<p>将key设置为<code>$router.path</code>，当path发生变化就会进行刷新</p>
+<h3 id="hash模式与history模式"><a href="#hash模式与history模式" class="headerlink" title="hash模式与history模式"></a>hash模式与history模式</h3><p>vue router默认为hash模式，hash 模式使用 URL 的 hash 来模拟一个完整的 URL</p>
+<p><code>http://localhost:8080/#/details/brazil</code></p>
+<p>在配置文件中添加<code>mode: &quot;history&quot;</code>切换为history模式，使url看起来更加正常</p>
+<p><code>http://localhost:8080/details/brazil</code></p>
+<h3 id="使用props"><a href="#使用props" class="headerlink" title="使用props"></a>使用props</h3><p>先修改router配置文件，添加<code>props:true</code></p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> routes = [&#123;
+    path: <span class="hljs-string">"/"</span>,
+    name: <span class="hljs-string">"Home"</span>,
+    component: Home,
+    props: <span class="hljs-literal">true</span>
+  &#125;,
+  &#123;
+    path: <span class="hljs-string">"/details/:slug"</span>,
+    name: <span class="hljs-string">"DestinationDetails"</span>,
+    component: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">import</span>( <span class="hljs-comment">/* webpackChunkName: "DestinationDetails"*/</span> <span class="hljs-string">"../views/DestinationDetails"</span>),
+    props: <span class="hljs-literal">true</span>
+  &#125;
+];</code></pre></div>
+
+<p>这样就可以直接在props中获取路由参数了</p>
+<div class="hljs"><pre><code class="hljs vue">&lt;script&gt;
+import store from &quot;@&#x2F;store.js&quot;;
+export default &#123;
+  data() &#123;
+    return &#123;
+      &#x2F;&#x2F; slug: this.$route.params.slug &#x2F;&#x2F; 原来获取参数的方式
+    &#125;;
+  &#125;,
+  props: &#123;
+    &#x2F;&#x2F; 使用props获取路由参数
+    slug: &#123;
+      type: String,
+      required: true
+    &#125;
+  &#125;,
+  computed: &#123;
+    &#x2F;&#x2F; 获取路由参数对应的数据
+    destination() &#123;
+      return store.destinations.find(
+        destination &#x3D;&gt; destination.slug &#x3D;&#x3D;&#x3D; this.slug
+      );
+    &#125;
+  &#125;
+&#125;;
+&lt;&#x2F;script&gt;</code></pre></div>
+
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/Vue/">Vue</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Vue/">Vue</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/09/11/ES6%E4%B8%AD%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">ES6中函数的使用</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/08/31/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E6%95%B0%E7%BB%84/">
+                        <span class="hidden-mobile">数据结构与算法-数组</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Vue-Router&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

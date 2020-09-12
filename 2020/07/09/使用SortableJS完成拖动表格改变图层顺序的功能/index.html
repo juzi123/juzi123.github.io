@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/juzi.png">
+  <link rel="icon" type="image/png" href="/img/juzi.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="BU JUNJIE">
+  <meta name="keywords" content="">
+  <title>使用SortableJS完成拖拽表格改变图层顺序的功能 - JUZI&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Ptolemaios Ⅱ</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-07-09 21:47">
+      2020年7月9日 晚上
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      21
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h2 id="功能需求"><a href="#功能需求" class="headerlink" title="功能需求"></a>功能需求</h2><p>在一个表格中按顺序显示图层名称，可以通过拖动表格行的形式改变图层的顺序，通过滑块改变图层透明度。</p>
+<h2 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h2><p>ElementUI的表格不支持拖拽，查找之后决定使用<a href="http://www.sortablejs.com/options.html" target="_blank" rel="noopener">Sortablejs</a>这个JavaScript拖拽库实现。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul>
+<li><p>npm</p>
+<div class="hljs"><pre><code class="hljs bash">npm install sortablejs --save</code></pre></div>
+</li>
+<li><h4 id="script引入"><a href="#script引入" class="headerlink" title="script引入"></a>script引入</h4><div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../../js/Sortable.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></div>
+
+</li>
+</ul>
+<h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> Sortable <span class="hljs-keyword">from</span> <span class="hljs-string">"sortablejs"</span>;</code></pre></div>
+
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>在拖拽表格行后，表格立刻又恢复为原来的顺序。因为vue2.0后引入了虚拟DOM，Sortable拖拽后只改变了真实DOM，虚拟DOM没有发生变化，所以更新后又将真实DOM还原成原来的样子。根本原因是真实DOM和VNode不一致，所以可以通过把<strong>拖拽移动真实DOM</strong>的操作还原，把DOM的操作交还给Vue。也可以尝试用<a href="https://github.com/SortableJS/Vue.Draggable" target="_blank" rel="noopener">Vue.Draggable</a>实现。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><div class="hljs"><pre><code class="hljs vue">&lt;template&gt;
+  &lt;div class&#x3D;&quot;layer-manage-container&quot;&gt;
+    &lt;div class&#x3D;&quot;layer-manage-icon&quot; @click&#x3D;&quot;toggleLayerManage&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div class&#x3D;&quot;layer-manage-content&quot; v-show&#x3D;&quot;isManageShow&quot;&gt;
+      &lt;div class&#x3D;&quot;layer-manage-title&quot;&gt;
+        &lt;span @click&#x3D;&quot;toggleLayerManage&quot;&gt;&lt;&#x2F;span&gt;
+      &lt;&#x2F;div&gt;
+      &lt;el-table
+        class&#x3D;&quot;table-content&quot;
+        :data&#x3D;&quot;layersData&quot;
+        :show-header&#x3D;&quot;false&quot;
+        row-key&#x3D;&quot;id&quot;
+        align&#x3D;&quot;left&quot;
+      &gt;
+        &lt;el-table-column
+          prop&#x3D;&quot;name&quot;
+          label&#x3D;&quot;图层名称&quot;
+          align&#x3D;&quot;left&quot;
+          header-align&#x3D;&quot;center&quot;
+          width&#x3D;&quot;100&quot;
+        &gt;&lt;&#x2F;el-table-column&gt;
+        &lt;el-table-column
+          label&#x3D;&quot;透明度&quot;
+          align&#x3D;&quot;left&quot;
+          header-align&#x3D;&quot;center&quot;
+          width&#x3D;&quot;100&quot;
+        &gt;
+          &lt;template slot-scope&#x3D;&quot;scope&quot;&gt;
+            &lt;el-slider
+              v-model&#x3D;&quot;scope.row.alpha&quot;
+              :show-tooltip&#x3D;&quot;false&quot;
+              :max&#x3D;&quot;1&quot;
+              :step&#x3D;&quot;0.01&quot;
+            &gt;&lt;&#x2F;el-slider&gt;
+          &lt;&#x2F;template&gt;
+        &lt;&#x2F;el-table-column&gt;
+      &lt;&#x2F;el-table&gt;
+    &lt;&#x2F;div&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+&lt;script&gt;
+import Sortable from &quot;sortablejs&quot;;
+export default &#123;
+  props: &#123;
+    layers: &#123;
+      type: Array,
+      default: () &#x3D;&gt; []
+    &#125;,
+    layerChangeFlag: &#123;
+      type: Number,
+      default: 0
+    &#125;
+  &#125;,
+  data() &#123;
+    return &#123;
+      layersData: [],
+      col: [
+        &#123;
+          label: &quot;名称&quot;,
+          prop: &quot;name&quot;
+        &#125;,
+        &#123;
+          label: &quot;透明度&quot;,
+          prop: &quot;alpha&quot;
+        &#125;
+      ],
+      isManageShow: false
+      &#x2F;&#x2F;   dropCol: [
+      &#x2F;&#x2F;     &#123;
+      &#x2F;&#x2F;       label: &quot;名称&quot;,
+      &#x2F;&#x2F;       prop: &quot;name&quot;
+      &#x2F;&#x2F;     &#125;,
+      &#x2F;&#x2F;     &#123;
+      &#x2F;&#x2F;       label: &quot;透明度&quot;,
+      &#x2F;&#x2F;       prop: &quot;alpha&quot;
+      &#x2F;&#x2F;     &#125;
+      &#x2F;&#x2F;   ]
+    &#125;;
+  &#125;,
+  mounted() &#123;
+    &#x2F;&#x2F; 初始化行拖拽
+    this.rowDrop();
+    &#x2F;&#x2F; this.columnDrop();
+  &#125;,
+  watch: &#123;
+    &#x2F;**
+     * 监听图层改变
+     *&#x2F;
+    layerChangeFlag: function() &#123;
+      this.getAllowDropLayers();
+    &#125;
+  &#125;,
+  methods: &#123;
+    &#x2F;**
+     * 获取可以操作的图层
+     *&#x2F;
+    getAllowDropLayers() &#123;
+      this.layersData &#x3D; [];
+      &#x2F;&#x2F; console.log(&quot;this.layers--&gt;&quot;, this.layers);
+      this.layers.map(layer &#x3D;&gt; &#123;
+        if (layer.show &#x3D;&#x3D; true &amp;&amp; layer.inManage &#x3D;&#x3D; true) &#123;
+          this.layersData.unshift(layer);
+        &#125;
+      &#125;);
+      &#x2F;&#x2F; 返回图层管理中的新数据
+      this.$emit(&quot;layersDataChange&quot;, this.layersData);
+    &#125;,
+    formatTooltip(val) &#123;
+      return val;
+    &#125;,
+    &#x2F;**
+     * 行拖拽
+     *&#x2F;
+    rowDrop() &#123;
+      const tbody &#x3D; document.querySelector(&quot;.el-table__body-wrapper tbody&quot;);
+      const _this &#x3D; this;
+      let a &#x3D; Sortable.create(tbody, &#123;
+        onUpdate: function(event) &#123;
+          let newIndex &#x3D; event.newIndex;
+          let oldIndex &#x3D; event.oldIndex;
+          &#x2F;**
+           * 解决Vue2.0以后，引入Virtual DOM，导致Virtual DOM和真实DOM之间出现了不一致，使得列表显示与layersData不一致的问题
+           * Vue2.0前: 拖拽移动真实DOM -&gt; 操作数据数组 -&gt; Patch算法再更新真实DOM
+           * Vue2.0后：拖拽移动真实DOM -&gt; 还原移动操作 -&gt; 操作数据数组 -&gt; Patch算法再更新真实DOM
+           *&#x2F;
+          let $tr &#x3D; tbody.children[newIndex];
+          let $oldTr &#x3D; tbody.children[oldIndex];
+          &#x2F;&#x2F; 先删除移动的节点
+          tbody.removeChild($tr);
+          &#x2F;&#x2F; 再插入移动的节点到原有节点，还原了移动的操作
+          if (newIndex &gt; oldIndex) &#123;
+            tbody.insertBefore($tr, $oldTr);
+          &#125; else &#123;
+            tbody.insertBefore($tr, $oldTr.nextSibling);
+          &#125;
+          &#x2F;&#x2F;----------------------------------------------------------------------------------------------------------------&#x2F;&#x2F;
+
+          &#x2F;&#x2F; 更新layersData数组
+          const currRow &#x3D; _this.layersData.splice(oldIndex, 1);
+          _this.layersData.splice(newIndex, 0, currRow[0]);
+
+          &#x2F;&#x2F; 翻转数组
+          let newArray &#x3D; [];
+          for (let i &#x3D; _this.layersData.length - 1; i &gt;&#x3D; 0; i--) &#123;
+            newArray.push(_this.layersData[i]);
+          &#125;
+          _this.$emit(&quot;layerLevelChange&quot;, newArray);
+        &#125;
+      &#125;);
+    &#125;,
+    &#x2F;&#x2F;列拖拽
+    &#x2F;&#x2F; columnDrop() &#123;
+    &#x2F;&#x2F;   const wrapperTr &#x3D; document.querySelector(&quot;.el-table__header-wrapper tr&quot;);
+    &#x2F;&#x2F;   this.sortable &#x3D; Sortable.create(wrapperTr, &#123;
+    &#x2F;&#x2F;     animation: 180,
+    &#x2F;&#x2F;     delay: 0,
+    &#x2F;&#x2F;     onEnd: evt &#x3D;&gt; &#123;
+    &#x2F;&#x2F;       const oldItem &#x3D; this.dropCol[evt.oldIndex];
+    &#x2F;&#x2F;       this.dropCol.splice(evt.oldIndex, 1);
+    &#x2F;&#x2F;       this.dropCol.splice(evt.newIndex, 0, oldItem);
+    &#x2F;&#x2F;     &#125;
+    &#x2F;&#x2F;   &#125;);
+    &#x2F;&#x2F; &#125;
+    reverseArray(oldArray) &#123;
+      return newArray;
+    &#125;,
+    toggleLayerManage() &#123;
+      this.isManageShow &#x3D; !this.isManageShow;
+    &#125;
+  &#125;
+&#125;;
+&lt;&#x2F;script&gt;
+&lt;style lang&#x3D;&quot;scss&quot; scoped&gt;
+.layer-manage-icon &#123;
+  width: 54px;
+  height: 54px;
+  background-image: url(&quot;~@&#x2F;assets&#x2F;imgs&#x2F;layerManage&#x2F;icon-hide.png&quot;);
+  cursor: pointer;
+&#125;
+.layer-manage-content &#123;
+  width: 250px;
+  position: relative;
+  top: -50px;
+  padding: 16px 24px;
+  background-color: #fff;
+  box-shadow: 0px 0px 6px 0px rgba(102, 102, 102, 0.25);
+  box-sizing: border-box;
+  border-radius: 5px;
+
+  .layer-manage-title &#123;
+    height: 13px;
+    margin-bottom: 19px;
+    &amp; &gt; span &#123;
+      display: block;
+      width: 24px;
+      height: 24px;
+      background-image: url(&quot;~@&#x2F;assets&#x2F;imgs&#x2F;layerManage&#x2F;icon-show.png&quot;);
+      cursor: pointer;
+      float: right;
+    &#125;
+  &#125;
+  ::v-deep .table-content &#123;
+    cursor: pointer;
+    &amp;::before &#123;
+      height: 0;
+    &#125;
+    &amp; tr.el-table__row &#123;
+      &amp; td &#123;
+        padding: 3px 0;
+        border: none;
+      &#125;
+    &#125;
+  &#125;
+  ::v-deep .el-slider__button-wrapper &#123;
+    z-index: 3;
+  &#125;
+&#125;
+&lt;&#x2F;style&gt;</code></pre></div>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.jianshu.com/p/d92b9efe3e6a" target="_blank" rel="noopener">https://www.jianshu.com/p/d92b9efe3e6a</a></p>
+<p><a href="https://github.com/SortableJS/Vue.Draggable" target="_blank" rel="noopener">https://github.com/SortableJS/Vue.Draggable</a></p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/Vue/">Vue</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Vue/">Vue</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/07/15/Axios%E5%8F%96%E6%B6%88%E4%B8%8A%E6%AC%A1%E8%AF%B7%E6%B1%82/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Axios取消上次请求</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/01/20/SpringBoot%E4%BD%BF%E7%94%A8-autowire%E6%B3%A8%E5%85%A5%E4%B8%BAnull%E7%9A%84%E9%97%AE%E9%A2%98/">
+                        <span class="hidden-mobile">SpringBoot使用@autowire注入为null的问题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "使用SortableJS完成拖拽表格改变图层顺序的功能&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
