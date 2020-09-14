@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      887 字
+      932 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      11
        分钟
     </span>
   
@@ -270,11 +270,12 @@ uzi.say(<span class="hljs-string">"永远滴神！"</span>);	<span class="hljs-c
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Son</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Father</span> </span>&#123;
     <span class="hljs-keyword">constructor</span>(x,y) &#123;
         <span class="hljs-comment">// 调用了父类的构造函数</span>
-        <span class="hljs-keyword">super</span>(x,y)	
+        <span class="hljs-keyword">super</span>(x,y);	 <span class="hljs-comment">// 相当于Father.call(this, x, y)</span>
         <span class="hljs-comment">// super必须在子类this之前调用</span>
         <span class="hljs-keyword">this</span>.x = x;
         <span class="hljs-keyword">this</span>.y = y;
     &#125;
+    <span class="hljs-comment">// 重新父类方法</span>
     say() &#123;
         <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"大头儿子"</span>);
     &#125;
@@ -305,12 +306,20 @@ son.fatherSay(); <span class="hljs-comment">// 小头爸爸</span></code></pre><
 <li><p>类可以通过原型对象添加方法</p>
 <div class="hljs"><pre><code class="hljs javascript">People.prototype.say = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'112'</span>);
-&#125;</code></pre></div>
+&#125;
+<span class="hljs-comment">// 使用Object.assign一次性添加多个方法</span>
+<span class="hljs-built_in">Object</span>.assign(People.prototype, &#123;
+    sayName() &#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.name
+    &#125;,
+    sayAge() &#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.age
+    &#125;
+&#125;)</code></pre></div>
 </li>
 <li><p>类创建的实例中也有对象原型<code>__proto__</code>，指向类的原型对象</p>
 <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> uzi = <span class="hljs-keyword">new</span> People();
 uzi.__proto__ === People.prototype;</code></pre></div>
-
 </li>
 </ol>
 

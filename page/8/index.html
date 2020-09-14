@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="BU JUNJIE">
   <meta name="keywords" content="">
-  <title>归档 - JUZI&#39;s blog</title>
+  <title>JUZI&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -42,7 +42,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -130,10 +130,10 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('/img/archiveImg.jpg') no-repeat center center;
+         style="background: url('/img/homePage2.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
           <div class="container text-center white-text fadeInUp">
             <span class="h2" id="subtitle">
               
@@ -142,6 +142,10 @@
             
           </div>
 
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
           
         </div>
       </div>
@@ -152,63 +156,55 @@
     
       <div class="container nopadding-md">
         <div class="py-5" id="board"
-          >
+          style=margin-top:0>
           
           <div class="container">
             <div class="row">
               <div class="col-12 col-md-10 m-auto">
                 
 
-<div class="list-group">
-  <p class="h4">共计 71 篇文章</p>
-  <hr>
-  
+
+  <div class="row mx-auto index-card">
     
-      
-      <p class="h5">2019</p>
     
-    <a href="/2019/12/23/SQL%E5%9F%BA%E7%A1%802/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">SQL基础2</span>
-      <span style="float: right;">12-23</span>
-    </a>
-  
-    
-    <a href="/2019/12/20/SQL%E5%9F%BA%E7%A1%80/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">SQL基础</span>
-      <span style="float: right;">12-20</span>
-    </a>
-  
-    
-    <a href="/2019/12/18/hexo%E8%BF%81%E7%A7%BB/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">hexo迁移</span>
-      <span style="float: right;">12-18</span>
-    </a>
-  
-    
-    <a href="/2019/09/24/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">前端开发规范</span>
-      <span style="float: right;">09-24</span>
-    </a>
-  
-    
-    <a href="/2019/03/01/C++%E7%AC%94%E8%AE%B0/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">C++笔记</span>
-      <span style="float: right;">03-01</span>
-    </a>
-  
-    
-    <a href="/2019/02/23/windows/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">windows</span>
-      <span style="float: right;">02-23</span>
-    </a>
-  
-    
-    <a href="/2019/02/22/C-%E5%9F%BA%E7%A1%80/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">C++基础</span>
-      <span style="float: right;">02-22</span>
-    </a>
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2017/09/03/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">第一篇博客</a>
+
+      <a href="/2017/09/03/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="index-excerpt">
+        
+        
+          
+        
+        <div>我也不知道要写啥
   
 </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2017-09-03
+          </div>
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/7/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
 
 
 
@@ -301,7 +297,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档&nbsp;",
+        "不要熬夜&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
