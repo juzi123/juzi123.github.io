@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      424 字
+      796 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      14
        分钟
     </span>
   
@@ -308,6 +308,65 @@
         a[j + <span class="hljs-number">1</span>] = temp;
     &#125;
 &#125;</code></pre></div>
+
+<h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-built_in">Array</span>.prototype.heap_sort = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+	<span class="hljs-keyword">var</span> arr = <span class="hljs-keyword">this</span>.slice(<span class="hljs-number">0</span>);
+	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">swap</span>(<span class="hljs-params">i, j</span>) </span>&#123;
+		<span class="hljs-keyword">var</span> tmp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = tmp;
+	&#125;
+
+	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">max_heapify</span>(<span class="hljs-params">start, end</span>) </span>&#123;
+		<span class="hljs-comment">//建立父節點指標和子節點指標</span>
+		<span class="hljs-keyword">var</span> dad = start;
+		<span class="hljs-keyword">var</span> son = dad * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>;
+		<span class="hljs-keyword">if</span> (son &gt;= end)<span class="hljs-comment">//若子節點指標超過範圍直接跳出函數</span>
+			<span class="hljs-keyword">return</span>;
+		<span class="hljs-keyword">if</span> (son + <span class="hljs-number">1</span> &lt; end &amp;&amp; arr[son] &lt; arr[son + <span class="hljs-number">1</span>])<span class="hljs-comment">//先比較兩個子節點大小，選擇最大的</span>
+			son++;
+		<span class="hljs-keyword">if</span> (arr[dad] &lt;= arr[son]) &#123;<span class="hljs-comment">//如果父節點小於子節點時，交換父子內容再繼續子節點和孫節點比較</span>
+			swap(dad, son);
+			max_heapify(son, end);
+		&#125;
+	&#125;
+
+	<span class="hljs-keyword">var</span> len = arr.length;
+	<span class="hljs-comment">//初始化，i從最後一個父節點開始調整</span>
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-built_in">Math</span>.floor(len / <span class="hljs-number">2</span>) - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--)
+		max_heapify(i, len);
+	<span class="hljs-comment">//先將第一個元素和已排好元素前一位做交換，再從新調整，直到排序完畢</span>
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = len - <span class="hljs-number">1</span>; i &gt; <span class="hljs-number">0</span>; i--) &#123;
+		swap(<span class="hljs-number">0</span>, i);
+		max_heapify(<span class="hljs-number">0</span>, i);
+	&#125;
+
+	<span class="hljs-keyword">return</span> arr;
+&#125;;
+<span class="hljs-keyword">var</span> a = [<span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">3</span>, <span class="hljs-number">0</span>, <span class="hljs-number">8</span>, <span class="hljs-number">6</span>, <span class="hljs-number">1</span>, <span class="hljs-number">5</span>, <span class="hljs-number">8</span>, <span class="hljs-number">6</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">4</span>, <span class="hljs-number">7</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">7</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">9</span>, <span class="hljs-number">7</span>, <span class="hljs-number">4</span>, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">6</span>];
+<span class="hljs-built_in">console</span>.log(a.heap_sort());</code></pre></div>
+
+<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">merge</span>(<span class="hljs-params">left, right</span>)</span>&#123;
+    <span class="hljs-keyword">var</span> result = [];
+    <span class="hljs-keyword">while</span>(left.length &gt; <span class="hljs-number">0</span> &amp;&amp; right.length &gt; <span class="hljs-number">0</span>)&#123;
+      <span class="hljs-keyword">if</span>(left[<span class="hljs-number">0</span>] &lt; right[<span class="hljs-number">0</span>])&#123;
+        result.push(left.shift());
+      &#125;<span class="hljs-keyword">else</span>&#123;
+        result.push(right.shift());
+      &#125;
+    &#125;
+    <span class="hljs-keyword">return</span> result.concat(left, right);
+  &#125;
+  
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mergeSort</span>(<span class="hljs-params">arr</span>)</span>&#123;
+    <span class="hljs-keyword">if</span>(arr.length &lt;=<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> arr;
+    <span class="hljs-keyword">var</span> middle = <span class="hljs-built_in">Math</span>.floor(arr.length / <span class="hljs-number">2</span>);
+    <span class="hljs-keyword">var</span> left = arr.slice(<span class="hljs-number">0</span>, middle);
+    <span class="hljs-keyword">var</span> right = arr.slice(middle);
+    <span class="hljs-keyword">return</span> merge(mergeSort(left), mergeSort(right));
+  &#125;
+
+  <span class="hljs-built_in">console</span>.log(mergeSort([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">4</span>,<span class="hljs-number">51</span>,<span class="hljs-number">22</span>,<span class="hljs-number">1</span>,<span class="hljs-number">53</span>,<span class="hljs-number">5</span>,<span class="hljs-number">2</span>,<span class="hljs-number">5</span>,<span class="hljs-number">3</span>,<span class="hljs-number">111</span>,<span class="hljs-number">3</span>]));</code></pre></div>
 
 
 

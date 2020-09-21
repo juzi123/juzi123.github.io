@@ -923,13 +923,13 @@ obj = <span class="hljs-literal">null</span>;</code></pre></div>
   <entry>
     <title>ES6中Promise与async的使用</title>
     <url>/2020/09/14/ES6%E4%B8%ADPromise%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<h2 id="Promise简介"><a href="#Promise简介" class="headerlink" title="Promise简介"></a>Promise简介</h2><p>相当于一个容器，保存着未来才会结束的事件（异步操作）的一个结果</p>
+    <content><![CDATA[<h2 id="Promise简介"><a href="#Promise简介" class="headerlink" title="Promise简介"></a>Promise简介</h2><p>相当于一个容器，允许你为异步操作的成功和失败分别绑定相应的处理方法，保存着未来才会结束的事件（异步操作）的一个结果</p>
 <p>各种异步操作都可以用同样的方法进行处理</p>
 <p>对象的状态不受外界影响，处理异步操作有三个状态：</p>
 <ul>
-<li>Pending（进行）</li>
-<li>Resolved（成功）</li>
-<li>Reject（失败）</li>
+<li>pending（进行）</li>
+<li>fulfilled（成功）</li>
+<li>rejected（失败）</li>
 </ul>
 <p>一旦状态改变，就不会再变化，任何时候都可以得到这个结果</p>
 <h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">timeout</span>(<span class="hljs-params">ms</span>) </span>&#123;
@@ -5371,6 +5371,65 @@ hexo deploy <span class="hljs-comment"># 简写 hexo d， 部署</span></code></
     &#125;
 &#125;</code></pre></div>
 
+<h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-built_in">Array</span>.prototype.heap_sort = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+	<span class="hljs-keyword">var</span> arr = <span class="hljs-keyword">this</span>.slice(<span class="hljs-number">0</span>);
+	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">swap</span>(<span class="hljs-params">i, j</span>) </span>&#123;
+		<span class="hljs-keyword">var</span> tmp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = tmp;
+	&#125;
+
+	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">max_heapify</span>(<span class="hljs-params">start, end</span>) </span>&#123;
+		<span class="hljs-comment">//建立父節點指標和子節點指標</span>
+		<span class="hljs-keyword">var</span> dad = start;
+		<span class="hljs-keyword">var</span> son = dad * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>;
+		<span class="hljs-keyword">if</span> (son &gt;= end)<span class="hljs-comment">//若子節點指標超過範圍直接跳出函數</span>
+			<span class="hljs-keyword">return</span>;
+		<span class="hljs-keyword">if</span> (son + <span class="hljs-number">1</span> &lt; end &amp;&amp; arr[son] &lt; arr[son + <span class="hljs-number">1</span>])<span class="hljs-comment">//先比較兩個子節點大小，選擇最大的</span>
+			son++;
+		<span class="hljs-keyword">if</span> (arr[dad] &lt;= arr[son]) &#123;<span class="hljs-comment">//如果父節點小於子節點時，交換父子內容再繼續子節點和孫節點比較</span>
+			swap(dad, son);
+			max_heapify(son, end);
+		&#125;
+	&#125;
+
+	<span class="hljs-keyword">var</span> len = arr.length;
+	<span class="hljs-comment">//初始化，i從最後一個父節點開始調整</span>
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-built_in">Math</span>.floor(len / <span class="hljs-number">2</span>) - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--)
+		max_heapify(i, len);
+	<span class="hljs-comment">//先將第一個元素和已排好元素前一位做交換，再從新調整，直到排序完畢</span>
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = len - <span class="hljs-number">1</span>; i &gt; <span class="hljs-number">0</span>; i--) &#123;
+		swap(<span class="hljs-number">0</span>, i);
+		max_heapify(<span class="hljs-number">0</span>, i);
+	&#125;
+
+	<span class="hljs-keyword">return</span> arr;
+&#125;;
+<span class="hljs-keyword">var</span> a = [<span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">3</span>, <span class="hljs-number">0</span>, <span class="hljs-number">8</span>, <span class="hljs-number">6</span>, <span class="hljs-number">1</span>, <span class="hljs-number">5</span>, <span class="hljs-number">8</span>, <span class="hljs-number">6</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">4</span>, <span class="hljs-number">7</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">7</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">9</span>, <span class="hljs-number">7</span>, <span class="hljs-number">4</span>, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">6</span>];
+<span class="hljs-built_in">console</span>.log(a.heap_sort());</code></pre></div>
+
+<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">merge</span>(<span class="hljs-params">left, right</span>)</span>&#123;
+    <span class="hljs-keyword">var</span> result = [];
+    <span class="hljs-keyword">while</span>(left.length &gt; <span class="hljs-number">0</span> &amp;&amp; right.length &gt; <span class="hljs-number">0</span>)&#123;
+      <span class="hljs-keyword">if</span>(left[<span class="hljs-number">0</span>] &lt; right[<span class="hljs-number">0</span>])&#123;
+        result.push(left.shift());
+      &#125;<span class="hljs-keyword">else</span>&#123;
+        result.push(right.shift());
+      &#125;
+    &#125;
+    <span class="hljs-keyword">return</span> result.concat(left, right);
+  &#125;
+  
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mergeSort</span>(<span class="hljs-params">arr</span>)</span>&#123;
+    <span class="hljs-keyword">if</span>(arr.length &lt;=<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> arr;
+    <span class="hljs-keyword">var</span> middle = <span class="hljs-built_in">Math</span>.floor(arr.length / <span class="hljs-number">2</span>);
+    <span class="hljs-keyword">var</span> left = arr.slice(<span class="hljs-number">0</span>, middle);
+    <span class="hljs-keyword">var</span> right = arr.slice(middle);
+    <span class="hljs-keyword">return</span> merge(mergeSort(left), mergeSort(right));
+  &#125;
+
+  <span class="hljs-built_in">console</span>.log(mergeSort([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">4</span>,<span class="hljs-number">51</span>,<span class="hljs-number">22</span>,<span class="hljs-number">1</span>,<span class="hljs-number">53</span>,<span class="hljs-number">5</span>,<span class="hljs-number">2</span>,<span class="hljs-number">5</span>,<span class="hljs-number">3</span>,<span class="hljs-number">111</span>,<span class="hljs-number">3</span>]));</code></pre></div>
+
 
 
 ]]></content>
@@ -6848,6 +6907,11 @@ list.appendChild(fragment);</code></pre></div>
     <title>防抖与节流</title>
     <url>/2020/08/18/%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81/</url>
     <content><![CDATA[<h3 id="函数防抖（debounce）"><a href="#函数防抖（debounce）" class="headerlink" title="函数防抖（debounce）"></a>函数防抖（debounce）</h3><p>在事件被触发后n秒内再执行回调，如果在这段时间内再次触发，则重新开始计时</p>
+<p>防抖使用的场景：</p>
+<ul>
+<li>在搜索时，输入文字后一段时间内开始自动搜索，而不是每次按键都执行搜索操作</li>
+<li>window触发resize的时候，不断的调整浏览器窗口大小会不断的触发这个事件，用防抖来让其只触发一次</li>
+</ul>
 <p>虽然知道概念，但是面试时让我写一个通用的防抖函数，有一点懵，下面贴代码：</p>
 <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">debounce</span> (<span class="hljs-params">callback, time</span>) =&gt; </span>&#123;
   <span class="hljs-keyword">let</span> interval;
@@ -6861,6 +6925,11 @@ list.appendChild(fragment);</code></pre></div>
 &#125;;</code></pre></div>
 
 <h3 id="函数节流（throttle"><a href="#函数节流（throttle" class="headerlink" title="函数节流（throttle)"></a>函数节流（throttle)</h3><p>在一个规定时间内，最多只能触发一次，即第一次触发后，至少间隔一个规定时间，才会触发第二次。</p>
+<p>使用场景：</p>
+<ul>
+<li>鼠标不断点击触发，mousedown(单位时间内只触发一次)</li>
+<li>监听滚动事件，比如是否滑到底部自动加载更多，用throttle来判断</li>
+</ul>
 <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> throttle = <span class="hljs-function">(<span class="hljs-params">func, limit</span>) =&gt;</span> &#123;
   <span class="hljs-keyword">let</span> inThrottle
   <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
@@ -8099,6 +8168,496 @@ ContextMenu 类对象打开关闭		open、close
       </categories>
       <tags>
         <tag>GIS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vue插槽</title>
+    <url>/2020/09/17/Vue%E6%8F%92%E6%A7%BD/</url>
+    <content><![CDATA[<h2 id="匿名插槽"><a href="#匿名插槽" class="headerlink" title="匿名插槽"></a>匿名插槽</h2><p>slot</p>
+<p>组件中包裹的内容将会被插入到slot所在的位置</p>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">    Vue.component(<span class="hljs-string">'MyBtn'</span>, &#123;</span>
+        template: `
+<span class="handlebars"><span class="xml">            <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                <span class="hljs-tag">&lt;<span class="hljs-name">slot</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span></span>
+        `
+    &#125;)
+<span class="actionscript">    <span class="hljs-keyword">const</span> App = &#123;</span>
+        template: `
+<span class="handlebars"><span class="xml">            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                <span class="hljs-tag">&lt;<span class="hljs-name">MyBtn</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">'#'</span>&gt;</span>登录<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">MyBtn</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span>
+     `
+    &#125;
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></div>
+
+<h3 id="具名插槽"><a href="#具名插槽" class="headerlink" title="具名插槽"></a>具名插槽</h3><p>只要匹配到slot标签的name值，template中的内容就会被插入到这个槽中</p>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">    Vue.component(<span class="hljs-string">'MyBtn'</span>, &#123;</span>
+        template: `
+<span class="handlebars"><span class="xml">            <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">'login'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span> |</span></span>
+<span class="handlebars"><span class="xml">                <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">'submit'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span> |</span></span>
+<span class="handlebars"><span class="xml">                <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">'register'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span></span>
+        `
+    &#125;)
+<span class="actionscript">    <span class="hljs-keyword">const</span> App = &#123;</span>
+        template: `
+<span class="handlebars"><span class="xml">            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                <span class="hljs-tag">&lt;<span class="hljs-name">MyBtn</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">slot</span>=<span class="hljs-string">'register'</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">'#'</span>&gt;</span>注册<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                <span class="hljs-tag">&lt;/<span class="hljs-name">MyBtn</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                <span class="hljs-tag">&lt;<span class="hljs-name">MyBtn</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">slot</span>=<span class="hljs-string">'login'</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">'#'</span>&gt;</span>登录<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                <span class="hljs-tag">&lt;/<span class="hljs-name">MyBtn</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                <span class="hljs-tag">&lt;<span class="hljs-name">MyBtn</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">slot</span>=<span class="hljs-string">'register'</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">'#'</span>&gt;</span>注册<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                <span class="hljs-tag">&lt;/<span class="hljs-name">MyBtn</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span>
+     `
+    &#125;
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></div>
+
+<p><img src="/blogImg/image-20200917194059389.png" srcset="/img/loading.gif" alt="image-20200917194059389"></p>
+<h2 id="作用域插槽"><a href="#作用域插槽" class="headerlink" title="作用域插槽"></a>作用域插槽</h2><p>让插槽内容能够访问子组件中才有的数据是很有用的</p>
+<p>通过作用域插槽可以使相同的组件根据需求展现不同的内容</p>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">    Vue.component(<span class="hljs-string">'MyList'</span>, &#123;</span>
+        template: `
+<span class="handlebars"><span class="xml">            <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">'item in list'</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">"item.id"</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                    <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">:listItem</span>=<span class="hljs-string">'item'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                    </span><span class="hljs-template-variable">&#123;&#123;item.value&#125;&#125;</span></span>
+<span class="handlebars"><span class="xml">                <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span></span>
+        `,
+<span class="actionscript">        props: [<span class="hljs-string">'list'</span>]</span>
+    &#125;)
+<span class="actionscript">    <span class="hljs-keyword">const</span> App = &#123;</span>
+        template: `
+<span class="handlebars"><span class="xml">            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                <span class="hljs-tag">&lt;<span class="hljs-name">MyList</span> <span class="hljs-attr">:list</span>=<span class="hljs-string">"myList"</span>&gt;</span></span></span>
+<span class="actionscript">                    &lt;template v-slot:<span class="hljs-keyword">default</span>=<span class="hljs-string">"data"</span>&gt;</span>
+<span class="handlebars"><span class="xml">                        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">"data.listItem.checked"</span>/&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                <span class="hljs-tag">&lt;/<span class="hljs-name">MyList</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span>
+     `,
+        data() &#123;
+<span class="actionscript">            <span class="hljs-keyword">return</span> &#123;</span>
+                myList: [&#123;
+                    id: 1,
+<span class="actionscript">                    value: <span class="hljs-string">'first'</span>,</span>
+<span class="actionscript">                    checked: <span class="hljs-literal">false</span></span>
+                &#125;, &#123;
+                    id: 2,
+<span class="actionscript">                    value: <span class="hljs-string">'second'</span>,</span>
+<span class="actionscript">                    checked: <span class="hljs-literal">true</span></span>
+                &#125;, &#123;
+                    id: 3,
+<span class="actionscript">                    value: <span class="hljs-string">'third'</span>,</span>
+<span class="actionscript">                    checked: <span class="hljs-literal">true</span></span>
+                &#125;, &#123;
+                    id: 4,
+<span class="actionscript">                    value: <span class="hljs-string">'fourth'</span>,</span>
+<span class="actionscript">                    checked: <span class="hljs-literal">false</span></span>
+                &#125;]
+            &#125;
+        &#125;
+    &#125;
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></div>
+
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vue组件与组件通信</title>
+    <url>/2020/09/16/Vue%E7%BB%84%E4%BB%B6%E5%8C%96/</url>
+    <content><![CDATA[<h2 id="局部组件与全局组件"><a href="#局部组件与全局组件" class="headerlink" title="局部组件与全局组件"></a>局部组件与全局组件</h2><h3 id="局部组件"><a href="#局部组件" class="headerlink" title="局部组件"></a>局部组件</h3><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 这是一个局部组件</span>
+<span class="hljs-keyword">const</span> App = &#123;
+    template: <span class="hljs-string">`</span>
+<span class="hljs-string">        &lt;div&gt;</span>
+<span class="hljs-string">            &lt;h3&gt;&#123;&#123;msg&#125;&#125;&lt;/h3&gt;    </span>
+<span class="hljs-string">            &lt;button @click="handleClick"&gt;按钮&lt;/button&gt;</span>
+<span class="hljs-string">        &lt;/div&gt;</span>
+<span class="hljs-string">    `</span>,
+    <span class="hljs-comment">// 组件中的data必须是一个函数，并返回一个对象，避免数据冲突</span>
+    data() &#123;
+        <span class="hljs-keyword">return</span> &#123;
+            msg: <span class="hljs-string">'App组件'</span>
+        &#125;
+    &#125;,
+    methods: &#123;
+        handleClick() &#123;
+            <span class="hljs-keyword">this</span>.msg = <span class="hljs-string">'App组件Changed'</span>
+        &#125;
+    &#125;
+&#125;
+<span class="hljs-keyword">new</span> Vue(&#123;
+    el: <span class="hljs-string">"#app"</span>,
+    data: &#123;
+    &#125;,
+    components: &#123;
+       <span class="hljs-comment">// 在此处挂载子组件</span>
+       <span class="hljs-comment">// 等价于App：App</span>
+       App
+    &#125;
+&#125;)</code></pre></div>
+
+<h3 id="全局组件"><a href="#全局组件" class="headerlink" title="全局组件"></a>全局组件</h3><p>使用<code>Vue.component</code> 创建的组件是全局注册的，它们在注册之后可以用在任何新创建的 Vue 根实例 (<code>new Vue</code>) 的模板中</p>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">App</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">App</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- 这里使用MyHeader会报错 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">my-header</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">my-header</span>&gt;</span> 	
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">    <span class="hljs-comment">// 全局组件</span></span>
+<span class="actionscript">    Vue.component(<span class="hljs-string">'MyHeader'</span>, &#123;</span>
+        template: `
+<span class="handlebars"><span class="xml">            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span></span>
+                导航组件
+<span class="handlebars"><span class="xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span>
+        `
+    &#125;)
+<span class="actionscript">    <span class="hljs-comment">// 此处使用MyHeader可以正常运行</span></span>
+<span class="actionscript">    <span class="hljs-keyword">const</span> App = &#123;</span>
+        template: `
+<span class="handlebars"><span class="xml">            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                <span class="hljs-tag">&lt;<span class="hljs-name">MyHeader</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">MyHeader</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123;msg&#125;&#125;</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>    </span></span>
+<span class="handlebars"><span class="xml">                <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"handleClick"</span>&gt;</span>按钮<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span>
+     `,
+        data() &#123;
+<span class="actionscript">            <span class="hljs-keyword">return</span> &#123;</span>
+<span class="actionscript">                msg: <span class="hljs-string">'App组件'</span></span>
+            &#125;
+        &#125;,
+        methods: &#123;
+            handleClick() &#123;
+<span class="actionscript">                <span class="hljs-keyword">this</span>.msg = <span class="hljs-string">'App组件Changed'</span></span>
+            &#125;
+        &#125;
+    &#125;
+<span class="actionscript">    <span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">        el: <span class="hljs-string">"#app"</span>,</span>
+        data: &#123;
+        &#125;,
+<span class="actionscript">        <span class="hljs-comment">// 全局组件不需要在components中挂载，直接使用</span></span>
+        components: &#123;
+            App
+        &#125;
+    &#125;)
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></div>
+
+<h2 id="组件通信"><a href="#组件通信" class="headerlink" title="组件通信"></a>组件通信</h2><h3 id="父组件向子组件传值"><a href="#父组件向子组件传值" class="headerlink" title="父组件向子组件传值"></a>父组件向子组件传值</h3><ol>
+<li>在子组件中声明props接收父组件传递的值</li>
+<li>在父组件中绑定自定义的属性</li>
+</ol>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">    Vue.component(<span class="hljs-string">'Child'</span>, &#123;</span>
+        template: `
+<span class="handlebars"><span class="xml">            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>子组件<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                <span class="hljs-tag">&lt;<span class="hljs-name">h4</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123; childData &#125;&#125;</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span>
+        `,
+<span class="actionscript">        props: [<span class="hljs-string">'childData'</span>]</span>
+    &#125;)
+<span class="actionscript">    <span class="hljs-keyword">const</span> App = &#123;</span>
+        template: `
+<span class="handlebars"><span class="xml">            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                <span class="hljs-tag">&lt;<span class="hljs-name">Child</span> <span class="hljs-attr">:childData</span> = <span class="hljs-string">'msg'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Child</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span>
+     `,
+        data() &#123;
+<span class="actionscript">            <span class="hljs-keyword">return</span> &#123;</span>
+<span class="actionscript">                msg: <span class="hljs-string">'父组件传递的值'</span></span>
+            &#125;
+        &#125;,
+        methods: &#123;&#125;
+    &#125;
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></div>
+
+<h3 id="子组件向父组件传值"><a href="#子组件向父组件传值" class="headerlink" title="子组件向父组件传值"></a>子组件向父组件传值</h3><ol>
+<li>在父组件中 子组件上绑定自定义事件</li>
+<li>在子组件中 触发原生的事件，在事件函数中通过this.$emit触发自定义的事件</li>
+</ol>
+<div class="hljs"><pre><code class="hljs javascript">&lt;script&gt;
+    Vue.component(<span class="hljs-string">'Child'</span>, &#123;
+        template: <span class="hljs-string">`</span>
+<span class="hljs-string">            &lt;div&gt;</span>
+<span class="hljs-string">                &lt;h3&gt;子组件&lt;/h3&gt;</span>
+<span class="hljs-string">                &lt;input type="text" @input="handleInput"/&gt;</span>
+<span class="hljs-string">            &lt;/div&gt;</span>
+<span class="hljs-string">        `</span>,
+        methods: &#123;
+            handleInput(e) &#123;
+                <span class="hljs-keyword">this</span>.$emit(<span class="hljs-string">'childSendMsg'</span>, e.target.value);
+            &#125;
+        &#125;
+    &#125;)
+    <span class="hljs-keyword">const</span> App = &#123;
+        template: <span class="hljs-string">`</span>
+<span class="hljs-string">            &lt;div&gt;</span>
+<span class="hljs-string">                &lt;Child @childSendMsg = 'handleGetChildMsg'&gt;&lt;/Child&gt;</span>
+<span class="hljs-string">                &lt;h3&gt;&#123;&#123;childSendData&#125;&#125;&lt;/h3&gt;</span>
+<span class="hljs-string">            &lt;/div&gt;</span>
+<span class="hljs-string">     `</span>,
+        data() &#123;
+            <span class="hljs-keyword">return</span> &#123;
+                childSendData: <span class="hljs-string">''</span>
+            &#125;
+        &#125;,
+        methods: &#123;
+            handleGetChildMsg(msg) &#123;
+                <span class="hljs-keyword">this</span>.childSendData = msg
+            &#125;
+        &#125;
+    &#125;
+&lt;<span class="hljs-regexp">/script&gt;</span></code></pre></div>
+
+<h3 id="平行组件通信-中央事件总线"><a href="#平行组件通信-中央事件总线" class="headerlink" title="平行组件通信-中央事件总线"></a>平行组件通信-中央事件总线</h3><ol>
+<li>新建一个空的Vue实例作为中央事件总线</li>
+<li>在组件B创建的钩子函数中添加监听事件</li>
+<li>在组件A中触发事件</li>
+</ol>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">    <span class="hljs-comment">// 新建一个bus Vue实例对象</span></span>
+<span class="actionscript">    <span class="hljs-keyword">const</span> bus = <span class="hljs-keyword">new</span> Vue();</span>
+<span class="actionscript">    Vue.component(<span class="hljs-string">'A'</span>, &#123;</span>
+        template: `
+<span class="handlebars"><span class="xml">            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"handleClick"</span>&gt;</span>加入购物车<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span>
+        `,
+        methods: &#123;
+            handleClick() &#123;
+<span class="actionscript">                bus.$emit(<span class="hljs-string">'add'</span>, <span class="hljs-number">1</span>);</span>
+            &#125;
+        &#125;
+    &#125;)
+<span class="actionscript">    Vue.component(<span class="hljs-string">'B'</span>, &#123;</span>
+        template: `
+<span class="handlebars"><span class="xml">            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                <span class="hljs-tag">&lt;<span class="hljs-name">h4</span>&gt;</span>商品数量：</span><span class="hljs-template-variable">&#123;&#123; count &#125;&#125;</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span>
+        `,
+        data() &#123;
+<span class="actionscript">            <span class="hljs-keyword">return</span> &#123;</span>
+                count: 0
+            &#125;
+        &#125;,
+        created() &#123;
+<span class="actionscript">            <span class="hljs-comment">// 用bus而不是this,this指向当前组件</span></span>
+<span class="actionscript">            bus.$on(<span class="hljs-string">'add'</span>, n =&gt; &#123;</span>
+<span class="actionscript">                <span class="hljs-keyword">this</span>.count += n;</span>
+            &#125;)
+        &#125;,
+<span class="actionscript">        <span class="hljs-comment">// 最好在组件销毁前，清除事件监听</span></span>
+        beforeDestroy() &#123;
+<span class="actionscript">            bus.$off(<span class="hljs-string">'add'</span>);</span>
+        &#125;
+    &#125;)
+<span class="actionscript">    <span class="hljs-keyword">const</span> App = &#123;</span>
+        template: `
+<span class="handlebars"><span class="xml">            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                <span class="hljs-tag">&lt;<span class="hljs-name">A</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">A</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                <span class="hljs-tag">&lt;<span class="hljs-name">B</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">B</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span>
+     `
+    &#125;
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></div>
+
+<h3 id="provide与inject"><a href="#provide与inject" class="headerlink" title="provide与inject"></a>provide与inject</h3><ol>
+<li>在父组件中使用provide提供变量</li>
+<li>在子组件中通过inject来注入变量，无论组件嵌套多深</li>
+</ol>
+<div class="hljs"><pre><code class="hljs javascript">&lt;script&gt;
+    <span class="hljs-comment">// A组件引入了B组件</span>
+    Vue.component(<span class="hljs-string">'A'</span>, &#123;
+        template: <span class="hljs-string">`</span>
+<span class="hljs-string">            &lt;div&gt;</span>
+<span class="hljs-string">                &lt;B&gt;&lt;/B&gt;</span>
+<span class="hljs-string">            &lt;/div&gt;</span>
+<span class="hljs-string">        `</span>
+    &#125;)
+	<span class="hljs-comment">// B组件通过inject获取了App组件的数据</span>
+    Vue.component(<span class="hljs-string">'B'</span>, &#123;
+        template: <span class="hljs-string">`</span>
+<span class="hljs-string">            &lt;div&gt;</span>
+<span class="hljs-string">                &lt;h3&gt;&#123;&#123;msg&#125;&#125;&lt;/h3&gt;</span>
+<span class="hljs-string">            &lt;/div&gt;</span>
+<span class="hljs-string">        `</span>,
+        inject: [<span class="hljs-string">'msg'</span>]
+    &#125;)
+	<span class="hljs-comment">// App 组件引入了A组件，使用provide提供了数据</span>
+    <span class="hljs-keyword">const</span> App = &#123;
+        template: <span class="hljs-string">`</span>
+<span class="hljs-string">            &lt;div&gt;</span>
+<span class="hljs-string">                &lt;A&gt;&lt;/A&gt;</span>
+<span class="hljs-string">            &lt;/div&gt;</span>
+<span class="hljs-string">     `</span>,
+        provide() &#123;
+            <span class="hljs-keyword">return</span> &#123;
+                msg: <span class="hljs-string">'APP组件数据'</span>
+            &#125;
+        &#125;
+    &#125;
+&lt;<span class="hljs-regexp">/script&gt;</span></code></pre></div>
+
+<h3 id="parent与-children"><a href="#parent与-children" class="headerlink" title="$parent与$children"></a>$parent与$children</h3><p>通过<code>this.$parent</code>获取父组件</p>
+<p>通过<code>this.$children</code>获取子组件数组</p>
+<h2 id="异步组件加载"><a href="#异步组件加载" class="headerlink" title="异步组件加载"></a>异步组件加载</h2><p>以工厂函数的方式引入组件</p>
+<p>组件文件 Test.js</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span>  &#123;
+    data() &#123;
+        <span class="hljs-keyword">return</span> &#123;
+            msg: <span class="hljs-string">'子组件'</span>
+        &#125;
+    &#125;，
+    template: <span class="hljs-string">`</span>
+<span class="hljs-string">		&lt;h3&gt;&#123;&#123;msg&#125;&#125;&lt;/h3&gt;</span>
+<span class="hljs-string">	`</span>
+&#125;</code></pre></div>
+
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'module'</span>&gt;</span>
+<span class="actionscript">    <span class="hljs-keyword">const</span> App = &#123;</span>
+        template: `
+<span class="handlebars"><span class="xml">            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">                <span class="hljs-tag">&lt;<span class="hljs-name">Test</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">"isShow"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Test</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">			   <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"asyncLoad"</span>&gt;</span>异步加载<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span>
+     `,
+        data() &#123;
+<span class="actionscript">            <span class="hljs-keyword">return</span> &#123;</span>
+<span class="actionscript">                isShow: <span class="hljs-literal">false</span></span>
+            &#125;
+        &#125;
+        components: &#123;
+<span class="javascript">            Test: <span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span><span class="hljs-keyword">import</span>(<span class="hljs-string">'./Test.js'</span>) <span class="hljs-comment">// 使用import引入</span></span>
+        &#125;,
+        methods: &#123;
+            asyncLoad() &#123;
+<span class="actionscript">                <span class="hljs-keyword">this</span>.isShow = <span class="hljs-literal">true</span>;</span>
+            &#125;
+        &#125;
+    &#125;
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></div>
+
+<p>当点击按钮时，才会加载Test组件，而不是立即加载</p>
+<h2 id="对象变更检测"><a href="#对象变更检测" class="headerlink" title="对象变更检测"></a>对象变更检测</h2><p>Vue不能检测对象属性的添加和删除</p>
+<p>解决方法：</p>
+<ul>
+<li><div class="hljs"><pre><code class="javascript"><span class="comment">// Vue.$set(object, key, value)添加响应式属性</span>
+<span class="keyword">this</span>.$<span class="keyword">set</span>(this.user, age, 20)
+<pre><code class="hljs angelscript">
+- ```javascript
+  <span class="hljs-keyword">this</span>.user = Object.assign(&#123;&#125;, <span class="hljs-keyword">this</span>.user, &#123;
+      age: <span class="hljs-number">20</span>,
+      phone: <span class="hljs-number">123455</span>
+  &#125;)</code></pre></div>
+</code></pre>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript事件循环</title>
+    <url>/2020/09/21/Event-Loop/</url>
+    <content><![CDATA[<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>JavaScript语言是<strong>单线程</strong>的，这意味着同一时间只能执行一个任务</p>
+<p>浏览器是多线程的，一个浏览器通常由以下常驻线程组成：</p>
+<ul>
+<li>GUI 渲染线程</li>
+<li>JavaScript引擎线程</li>
+<li>定时触发器线程</li>
+<li>事件触发线程</li>
+<li>异步http请求线程</li>
+</ul>
+<p>GUI 渲染线程 与 JavaScript引擎线程<strong>互斥</strong>，JS引擎执行任务时永远不会进行渲染（render），仅在任务完成后才会绘制对 DOM 的更改。</p>
+<p>如果一项任务执行花费的时间过长，浏览器将无法执行其他任务，无法处理用户事件，因此，在一定时间后浏览器会在整个页面抛出一个如“页面未响应”之类的警报，建议你终止这个任务。这种情况常发生在有大量复杂的计算或导致死循环的程序错误</p>
+<h3 id="异步任务"><a href="#异步任务" class="headerlink" title="异步任务"></a>异步任务</h3><p>为了不让某些耗时较长的任务造成阻塞，使浏览器进入假死状态，产生了异步任务</p>
+<p>所有任务可以分为同步任务与异步任务两种，当执行同步任务遇到一个异步任务时，就在<code>event table</code>（事件表）中注册回调函数，同步任务继续执行。期间异步任务完成时，回调函数会被放入<code>event queue</code>（事件队列）</p>
+<blockquote>
+<p>异步任务不是JavaScript引擎线程处理，比如计数器由浏览器的定时触发器线程计数；XMLHttpRequest在连接后通过浏览器新开一个线程请求，检测到状态变更时，如果设置有回调函数，异步线程就产生状态变更事件放到 JavaScript引擎的处理队列中等待处理</p>
+</blockquote>
+<h3 id="宏任务与微任务"><a href="#宏任务与微任务" class="headerlink" title="宏任务与微任务"></a>宏任务与微任务</h3><p>宿主环境（浏览器、node）提供的方法是宏任务（macrotask），也叫tasks</p>
+<ul>
+<li>script</li>
+<li>setTimeout</li>
+<li>setInterval</li>
+<li>requestAnimationFrame</li>
+<li>I/O</li>
+<li>UI rendering</li>
+</ul>
+<p>语言标准（js引擎）提供的是微任务（microtask），也叫jobs</p>
+<ul>
+<li>原生Promise</li>
+<li>Object.observe(已废弃)</li>
+<li>MutationObserver </li>
+</ul>
+<h3 id="浏览器的事件循环过程"><a href="#浏览器的事件循环过程" class="headerlink" title="浏览器的事件循环过程"></a>浏览器的事件循环过程</h3><ol>
+<li>从宏任务队列中取出script代码（最早的任务），将同步任务放入执行栈中，执行栈中的代码产生的异步任务会被加入到任务队列</li>
+<li>当执行栈中的代码执行完，即栈为空时，将先从微任务队列（microtask queue）中取出一个任务，放入执行栈中执行</li>
+<li>当微任务队列中的任务都执行完成后，从宏任务队列（microtask queue）中取出一个任务，放入执行栈中执行，执行完后重复2</li>
+<li>如果宏任务队列为空，则休眠直到出现宏任务</li>
+</ol>
+<blockquote>
+<p>执行栈清空后总是会先执行完微任务队列中的任务，再从宏任务队列取出一个任务</p>
+</blockquote>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'script start'</span>);
+
+setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'setTimeout'</span>);
+&#125;, <span class="hljs-number">0</span>);
+
+<span class="hljs-built_in">Promise</span>.resolve()
+  .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'promise1'</span>);
+  &#125;)
+  .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'promise2'</span>);
+  &#125;);
+
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'script end'</span>);</code></pre></div>
+
+<p>上面代码的输出顺序为： <code>script start</code>, <code>script end</code>, <code>promise1</code>, <code>promise2</code>, <code>setTimeout</code></p>
+<p>setTimeout为宏任务，Promise为微任务被加入到各自的任务队列中，输出<code>script end</code>后，执行栈为空，先去微任务队列中执行Promise，执行完后再去执行宏任务队列中的setTimeout。</p>
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="https://imweb.io/topic/58e3bfa845e5c13468f567d5" target="_blank" rel="noopener">https://imweb.io/topic/58e3bfa845e5c13468f567d5</a></p>
+<p><a href="https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/" target="_blank" rel="noopener">https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/</a></p>
+<p><a href="https://juejin.im/post/6844903670291628046" target="_blank" rel="noopener">https://juejin.im/post/6844903670291628046</a></p>
+<p><a href="https://juejin.im/post/6844904088459575304" target="_blank" rel="noopener">https://juejin.im/post/6844904088459575304</a></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
 </search>

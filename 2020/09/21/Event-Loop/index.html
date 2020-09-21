@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="BU JUNJIE">
   <meta name="keywords" content="">
-  <title>防抖与节流 - JUZI&#39;s blog</title>
+  <title>JavaScript事件循环 - JUZI&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -152,8 +152,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-08-18 20:32">
-      2020年8月18日 晚上
+    <time datetime="2020-09-21 15:43">
+      2020年9月21日 下午
     </time>
   </div>
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      304 字
+      843 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3
+      9
        分钟
     </span>
   
@@ -204,43 +204,68 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h3 id="函数防抖（debounce）"><a href="#函数防抖（debounce）" class="headerlink" title="函数防抖（debounce）"></a>函数防抖（debounce）</h3><p>在事件被触发后n秒内再执行回调，如果在这段时间内再次触发，则重新开始计时</p>
-<p>防抖使用的场景：</p>
+              <h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>JavaScript语言是<strong>单线程</strong>的，这意味着同一时间只能执行一个任务</p>
+<p>浏览器是多线程的，一个浏览器通常由以下常驻线程组成：</p>
 <ul>
-<li>在搜索时，输入文字后一段时间内开始自动搜索，而不是每次按键都执行搜索操作</li>
-<li>window触发resize的时候，不断的调整浏览器窗口大小会不断的触发这个事件，用防抖来让其只触发一次</li>
+<li>GUI 渲染线程</li>
+<li>JavaScript引擎线程</li>
+<li>定时触发器线程</li>
+<li>事件触发线程</li>
+<li>异步http请求线程</li>
 </ul>
-<p>虽然知道概念，但是面试时让我写一个通用的防抖函数，有一点懵，下面贴代码：</p>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">debounce</span> (<span class="hljs-params">callback, time</span>) =&gt; </span>&#123;
-  <span class="hljs-keyword">let</span> interval;
-  <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params">...args</span>) =&gt;</span> &#123;
-    clearTimeout(interval);
-    interval = setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
-      interval = <span class="hljs-literal">null</span>;
-      callback(...args);
-    &#125;, time);
-  &#125;;
-&#125;;</code></pre></div>
-
-<h3 id="函数节流（throttle"><a href="#函数节流（throttle" class="headerlink" title="函数节流（throttle)"></a>函数节流（throttle)</h3><p>在一个规定时间内，最多只能触发一次，即第一次触发后，至少间隔一个规定时间，才会触发第二次。</p>
-<p>使用场景：</p>
+<p>GUI 渲染线程 与 JavaScript引擎线程<strong>互斥</strong>，JS引擎执行任务时永远不会进行渲染（render），仅在任务完成后才会绘制对 DOM 的更改。</p>
+<p>如果一项任务执行花费的时间过长，浏览器将无法执行其他任务，无法处理用户事件，因此，在一定时间后浏览器会在整个页面抛出一个如“页面未响应”之类的警报，建议你终止这个任务。这种情况常发生在有大量复杂的计算或导致死循环的程序错误</p>
+<h3 id="异步任务"><a href="#异步任务" class="headerlink" title="异步任务"></a>异步任务</h3><p>为了不让某些耗时较长的任务造成阻塞，使浏览器进入假死状态，产生了异步任务</p>
+<p>所有任务可以分为同步任务与异步任务两种，当执行同步任务遇到一个异步任务时，就在<code>event table</code>（事件表）中注册回调函数，同步任务继续执行。期间异步任务完成时，回调函数会被放入<code>event queue</code>（事件队列）</p>
+<blockquote>
+<p>异步任务不是JavaScript引擎线程处理，比如计数器由浏览器的定时触发器线程计数；XMLHttpRequest在连接后通过浏览器新开一个线程请求，检测到状态变更时，如果设置有回调函数，异步线程就产生状态变更事件放到 JavaScript引擎的处理队列中等待处理</p>
+</blockquote>
+<h3 id="宏任务与微任务"><a href="#宏任务与微任务" class="headerlink" title="宏任务与微任务"></a>宏任务与微任务</h3><p>宿主环境（浏览器、node）提供的方法是宏任务（macrotask），也叫tasks</p>
 <ul>
-<li>鼠标不断点击触发，mousedown(单位时间内只触发一次)</li>
-<li>监听滚动事件，比如是否滑到底部自动加载更多，用throttle来判断</li>
+<li>script</li>
+<li>setTimeout</li>
+<li>setInterval</li>
+<li>requestAnimationFrame</li>
+<li>I/O</li>
+<li>UI rendering</li>
 </ul>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> throttle = <span class="hljs-function">(<span class="hljs-params">func, limit</span>) =&gt;</span> &#123;
-  <span class="hljs-keyword">let</span> inThrottle
-  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
-    <span class="hljs-keyword">const</span> args = <span class="hljs-built_in">arguments</span>
-    <span class="hljs-keyword">const</span> context = <span class="hljs-keyword">this</span>
-    <span class="hljs-keyword">if</span> (!inThrottle) &#123;
-      func.apply(context, args)
-      inThrottle = <span class="hljs-literal">true</span>
-      setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> inThrottle = <span class="hljs-literal">false</span>, limit)
-    &#125;
-  &#125;
-&#125;</code></pre></div>
+<p>语言标准（js引擎）提供的是微任务（microtask），也叫jobs</p>
+<ul>
+<li>原生Promise</li>
+<li>Object.observe(已废弃)</li>
+<li>MutationObserver </li>
+</ul>
+<h3 id="浏览器的事件循环过程"><a href="#浏览器的事件循环过程" class="headerlink" title="浏览器的事件循环过程"></a>浏览器的事件循环过程</h3><ol>
+<li>从宏任务队列中取出script代码（最早的任务），将同步任务放入执行栈中，执行栈中的代码产生的异步任务会被加入到任务队列</li>
+<li>当执行栈中的代码执行完，即栈为空时，将先从微任务队列（microtask queue）中取出一个任务，放入执行栈中执行</li>
+<li>当微任务队列中的任务都执行完成后，从宏任务队列（microtask queue）中取出一个任务，放入执行栈中执行，执行完后重复2</li>
+<li>如果宏任务队列为空，则休眠直到出现宏任务</li>
+</ol>
+<blockquote>
+<p>执行栈清空后总是会先执行完微任务队列中的任务，再从宏任务队列取出一个任务</p>
+</blockquote>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'script start'</span>);
 
+setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'setTimeout'</span>);
+&#125;, <span class="hljs-number">0</span>);
+
+<span class="hljs-built_in">Promise</span>.resolve()
+  .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'promise1'</span>);
+  &#125;)
+  .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'promise2'</span>);
+  &#125;);
+
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'script end'</span>);</code></pre></div>
+
+<p>上面代码的输出顺序为： <code>script start</code>, <code>script end</code>, <code>promise1</code>, <code>promise2</code>, <code>setTimeout</code></p>
+<p>setTimeout为宏任务，Promise为微任务被加入到各自的任务队列中，输出<code>script end</code>后，执行栈为空，先去微任务队列中执行Promise，执行完后再去执行宏任务队列中的setTimeout。</p>
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="https://imweb.io/topic/58e3bfa845e5c13468f567d5" target="_blank" rel="noopener">https://imweb.io/topic/58e3bfa845e5c13468f567d5</a></p>
+<p><a href="https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/" target="_blank" rel="noopener">https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/</a></p>
+<p><a href="https://juejin.im/post/6844903670291628046" target="_blank" rel="noopener">https://juejin.im/post/6844903670291628046</a></p>
+<p><a href="https://juejin.im/post/6844904088459575304" target="_blank" rel="noopener">https://juejin.im/post/6844904088459575304</a></p>
 
             </article>
             <hr>
@@ -252,7 +277,7 @@
                     
                       <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/JavScript/">JavScript</a>
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/JavaScript/">JavaScript</a>
                     
                   </div>
                 
@@ -273,18 +298,12 @@
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/08/18/%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">严格模式</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </div>
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/08/17/ECharts%E5%9B%BE%E8%A1%A8resize%E4%BC%98%E5%8C%96/">
-                        <span class="hidden-mobile">ECharts图表resize</span>
+                      <a href="/2020/09/17/Vue%E6%8F%92%E6%A7%BD/">
+                        <span class="hidden-mobile">Vue插槽</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -423,7 +442,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "防抖与节流&nbsp;",
+        "JavaScript事件循环&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
