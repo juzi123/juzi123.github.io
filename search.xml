@@ -1806,6 +1806,44 @@ uzi.__proto__ === People.prototype;</code></pre></div>
   <span class="hljs-attribute">color</span>: <span class="hljs-number">#ab26ab</span>;
 &#125;</code></pre></div>
 
+<h3 id="匹配的优先级"><a href="#匹配的优先级" class="headerlink" title="匹配的优先级"></a>匹配的优先级</h3><p>同一个路径可以匹配多个路由，匹配的优先级按照路由的定义顺序，谁先定义，谁的优先级高</p>
+<h3 id="404页面"><a href="#404页面" class="headerlink" title="404页面"></a>404页面</h3><p>当没有对应路由时，应该跳转到404页面</p>
+<p>由于路由匹配优先级的特点，可以在路由配置的末尾添加一项，path为<code>&#39;*&#39;</code> ，component指向404页面</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> routes = [&#123;
+    path: <span class="hljs-string">"/"</span>,
+    name: <span class="hljs-string">"Home"</span>,
+    component: Home,
+    props: <span class="hljs-literal">true</span>
+  &#125;,
+  &#123;
+    path: <span class="hljs-string">"/details/:slug"</span>,
+    name: <span class="hljs-string">"DestinationDetails"</span>,
+    component: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">import</span>( <span class="hljs-comment">/* webpackChunkName: "DestinationDetails"*/</span> <span class="hljs-string">"../views/DestinationDetails"</span>),
+    props: <span class="hljs-literal">true</span>
+  &#125;,
+  &#123;
+    path: <span class="hljs-string">"*"</span>,
+    name: <span class="hljs-string">"404"</span>,
+    component: <span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">"../views/404"</span>)
+  &#125;
+];</code></pre></div>
+
+<h3 id="pathMatch"><a href="#pathMatch" class="headerlink" title="pathMatch"></a>pathMatch</h3><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> routes = [
+  &#123;
+    path: <span class="hljs-string">"/user-*"</span>,
+    name: <span class="hljs-string">"user"</span>,
+    component: <span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">"../views/user"</span>)
+  &#125;
+];</code></pre></div>
+
+<p>这时路由为<code>user-</code>开头的都会被匹配到，且剩余的部分会被保存到pathMatch中</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 路径为localhost:8080/user-admin</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.$route.params.pathMatch);	<span class="hljs-comment">// 输出admin</span></code></pre></div>
+
+<h3 id="hash模式与history模式"><a href="#hash模式与history模式" class="headerlink" title="hash模式与history模式"></a>hash模式与history模式</h3><p>vue router默认为hash模式，hash 模式使用 URL 的 hash 来模拟一个完整的 URL</p>
+<p><code>http://localhost:8080/#/details/brazil</code></p>
+<p>在配置文件中添加<code>mode: &quot;history&quot;</code>切换为history模式，使url看起来更加正常</p>
+<p><code>http://localhost:8080/details/brazil</code></p>
 <h3 id="动态路由匹配"><a href="#动态路由匹配" class="headerlink" title="动态路由匹配"></a>动态路由匹配</h3><p>如果许多页面结构类似，每个页面使用一个组件会很麻烦，可以将匹配到的路由全部映射到同一个组件中</p>
 <div class="hljs"><pre><code class="hljs javascript">&#123;
   path: <span class="hljs-string">"/details/:slug"</span>,
@@ -1846,13 +1884,9 @@ export default &#123;
 &#125;;
 &lt;&#x2F;script&gt;</code></pre></div>
 
-<p>当路由参数变化时，如果使用的是同一个组件，尽管路径已经显示改变，但内容可能不会刷新，这是可以在<code>&lt;router-view&gt;</code>中添加key</p>
+<p>当路由参数变化时，如果使用的是同一个组件，尽管路径已经显示改变，但内容可能不会刷新，这时可以在<code>&lt;router-view&gt;</code>中添加key</p>
 <p><code>&lt;router-view :key=&quot;$route.path&quot; /&gt;</code></p>
 <p>将key设置为<code>$router.path</code>，当path发生变化就会进行刷新</p>
-<h3 id="hash模式与history模式"><a href="#hash模式与history模式" class="headerlink" title="hash模式与history模式"></a>hash模式与history模式</h3><p>vue router默认为hash模式，hash 模式使用 URL 的 hash 来模拟一个完整的 URL</p>
-<p><code>http://localhost:8080/#/details/brazil</code></p>
-<p>在配置文件中添加<code>mode: &quot;history&quot;</code>切换为history模式，使url看起来更加正常</p>
-<p><code>http://localhost:8080/details/brazil</code></p>
 <h3 id="使用props"><a href="#使用props" class="headerlink" title="使用props"></a>使用props</h3><p>先修改router配置文件，添加<code>props:true</code></p>
 <div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> routes = [&#123;
     path: <span class="hljs-string">"/"</span>,
@@ -1895,6 +1929,155 @@ export default &#123;
 &#125;;
 &lt;&#x2F;script&gt;</code></pre></div>
 
+<p>props还可自定义参数</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> routes = [&#123;
+    path: <span class="hljs-string">"/"</span>,
+    name: <span class="hljs-string">"Home"</span>,
+    component: Home,
+    props: <span class="hljs-literal">true</span>
+  &#125;,
+  &#123;
+    path: <span class="hljs-string">"/details/:slug"</span>,
+    name: <span class="hljs-string">"DestinationDetails"</span>,
+    component: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">import</span>( <span class="hljs-comment">/* webpackChunkName: "DestinationDetails"*/</span> <span class="hljs-string">"../views/DestinationDetails"</span>),
+    props: <span class="hljs-function">(<span class="hljs-params">route</span>) =&gt;</span>(&#123;
+    	slug: route.params.slug,
+        title: route.query.title
+    &#125;)
+  &#125;
+];</code></pre></div>
+
+<p>在组件中使用<code>props: [&#39;slug&#39;, &#39;title&#39;]</code>获取</p>
+<h3 id="查询参数query"><a href="#查询参数query" class="headerlink" title="查询参数query"></a>查询参数query</h3><p>跳转中配置query</p>
+<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">:to</span>=<span class="hljs-string">"&#123;name: 'page', query: &#123;id: 1, title: 'foo'&#125; &#125;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></code></pre></div>
+
+<p>在page页面中获取</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> &#123;id, title&#125; = <span class="hljs-keyword">this</span>.$route.query</code></pre></div>
+
+<h3 id="路由重定向"><a href="#路由重定向" class="headerlink" title="路由重定向"></a>路由重定向</h3><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> routes = [
+  &#123;
+    path: <span class="hljs-string">"/"</span>,
+    redirect: <span class="hljs-string">"/Home"</span>
+  &#125;,
+  &#123;
+    path: <span class="hljs-string">"/Home"</span>,
+    name: <span class="hljs-string">"/Home"</span>,
+    component: <span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">"../views/Home"</span>)
+  &#125;
+];</code></pre></div>
+
+<p>当访问<code>localhost:8080/</code>时，会重定向到<code>localhost:8080/Home</code></p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 这样写效果相同</span>
+<span class="hljs-keyword">const</span> routes = [
+  &#123;
+    path: <span class="hljs-string">"/"</span>,
+    redirect: &#123;<span class="hljs-attr">name</span>: <span class="hljs-string">'Home'</span>&#125;
+  &#125;,
+  &#123;
+    path: <span class="hljs-string">"/Home"</span>,
+    name: <span class="hljs-string">"/Home"</span>,
+    component: <span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">"../views/Home"</span>)
+  &#125;
+];</code></pre></div>
+
+<h3 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h3><p>可以给路由起一个别名</p>
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> routes = [
+  &#123;
+    path: <span class="hljs-string">"/user"</span>,
+    name: <span class="hljs-string">'user'</span>,
+    component: <span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">"../views/Home"</span>),
+    alias: <span class="hljs-string">'aaa'</span>
+  &#125;
+];</code></pre></div>
+
+<h3 id="编程式导航"><a href="#编程式导航" class="headerlink" title="编程式导航"></a>编程式导航</h3><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-comment">// 跳转到path为"/"</span>
+<span class="hljs-keyword">this</span>.$router.push(<span class="hljs-string">'/'</span>)
+<span class="hljs-comment">// 命名的方式</span>
+<span class="hljs-keyword">this</span>.$router.push(<span class="hljs-string">'name'</span>)
+<span class="hljs-comment">// 对象</span>
+<span class="hljs-keyword">this</span>.$router.push(&#123;
+    path:<span class="hljs-string">'/'</span>
+&#125;)
+<span class="hljs-comment">// 传参</span>
+<span class="hljs-keyword">this</span>.$router.push(&#123;
+    name:<span class="hljs-string">'user'</span>,
+    params: &#123;<span class="hljs-attr">id</span>: <span class="hljs-number">2</span>&#125;
+&#125;)
+<span class="hljs-keyword">this</span>.$router.push(&#123;
+    path:<span class="hljs-string">'/register'</span>,
+    query: &#123;<span class="hljs-attr">id</span>: <span class="hljs-number">2</span>&#125;
+&#125;)
+<span class="hljs-comment">// 后退1</span>
+<span class="hljs-keyword">this</span>.$router.go(<span class="hljs-number">-1</span>)
+<span class="hljs-comment">// 前进1</span>
+<span class="hljs-keyword">this</span>.$router.go(<span class="hljs-number">1</span>)</code></pre></div>
+
+<h3 id="嵌套路由"><a href="#嵌套路由" class="headerlink" title="嵌套路由"></a>嵌套路由</h3><h3 id="命名视图"><a href="#命名视图" class="headerlink" title="命名视图"></a>命名视图</h3><h2 id="导航守卫"><a href="#导航守卫" class="headerlink" title="导航守卫"></a>导航守卫</h2><p>导航表示路由正在变化</p>
+<h3 id="完整的导航解析流程"><a href="#完整的导航解析流程" class="headerlink" title="完整的导航解析流程"></a>完整的导航解析流程</h3><ol>
+<li>导航被触发</li>
+<li>在失活的组件里调用离开守卫</li>
+<li>调用全局的<code>beforeEach</code>守卫</li>
+<li>在重用的组件里调用<code>beforeRouteUpdate</code>守卫</li>
+<li>在路由配置里调用<code>beforeEnter</code></li>
+<li>解析异步路由组件</li>
+<li>在被激活的组件里调用<code>beforeRouteEnter</code></li>
+<li>调用全局的<code>beforeResolve</code>守卫</li>
+<li>导航被确认</li>
+<li>调用全局的<code>afterEach</code>钩子</li>
+<li>触发DOM更新</li>
+<li>用创建好的实例调用<code>beforeRouteEnter</code>守卫中传给<code>next</code>的回调函数</li>
+</ol>
+<h3 id="全局守卫"><a href="#全局守卫" class="headerlink" title="全局守卫"></a>全局守卫</h3><div class="hljs"><pre><code class="hljs javascript">router.beforeEach(<span class="hljs-function">(<span class="hljs-params">to,<span class="hljs-keyword">from</span>,next</span>) =&gt;</span> &#123;
+    <span class="hljs-built_in">console</span>.log(to);
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">from</span>);
+    <span class="hljs-keyword">const</span> user = <span class="hljs-built_in">JSON</span>.parse(localStorage.getItem(<span class="hljs-string">'user'</span>));
+    <span class="hljs-keyword">if</span>(!user) &#123;
+        <span class="hljs-comment">// 跳转到登录页</span>
+    	next(&#123;
+            path: <span class="hljs-string">'/login'</span>,
+            query: &#123;
+                redirect: to.fullPath
+            &#125;
+        &#125;);
+    &#125; <span class="hljs-keyword">else</span> &#123;
+    	next();
+    &#125;
+&#125;)</code></pre></div>
+
+<p>例子：页面跳转时，若检测到用户未登录，则跳转到登录页</p>
+<h3 id="beforeRouteEnter"><a href="#beforeRouteEnter" class="headerlink" title="beforeRouteEnter"></a>beforeRouteEnter</h3><p>在渲染该组件的对应路由被confirm前被调用</p>
+<p>不能访问this</p>
+<h3 id="beforeRouteUpdate"><a href="#beforeRouteUpdate" class="headerlink" title="beforeRouteUpdate"></a>beforeRouteUpdate</h3><p>当前路由改变，组件被重用时调用</p>
+<p>可以访问this</p>
+<h3 id="beforeRouteLeave"><a href="#beforeRouteLeave" class="headerlink" title="beforeRouteLeave"></a>beforeRouteLeave</h3><p>导航离开该组件的对应路由时调用</p>
+<p>可以访问this</p>
+<p>可以用于提示用户是否离开当前页面</p>
+<div class="hljs"><pre><code class="hljs javascript">beforeRouteLeave(to, <span class="hljs-keyword">from</span>, next) &#123;
+    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.content) &#123;
+	    alert(<span class="hljs-string">'是否离开页面'</span>);
+        next(<span class="hljs-literal">false</span>);
+    &#125; <span class="hljs-keyword">else</span> &#123;
+        next();
+    &#125;
+&#125;</code></pre></div>
+
+<h3 id="使用meta元信息"><a href="#使用meta元信息" class="headerlink" title="使用meta元信息"></a>使用meta元信息</h3><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> routes = [
+  &#123;
+    path: <span class="hljs-string">"/"</span>,
+    redirect: &#123;<span class="hljs-attr">name</span>: <span class="hljs-string">'Home'</span>&#125;
+  &#125;,
+  &#123;
+    path: <span class="hljs-string">"/Home"</span>,
+    name: <span class="hljs-string">"/Home"</span>,
+    component: <span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">"../views/Home"</span>)
+    meta: &#123;
+      requireAuth: <span class="hljs-literal">true</span>,
+      hhh: <span class="hljs-literal">false</span>
+  	&#125;
+  &#125;
+];</code></pre></div>
+
+<p>通过<code>meta.requireAuth</code> ,<code>meta.hhh</code>的方式获取</p>
 ]]></content>
       <categories>
         <category>前端</category>
