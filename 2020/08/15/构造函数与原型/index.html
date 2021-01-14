@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.1k 字
+      1.2k 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      13
+      15
        分钟
     </span>
   
@@ -325,6 +325,21 @@ Son.prototype.exam = <span class="hljs-keyword">new</span> <span class="hljs-fun
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"exam"</span>);
 &#125;
 <span class="hljs-keyword">let</span> son = <span class="hljs-keyword">new</span> Son(<span class="hljs-string">'wuzi'</span>, <span class="hljs-number">18</span>, <span class="hljs-string">'男'</span>);</code></pre></div>
+
+<h2 id="实现New方法"><a href="#实现New方法" class="headerlink" title="实现New方法"></a>实现New方法</h2><div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myNew</span>(<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-comment">// 创建一个空对象</span>
+    <span class="hljs-keyword">const</span> obj = &#123;&#125;;
+    <span class="hljs-comment">// 获取第一个参数，即构造方法</span>
+    Constructor = <span class="hljs-built_in">Array</span>.prototype.shift.call(<span class="hljs-built_in">arguments</span>);
+    <span class="hljs-comment">// 将空对象的对象原型指向构造方法的原型对象</span>
+    obj.__proto__ = Constructor.prototype;
+    <span class="hljs-comment">// 使用apply改变构造函数的指向，并传入参数</span>
+    Constructor.apply(obj, <span class="hljs-built_in">arguments</span>);
+    <span class="hljs-comment">// 返回该对象</span>
+    <span class="hljs-keyword">return</span> obj;
+&#125;
+
+<span class="hljs-keyword">const</span> Tom = myNew(People, <span class="hljs-string">'Tom'</span>, <span class="hljs-number">18</span>);</code></pre></div>
 
 
             </article>

@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      304 字
+      301 字
     </span>
   
 
@@ -211,14 +211,11 @@
 <li>window触发resize的时候，不断的调整浏览器窗口大小会不断的触发这个事件，用防抖来让其只触发一次</li>
 </ul>
 <p>虽然知道概念，但是面试时让我写一个通用的防抖函数，有一点懵，下面贴代码：</p>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">debounce</span> (<span class="hljs-params">callback, time</span>) =&gt; </span>&#123;
-  <span class="hljs-keyword">let</span> interval;
-  <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params">...args</span>) =&gt;</span> &#123;
-    clearTimeout(interval);
-    interval = setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
-      interval = <span class="hljs-literal">null</span>;
-      callback(...args);
-    &#125;, time);
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> debounce = <span class="hljs-function">(<span class="hljs-params">fn, ms = <span class="hljs-number">0</span></span>) =&gt;</span> &#123;
+  <span class="hljs-keyword">let</span> timeoutId;
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">...args</span>) </span>&#123;
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> fn.apply(<span class="hljs-keyword">this</span>, args), ms);
   &#125;;
 &#125;;</code></pre></div>
 
@@ -228,15 +225,15 @@
 <li>鼠标不断点击触发，mousedown(单位时间内只触发一次)</li>
 <li>监听滚动事件，比如是否滑到底部自动加载更多，用throttle来判断</li>
 </ul>
-<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> throttle = <span class="hljs-function">(<span class="hljs-params">func, limit</span>) =&gt;</span> &#123;
-  <span class="hljs-keyword">let</span> inThrottle
-  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
-    <span class="hljs-keyword">const</span> args = <span class="hljs-built_in">arguments</span>
-    <span class="hljs-keyword">const</span> context = <span class="hljs-keyword">this</span>
-    <span class="hljs-keyword">if</span> (!inThrottle) &#123;
-      func.apply(context, args)
-      inThrottle = <span class="hljs-literal">true</span>
-      setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> inThrottle = <span class="hljs-literal">false</span>, limit)
+<div class="hljs"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> throttle = <span class="hljs-function">(<span class="hljs-params">fn, ms</span>) =&gt;</span> &#123;
+  <span class="hljs-keyword">let</span> flag = <span class="hljs-literal">true</span>;
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">...args</span>) </span>&#123;
+    <span class="hljs-keyword">if</span>(flag) &#123;
+      fn.apply(<span class="hljs-keyword">this</span>, args);
+      flag = <span class="hljs-literal">false</span>;
+      setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
+        flag = <span class="hljs-literal">true</span>;
+      &#125;, ms);
     &#125;
   &#125;
 &#125;</code></pre></div>
